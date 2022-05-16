@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B436DD92E90CE053FECDDCA /* IProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F5DAA5CBD77F9B590C8496 /* IProfileInteractor.swift */; };
+		196FAB2921D08F8C99F836CD /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E63C0E9E20C3FA178F3061 /* ProfileAssembly.swift */; };
+		234067C08051ADC2ABB2ED82 /* IProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90A5333D9C49524380911BE /* IProfileRouter.swift */; };
 		2F28055498165472609852F4 /* OrderBookInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B63ED0A6FB74D60A96040 /* OrderBookInteractor.swift */; };
 		551F8C3028325F290044C7EA /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8BB528325F290044C7EA /* Assets.swift */; };
 		551F8C3128325F290044C7EA /* L10n-Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8BB628325F290044C7EA /* L10n-Constants.swift */; };
@@ -105,23 +108,34 @@
 		551F8C9828326FE50044C7EA /* OrderBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8C9728326FE50044C7EA /* OrderBookCell.swift */; };
 		551F8C9D28329B250044C7EA /* PostOrderDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8C9C28329B250044C7EA /* PostOrderDto.swift */; };
 		551F8C9F2832AE6F0044C7EA /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8C9E2832AE6F0044C7EA /* HistoryItem.swift */; };
+		551F8CA12832B1150044C7EA /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F8CA02832B1150044C7EA /* Profile.storyboard */; };
 		552E2D4228323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 552E2D4028323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld */; };
+		554589022832B56A00196B02 /* ProfileTokensCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554589012832B56A00196B02 /* ProfileTokensCell.swift */; };
+		554589042832C0E500196B02 /* ProfileAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554589032832C0E500196B02 /* ProfileAccountCell.swift */; };
 		55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55DB2496283241740084A499 /* TinkoffInvestSDK */; };
+		617D871B5D0012503DDA01AD /* IProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3B63954C0DE294E6DD1C8 /* IProfileView.swift */; };
 		66B1A7D277A0324FFBDB0D58 /* IOrderBookPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38967A1C72C43E366C76A8BC /* IOrderBookPresenter.swift */; };
+		6C6901E86BBE26B28F5C7401 /* IProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E7040B7C0CD0A5EB0CC3C /* IProfilePresenter.swift */; };
 		77EAD71F6E908FC935A7FA37 /* IOrderBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5033F101D981ED396DEF5B /* IOrderBookView.swift */; };
 		84E33A1239B4FDD98B4FF2AB /* OrderBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD49A5E44037964EDE4E70 /* OrderBookViewController.swift */; };
 		86D672286BD41258E67BA68C /* OrderBookRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335689A7B551F22D3DD19AF /* OrderBookRouter.swift */; };
 		8F5FB4CEFB1C2C5B76BE26A9 /* IOrderBookInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF52DB16F6C1EFFC8CE784 /* IOrderBookInteractor.swift */; };
+		A800A1D572F50A68353E17DF /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D775115C0B35766592B9D8E /* ProfileRouter.swift */; };
 		B886043A9E5F1C99681B5AC1 /* IOrderBookRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C791D262F59DAE7F3C1CC /* IOrderBookRouter.swift */; };
+		B897E0B187B0682998692CBA /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71F62A59A00B85F9E44DC0B /* ProfileInteractor.swift */; };
+		C976BEDA42B4A83B46E3D956 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE31715B8C6E2BEE88604D /* ProfileViewController.swift */; };
 		D08C07D7753E663F370C7470 /* OrderBookPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB88AC9BA3CFB07080EAAB24 /* OrderBookPresenter.swift */; };
 		E9D9372E6272E9132D27B490 /* OrderBookAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EF85558E0A7B62D6B1B2F8 /* OrderBookAssembly.swift */; };
+		F7DB6C9B0C0231E42654A215 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5030A8DE634AD3FB54F771 /* ProfilePresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E7B63ED0A6FB74D60A96040 /* OrderBookInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookInteractor.swift; sourceTree = "<group>"; };
 		2335689A7B551F22D3DD19AF /* OrderBookRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookRouter.swift; sourceTree = "<group>"; };
 		38967A1C72C43E366C76A8BC /* IOrderBookPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IOrderBookPresenter.swift; sourceTree = "<group>"; };
+		3C5030A8DE634AD3FB54F771 /* ProfilePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		41CD49A5E44037964EDE4E70 /* OrderBookViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookViewController.swift; sourceTree = "<group>"; };
+		52E63C0E9E20C3FA178F3061 /* ProfileAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
 		551F8BB528325F290044C7EA /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		551F8BB628325F290044C7EA /* L10n-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "L10n-Constants.swift"; sourceTree = "<group>"; };
 		551F8BB728325F290044C7EA /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -220,16 +234,26 @@
 		551F8C9728326FE50044C7EA /* OrderBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookCell.swift; sourceTree = "<group>"; };
 		551F8C9C28329B250044C7EA /* PostOrderDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrderDto.swift; sourceTree = "<group>"; };
 		551F8C9E2832AE6F0044C7EA /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		551F8CA02832B1150044C7EA /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		552E2D3428323B1C000E79AD /* TinkoffContestKwatoko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffContestKwatoko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552E2D4128323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffContestKwatoko.xcdatamodel; sourceTree = "<group>"; };
 		552E2D4828323B1D000E79AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		552E2D4E28323B43000E79AD /* TinkoffContestKwatoko.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TinkoffContestKwatoko.entitlements; sourceTree = "<group>"; };
+		554589012832B56A00196B02 /* ProfileTokensCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTokensCell.swift; sourceTree = "<group>"; };
+		554589032832C0E500196B02 /* ProfileAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAccountCell.swift; sourceTree = "<group>"; };
 		55DB2494283241360084A499 /* TinkoffInvestSwiftSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TinkoffInvestSwiftSDK; path = ../TinkoffInvestSwiftSDK; sourceTree = "<group>"; };
 		629C791D262F59DAE7F3C1CC /* IOrderBookRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IOrderBookRouter.swift; sourceTree = "<group>"; };
 		72EF85558E0A7B62D6B1B2F8 /* OrderBookAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookAssembly.swift; sourceTree = "<group>"; };
+		7D775115C0B35766592B9D8E /* ProfileRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		8BEE31715B8C6E2BEE88604D /* ProfileViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		93E3B63954C0DE294E6DD1C8 /* IProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IProfileView.swift; sourceTree = "<group>"; };
+		AB6E7040B7C0CD0A5EB0CC3C /* IProfilePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IProfilePresenter.swift; sourceTree = "<group>"; };
 		AB88AC9BA3CFB07080EAAB24 /* OrderBookPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookPresenter.swift; sourceTree = "<group>"; };
+		B71F62A59A00B85F9E44DC0B /* ProfileInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		CD5033F101D981ED396DEF5B /* IOrderBookView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IOrderBookView.swift; sourceTree = "<group>"; };
+		D8F5DAA5CBD77F9B590C8496 /* IProfileInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IProfileInteractor.swift; sourceTree = "<group>"; };
 		E8BF52DB16F6C1EFFC8CE784 /* IOrderBookInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IOrderBookInteractor.swift; sourceTree = "<group>"; };
+		E90A5333D9C49524380911BE /* IProfileRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IProfileRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +301,14 @@
 			isa = PBXGroup;
 			children = (
 				72EF85558E0A7B62D6B1B2F8 /* OrderBookAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		3B6B35B7B71EF1707EAC70E4 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				52E63C0E9E20C3FA178F3061 /* ProfileAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -448,6 +480,7 @@
 				551F8C0828325F290044C7EA /* BaseViper */,
 				551F8C1428325F290044C7EA /* Root */,
 				D2A3FAA47B851F1EA4C31148 /* OrderBook */,
+				99D8820FED841B5C29E7AEF5 /* Profile */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -637,6 +670,15 @@
 			path = TinkoffContestKwatoko;
 			sourceTree = "<group>";
 		};
+		554589052832C16E00196B02 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				554589012832B56A00196B02 /* ProfileTokensCell.swift */,
+				554589032832C0E500196B02 /* ProfileAccountCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		55DB2493283241360084A499 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,6 +692,36 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		87EA359805D6CE43C134E4CE /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				B71F62A59A00B85F9E44DC0B /* ProfileInteractor.swift */,
+				D8F5DAA5CBD77F9B590C8496 /* IProfileInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		99D8820FED841B5C29E7AEF5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D48314BA07A6CC9817AF0BB6 /* View */,
+				F4B460698E9686FFEF8873FD /* Presenter */,
+				87EA359805D6CE43C134E4CE /* Interactor */,
+				A5210B867A4F66B9AE9BAEB1 /* Router */,
+				3B6B35B7B71EF1707EAC70E4 /* Assembly */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A5210B867A4F66B9AE9BAEB1 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				7D775115C0B35766592B9D8E /* ProfileRouter.swift */,
+				E90A5333D9C49524380911BE /* IProfileRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		CF69F363687F003BA1029BF5 /* Interactor */ = {
@@ -671,6 +743,26 @@
 				26C42A764CC337A17DF15A4B /* Assembly */,
 			);
 			path = OrderBook;
+			sourceTree = "<group>";
+		};
+		D48314BA07A6CC9817AF0BB6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8BEE31715B8C6E2BEE88604D /* ProfileViewController.swift */,
+				93E3B63954C0DE294E6DD1C8 /* IProfileView.swift */,
+				551F8CA02832B1150044C7EA /* Profile.storyboard */,
+				554589052832C16E00196B02 /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F4B460698E9686FFEF8873FD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				3C5030A8DE634AD3FB54F771 /* ProfilePresenter.swift */,
+				AB6E7040B7C0CD0A5EB0CC3C /* IProfilePresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -766,6 +858,7 @@
 				551F8C5C28325F290044C7EA /* SFProDisplay-UltralightItalic.ttf in Resources */,
 				551F8C8128325F290044C7EA /* Root.storyboard in Resources */,
 				551F8C3528325F290044C7EA /* Colors.xml in Resources */,
+				551F8CA12832B1150044C7EA /* Profile.storyboard in Resources */,
 				551F8C3628325F290044C7EA /* Assets.xcassets in Resources */,
 				551F8C5628325F290044C7EA /* SFProDisplay-SemiBold.ttf in Resources */,
 				551F8C3A28325F290044C7EA /* SF-Pro-Rounded-Semibold.otf in Resources */,
@@ -832,6 +925,7 @@
 				551F8C7A28325F290044C7EA /* BaseViewController.swift in Sources */,
 				551F8C6C28325F290044C7EA /* UIView+Cells.swift in Sources */,
 				551F8C6B28325F290044C7EA /* UICollectionView+Cells.swift in Sources */,
+				554589042832C0E500196B02 /* ProfileAccountCell.swift in Sources */,
 				551F8C8928325F290044C7EA /* NetworkService.swift in Sources */,
 				551F8C3028325F290044C7EA /* Assets.swift in Sources */,
 				551F8C8028325F290044C7EA /* RootViewController.swift in Sources */,
@@ -843,6 +937,7 @@
 				551F8C7328325F290044C7EA /* Date+Utilities.swift in Sources */,
 				551F8C8428325F290044C7EA /* IRootInteractor.swift in Sources */,
 				551F8C6D28325F290044C7EA /* DateComponents+Utilities.swift in Sources */,
+				554589022832B56A00196B02 /* ProfileTokensCell.swift in Sources */,
 				551F8C6E28325F290044C7EA /* Calendar+Dispatch.swift in Sources */,
 				551F8C6028325F290044C7EA /* Environment.swift in Sources */,
 				551F8C7828325F290044C7EA /* ILifeCycleOutput.swift in Sources */,
@@ -874,6 +969,15 @@
 				86D672286BD41258E67BA68C /* OrderBookRouter.swift in Sources */,
 				B886043A9E5F1C99681B5AC1 /* IOrderBookRouter.swift in Sources */,
 				E9D9372E6272E9132D27B490 /* OrderBookAssembly.swift in Sources */,
+				C976BEDA42B4A83B46E3D956 /* ProfileViewController.swift in Sources */,
+				617D871B5D0012503DDA01AD /* IProfileView.swift in Sources */,
+				F7DB6C9B0C0231E42654A215 /* ProfilePresenter.swift in Sources */,
+				6C6901E86BBE26B28F5C7401 /* IProfilePresenter.swift in Sources */,
+				B897E0B187B0682998692CBA /* ProfileInteractor.swift in Sources */,
+				0B436DD92E90CE053FECDDCA /* IProfileInteractor.swift in Sources */,
+				A800A1D572F50A68353E17DF /* ProfileRouter.swift in Sources */,
+				234067C08051ADC2ABB2ED82 /* IProfileRouter.swift in Sources */,
+				196FAB2921D08F8C99F836CD /* ProfileAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

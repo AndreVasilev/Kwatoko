@@ -12,7 +12,7 @@ class DatabaseService {
     // MARK: - Core Data stack
 
     private lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Kwatoko")
+        let container = NSPersistentContainer(name: "TinkoffContestKwatoko")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
 
@@ -26,6 +26,39 @@ class DatabaseService {
 
 extension DatabaseService: IDatabaseService {
 
+    var profile: ProfileEntity? {
+        do {
+            let request = ProfileEntity.fetchRequest()
+            let profiles = try persistentContainer.viewContext.fetch(request)
+            return profiles.first
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+
+    func updateProfile(token: String, sandboxToken: String, accountId: String?) {
+        if let entity = profile {
+            entity.token = token
+            entity.sandboxToken = sandboxToken
+            entity.selectedAccountId = accountId
+            saveContext()
+        } else {
+            do {
+                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ProfileEntity")
+                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+                try persistentContainer.viewContext.execute(deleteRequest)
+
+                let entity = ProfileEntity(context: persistentContainer.viewContext)
+                entity.token = token
+                entity.sandboxToken = sandboxToken
+                entity.selectedAccountId = accountId
+                saveContext()
+            } catch {
+                print(error)
+            }
+        }
+    }
 }
 
 private extension DatabaseService {

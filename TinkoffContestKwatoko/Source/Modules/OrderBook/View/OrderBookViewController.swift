@@ -9,7 +9,7 @@ import UIKit
 
 final class OrderBookViewController: BaseViewController {
 
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
 
     var presenter: IOrderBookPresenter!
 

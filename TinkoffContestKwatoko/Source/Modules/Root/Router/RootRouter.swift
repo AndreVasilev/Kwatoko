@@ -53,7 +53,7 @@ private extension RootRouter {
     }
 
     func mainTabBarController() -> UITabBarController {
-        let controllers = [orderBookController]
+        let controllers = [orderBookController, profileController]
             .map { UINavigationController(rootViewController: $0) }
 
         let tabBarControler = UITabBarController()
@@ -75,6 +75,13 @@ private extension RootRouter {
         let assembly: OrderBookAssembly = modulesFactory.buildAssembly()
         let viewController = assembly.build(model: model).viewController
         viewController.title = "OrderBook"
+        return viewController
+    }
+
+    var profileController: UIViewController {
+        let assembly: ProfileAssembly = modulesFactory.buildAssembly()
+        let viewController = assembly.build().viewController
+        viewController.title = "Профиль"
         return viewController
     }
 }

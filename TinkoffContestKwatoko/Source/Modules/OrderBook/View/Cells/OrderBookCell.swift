@@ -34,11 +34,11 @@ class OrderBookCell: UICollectionViewCell {
 
     static let height: CGFloat = 40
 
-    @IBOutlet var priceLabel: UILabel!
-    @IBOutlet var askLabel: UILabel!
-    @IBOutlet var bidLabel: UILabel!
-    @IBOutlet var askStopOrderLabel: UILabel!
-    @IBOutlet var bidStopOrderLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var askLabel: UILabel!
+    @IBOutlet weak var bidLabel: UILabel!
+    @IBOutlet weak var askStopOrderLabel: UILabel!
+    @IBOutlet weak var bidStopOrderLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

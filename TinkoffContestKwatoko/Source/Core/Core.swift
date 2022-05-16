@@ -9,12 +9,13 @@ import TinkoffInvestSDK
 
 class Core {
 
-    private let appName = "AndreVasilev.TinkoffInvestSwiftSDK"
+    static let appName = "AndreVasilev.TinkoffInvestSwiftSDK"
+
     private let fullAccessTokenProvider = DefaultTokenProvider(token: "")
     private let readOnlyTokenProvider = DefaultTokenProvider(token: "")
     private let sandboxTokenProvider = DefaultTokenProvider(token: "")
 
-    private(set) lazy var sdk = TinkoffInvestSDK(appName: appName,
+    private(set) lazy var sdk = TinkoffInvestSDK(appName: Self.appName,
                                                  tokenProvider: readOnlyTokenProvider,
                                                  sandbox: sandboxTokenProvider)
 
