@@ -14,6 +14,7 @@
 		552E2D4228323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 552E2D4028323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld */; };
 		552E2D4428323B1D000E79AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 552E2D4328323B1D000E79AD /* Assets.xcassets */; };
 		552E2D4728323B1D000E79AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 552E2D4528323B1D000E79AD /* LaunchScreen.storyboard */; };
+		55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55DB2496283241740084A499 /* TinkoffInvestSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		552E2D4328323B1D000E79AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		552E2D4628323B1D000E79AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		552E2D4828323B1D000E79AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		552E2D4E28323B43000E79AD /* TinkoffContestKwatoko.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TinkoffContestKwatoko.entitlements; sourceTree = "<group>"; };
+		55DB2494283241360084A499 /* TinkoffInvestSwiftSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TinkoffInvestSwiftSDK; path = ../TinkoffInvestSwiftSDK; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,7 +47,9 @@
 			isa = PBXGroup;
 			children = (
 				552E2D3628323B1C000E79AD /* TinkoffContestKwatoko */,
+				55DB2493283241360084A499 /* Packages */,
 				552E2D3528323B1C000E79AD /* Products */,
+				55DB2495283241740084A499 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +64,7 @@
 		552E2D3628323B1C000E79AD /* TinkoffContestKwatoko */ = {
 			isa = PBXGroup;
 			children = (
+				552E2D4E28323B43000E79AD /* TinkoffContestKwatoko.entitlements */,
 				552E2D3728323B1C000E79AD /* AppDelegate.swift */,
 				552E2D3928323B1C000E79AD /* SceneDelegate.swift */,
 				552E2D3B28323B1C000E79AD /* ViewController.swift */,
@@ -68,6 +75,21 @@
 				552E2D4028323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld */,
 			);
 			path = TinkoffContestKwatoko;
+			sourceTree = "<group>";
+		};
+		55DB2493283241360084A499 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				55DB2494283241360084A499 /* TinkoffInvestSwiftSDK */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		55DB2495283241740084A499 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +108,9 @@
 			dependencies = (
 			);
 			name = TinkoffContestKwatoko;
+			packageProductDependencies = (
+				55DB2496283241740084A499 /* TinkoffInvestSDK */,
+			);
 			productName = TinkoffContestKwatoko;
 			productReference = 552E2D3428323B1C000E79AD /* TinkoffContestKwatoko.app */;
 			productType = "com.apple.product-type.application";
@@ -289,23 +314,29 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TinkoffContestKwatoko/TinkoffContestKwatoko.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PD3WD5BAH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TinkoffContestKwatoko/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Kwatoko;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = av.personal.TinkoffContestKwatoko;
+				PRODUCT_BUNDLE_IDENTIFIER = av.personal.kwatoko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -317,23 +348,29 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TinkoffContestKwatoko/TinkoffContestKwatoko.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5PD3WD5BAH;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TinkoffContestKwatoko/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Kwatoko;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = av.personal.TinkoffContestKwatoko;
+				PRODUCT_BUNDLE_IDENTIFIER = av.personal.kwatoko;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -362,6 +399,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		55DB2496283241740084A499 /* TinkoffInvestSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TinkoffInvestSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		552E2D4028323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld */ = {
