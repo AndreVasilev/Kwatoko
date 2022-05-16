@@ -786,7 +786,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftgen; then\n  \"swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi  \n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [[ -f \"/opt/homebrew/bin/swiftgen\" ]]; then\n  \"/opt/homebrew/bin/swiftgen\"\nelse\n  echo \"warning: SwiftGen is not installed. Run 'pod install --repo-update' to install it.\"\nfi  \n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

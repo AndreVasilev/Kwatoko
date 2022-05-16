@@ -7,6 +7,10 @@
 
 import Foundation
 
-protocol IRootPresenter: ILifeCycleOutput {
+protocol IRootPresenter: ILifeCycleOutput, IRootPresenterDelegate {
 
+}
+
+protocol IRootPresenterDelegate: AnyObject {
+    
 }

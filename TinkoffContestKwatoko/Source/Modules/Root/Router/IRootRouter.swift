@@ -9,4 +9,5 @@ import Foundation
 
 protocol IRootRouter: IBaseRouter {
 
+    func presentMain()
 }

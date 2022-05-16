@@ -18,10 +18,21 @@ final class RootPresenter {
     }
 
     func viewDidLoad() {
+        presentInitialContorller()
+    }
+}
 
+private extension RootPresenter {
+
+    func presentInitialContorller() {
+        router.presentMain()
     }
 }
 
 extension RootPresenter: IRootPresenter {
+
+}
+
+extension RootPresenter: IRootPresenterDelegate {
 
 }

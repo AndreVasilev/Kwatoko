@@ -9,13 +9,16 @@ import Foundation
 protocol IModulesFactory {
 
     var core: ICore { get }
+    var rootDelegate: IRootPresenterDelegate? { get }
 
-    var rootAssembly: RootAssembly { get }
+    func buildAssembly<T: IAssembly>() -> T
 }
 
 final class ModulesFactory {
 
     let core: ICore
+
+    weak var rootDelegate: IRootPresenterDelegate?
 
     init(core: ICore) {
         self.core = core
@@ -24,7 +27,7 @@ final class ModulesFactory {
 
 extension ModulesFactory: IModulesFactory {
 
-    var rootAssembly: RootAssembly {
-        return RootAssembly(modulesFactory: self)
+    func buildAssembly<T: IAssembly>() -> T {
+        return T.init(modulesFactory: self)
     }
 }

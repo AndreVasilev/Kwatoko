@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class RootAssembly {
+final class RootAssembly: IAssembly {
 
     private let modulesFactory: IModulesFactory
 
@@ -16,7 +16,7 @@ final class RootAssembly {
     }
 
     func build() -> ViperModule<RootViewController, IRootRouter> {
-        let router = RootRouter()
+        let router = RootRouter(modulesFactory: modulesFactory)
         let interactor = RootInteractor()
         let presenter = RootPresenter(interactor: interactor, router: router)
         let viewController = getViewController(presenter: presenter)
