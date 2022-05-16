@@ -1,0 +1,23 @@
+### Headers settings
+company: Andrey Vasilev
+
+### Xcode project settings
+project_name: TinkoffContestKwatoko
+xcodeproj_path: TinkoffContestKwatoko.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: TinkoffContestKwatoko
+
+# The file path for new modules
+project_file_path: /TinkoffContestKwatoko/Source/Modules
+
+# The Xcode group path to new modules
+project_group_path: /TinkoffContestKwatoko/Source/Modules
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+templates:
+- {name: viper}

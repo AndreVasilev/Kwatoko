@@ -1,0 +1,27 @@
+//
+//  {{ module_info.name }}Presenter.swift
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import Foundation
+
+final class {{ module_info.name }}Presenter: BasePresenter {
+
+    let interactor: I{{ module_info.name }}Interactor
+    let router: I{{ module_info.name }}Router
+
+    init(interactor: I{{ module_info.name }}Interactor, router: I{{ module_info.name }}Router) {
+        self.interactor = interactor
+        self.router = router
+    }
+
+    func viewDidLoad() {
+
+    }
+}
+
+extension {{ module_info.name }}Presenter: I{{ module_info.name }}Presenter {
+
+}

@@ -1,0 +1,40 @@
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import XCTest
+@testable import {{ module_info.project_name }}
+
+class {{ module_info.name }}AssemblyTests: XCTestCase {
+
+    override func setUp() {
+        super.setUp()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
+    }
+
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+
+    func testAssemblyForViewController() {
+        //given
+        let assembly = {{ module_info.name }}Assembly()
+
+        //when
+        let viewController = assembly.build()
+
+        //then
+        XCTAssertNotNil(viewController.output, "{{ module_info.name }}ViewController is nil after configuration")
+        XCTAssertTrue(viewController.output is {{ module_info.name }}Presenter, "output is not {{ module_info.name }}Presenter")
+
+        let presenter: {{ module_info.name }}Presenter = viewController.output as! {{ module_info.name }}Presenter
+        XCTAssertNotNil(presenter.view, "view in {{ module_info.name }}Presenter is nil after configuration")
+        XCTAssertNotNil(presenter.router, "router in {{ module_info.name }}Presenter is nil after configuration")
+        XCTAssertTrue(presenter.router is {{ module_info.name }}Router, "router is not {{ module_info.name }}Router")
+
+        let interactor: {{ module_info.name }}Interactor = presenter.interactor as! {{ module_info.name }}Interactor
+        XCTAssertNotNil(interactor.output, "output in {{ module_info.name }}Interactor is nil after configuration")
+    }
+}

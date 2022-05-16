@@ -1,0 +1,26 @@
+input_dir: TinkoffContestKwatoko/Resources/
+output_dir: TinkoffContestKwatoko/Resources/Generated/
+
+xcassets:
+  inputs: Assets.xcassets
+  outputs:
+    templateName: swift5
+    output: Assets.swift
+
+colors:
+  inputs: Colors.xml
+  outputs:
+    templateName: swift5
+    output: Colors.swift
+
+fonts:
+  inputs: Fonts/
+  outputs:
+    templateName: swift5
+    output: Fonts.swift
+
+strings:
+  inputs: en.lproj/Localization.strings
+  outputs:
+    templateName: structured-swift5
+    output: L10n-Constants.swift

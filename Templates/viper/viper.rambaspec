@@ -1,0 +1,45 @@
+# Template information section
+name: "viper"
+summary: "Swift VIPER module template"
+author: "Alexey Puzankov"
+version: "1.0.0"
+
+# The declarations for code files
+
+code_files:
+# View layer
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+- {name: View/ViewProtocol.swift, path: Code/View/view_protocol.swift.liquid, custom_name: I{{ module_info.name }}View.swift}
+
+# Presenter layer
+- {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid}
+- {name: Presenter/PresenterProtocol.swift, path: Code/Presenter/presenter_protocol.swift.liquid, custom_name: I{{ module_info.name }}Presenter.swift}
+
+# Interactor layer
+- {name: Interactor/Interactor.swift, path: Code/Interactor/interactor.swift.liquid}
+- {name: Interactor/InteractorProtocol.swift, path: Code/Interactor/interactor_protocol.swift.liquid, custom_name: I{{ module_info.name }}Interactor.swift}
+
+# Router layer
+- {name: Router/Router.swift, path: Code/Router/router.swift.liquid}
+- {name: Router/RouterProtocol.swift, path: Code/Router/router_protocol.swift.liquid, custom_name: I{{ module_info.name }}Router.swift}
+
+# Assembly
+- {name: Assembly/Assembly.swift, path: Code/Assembly/assembly.swift.liquid}
+
+# The declarations for test files
+test_files:
+
+# Unit tests
+- {name: Assembly/AssemblyTests.swift, path: Tests/Assembly/assembly_tests.swift.liquid}
+
+# View tests
+- {name: View/ViewTests.swift, path: Tests/View/view_tests.swift.liquid}
+
+# Interactor tests
+- {name: Interactor/InteractorTests.swift, path: Tests/Interactor/interactor_tests.swift.liquid}
+
+# Presenter tests
+- {name: Presenter/PresenterTests.swift, path: Tests/Presenter/presenter_tests.swift.liquid}
+
+# Router tests
+- {name: Router/RouterTests.swift, path: Tests/Router/router_tests.swift.liquid}

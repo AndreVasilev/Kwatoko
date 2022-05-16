@@ -1,0 +1,38 @@
+//
+//  {{ module_info.name }}ViewController.swift
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+final class {{ module_info.name }}ViewController: BaseViewController {
+
+    var presenter: I{{ module_info.name }}Presenter!
+
+    init(presenter: I{{ module_info.name }}Presenter) {
+        self.presenter = presenter
+        super.init(output: presenter)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configure()
+    }
+}
+
+private extension {{ module_info.name }}ViewController {
+
+    func configure() {
+
+    }
+}
+
+extension {{ module_info.name }}ViewController: I{{module_info.name}}View {
+
+}

@@ -1,0 +1,40 @@
+//
+//  {{ module_info.name }}Assembly.swift
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+final class {{ module_info.name }}Assembly: IAssembly {
+
+    private let modulesFactory: IModulesFactory
+
+    init(modulesFactory: IModulesFactory) {
+        self.modulesFactory = modulesFactory
+    }
+
+    func build() -> ViperModule<{{ module_info.name }}ViewController, I{{ module_info.name }}Router> {
+        let router = {{ module_info.name }}Router()
+        let interactor = {{ module_info.name }}Interactor()
+        let presenter = {{ module_info.name }}Presenter(interactor: interactor, router: router)
+        let viewController = getViewController(presenter: presenter)
+
+        router.viewController = viewController
+
+        return ViperModule(viewController: viewController, router: router)
+    }
+
+    func getViewController(presenter: I{{ module_info.name }}Presenter) -> {{ module_info.name }}ViewController {
+        let viewController: {{ module_info.name }}ViewController
+        if let controller = UIStoryboard(name: "{{ module_info.name }}", bundle: nil).instantiateInitialViewController() as? {{ module_info.name }}ViewController {
+            viewController = controller
+            viewController.output = presenter
+            viewController.presenter = presenter
+        } else {
+            viewController = {{ module_info.name }}ViewController(presenter: presenter)
+        }
+        return viewController
+    }
+}
