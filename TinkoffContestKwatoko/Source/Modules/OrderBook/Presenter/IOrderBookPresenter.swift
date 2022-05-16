@@ -9,4 +9,8 @@ import Foundation
 
 protocol IOrderBookPresenter: ILifeCycleOutput {
 
+    var sections: [OrderBookPresenter.Section] { get }
+    
+    func rows(in section: OrderBookPresenter.Section) -> [OrderBookCell.Model]
+    func didSelectRow(at indexPath: IndexPath)
 }

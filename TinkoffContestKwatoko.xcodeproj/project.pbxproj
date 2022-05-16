@@ -102,6 +102,9 @@
 		551F8C8B28325F290044C7EA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8C2B28325F290044C7EA /* SceneDelegate.swift */; };
 		551F8C8C28325F290044C7EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F8C2D28325F290044C7EA /* LaunchScreen.storyboard */; };
 		551F8C90283261CB0044C7EA /* OrderBook.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F8C8F283261CB0044C7EA /* OrderBook.storyboard */; };
+		551F8C9828326FE50044C7EA /* OrderBookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8C9728326FE50044C7EA /* OrderBookCell.swift */; };
+		551F8C9D28329B250044C7EA /* PostOrderDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8C9C28329B250044C7EA /* PostOrderDto.swift */; };
+		551F8C9F2832AE6F0044C7EA /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8C9E2832AE6F0044C7EA /* HistoryItem.swift */; };
 		552E2D4228323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 552E2D4028323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld */; };
 		55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55DB2496283241740084A499 /* TinkoffInvestSDK */; };
 		66B1A7D277A0324FFBDB0D58 /* IOrderBookPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38967A1C72C43E366C76A8BC /* IOrderBookPresenter.swift */; };
@@ -214,6 +217,9 @@
 		551F8C2B28325F290044C7EA /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		551F8C2E28325F290044C7EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		551F8C8F283261CB0044C7EA /* OrderBook.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrderBook.storyboard; sourceTree = "<group>"; };
+		551F8C9728326FE50044C7EA /* OrderBookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookCell.swift; sourceTree = "<group>"; };
+		551F8C9C28329B250044C7EA /* PostOrderDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostOrderDto.swift; sourceTree = "<group>"; };
+		551F8C9E2832AE6F0044C7EA /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		552E2D3428323B1C000E79AD /* TinkoffContestKwatoko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinkoffContestKwatoko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		552E2D4128323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffContestKwatoko.xcdatamodel; sourceTree = "<group>"; };
 		552E2D4828323B1D000E79AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -262,6 +268,7 @@
 				41CD49A5E44037964EDE4E70 /* OrderBookViewController.swift */,
 				CD5033F101D981ED396DEF5B /* IOrderBookView.swift */,
 				551F8C8F283261CB0044C7EA /* OrderBook.storyboard */,
+				551F8C9928326FE80044C7EA /* Cells */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -379,6 +386,8 @@
 			isa = PBXGroup;
 			children = (
 				551F8BED28325F290044C7EA /* AppError.swift */,
+				551F8C9C28329B250044C7EA /* PostOrderDto.swift */,
+				551F8C9E2832AE6F0044C7EA /* HistoryItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -590,6 +599,14 @@
 				552E2D4828323B1D000E79AD /* Info.plist */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		551F8C9928326FE80044C7EA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				551F8C9728326FE50044C7EA /* OrderBookCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		552E2D2B28323B1C000E79AD = {
@@ -809,6 +826,7 @@
 				551F8C7D28325F290044C7EA /* RootAssembly.swift in Sources */,
 				551F8C6A28325F290044C7EA /* DateFormatter.swift in Sources */,
 				551F8C5E28325F290044C7EA /* ICore.swift in Sources */,
+				551F8C9D28329B250044C7EA /* PostOrderDto.swift in Sources */,
 				551F8C3328325F290044C7EA /* Colors.swift in Sources */,
 				551F8C7E28325F290044C7EA /* IRootPresenter.swift in Sources */,
 				551F8C7A28325F290044C7EA /* BaseViewController.swift in Sources */,
@@ -839,6 +857,7 @@
 				551F8C6428325F290044C7EA /* UITableView+Cells.swift in Sources */,
 				551F8C8228325F290044C7EA /* IRootView.swift in Sources */,
 				551F8C8728325F290044C7EA /* IDatabaseService.swift in Sources */,
+				551F8C9F2832AE6F0044C7EA /* HistoryItem.swift in Sources */,
 				551F8C6528325F290044C7EA /* CGSize.swift in Sources */,
 				551F8C5F28325F290044C7EA /* Core.swift in Sources */,
 				551F8C8A28325F290044C7EA /* INetworkService.swift in Sources */,
@@ -850,6 +869,7 @@
 				D08C07D7753E663F370C7470 /* OrderBookPresenter.swift in Sources */,
 				66B1A7D277A0324FFBDB0D58 /* IOrderBookPresenter.swift in Sources */,
 				2F28055498165472609852F4 /* OrderBookInteractor.swift in Sources */,
+				551F8C9828326FE50044C7EA /* OrderBookCell.swift in Sources */,
 				8F5FB4CEFB1C2C5B76BE26A9 /* IOrderBookInteractor.swift in Sources */,
 				86D672286BD41258E67BA68C /* OrderBookRouter.swift in Sources */,
 				B886043A9E5F1C99681B5AC1 /* IOrderBookRouter.swift in Sources */,

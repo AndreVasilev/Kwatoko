@@ -7,6 +7,7 @@
 
 import UIKit
 
-protocol IOrderBookView {
+protocol IOrderBookView: UIViewController {
 
+    func reloadData()
 }

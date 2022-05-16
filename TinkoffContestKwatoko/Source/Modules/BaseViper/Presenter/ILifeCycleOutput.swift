@@ -15,6 +15,7 @@ protocol ILifeCycleOutput: AnyObject {
 
 //default implementation
 extension ILifeCycleOutput {
+    
     func viewDidLoad() {
         //do nothing
     }
