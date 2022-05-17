@@ -14,7 +14,7 @@ final class OrderBookInteractor {
 
     let sdk: TinkoffInvestSDK
 
-    var history = [HistoryItem]()
+    var history = [Trade]()
 
     init(sdk: TinkoffInvestSDK) {
         self.sdk = sdk
@@ -123,9 +123,7 @@ extension OrderBookInteractor: IOrderBookInteractor {
         return sdk.sandboxService.getOrderState(accountID: accountID, orderID: orderID)
     }
 
-    func storeHistory(response: PostOrderResponse, description: String, orderBook: OrderBook?) {
-        let dto = PostOrderDto(response: response, description: description)
-        let item = HistoryItem(orderDto: dto, orderBook: orderBook)
-        history.append(item)
+    func storeHistory(trade: Trade) {
+        history.append(trade)
     }
 }

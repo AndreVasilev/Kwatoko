@@ -11,6 +11,8 @@ import TinkoffInvestSDK
 
 final class OrderBookPresenter: BasePresenter {
 
+    typealias StopBounds = Trade.StopBounds
+
     enum Section {
         case ask, bid
     }
@@ -37,11 +39,6 @@ final class OrderBookPresenter: BasePresenter {
         let takeProfit: Decimal
     }
 
-    struct StopBounds {
-        let sl: Decimal
-        let tp: Decimal
-    }
-
     let interactor: IOrderBookInteractor
     let router: IOrderBookRouter
     weak var viewController: IOrderBookView?
@@ -54,21 +51,47 @@ final class OrderBookPresenter: BasePresenter {
     let sections = [Section.ask, .bid]
     var bids = [OrderBookCell.Model]()
     var asks = [OrderBookCell.Model]()
-    var orderBook: OrderBook?
 
     // State
 
     enum State {
         case pending
-        case postOrder
+        case postOrder(OrderBook)
         case orderCreated(PostOrderResponse)
         case orderPosted(PostOrderResponse, StopBounds)
-        case stopOrder(StopBounds)
+        case stopOrder(StopBounds, OrderBook)
         case stopCreated(PostOrderResponse, StopBounds)
         case error
     }
 
-    var state: State = .pending
+    var trade: Trade?
+
+    var state: State = .pending {
+        didSet {
+            switch state {
+            case .pending:
+                if let trade = self.trade {
+                    interactor.storeHistory(trade: trade)
+                    self.trade = nil
+                }
+            case .postOrder(let orderBook):
+                trade = Trade(open: .init(orderBook: orderBook,
+                                          date: Date()))
+            case .orderCreated(let response):
+                trade?.open.response = response
+            case .orderPosted(let response, let bounds):
+                trade?.open.response = response
+                trade?.stopBounds = bounds
+            case .stopOrder(_, let orderBook):
+                trade?.close = .init(orderBook: orderBook,
+                                     date: Date())
+            case .stopCreated(let response, _):
+                trade?.close?.response = response
+            case .error:
+                trade?.error = AppError.unknown("")
+            }
+        }
+    }
 
     init(interactor: IOrderBookInteractor, router: IOrderBookRouter, model: Model) {
         self.interactor = interactor
@@ -103,7 +126,7 @@ private extension OrderBookPresenter {
         switch state {
         case .pending:
             if let tuple = getRequestData(from: orderBook) {
-                state = .postOrder
+                state = .postOrder(orderBook)
                 postOrder(price: tuple.price, direction: tuple.direction)
             }
 
@@ -111,7 +134,7 @@ private extension OrderBookPresenter {
             if let tuple = getRequestData(orderBook: orderBook,
                                           orderResponse: response,
                                           stopBounds: stopBounds) {
-                state = .stopOrder(stopBounds)
+                state = .stopOrder(stopBounds, orderBook)
                 postOrder(price: tuple.price, direction: tuple.direction)
             }
 
@@ -199,7 +222,7 @@ private extension OrderBookPresenter {
         case .executionReportStatusNew:
             if case State.postOrder = state {
                 state = .orderCreated(orderResponse)
-            } else if case State.stopOrder(let bounds) = state {
+            } else if case State.stopOrder(let bounds, _) = state {
                 state = .stopCreated(orderResponse, bounds)
             }
         case .executionReportStatusPartiallyfill:
@@ -230,6 +253,7 @@ private extension OrderBookPresenter {
                   print("did finish getOrderState")
               }
             } receiveValue: { [weak self] in
+                print("receiveValue getOrderState: \($0.executionReportStatus)")
                 if let state = self?.state,
                    case State.orderCreated(let response) = state {
                     self?.receive(orderStatus: $0.executionReportStatus, orderResponse: response)
@@ -249,20 +273,17 @@ private extension OrderBookPresenter {
                 let sl = orderPrice * (1 - Decimal(model.stopLossPercent) / 100)
                 let stopBounds = StopBounds(sl: sl, tp: tp)
                 state = .orderPosted(orderResponse, stopBounds)
-                interactor.storeHistory(response: orderResponse, description: "PostOrder", orderBook: orderBook)
             case .sell:
                 let sl = orderPrice * (1 + Decimal(model.stopLossPercent) / 100)
                 let tp = orderPrice * (1 - Decimal(model.takeProfitPercent) / 100)
                 let stopBounds = StopBounds(sl: sl, tp: tp)
                 state = .orderPosted(orderResponse, stopBounds)
-                interactor.storeHistory(response: orderResponse, description: "PostOrder", orderBook: orderBook)
             default:
                 state = .error
             }
 
         case .stopCreated:
             state = .pending
-            interactor.storeHistory(response: orderResponse, description: "StopOrder", orderBook: orderBook)
 
         case .pending, .orderPosted, .error, .orderCreated, .stopOrder:
             print("⚠️ Invalid state")
@@ -275,7 +296,7 @@ private extension OrderBookPresenter {
         let bids = mapOrders(orderBook.bids, valueType: .bid)
 
         DispatchQueue.main.async { [weak self] in
-            self?.reloadData(asks: asks, bids: bids, orderBook: orderBook)
+            self?.reloadData(asks: asks, bids: bids)
         }
     }
 
@@ -293,7 +314,7 @@ private extension OrderBookPresenter {
                 } else if priceAmount == stopBounds.sl {
                     type = .stopLoss
                 }
-            } else if case State.stopOrder(let stopBounds) = state {
+            } else if case State.stopOrder(let stopBounds, _) = state {
                 if priceAmount == stopBounds.tp {
                     type = .takeProfit
                 } else if priceAmount == stopBounds.sl {
@@ -305,10 +326,9 @@ private extension OrderBookPresenter {
         }
     }
 
-    func reloadData(asks: [OrderBookCell.Model], bids: [OrderBookCell.Model], orderBook: OrderBook) {
+    func reloadData(asks: [OrderBookCell.Model], bids: [OrderBookCell.Model]) {
         self.asks = asks
         self.bids = bids
-        self.orderBook = orderBook
         viewController?.reloadData()
     }
 }

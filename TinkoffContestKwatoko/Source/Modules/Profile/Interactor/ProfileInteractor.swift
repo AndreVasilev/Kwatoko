@@ -12,12 +12,12 @@ import Combine
 
 final class ProfileInteractor {
 
-    let database: IDatabaseService
-
+    let core: ICore
+    lazy var database: IDatabaseService = core.databaseService
     var sdk: TinkoffInvestSDK?
 
-    init(database: IDatabaseService) {
-        self.database = database
+    init(core: ICore) {
+        self.core = core
     }
 }
 
@@ -30,9 +30,7 @@ extension ProfileInteractor: IProfileInteractor {
     }
 
     func prepareSdk(token: String, sandboxToken: String) {
-        let tokenProvider = DefaultTokenProvider(token: token)
-        let sandboxTokenProvider = DefaultTokenProvider(token: sandboxToken)
-        sdk = TinkoffInvestSDK(appName: Core.appName, tokenProvider: tokenProvider, sandbox: sandboxTokenProvider)
+        sdk = core.buildSdk(token: token, sandboxToken: sandboxToken)
     }
 
     func getAccounts() -> AnyPublisher<GetAccountsResponse, RPCError> {

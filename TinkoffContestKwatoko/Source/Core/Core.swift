@@ -9,19 +9,23 @@ import TinkoffInvestSDK
 
 class Core {
 
-    static let appName = "AndreVasilev.TinkoffInvestSwiftSDK"
+    private let appName = "AndreVasilev.TinkoffContestKwatoko"
 
-    private let fullAccessTokenProvider = DefaultTokenProvider(token: "")
-    private let readOnlyTokenProvider = DefaultTokenProvider(token: "")
-    private let sandboxTokenProvider = DefaultTokenProvider(token: "")
-
-    private(set) lazy var sdk = TinkoffInvestSDK(appName: Self.appName,
-                                                 tokenProvider: readOnlyTokenProvider,
-                                                 sandbox: sandboxTokenProvider)
-
+    private(set) lazy var sdk: TinkoffInvestSDK = {
+        let profile = databaseService.profile
+        let token = profile?.token ?? ""
+        let sandboxToken = profile?.token ?? ""
+        return buildSdk(token: token, sandboxToken: sandboxToken)
+    }()
 }
 
 extension Core: ICore {
+
+    func buildSdk(token: String, sandboxToken: String) -> TinkoffInvestSDK {
+        let tokenProvider = DefaultTokenProvider(token: token)
+        let sandboxTokenProvider = DefaultTokenProvider(token: sandboxToken)
+        return TinkoffInvestSDK(appName: appName, tokenProvider: tokenProvider, sandbox: sandboxTokenProvider)
+    }
 
     var networkService: INetworkService {
         return NetworkService()

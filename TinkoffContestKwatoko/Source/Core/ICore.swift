@@ -10,7 +10,9 @@ import TinkoffInvestSDK
 protocol ICore {
 
     var sdk: TinkoffInvestSDK { get }
+    func buildSdk(token: String, sandboxToken: String) -> TinkoffInvestSDK
 
     var networkService: INetworkService { get }
     var databaseService: IDatabaseService { get }
+
 }
