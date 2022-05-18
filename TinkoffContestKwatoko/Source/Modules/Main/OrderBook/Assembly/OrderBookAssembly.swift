@@ -15,10 +15,10 @@ final class OrderBookAssembly: IAssembly {
         self.modulesFactory = modulesFactory
     }
 
-    func build(model: OrderBookPresenter.Model) -> ViperModule<OrderBookViewController, IOrderBookRouter> {
+    func build(robot: Robot) -> ViperModule<OrderBookViewController, IOrderBookRouter> {
         let router = OrderBookRouter()
         let interactor = OrderBookInteractor(sdk: modulesFactory.core.sdk)
-        let presenter = OrderBookPresenter(interactor: interactor, router: router, model: model)
+        let presenter = OrderBookPresenter(interactor: interactor, router: router, robot: robot)
         let viewController = getViewController(presenter: presenter)
 
         presenter.viewController = viewController

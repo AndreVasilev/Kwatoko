@@ -21,14 +21,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RobotsInfoCell" id="jgT-Y3-Wea" customClass="RobotsInfoCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49.5" width="374" height="63.5"/>
+                                        <rect key="frame" x="20" y="49.5" width="374" height="67.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jgT-Y3-Wea" id="Nvw-iK-gDE">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="63.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="67.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eu1-a8-Slx">
-                                                    <rect key="frame" x="20" y="11" width="334" height="41.5"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="eu1-a8-Slx">
+                                                    <rect key="frame" x="20" y="11" width="334" height="45.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pwe-l0-ACt">
                                                             <rect key="frame" x="0.0" y="0.0" width="334" height="20.5"/>
@@ -37,7 +37,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBx-9w-88D">
-                                                            <rect key="frame" x="0.0" y="20.5" width="334" height="21"/>
+                                                            <rect key="frame" x="0.0" y="24.5" width="334" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -58,7 +58,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RobotsActionCell" id="3oe-XB-qZk" customClass="RobotsActionCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="113" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="117" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3oe-XB-qZk" id="C5P-4V-2Je">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -82,7 +82,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RobotsRobotCell" id="wk2-pK-3cy" customClass="RobotsRobotCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="156.5" width="374" height="61"/>
+                                        <rect key="frame" x="20" y="160.5" width="374" height="61"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wk2-pK-3cy" id="zA1-cA-tnA">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="61"/>

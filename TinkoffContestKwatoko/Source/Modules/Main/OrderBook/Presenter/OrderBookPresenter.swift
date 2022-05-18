@@ -28,7 +28,7 @@ final class OrderBookPresenter: BasePresenter {
     let interactor: IOrderBookInteractor
     let router: IOrderBookRouter
     weak var viewController: IOrderBookView?
-    let model: Model
+    let robot: Robot
     
     var cancellables = Set<AnyCancellable>()
 
@@ -41,6 +41,7 @@ final class OrderBookPresenter: BasePresenter {
     // State
 
     enum State {
+        case stopped
         case pending
         case postOrder(OrderBook)
         case orderCreated(PostOrderResponse)
@@ -52,9 +53,15 @@ final class OrderBookPresenter: BasePresenter {
 
     var trade: Trade?
 
-    var state: State = .pending {
+    var state: State = .stopped {
         didSet {
             switch state {
+            case .stopped:
+                cancelOrders()
+                if let trade = self.trade {
+                    interactor.storeHistory(trade: trade)
+                    self.trade = nil
+                }
             case .pending:
                 if let trade = self.trade {
                     interactor.storeHistory(trade: trade)
@@ -79,10 +86,10 @@ final class OrderBookPresenter: BasePresenter {
         }
     }
 
-    init(interactor: IOrderBookInteractor, router: IOrderBookRouter, model: Model) {
+    init(interactor: IOrderBookInteractor, router: IOrderBookRouter, robot: Robot) {
         self.interactor = interactor
         self.router = router
-        self.model = model
+        self.robot = robot
     }
 
     override func viewDidLoad() {
@@ -93,8 +100,12 @@ final class OrderBookPresenter: BasePresenter {
 
 private extension OrderBookPresenter {
 
+    var config: ContestStrategy.Config {
+        robot.config as! ContestStrategy.Config
+    }
+
     func subscribeToOrderBook() {
-        interactor.subscribeToOrderBook(figi: model.figi, depth: model.depth)
+        interactor.subscribeToOrderBook(figi: config.figi, depth: config.depth)
             .sink { result in
               switch result {
               case .failure(let error):
@@ -130,7 +141,7 @@ private extension OrderBookPresenter {
         case .stopCreated(let response, _):
             getOrderStatus(response: response, orderBook: orderBook)
 
-        case .postOrder, .stopOrder, .error:
+        case .postOrder, .stopOrder, .error, .stopped:
             break
         }
 
@@ -138,12 +149,12 @@ private extension OrderBookPresenter {
     }
 
     func getRequestData(from orderBook: OrderBook) -> (price: Decimal, direction: OrderDirection)? {
-        if model.orderDirection != .sell,
-           let bid = orderBook.bids.first(where: { $0.quantity >= model.edgeQuantity }) {
-            return ((bid.price.asAmount + model.orderDelta), .buy)
-        } else if model.orderDirection != .buy,
-           let ask = orderBook.asks.first(where: { $0.quantity >= model.edgeQuantity }) {
-            return ((ask.price.asAmount - model.orderDelta), .sell)
+        if config.orderDirection != .sell,
+           let bid = orderBook.bids.first(where: { $0.quantity >= config.edgeQuantity }) {
+            return ((bid.price.asAmount + config.orderDelta), .buy)
+        } else if config.orderDirection != .buy,
+           let ask = orderBook.asks.first(where: { $0.quantity >= config.edgeQuantity }) {
+            return ((ask.price.asAmount - config.orderDelta), .sell)
         } else {
             return nil
         }
@@ -179,10 +190,10 @@ private extension OrderBookPresenter {
         var request = PostOrderRequest()
         request.price = price.asQuotation
         request.direction = direction
-        request.quantity = model.orderQuantity
+        request.quantity = config.orderQuantity
         request.orderType = .limit
-        request.figi = model.figi
-        request.accountID = model.accountID
+        request.figi = config.figi
+        request.accountID = config.accountID
 
         interactor.postOrder(request: request)
             .sink { result in
@@ -230,7 +241,7 @@ private extension OrderBookPresenter {
     }
 
     func getOrderStatus(id: String) {
-        interactor.getOrderState(accountID: model.accountID, orderID: id)
+        interactor.getOrderState(accountID: config.accountID, orderID: id)
             .sink { result in
               switch result {
               case .failure(let error):
@@ -255,13 +266,13 @@ private extension OrderBookPresenter {
         case .postOrder:
             switch orderResponse.direction {
             case .buy:
-                let tp = orderPrice * (1 + Decimal(model.takeProfitPercent) / 100)
-                let sl = orderPrice * (1 - Decimal(model.stopLossPercent) / 100)
+                let tp = orderPrice * (1 + Decimal(config.takeProfitPercent) / 100)
+                let sl = orderPrice * (1 - Decimal(config.stopLossPercent) / 100)
                 let stopBounds = StopBounds(sl: sl, tp: tp)
                 state = .orderPosted(orderResponse, stopBounds)
             case .sell:
-                let sl = orderPrice * (1 + Decimal(model.stopLossPercent) / 100)
-                let tp = orderPrice * (1 - Decimal(model.takeProfitPercent) / 100)
+                let sl = orderPrice * (1 + Decimal(config.stopLossPercent) / 100)
+                let tp = orderPrice * (1 - Decimal(config.takeProfitPercent) / 100)
                 let stopBounds = StopBounds(sl: sl, tp: tp)
                 state = .orderPosted(orderResponse, stopBounds)
             default:
@@ -271,7 +282,7 @@ private extension OrderBookPresenter {
         case .stopCreated:
             state = .pending
 
-        case .pending, .orderPosted, .error, .orderCreated, .stopOrder:
+        case .pending, .orderPosted, .error, .orderCreated, .stopOrder, .stopped:
             print("⚠️ Invalid state")
             break
         }
@@ -289,7 +300,7 @@ private extension OrderBookPresenter {
     func mapOrders(_ orders: [Order], valueType: OrderBookCell.Model.ValueType) -> [OrderBookCell.Model] {
         return orders.map {
             let priceAmount = $0.price.asAmount
-            let price = "\(priceAmount) \(model.currency.sign)"
+            let price = "\(priceAmount) \(config.currency.sign)"
 
             var type: OrderBookCell.Model.OrderType?
             if case State.orderPosted(let response, let stopBounds) = state {
@@ -317,6 +328,10 @@ private extension OrderBookPresenter {
         self.bids = bids
         viewController?.reloadData()
     }
+
+    func cancelOrders() {
+        #warning("todo")
+    }
 }
 
 extension OrderBookPresenter: IOrderBookPresenter {
@@ -330,5 +345,9 @@ extension OrderBookPresenter: IOrderBookPresenter {
 
     func didSelectRow(at indexPath: IndexPath) {
         
+    }
+
+    func setState(running: Bool) {
+        state = running ? .pending : .stopped
     }
 }

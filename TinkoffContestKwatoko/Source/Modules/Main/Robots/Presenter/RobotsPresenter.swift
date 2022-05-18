@@ -56,6 +56,7 @@ final class RobotsPresenter: BasePresenter {
 
     let sections = [Section.info, .actions, .robots]
     var robots = [Robot]()
+    let robotsLimit = 10
 
     init(interactor: IRobotsInteractor, router: IRobotsRouter) {
         self.interactor = interactor
@@ -96,7 +97,14 @@ private extension RobotsPresenter {
 extension RobotsPresenter: IRobotsPresenter {
 
     var actions: [Action] {
-        robots.isEmpty ? [.add] : [.runAll, .add]
+        var actions = [Action]()
+//        if robots.count > 0 {
+//            actions.append(.runAll)
+//        }
+        if robots.count <= robotsLimit {
+            actions.append(.add)
+        }
+        return actions
     }
 
     var info: Info {

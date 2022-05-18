@@ -39,8 +39,7 @@ extension AddRobotRouter: IAddRobotRouter {
         let controller: UIViewController
         switch robot.strategy {
         case .contest:
-            guard let model = robot.config as? ContestStrategy.Config else { return }
-            controller = orderBookAssembly.build(model: model).viewController
+            controller = orderBookAssembly.build(robot: robot).viewController
         }
 
         if var controllers = viewController?.navigationController?.viewControllers {

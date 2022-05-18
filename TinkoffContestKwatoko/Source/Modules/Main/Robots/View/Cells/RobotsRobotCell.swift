@@ -39,6 +39,8 @@ private extension RobotsRobotCell {
         let stopImage = UIImage(systemName: "stop.circle.fill", withConfiguration: imageConfig)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
         actionButton.setImage(stopImage, for: .selected)
         actionButton.addTarget(self, action: #selector(actionButtonTapped(_:)), for: .touchUpInside)
+
+        actionButton.isHidden = true
     }
 
     @objc func actionButtonTapped(_ sender: UIButton) {

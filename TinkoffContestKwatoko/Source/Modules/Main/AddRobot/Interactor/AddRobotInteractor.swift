@@ -18,7 +18,7 @@ final class AddRobotInteractor {
 
 extension AddRobotInteractor: IAddRobotInteractor {
 
-    var accountId: String? { "103e792d-a4d1-4451-878a-7e7fc63249b7" }
+    var accountId: String? { database.profile?.selectedAccountId }
 
     func didOpenInfo(strategy: Strategy) -> Bool {
         return true

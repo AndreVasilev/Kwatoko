@@ -30,8 +30,7 @@ extension RobotsRouter: IRobotsRouter {
         let controller: UIViewController
         switch robot.strategy {
         case .contest:
-            guard let model = robot.config as? ContestStrategy.Config else { return }
-            controller = orderBookAssembly.build(model: model).viewController
+            controller = orderBookAssembly.build(robot: robot).viewController
         }
 
         viewController?.show(controller, sender: nil)
