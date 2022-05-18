@@ -53,7 +53,7 @@ private extension RootRouter {
     }
 
     func mainTabBarController() -> UITabBarController {
-        let controllers = [orderBookController, profileController]
+        let controllers = [robotsController, profileController]
             .map { UINavigationController(rootViewController: $0) }
 
         let tabBarControler = UITabBarController()
@@ -61,20 +61,10 @@ private extension RootRouter {
         return tabBarControler
     }
 
-    var orderBookController: UIViewController {
-        let model = OrderBookPresenter.Model(accountID: "103e792d-a4d1-4451-878a-7e7fc63249b7",
-                                             figi: "BBG004730N88",
-                                             depth: 20,
-                                             currency: .rub,
-                                             orderDirection: .unspecified,
-                                             edgeQuantity: 5000,
-                                             orderQuantity: 1,
-                                             orderDelta: 0.1,
-                                             stopLossPercent: 0.1,
-                                             takeProfitPercent: 0.5)
-        let assembly: OrderBookAssembly = modulesFactory.buildAssembly()
-        let viewController = assembly.build(model: model).viewController
-        viewController.title = "OrderBook"
+    var robotsController: UIViewController {
+        let assembly: RobotsAssembly = modulesFactory.buildAssembly()
+        let viewController = assembly.build().viewController
+        viewController.title = "Роботы"
         return viewController
     }
 

@@ -24,6 +24,8 @@ class DatabaseService {
     }()
 }
 
+// MARK: Profile
+
 extension DatabaseService: IDatabaseService {
 
     var profile: ProfileEntity? {
@@ -61,7 +63,74 @@ extension DatabaseService: IDatabaseService {
     }
 }
 
+// MARK: Robots
+
+extension DatabaseService {
+
+    func addRobot(name: String, strategy: Strategy, config: IStrategyConfig) -> Robot? {
+        switch strategy {
+        case .contest:
+            guard let config = config as? ContestStrategy.Config else { return nil }
+            return addRobot(name: name, contestStrategy: strategy, config: config)
+        }
+    }
+
+    func fetchRobots() -> [Robot]? {
+        do {
+            let request = RobotEntity.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key: "created", ascending: false)]
+            let robotEntities = try persistentContainer.viewContext.fetch(request)
+            return robotEntities.compactMap { Robot($0) }
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+
+    func deleteRobot(id: String, configId: String) {
+        do {
+            try deleteEntity("ContestStrategyConfigEntity", id: configId)
+            try deleteEntity("RobotEntity", id: id)
+        } catch {
+            print(error)
+        }
+    }
+
+    private func addRobot(name: String, contestStrategy strategy: Strategy, config: ContestStrategy.Config) -> Robot? {
+        let configEntity = ContestStrategyConfigEntity(context: persistentContainer.viewContext)
+        configEntity.id = config.id
+        configEntity.accountID = config.accountID
+        configEntity.figi = config.figi
+        configEntity.currency = config.currency.rawValue
+        configEntity.depth = Int16(config.depth)
+        configEntity.orderDirection = Int16(config.orderDirection.rawValue)
+        configEntity.edgeQuantity = config.edgeQuantity
+        configEntity.orderQuantity = config.orderQuantity
+        configEntity.orderDelta = NSDecimalNumber(decimal: config.orderDelta)
+        configEntity.stopLossPercent = config.stopLossPercent
+        configEntity.takeProfitPercent = config.takeProfitPercent
+
+        let robotEntity = RobotEntity(context: persistentContainer.viewContext)
+        robotEntity.id = UUID().uuidString
+        robotEntity.name = name
+        robotEntity.strategy = strategy.rawValue
+        robotEntity.config = configEntity
+        robotEntity.created = Date()
+        saveContext()
+
+        return Robot(robotEntity)
+    }
+}
+
 private extension DatabaseService {
+
+    func deleteEntity(_ name: String, id: String) throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+        fetchRequest.fetchLimit = 1
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try persistentContainer.viewContext.execute(deleteRequest)
+    }
 
     // MARK: - Core Data Saving support
 

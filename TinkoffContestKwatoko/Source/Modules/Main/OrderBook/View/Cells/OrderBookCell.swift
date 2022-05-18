@@ -57,16 +57,16 @@ class OrderBookCell: UICollectionViewCell {
         }
         askStopOrderLabel.isHidden = model.orderType != .takeProfit
         bidStopOrderLabel.isHidden = model.orderType != .stopLoss
-        backgroundColor = model.orderType == .order ? .lightGray : .white
+        backgroundColor = model.orderType == .order ? .systemGray5 : .systemBackground
     }
 }
 
 private extension OrderBookCell {
 
     func configure() {
-        askLabel.textColor = .red
-        askStopOrderLabel.textColor = .red
-        bidLabel.textColor = .green
-        bidStopOrderLabel.textColor = .green
+        askLabel.textColor = .systemRed
+        askStopOrderLabel.textColor = .systemRed
+        bidLabel.textColor = .systemGreen
+        bidStopOrderLabel.textColor = .systemGreen
     }
 }

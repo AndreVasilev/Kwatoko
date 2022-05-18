@@ -12,24 +12,10 @@ import TinkoffInvestSDK
 final class OrderBookPresenter: BasePresenter {
 
     typealias StopBounds = Trade.StopBounds
+    typealias Model = ContestStrategy.Config
 
     enum Section {
         case ask, bid
-    }
-
-    struct Model {
-        let accountID: String
-        let figi: String
-        let depth: Int
-        let currency: MoneyCurrency
-
-        let orderDirection: OrderDirection
-
-        let edgeQuantity: Int64
-        let orderQuantity: Int64
-        let orderDelta: Decimal
-        let stopLossPercent: Double
-        let takeProfitPercent: Double
     }
 
     struct RequestData {

@@ -19,4 +19,9 @@ extension String {
                                             context: nil)
         return boundingBox.height
     }
+
+    var toInt: Int? { Int(self) }
+    var toInt64: Int64? { Int64(self) }
+    var toDouble: Double? { Double(self) }
+    var toDecimal: Decimal? { Decimal(string: self) }
 }
