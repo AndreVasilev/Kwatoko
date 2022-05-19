@@ -16,4 +16,7 @@ protocol IDatabaseService {
     func fetchRobots() -> [Robot]?
     func addRobot(name: String, strategy: Strategy, config: IStrategyConfig) -> Robot?
     func deleteRobot(id: String, configId: String)
+
+    // MARK: Deals
+    func fetchDeals(robotId: String) -> [Deal]
 }

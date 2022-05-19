@@ -45,7 +45,7 @@ extension InstrumentsViewController: IInstrumentsView {
     }
 }
 
-// MARK: InstrumentsViewController
+// MARK: UITableViewDataSource
 
 extension InstrumentsViewController: UITableViewDataSource {
 

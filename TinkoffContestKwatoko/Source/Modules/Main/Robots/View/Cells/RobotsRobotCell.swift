@@ -24,7 +24,7 @@ class RobotsRobotCell: UITableViewCell {
 
     func configure(model: RobotsPresenter.RobotModel, _ onActionTap: @escaping Action) {
         nameLabel.text = model.robot.name
-        infoLabel.text = "\(model.robot.strategy.name) :: \(model.robot.config.figi)"
+        infoLabel.text = model.robot.description
         actionButton.isSelected = model.isRunning
         onActionToggle = onActionTap
     }

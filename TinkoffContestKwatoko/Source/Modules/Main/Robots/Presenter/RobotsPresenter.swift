@@ -65,6 +65,7 @@ final class RobotsPresenter: BasePresenter {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 
     override func viewWillAppear() {

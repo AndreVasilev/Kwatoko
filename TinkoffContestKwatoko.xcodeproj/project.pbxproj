@@ -7,22 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01C707FE4B1CC91A1EE30112 /* IDealDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D2A33704C51BC45C844237 /* IDealDetailsView.swift */; };
+		04543F4F0E3BF883A2274C54 /* RobotHistoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6E0FAD8A059A8B4256BB12 /* RobotHistoryAssembly.swift */; };
+		064F6FDA198D93C8B3992417 /* IRobotHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AEF976DC77E0C26927E7F2C /* IRobotHistoryRouter.swift */; };
 		0A892104B854DAD77B2333F4 /* AddRobotPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFD0310D322F46903D550A5 /* AddRobotPresenter.swift */; };
 		0B436DD92E90CE053FECDDCA /* IProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8F5DAA5CBD77F9B590C8496 /* IProfileInteractor.swift */; };
+		0EC65A34D39C736CF6D34535 /* IRobotHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1087F90F28FB61A379F47933 /* IRobotHistoryView.swift */; };
 		14DD8E5BE37274872D478D85 /* IRobotsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D953B983FF01618058EACE40 /* IRobotsRouter.swift */; };
+		16A5BB9DBE8A17C2E654AD42 /* IHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2DE4C246AE4D86B46A030C /* IHistoryInteractor.swift */; };
+		18EA5C9F2511CFF7883418C2 /* HistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CF1F05E8E198DBAE04C797 /* HistoryInteractor.swift */; };
 		196FAB2921D08F8C99F836CD /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E63C0E9E20C3FA178F3061 /* ProfileAssembly.swift */; };
 		1A30BD980797266A5FA1221F /* IStrategiesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1AF925BC877FB0D0A7A1E7 /* IStrategiesRouter.swift */; };
 		1EF9DC18595195B10C8ED2B1 /* AddRobotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E133AF279F94D3E2DCE6213 /* AddRobotViewController.swift */; };
+		2226CB08F9C05BE90AF95D31 /* DealDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EED93FD608035AA52474A /* DealDetailsInteractor.swift */; };
 		234067C08051ADC2ABB2ED82 /* IProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90A5333D9C49524380911BE /* IProfileRouter.swift */; };
 		249173DAE3F00DD1750FE870 /* IAddRobotPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27658DD661553E6EE80FF3CF /* IAddRobotPresenter.swift */; };
 		27CBEE34430693A0A853CB9E /* IAddRobotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8ADC785D6139B6D37D3E8 /* IAddRobotView.swift */; };
 		2F28055498165472609852F4 /* OrderBookInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B63ED0A6FB74D60A96040 /* OrderBookInteractor.swift */; };
 		33F789FE70F43138BA048B42 /* InstrumentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADFCDEC8A8E717127F9A334 /* InstrumentsInteractor.swift */; };
+		35BA529DBDC84AF790B320DF /* RobotChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC5FC069CD88394D60D759 /* RobotChartViewController.swift */; };
 		35C3C1680DA9D2E4F4359A25 /* IStrategiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5F0EB820DF671CB2120CBE /* IStrategiesView.swift */; };
 		367B2EB78721EC7F2104BAB4 /* InstrumentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83351634C02591481277BDF /* InstrumentsPresenter.swift */; };
+		37ED15537DD07903CE0DC822 /* RobotChartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F8210E607691D5B0597A7 /* RobotChartRouter.swift */; };
 		3F27ADB4D1FE223B84EA8BB2 /* RobotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDEB9AF931CBF63E405209B /* RobotsViewController.swift */; };
 		42C7B4FE05B9CE094E1AC6C2 /* AddRobotRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46983FAA2684BE912AB0A61F /* AddRobotRouter.swift */; };
+		4A221C2B23A6D5775DCA6A6F /* IRobotChartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12140083F36F4278551D4ADD /* IRobotChartRouter.swift */; };
 		4A416580B757BBFBF4C58407 /* StrategiesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B000CF5A6B66B58D8458CA /* StrategiesAssembly.swift */; };
+		4BBF4C6EEE485490059EC6A6 /* RobotChartAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82374ACB13AD819DDD708059 /* RobotChartAssembly.swift */; };
 		4EF763B9571E797DD4563F69 /* AddRobotAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661B6C5F2CAC7604DA7CB7C3 /* AddRobotAssembly.swift */; };
 		53D8E240658D1DE76C1F6C7E /* AddRobotInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8083C00BFDEEC5E2BD5E0881 /* AddRobotInteractor.swift */; };
 		551F8C3028325F290044C7EA /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8BB528325F290044C7EA /* Assets.swift */; };
@@ -131,6 +142,13 @@
 		554589102834DF0700196B02 /* AddRobot.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5545890F2834DF0700196B02 /* AddRobot.storyboard */; };
 		554589122834DF2200196B02 /* Instruments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554589112834DF2200196B02 /* Instruments.storyboard */; };
 		554589142834DF7200196B02 /* Strategies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554589132834DF7200196B02 /* Strategies.storyboard */; };
+		556390DC28363BD5000EC23E /* Deal+DemoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556390DB28363BD5000EC23E /* Deal+DemoList.swift */; };
+		556390DE28364ABC000EC23E /* RobotHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 556390DD28364ABC000EC23E /* RobotHistory.storyboard */; };
+		556390E128364B08000EC23E /* RobotHistoryInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556390E028364B08000EC23E /* RobotHistoryInfoCell.swift */; };
+		556390E328364B14000EC23E /* RobotHistoryDealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556390E228364B14000EC23E /* RobotHistoryDealCell.swift */; };
+		556390E528364E3F000EC23E /* DealDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 556390E428364E3F000EC23E /* DealDetails.storyboard */; };
+		556390E8283658DE000EC23E /* DealDetailsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556390E7283658DE000EC23E /* DealDetailsInfoCell.swift */; };
+		556390EA28365905000EC23E /* DealDetailsBookOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556390E928365905000EC23E /* DealDetailsBookOrderCell.swift */; };
 		55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55DB2496283241740084A499 /* TinkoffInvestSDK */; };
 		55DC01A02834EC880049467C /* RobotsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC019F2834EC880049467C /* RobotsInfoCell.swift */; };
 		55DC01A22834EC980049467C /* RobotsRobotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01A12834EC980049467C /* RobotsRobotCell.swift */; };
@@ -144,26 +162,44 @@
 		55DC01B928351A8F0049467C /* InstrumentListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01B828351A8F0049467C /* InstrumentListCell.swift */; };
 		55DC01BB28351EDD0049467C /* IInstrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01BA28351EDD0049467C /* IInstrument.swift */; };
 		55DC01BD283538DA0049467C /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01BC283538DA0049467C /* Robot.swift */; };
+		55DC01C1283552760049467C /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DC01C0283552760049467C /* History.storyboard */; };
+		55DC01C3283635BE0049467C /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01C2283635BE0049467C /* Deal.swift */; };
+		568662D24A7B215A5C5FC45D /* IRobotChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50EC0201DA4427EF8EE393 /* IRobotChartInteractor.swift */; };
+		57F177F97B93CA8F80C51DE3 /* RobotHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3272C0AC74BB27C6614FD70 /* RobotHistoryInteractor.swift */; };
 		5AE3757BA2EF479F685FBD3E /* StrategiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7B51538419CB32C380DDDC /* StrategiesPresenter.swift */; };
+		5D911C770DB94A0F223EE1F8 /* IHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0980D8E7815F71D038F8CC97 /* IHistoryView.swift */; };
 		5DBF5462A4CE21D3CE514FFA /* InstrumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E26E3961090FCD390DC3AE3 /* InstrumentsViewController.swift */; };
+		5E33B5FDFD2B38944EB2B811 /* RobotHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59A176CE9B276C271A931379 /* RobotHistoryViewController.swift */; };
+		5FA470C0AAB6841D09C3BBED /* DealDetailsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E894C0F4674BA104C146860 /* DealDetailsAssembly.swift */; };
 		617D871B5D0012503DDA01AD /* IProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E3B63954C0DE294E6DD1C8 /* IProfileView.swift */; };
 		66B1A7D277A0324FFBDB0D58 /* IOrderBookPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38967A1C72C43E366C76A8BC /* IOrderBookPresenter.swift */; };
+		6722B8771870B804EC769FB1 /* IHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D0DD0B66929F725FD6A1E8C /* IHistoryRouter.swift */; };
+		67B5F116F22E941789663D33 /* IDealDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9A39B0D6F417E14A38FA20 /* IDealDetailsInteractor.swift */; };
+		6959AA269FDD318FBE845778 /* RobotHistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B375066916EE0DF1C256B /* RobotHistoryRouter.swift */; };
+		6C3A07FAEB187468013A719F /* DealDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F0D387B6B85F016BD693B3 /* DealDetailsViewController.swift */; };
 		6C6901E86BBE26B28F5C7401 /* IProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E7040B7C0CD0A5EB0CC3C /* IProfilePresenter.swift */; };
 		6F5D8C8FA560F113FD11215F /* IAddRobotRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE85AA70EF645C2876D87B8F /* IAddRobotRouter.swift */; };
 		6FFCD522DB981F36977D2462 /* InstrumentsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7179F1BC342C404F9FBEA832 /* InstrumentsAssembly.swift */; };
 		7437CA1776996B770B157E2D /* InstrumentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359444F2C0578D4E8F5A4D1B /* InstrumentsRouter.swift */; };
 		77EAD71F6E908FC935A7FA37 /* IOrderBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5033F101D981ED396DEF5B /* IOrderBookView.swift */; };
 		7FD784081FA132DF8F572662 /* IInstrumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED61F6369BBF7C138C2C5B2 /* IInstrumentsView.swift */; };
+		8344E1FEDCF67C234D085F84 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1AEF79133AAE934412458D /* HistoryViewController.swift */; };
+		83534D32127C0793EC3DDD96 /* DealDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C1A25FE8A47481CAE36B17 /* DealDetailsRouter.swift */; };
 		84E33A1239B4FDD98B4FF2AB /* OrderBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41CD49A5E44037964EDE4E70 /* OrderBookViewController.swift */; };
 		86D672286BD41258E67BA68C /* OrderBookRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2335689A7B551F22D3DD19AF /* OrderBookRouter.swift */; };
 		87BA5FA50A49576BCA9F96DD /* StrategiesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EAF513431923AE43085A55 /* StrategiesRouter.swift */; };
 		8F5FB4CEFB1C2C5B76BE26A9 /* IOrderBookInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF52DB16F6C1EFFC8CE784 /* IOrderBookInteractor.swift */; };
+		8FDCEB6534EF23680C728DB2 /* IRobotHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D717862957F95B96563F5 /* IRobotHistoryPresenter.swift */; };
 		9F9B504CD182D4112CFA2A85 /* RobotsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E12BB414B1BDEBAA8602E /* RobotsRouter.swift */; };
 		A29E8E7D63B77E259F69D0D9 /* RobotsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C925E2A32A09FA8E58FB5 /* RobotsPresenter.swift */; };
+		A7813DF3C83BB9614108089B /* IRobotChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14B88D9EB689E8AD11BECE /* IRobotChartView.swift */; };
 		A800A1D572F50A68353E17DF /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D775115C0B35766592B9D8E /* ProfileRouter.swift */; };
 		A8F76DC28C6E1F447A69E9DE /* IInstrumentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C5BE5B0AE379A5364993C3 /* IInstrumentsPresenter.swift */; };
+		AB227AB7FEAB2FECB7DAC8BB /* RobotChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E54A33C5A35BBFB3D38F5945 /* RobotChartInteractor.swift */; };
 		B886043A9E5F1C99681B5AC1 /* IOrderBookRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629C791D262F59DAE7F3C1CC /* IOrderBookRouter.swift */; };
 		B897E0B187B0682998692CBA /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71F62A59A00B85F9E44DC0B /* ProfileInteractor.swift */; };
+		BF0DED7DE5C34A66D6916929 /* IRobotHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AF0FC7203F236AA4FF48E1 /* IRobotHistoryInteractor.swift */; };
+		BF7F46D069BE4FFF9211603E /* HistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677B0100A2648FEBB9E6288B /* HistoryRouter.swift */; };
 		C23A66A87A393F00AF375167 /* StrategiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A82F7966A3EEC6CEF004D80 /* StrategiesViewController.swift */; };
 		C8E567E56008A822915670FD /* IInstrumentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48667D42CFAEF6720BD1C6 /* IInstrumentsRouter.swift */; };
 		C976BEDA42B4A83B46E3D956 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE31715B8C6E2BEE88604D /* ProfileViewController.swift */; };
@@ -171,36 +207,61 @@
 		D37ED68C7FEDFD6A3558DCE2 /* StrategiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61744CE624259FAE5F310184 /* StrategiesInteractor.swift */; };
 		D8AB14A1C51596BD6F41D2FB /* IInstrumentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B730D58D603AA146B70413C /* IInstrumentsInteractor.swift */; };
 		D8F5FF480200211B6DCE6E2A /* IRobotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF5C27EBF81CAAD861D6D5E /* IRobotsView.swift */; };
+		D9646365EE9E1204D6225FA6 /* RobotHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C7D5B21FCE1093A62EC576 /* RobotHistoryPresenter.swift */; };
+		DB24B6020600D75C280F6C8B /* IHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB36AFE3FD95C33825275FF /* IHistoryPresenter.swift */; };
 		DE00D60B936B1D1A95C87AAE /* IRobotsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B2C865F1CFA9BBB1B8D888 /* IRobotsInteractor.swift */; };
+		E0DC9A9BC18E52F096C80BCC /* RobotChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A83D7AAE48D59D5D70BD93 /* RobotChartPresenter.swift */; };
+		E1C48FA8B4C539CFC0BB0808 /* HistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960108CA130BC96AD5296AE5 /* HistoryPresenter.swift */; };
+		E341481EFA308F6C92814DBF /* HistoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049215C91D441233FBB0BCA8 /* HistoryAssembly.swift */; };
 		E40A75F719541A46DD3CFD93 /* IAddRobotInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECEAED3F91CFDD101CC45082 /* IAddRobotInteractor.swift */; };
+		E82730809DB2D3821B525E10 /* IDealDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F275F325AA08C14631E940 /* IDealDetailsRouter.swift */; };
 		E9D9372E6272E9132D27B490 /* OrderBookAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72EF85558E0A7B62D6B1B2F8 /* OrderBookAssembly.swift */; };
+		EAA8A5812BA5EA6A462F107F /* DealDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85F59C9EEC2E4E68857505C3 /* DealDetailsPresenter.swift */; };
 		ECA513961CB8ABFBF02800D0 /* IRobotsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75EFEBD92C8184DF4C9ACFCC /* IRobotsPresenter.swift */; };
 		F3C49BF92F8BAAFA454CB88D /* RobotsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3BBC65076513EB16AC8DAE /* RobotsAssembly.swift */; };
+		F5E6DC8D4B92430B5D7785EA /* IDealDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387CB06B2F985ACC72EE0813 /* IDealDetailsPresenter.swift */; };
 		F6FA8C59D5DF05DF1BB1B525 /* IStrategiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81883F807ED09CADD4E20F12 /* IStrategiesInteractor.swift */; };
 		F7DB6C9B0C0231E42654A215 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5030A8DE634AD3FB54F771 /* ProfilePresenter.swift */; };
 		FB7E9759E921C0220EBA4ACC /* IStrategiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB50DA282FB7ECFE5BAD4A6 /* IStrategiesPresenter.swift */; };
+		FBB2D759F3E5D93A61B1F52B /* IRobotChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BFD48C98B29A2E4CDCACB /* IRobotChartPresenter.swift */; };
 		FDEFFB56E364F314FB1257D9 /* RobotsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF047982BA75BDA491C8DEB /* RobotsInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		049215C91D441233FBB0BCA8 /* HistoryAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryAssembly.swift; sourceTree = "<group>"; };
+		08DC5FC069CD88394D60D759 /* RobotChartViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotChartViewController.swift; sourceTree = "<group>"; };
+		0980D8E7815F71D038F8CC97 /* IHistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IHistoryView.swift; sourceTree = "<group>"; };
+		0A9A39B0D6F417E14A38FA20 /* IDealDetailsInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IDealDetailsInteractor.swift; sourceTree = "<group>"; };
+		0AEF976DC77E0C26927E7F2C /* IRobotHistoryRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotHistoryRouter.swift; sourceTree = "<group>"; };
 		0E7B63ED0A6FB74D60A96040 /* OrderBookInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookInteractor.swift; sourceTree = "<group>"; };
+		1087F90F28FB61A379F47933 /* IRobotHistoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotHistoryView.swift; sourceTree = "<group>"; };
+		12140083F36F4278551D4ADD /* IRobotChartRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotChartRouter.swift; sourceTree = "<group>"; };
 		15B000CF5A6B66B58D8458CA /* StrategiesAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StrategiesAssembly.swift; sourceTree = "<group>"; };
+		1A1AEF79133AAE934412458D /* HistoryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2335689A7B551F22D3DD19AF /* OrderBookRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookRouter.swift; sourceTree = "<group>"; };
 		27658DD661553E6EE80FF3CF /* IAddRobotPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IAddRobotPresenter.swift; sourceTree = "<group>"; };
+		2A14B88D9EB689E8AD11BECE /* IRobotChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotChartView.swift; sourceTree = "<group>"; };
+		2B6E0FAD8A059A8B4256BB12 /* RobotHistoryAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryAssembly.swift; sourceTree = "<group>"; };
+		2D0DD0B66929F725FD6A1E8C /* IHistoryRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IHistoryRouter.swift; sourceTree = "<group>"; };
 		2E1AF925BC877FB0D0A7A1E7 /* IStrategiesRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IStrategiesRouter.swift; sourceTree = "<group>"; };
 		359444F2C0578D4E8F5A4D1B /* InstrumentsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InstrumentsRouter.swift; sourceTree = "<group>"; };
+		387CB06B2F985ACC72EE0813 /* IDealDetailsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IDealDetailsPresenter.swift; sourceTree = "<group>"; };
 		38967A1C72C43E366C76A8BC /* IOrderBookPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IOrderBookPresenter.swift; sourceTree = "<group>"; };
 		3ADFCDEC8A8E717127F9A334 /* InstrumentsInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InstrumentsInteractor.swift; sourceTree = "<group>"; };
 		3C5030A8DE634AD3FB54F771 /* ProfilePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		3E50EC0201DA4427EF8EE393 /* IRobotChartInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotChartInteractor.swift; sourceTree = "<group>"; };
 		41CD49A5E44037964EDE4E70 /* OrderBookViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookViewController.swift; sourceTree = "<group>"; };
+		442B375066916EE0DF1C256B /* RobotHistoryRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryRouter.swift; sourceTree = "<group>"; };
 		44B8ADC785D6139B6D37D3E8 /* IAddRobotView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IAddRobotView.swift; sourceTree = "<group>"; };
 		46983FAA2684BE912AB0A61F /* AddRobotRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddRobotRouter.swift; sourceTree = "<group>"; };
+		46A83D7AAE48D59D5D70BD93 /* RobotChartPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotChartPresenter.swift; sourceTree = "<group>"; };
 		4A82F7966A3EEC6CEF004D80 /* StrategiesViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StrategiesViewController.swift; sourceTree = "<group>"; };
 		4B730D58D603AA146B70413C /* IInstrumentsInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IInstrumentsInteractor.swift; sourceTree = "<group>"; };
 		4B7B51538419CB32C380DDDC /* StrategiesPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StrategiesPresenter.swift; sourceTree = "<group>"; };
 		4EF047982BA75BDA491C8DEB /* RobotsInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotsInteractor.swift; sourceTree = "<group>"; };
 		4FB50DA282FB7ECFE5BAD4A6 /* IStrategiesPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IStrategiesPresenter.swift; sourceTree = "<group>"; };
 		52E63C0E9E20C3FA178F3061 /* ProfileAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileAssembly.swift; sourceTree = "<group>"; };
+		54F275F325AA08C14631E940 /* IDealDetailsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IDealDetailsRouter.swift; sourceTree = "<group>"; };
 		551F8BB528325F290044C7EA /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		551F8BB628325F290044C7EA /* L10n-Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "L10n-Constants.swift"; sourceTree = "<group>"; };
 		551F8BB728325F290044C7EA /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
@@ -311,6 +372,13 @@
 		5545890F2834DF0700196B02 /* AddRobot.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRobot.storyboard; sourceTree = "<group>"; };
 		554589112834DF2200196B02 /* Instruments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Instruments.storyboard; sourceTree = "<group>"; };
 		554589132834DF7200196B02 /* Strategies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Strategies.storyboard; sourceTree = "<group>"; };
+		556390DB28363BD5000EC23E /* Deal+DemoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Deal+DemoList.swift"; sourceTree = "<group>"; };
+		556390DD28364ABC000EC23E /* RobotHistory.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RobotHistory.storyboard; sourceTree = "<group>"; };
+		556390E028364B08000EC23E /* RobotHistoryInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotHistoryInfoCell.swift; sourceTree = "<group>"; };
+		556390E228364B14000EC23E /* RobotHistoryDealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotHistoryDealCell.swift; sourceTree = "<group>"; };
+		556390E428364E3F000EC23E /* DealDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DealDetails.storyboard; sourceTree = "<group>"; };
+		556390E7283658DE000EC23E /* DealDetailsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailsInfoCell.swift; sourceTree = "<group>"; };
+		556390E928365905000EC23E /* DealDetailsBookOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailsBookOrderCell.swift; sourceTree = "<group>"; };
 		55DB2494283241360084A499 /* TinkoffInvestSwiftSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TinkoffInvestSwiftSDK; path = ../TinkoffInvestSwiftSDK; sourceTree = "<group>"; };
 		55DC019F2834EC880049467C /* RobotsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsInfoCell.swift; sourceTree = "<group>"; };
 		55DC01A12834EC980049467C /* RobotsRobotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsRobotCell.swift; sourceTree = "<group>"; };
@@ -324,11 +392,16 @@
 		55DC01B828351A8F0049467C /* InstrumentListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentListCell.swift; sourceTree = "<group>"; };
 		55DC01BA28351EDD0049467C /* IInstrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IInstrument.swift; sourceTree = "<group>"; };
 		55DC01BC283538DA0049467C /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
+		55DC01C0283552760049467C /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		55DC01C2283635BE0049467C /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		55EAF513431923AE43085A55 /* StrategiesRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StrategiesRouter.swift; sourceTree = "<group>"; };
+		59A176CE9B276C271A931379 /* RobotHistoryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryViewController.swift; sourceTree = "<group>"; };
 		5ED61F6369BBF7C138C2C5B2 /* IInstrumentsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IInstrumentsView.swift; sourceTree = "<group>"; };
+		609D717862957F95B96563F5 /* IRobotHistoryPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotHistoryPresenter.swift; sourceTree = "<group>"; };
 		61744CE624259FAE5F310184 /* StrategiesInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StrategiesInteractor.swift; sourceTree = "<group>"; };
 		629C791D262F59DAE7F3C1CC /* IOrderBookRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IOrderBookRouter.swift; sourceTree = "<group>"; };
 		661B6C5F2CAC7604DA7CB7C3 /* AddRobotAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddRobotAssembly.swift; sourceTree = "<group>"; };
+		677B0100A2648FEBB9E6288B /* HistoryRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryRouter.swift; sourceTree = "<group>"; };
 		6E133AF279F94D3E2DCE6213 /* AddRobotViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddRobotViewController.swift; sourceTree = "<group>"; };
 		7179F1BC342C404F9FBEA832 /* InstrumentsAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InstrumentsAssembly.swift; sourceTree = "<group>"; };
 		72EF85558E0A7B62D6B1B2F8 /* OrderBookAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookAssembly.swift; sourceTree = "<group>"; };
@@ -338,27 +411,44 @@
 		7E26E3961090FCD390DC3AE3 /* InstrumentsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InstrumentsViewController.swift; sourceTree = "<group>"; };
 		8083C00BFDEEC5E2BD5E0881 /* AddRobotInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddRobotInteractor.swift; sourceTree = "<group>"; };
 		81883F807ED09CADD4E20F12 /* IStrategiesInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IStrategiesInteractor.swift; sourceTree = "<group>"; };
+		82374ACB13AD819DDD708059 /* RobotChartAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotChartAssembly.swift; sourceTree = "<group>"; };
+		85F59C9EEC2E4E68857505C3 /* DealDetailsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DealDetailsPresenter.swift; sourceTree = "<group>"; };
+		8BB36AFE3FD95C33825275FF /* IHistoryPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IHistoryPresenter.swift; sourceTree = "<group>"; };
 		8BEE31715B8C6E2BEE88604D /* ProfileViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8E5F0EB820DF671CB2120CBE /* IStrategiesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IStrategiesView.swift; sourceTree = "<group>"; };
+		92C1A25FE8A47481CAE36B17 /* DealDetailsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DealDetailsRouter.swift; sourceTree = "<group>"; };
+		939EED93FD608035AA52474A /* DealDetailsInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DealDetailsInteractor.swift; sourceTree = "<group>"; };
 		93E3B63954C0DE294E6DD1C8 /* IProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IProfileView.swift; sourceTree = "<group>"; };
+		960108CA130BC96AD5296AE5 /* HistoryPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryPresenter.swift; sourceTree = "<group>"; };
+		96D2A33704C51BC45C844237 /* IDealDetailsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IDealDetailsView.swift; sourceTree = "<group>"; };
 		9CFD0310D322F46903D550A5 /* AddRobotPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddRobotPresenter.swift; sourceTree = "<group>"; };
+		9E894C0F4674BA104C146860 /* DealDetailsAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DealDetailsAssembly.swift; sourceTree = "<group>"; };
 		AB6E7040B7C0CD0A5EB0CC3C /* IProfilePresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IProfilePresenter.swift; sourceTree = "<group>"; };
 		AB88AC9BA3CFB07080EAAB24 /* OrderBookPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookPresenter.swift; sourceTree = "<group>"; };
+		AC5F8210E607691D5B0597A7 /* RobotChartRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotChartRouter.swift; sourceTree = "<group>"; };
 		AE85AA70EF645C2876D87B8F /* IAddRobotRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IAddRobotRouter.swift; sourceTree = "<group>"; };
 		B71F62A59A00B85F9E44DC0B /* ProfileInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		BB48667D42CFAEF6720BD1C6 /* IInstrumentsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IInstrumentsRouter.swift; sourceTree = "<group>"; };
 		BC3BBC65076513EB16AC8DAE /* RobotsAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotsAssembly.swift; sourceTree = "<group>"; };
 		BEF5C27EBF81CAAD861D6D5E /* IRobotsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotsView.swift; sourceTree = "<group>"; };
+		C3CF1F05E8E198DBAE04C797 /* HistoryInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryInteractor.swift; sourceTree = "<group>"; };
 		C83351634C02591481277BDF /* InstrumentsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InstrumentsPresenter.swift; sourceTree = "<group>"; };
 		CD5033F101D981ED396DEF5B /* IOrderBookView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IOrderBookView.swift; sourceTree = "<group>"; };
+		D3AF0FC7203F236AA4FF48E1 /* IRobotHistoryInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotHistoryInteractor.swift; sourceTree = "<group>"; };
 		D8F5DAA5CBD77F9B590C8496 /* IProfileInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IProfileInteractor.swift; sourceTree = "<group>"; };
 		D953B983FF01618058EACE40 /* IRobotsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotsRouter.swift; sourceTree = "<group>"; };
+		E3272C0AC74BB27C6614FD70 /* RobotHistoryInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryInteractor.swift; sourceTree = "<group>"; };
 		E32E12BB414B1BDEBAA8602E /* RobotsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotsRouter.swift; sourceTree = "<group>"; };
+		E54A33C5A35BBFB3D38F5945 /* RobotChartInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotChartInteractor.swift; sourceTree = "<group>"; };
+		E70BFD48C98B29A2E4CDCACB /* IRobotChartPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotChartPresenter.swift; sourceTree = "<group>"; };
+		E7C7D5B21FCE1093A62EC576 /* RobotHistoryPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryPresenter.swift; sourceTree = "<group>"; };
 		E8BF52DB16F6C1EFFC8CE784 /* IOrderBookInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IOrderBookInteractor.swift; sourceTree = "<group>"; };
 		E90A5333D9C49524380911BE /* IProfileRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IProfileRouter.swift; sourceTree = "<group>"; };
 		E91C925E2A32A09FA8E58FB5 /* RobotsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotsPresenter.swift; sourceTree = "<group>"; };
 		E9B2C865F1CFA9BBB1B8D888 /* IRobotsInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotsInteractor.swift; sourceTree = "<group>"; };
+		E9F0D387B6B85F016BD693B3 /* DealDetailsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DealDetailsViewController.swift; sourceTree = "<group>"; };
 		ECEAED3F91CFDD101CC45082 /* IAddRobotInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IAddRobotInteractor.swift; sourceTree = "<group>"; };
+		FA2DE4C246AE4D86B46A030C /* IHistoryInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IHistoryInteractor.swift; sourceTree = "<group>"; };
 		FCDEB9AF931CBF63E405209B /* RobotsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -421,6 +511,24 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		19346DF516087D4064E21B8A /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E3272C0AC74BB27C6614FD70 /* RobotHistoryInteractor.swift */,
+				D3AF0FC7203F236AA4FF48E1 /* IRobotHistoryInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1BD9D1D6CB5A1E67E0251E91 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				442B375066916EE0DF1C256B /* RobotHistoryRouter.swift */,
+				0AEF976DC77E0C26927E7F2C /* IRobotHistoryRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		1DF2E3E87DE85CA790113E21 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,12 +559,72 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		2ADFE403CCFA848DC535433D /* RobotHistory */ = {
+			isa = PBXGroup;
+			children = (
+				7BE03326EAD899D95F4D6520 /* View */,
+				CE1ABBA9FB1770B8F953166A /* Presenter */,
+				19346DF516087D4064E21B8A /* Interactor */,
+				1BD9D1D6CB5A1E67E0251E91 /* Router */,
+				4ABBB37B5ECC27911DC12ECA /* Assembly */,
+			);
+			path = RobotHistory;
+			sourceTree = "<group>";
+		};
+		2C975E6541B36FA1658C6DA6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				85F59C9EEC2E4E68857505C3 /* DealDetailsPresenter.swift */,
+				387CB06B2F985ACC72EE0813 /* IDealDetailsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		32FD21629C061D824517374A /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				AC5F8210E607691D5B0597A7 /* RobotChartRouter.swift */,
+				12140083F36F4278551D4ADD /* IRobotChartRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		3B6B35B7B71EF1707EAC70E4 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
 				52E63C0E9E20C3FA178F3061 /* ProfileAssembly.swift */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		3FFD1086C3FDF8DDAEEB0E07 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1A1AEF79133AAE934412458D /* HistoryViewController.swift */,
+				0980D8E7815F71D038F8CC97 /* IHistoryView.swift */,
+				55DC01C0283552760049467C /* History.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		40D949EE02D789D4F668FE42 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				677B0100A2648FEBB9E6288B /* HistoryRouter.swift */,
+				2D0DD0B66929F725FD6A1E8C /* IHistoryRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		451858AAA1CA20C77E690229 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E9F0D387B6B85F016BD693B3 /* DealDetailsViewController.swift */,
+				96D2A33704C51BC45C844237 /* IDealDetailsView.swift */,
+				556390E428364E3F000EC23E /* DealDetails.storyboard */,
+				556390E628365853000EC23E /* Cells */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		4602965D37AECDF0B5171783 /* View */ = {
@@ -468,6 +636,44 @@
 				55DC019E2834EC7C0049467C /* Cells */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		4ABBB37B5ECC27911DC12ECA /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				2B6E0FAD8A059A8B4256BB12 /* RobotHistoryAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		4BB44D256A678EBDBA718D6D /* RobotChart */ = {
+			isa = PBXGroup;
+			children = (
+				EE8B9B9AD8D9405CA445B83D /* View */,
+				CE8DD6776413D3600EDBF862 /* Presenter */,
+				9FD08FF7E04DF4CED2D6BCE9 /* Interactor */,
+				32FD21629C061D824517374A /* Router */,
+				64E706A3D8AE2CDC9ACC9AC6 /* Assembly */,
+			);
+			path = RobotChart;
+			sourceTree = "<group>";
+		};
+		4DE85B25E742E299887AE87C /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				939EED93FD608035AA52474A /* DealDetailsInteractor.swift */,
+				0A9A39B0D6F417E14A38FA20 /* IDealDetailsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		4E117A37FF1805DCAEEFAC95 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				92C1A25FE8A47481CAE36B17 /* DealDetailsRouter.swift */,
+				54F275F325AA08C14631E940 /* IDealDetailsRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		54B7E955C1308C5B3F760AD8 /* Interactor */ = {
@@ -591,6 +797,8 @@
 				55DC01A52834FB990049467C /* Strategy.swift */,
 				55DC01BA28351EDD0049467C /* IInstrument.swift */,
 				55DC01BC283538DA0049467C /* Robot.swift */,
+				55DC01C2283635BE0049467C /* Deal.swift */,
+				556390DB28363BD5000EC23E /* Deal+DemoList.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -651,6 +859,7 @@
 				551F8C0828325F290044C7EA /* BaseViper */,
 				551F8C1428325F290044C7EA /* Root */,
 				5545890C2833E13100196B02 /* Main */,
+				55DC01BF283551080049467C /* History */,
 				99D8820FED841B5C29E7AEF5 /* Profile */,
 			);
 			path = Modules;
@@ -870,6 +1079,24 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		556390DF28364AF8000EC23E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				556390E028364B08000EC23E /* RobotHistoryInfoCell.swift */,
+				556390E228364B14000EC23E /* RobotHistoryDealCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		556390E628365853000EC23E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				556390E7283658DE000EC23E /* DealDetailsInfoCell.swift */,
+				556390E928365905000EC23E /* DealDetailsBookOrderCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		55DB2493283241360084A499 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -929,6 +1156,29 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		55DC01BE2835505D0049467C /* History */ = {
+			isa = PBXGroup;
+			children = (
+				3FFD1086C3FDF8DDAEEB0E07 /* View */,
+				635116357F52D9C41377AC25 /* Presenter */,
+				B611469C60D0683F13F1355E /* Interactor */,
+				40D949EE02D789D4F668FE42 /* Router */,
+				EB42799D993A2B7C971DD05F /* Assembly */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		55DC01BF283551080049467C /* History */ = {
+			isa = PBXGroup;
+			children = (
+				55DC01BE2835505D0049467C /* History */,
+				2ADFE403CCFA848DC535433D /* RobotHistory */,
+				9964A1511EC6B2DC44E4CF69 /* DealDetails */,
+				4BB44D256A678EBDBA718D6D /* RobotChart */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		58C62430F060E9FB27447EFB /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -942,6 +1192,23 @@
 			isa = PBXGroup;
 			children = (
 				BC3BBC65076513EB16AC8DAE /* RobotsAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		635116357F52D9C41377AC25 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				960108CA130BC96AD5296AE5 /* HistoryPresenter.swift */,
+				8BB36AFE3FD95C33825275FF /* IHistoryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		64E706A3D8AE2CDC9ACC9AC6 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				82374ACB13AD819DDD708059 /* RobotChartAssembly.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -983,6 +1250,17 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		7BE03326EAD899D95F4D6520 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				59A176CE9B276C271A931379 /* RobotHistoryViewController.swift */,
+				1087F90F28FB61A379F47933 /* IRobotHistoryView.swift */,
+				556390DD28364ABC000EC23E /* RobotHistory.storyboard */,
+				556390DF28364AF8000EC23E /* Cells */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		87EA359805D6CE43C134E4CE /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -999,6 +1277,18 @@
 				AE85AA70EF645C2876D87B8F /* IAddRobotRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		9964A1511EC6B2DC44E4CF69 /* DealDetails */ = {
+			isa = PBXGroup;
+			children = (
+				451858AAA1CA20C77E690229 /* View */,
+				2C975E6541B36FA1658C6DA6 /* Presenter */,
+				4DE85B25E742E299887AE87C /* Interactor */,
+				4E117A37FF1805DCAEEFAC95 /* Router */,
+				C01C40A13F9AD77BCBFB7700 /* Assembly */,
+			);
+			path = DealDetails;
 			sourceTree = "<group>";
 		};
 		99A60AF09AA572C2F62B94E5 /* Router */ = {
@@ -1020,6 +1310,15 @@
 				3B6B35B7B71EF1707EAC70E4 /* Assembly */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		9FD08FF7E04DF4CED2D6BCE9 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				E54A33C5A35BBFB3D38F5945 /* RobotChartInteractor.swift */,
+				3E50EC0201DA4427EF8EE393 /* IRobotChartInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		A0FA25657CB03300B21FB7BD /* Presenter */ = {
@@ -1049,6 +1348,15 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		B611469C60D0683F13F1355E /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				C3CF1F05E8E198DBAE04C797 /* HistoryInteractor.swift */,
+				FA2DE4C246AE4D86B46A030C /* IHistoryInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		BE57F4C97771143F1C459831 /* Strategies */ = {
 			isa = PBXGroup;
 			children = (
@@ -1061,6 +1369,14 @@
 			path = Strategies;
 			sourceTree = "<group>";
 		};
+		C01C40A13F9AD77BCBFB7700 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				9E894C0F4674BA104C146860 /* DealDetailsAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		C89D5D540C2CF7B4C8CBB246 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1068,6 +1384,24 @@
 				81883F807ED09CADD4E20F12 /* IStrategiesInteractor.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CE1ABBA9FB1770B8F953166A /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				E7C7D5B21FCE1093A62EC576 /* RobotHistoryPresenter.swift */,
+				609D717862957F95B96563F5 /* IRobotHistoryPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CE8DD6776413D3600EDBF862 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				46A83D7AAE48D59D5D70BD93 /* RobotChartPresenter.swift */,
+				E70BFD48C98B29A2E4CDCACB /* IRobotChartPresenter.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CF69F363687F003BA1029BF5 /* Interactor */ = {
@@ -1143,6 +1477,23 @@
 				7179F1BC342C404F9FBEA832 /* InstrumentsAssembly.swift */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		EB42799D993A2B7C971DD05F /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				049215C91D441233FBB0BCA8 /* HistoryAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		EE8B9B9AD8D9405CA445B83D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				08DC5FC069CD88394D60D759 /* RobotChartViewController.swift */,
+				2A14B88D9EB689E8AD11BECE /* IRobotChartView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		F4B460698E9686FFEF8873FD /* Presenter */ = {
@@ -1249,6 +1600,7 @@
 				551F8C3428325F290044C7EA /* Localization.strings in Resources */,
 				551F8C5D28325F290044C7EA /* SFProDisplay-Thin.ttf in Resources */,
 				551F8C3F28325F290044C7EA /* SFProText-SemiBold.ttf in Resources */,
+				556390E528364E3F000EC23E /* DealDetails.storyboard in Resources */,
 				551F8C4D28325F290044C7EA /* SFProDisplay-BlackItalic.ttf in Resources */,
 				551F8C4328325F290044C7EA /* SFProDisplay-Black.ttf in Resources */,
 				551F8C4428325F290044C7EA /* SFProText-BoldItalic.ttf in Resources */,
@@ -1265,6 +1617,7 @@
 				551F8C3D28325F290044C7EA /* SFProDisplay-SemiboldItalic.ttf in Resources */,
 				551F8C3E28325F290044C7EA /* SFProText-RegularItalic.ttf in Resources */,
 				551F8C5A28325F290044C7EA /* SF-Pro-Rounded-Heavy.otf in Resources */,
+				556390DE28364ABC000EC23E /* RobotHistory.storyboard in Resources */,
 				551F8C5C28325F290044C7EA /* SFProDisplay-UltralightItalic.ttf in Resources */,
 				551F8C8128325F290044C7EA /* Root.storyboard in Resources */,
 				551F8C3528325F290044C7EA /* Colors.xml in Resources */,
@@ -1285,6 +1638,7 @@
 				551F8C5728325F290044C7EA /* SFProDisplay-Heavy.ttf in Resources */,
 				551F8C5228325F290044C7EA /* SFProDisplay-Bold.ttf in Resources */,
 				551F8C90283261CB0044C7EA /* OrderBook.storyboard in Resources */,
+				55DC01C1283552760049467C /* History.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1329,9 +1683,11 @@
 				551F8C7028325F290044C7EA /* Date+Formatting.swift in Sources */,
 				551F8C7C28325F290044C7EA /* BaseRouter.swift in Sources */,
 				551F8C6328325F290044C7EA /* UIColor.swift in Sources */,
+				556390E328364B14000EC23E /* RobotHistoryDealCell.swift in Sources */,
 				551F8C7D28325F290044C7EA /* RootAssembly.swift in Sources */,
 				551F8C6A28325F290044C7EA /* DateFormatter.swift in Sources */,
 				551F8C5E28325F290044C7EA /* ICore.swift in Sources */,
+				556390E128364B08000EC23E /* RobotHistoryInfoCell.swift in Sources */,
 				551F8C9D28329B250044C7EA /* PostOrderDto.swift in Sources */,
 				551F8C3328325F290044C7EA /* Colors.swift in Sources */,
 				551F8C7E28325F290044C7EA /* IRootPresenter.swift in Sources */,
@@ -1364,6 +1720,7 @@
 				551F8C7428325F290044C7EA /* AppDelegate.swift in Sources */,
 				551F8C7128325F290044C7EA /* Calendar+Utilities.swift in Sources */,
 				551F8C6F28325F290044C7EA /* DateFormatter+formats.swift in Sources */,
+				556390DC28363BD5000EC23E /* Deal+DemoList.swift in Sources */,
 				551F8C6928325F290044C7EA /* UIViewController.swift in Sources */,
 				551F8C6428325F290044C7EA /* UITableView+Cells.swift in Sources */,
 				55DC01AA2834FD0D0049467C /* ContestStrategy.swift in Sources */,
@@ -1373,6 +1730,7 @@
 				551F8C8728325F290044C7EA /* IDatabaseService.swift in Sources */,
 				551F8C6528325F290044C7EA /* CGSize.swift in Sources */,
 				551F8C5F28325F290044C7EA /* Core.swift in Sources */,
+				55DC01C3283635BE0049467C /* Deal.swift in Sources */,
 				551F8C8A28325F290044C7EA /* INetworkService.swift in Sources */,
 				551F8C7728325F290044C7EA /* IAssembly.swift in Sources */,
 				55DC01AD2834FF4F0049467C /* AddRobotListCell.swift in Sources */,
@@ -1404,6 +1762,7 @@
 				D8F5FF480200211B6DCE6E2A /* IRobotsView.swift in Sources */,
 				A29E8E7D63B77E259F69D0D9 /* RobotsPresenter.swift in Sources */,
 				ECA513961CB8ABFBF02800D0 /* IRobotsPresenter.swift in Sources */,
+				556390EA28365905000EC23E /* DealDetailsBookOrderCell.swift in Sources */,
 				FDEFFB56E364F314FB1257D9 /* RobotsInteractor.swift in Sources */,
 				DE00D60B936B1D1A95C87AAE /* IRobotsInteractor.swift in Sources */,
 				9F9B504CD182D4112CFA2A85 /* RobotsRouter.swift in Sources */,
@@ -1432,12 +1791,49 @@
 				C23A66A87A393F00AF375167 /* StrategiesViewController.swift in Sources */,
 				35C3C1680DA9D2E4F4359A25 /* IStrategiesView.swift in Sources */,
 				5AE3757BA2EF479F685FBD3E /* StrategiesPresenter.swift in Sources */,
+				556390E8283658DE000EC23E /* DealDetailsInfoCell.swift in Sources */,
 				FB7E9759E921C0220EBA4ACC /* IStrategiesPresenter.swift in Sources */,
 				D37ED68C7FEDFD6A3558DCE2 /* StrategiesInteractor.swift in Sources */,
 				F6FA8C59D5DF05DF1BB1B525 /* IStrategiesInteractor.swift in Sources */,
 				87BA5FA50A49576BCA9F96DD /* StrategiesRouter.swift in Sources */,
 				1A30BD980797266A5FA1221F /* IStrategiesRouter.swift in Sources */,
 				4A416580B757BBFBF4C58407 /* StrategiesAssembly.swift in Sources */,
+				8344E1FEDCF67C234D085F84 /* HistoryViewController.swift in Sources */,
+				5D911C770DB94A0F223EE1F8 /* IHistoryView.swift in Sources */,
+				E1C48FA8B4C539CFC0BB0808 /* HistoryPresenter.swift in Sources */,
+				DB24B6020600D75C280F6C8B /* IHistoryPresenter.swift in Sources */,
+				18EA5C9F2511CFF7883418C2 /* HistoryInteractor.swift in Sources */,
+				16A5BB9DBE8A17C2E654AD42 /* IHistoryInteractor.swift in Sources */,
+				BF7F46D069BE4FFF9211603E /* HistoryRouter.swift in Sources */,
+				6722B8771870B804EC769FB1 /* IHistoryRouter.swift in Sources */,
+				E341481EFA308F6C92814DBF /* HistoryAssembly.swift in Sources */,
+				5E33B5FDFD2B38944EB2B811 /* RobotHistoryViewController.swift in Sources */,
+				0EC65A34D39C736CF6D34535 /* IRobotHistoryView.swift in Sources */,
+				D9646365EE9E1204D6225FA6 /* RobotHistoryPresenter.swift in Sources */,
+				8FDCEB6534EF23680C728DB2 /* IRobotHistoryPresenter.swift in Sources */,
+				57F177F97B93CA8F80C51DE3 /* RobotHistoryInteractor.swift in Sources */,
+				BF0DED7DE5C34A66D6916929 /* IRobotHistoryInteractor.swift in Sources */,
+				6959AA269FDD318FBE845778 /* RobotHistoryRouter.swift in Sources */,
+				064F6FDA198D93C8B3992417 /* IRobotHistoryRouter.swift in Sources */,
+				04543F4F0E3BF883A2274C54 /* RobotHistoryAssembly.swift in Sources */,
+				6C3A07FAEB187468013A719F /* DealDetailsViewController.swift in Sources */,
+				01C707FE4B1CC91A1EE30112 /* IDealDetailsView.swift in Sources */,
+				EAA8A5812BA5EA6A462F107F /* DealDetailsPresenter.swift in Sources */,
+				F5E6DC8D4B92430B5D7785EA /* IDealDetailsPresenter.swift in Sources */,
+				2226CB08F9C05BE90AF95D31 /* DealDetailsInteractor.swift in Sources */,
+				67B5F116F22E941789663D33 /* IDealDetailsInteractor.swift in Sources */,
+				83534D32127C0793EC3DDD96 /* DealDetailsRouter.swift in Sources */,
+				E82730809DB2D3821B525E10 /* IDealDetailsRouter.swift in Sources */,
+				5FA470C0AAB6841D09C3BBED /* DealDetailsAssembly.swift in Sources */,
+				35BA529DBDC84AF790B320DF /* RobotChartViewController.swift in Sources */,
+				A7813DF3C83BB9614108089B /* IRobotChartView.swift in Sources */,
+				E0DC9A9BC18E52F096C80BCC /* RobotChartPresenter.swift in Sources */,
+				FBB2D759F3E5D93A61B1F52B /* IRobotChartPresenter.swift in Sources */,
+				AB227AB7FEAB2FECB7DAC8BB /* RobotChartInteractor.swift in Sources */,
+				568662D24A7B215A5C5FC45D /* IRobotChartInteractor.swift in Sources */,
+				37ED15537DD07903CE0DC822 /* RobotChartRouter.swift in Sources */,
+				4A221C2B23A6D5775DCA6A6F /* IRobotChartRouter.swift in Sources */,
+				4BBF4C6EEE485490059EC6A6 /* RobotChartAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

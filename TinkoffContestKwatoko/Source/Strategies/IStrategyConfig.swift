@@ -11,4 +11,5 @@ protocol IStrategyConfig {
 
     var id: String { get }
     var figi: String { get }
+    var currencyValue: String { get }
 }

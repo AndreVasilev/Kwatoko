@@ -78,3 +78,8 @@ class ContestStrategy {
         }
     }
 }
+
+extension ContestStrategy.Config {
+
+    var currencyValue: String { currency.rawValue }
+}

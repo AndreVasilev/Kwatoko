@@ -29,4 +29,9 @@ extension Robot {
 
         self.init(id: id, name: name, strategy: strategy, config: config, created: created)
     }
+
+    var description: String {
+        return "\(strategy.name) :: \(config.figi)"
+    }
 }
+

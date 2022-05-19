@@ -87,6 +87,19 @@ extension DatabaseService {
         }
     }
 
+    func fetchRobot(id: String) -> Robot? {
+        do {
+            let request = RobotEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "id == %@", id)
+            request.fetchLimit = 1
+            guard let entity = try persistentContainer.viewContext.fetch(request).first else { return nil }
+            return Robot(entity)
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+
     func deleteRobot(id: String, configId: String) {
         do {
             try deleteEntity("ContestStrategyConfigEntity", id: configId)
@@ -121,6 +134,18 @@ extension DatabaseService {
         return Robot(robotEntity)
     }
 }
+
+// MARK: Deals
+
+extension DatabaseService {
+
+    func fetchDeals(robotId: String) -> [Deal] {
+        let currency = fetchRobot(id: robotId)?.config.currencyValue ?? "rub"
+        return Deal.demoList(robotId: robotId, currency: currency)
+    }
+}
+
+// MARK: Private
 
 private extension DatabaseService {
 
