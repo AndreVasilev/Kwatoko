@@ -1,14 +1,14 @@
 //
-//  ContestStrategy.swift
+//  ContestStrategyConfig.swift
 //  TinkoffContestKwatoko
 //
-//  Created by Andrey Vasilev on 18.05.2022.
+//  Created by Andrey Vasilev on 19.05.2022.
 //
 
 import Foundation
 import TinkoffInvestSDK
 
-class ContestStrategy {
+extension ContestStrategy {
 
     struct Config: IStrategyConfig {
 

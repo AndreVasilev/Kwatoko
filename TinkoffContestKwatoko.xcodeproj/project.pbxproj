@@ -153,6 +153,8 @@
 		55C716EE2836664C00111D61 /* RobotChart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C716ED2836664C00111D61 /* RobotChart.storyboard */; };
 		55C716F3283678A900111D61 /* RobotChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C716F1283678A900111D61 /* RobotChartCell.swift */; };
 		55C716F4283678A900111D61 /* RobotChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C716F2283678A900111D61 /* RobotChartCell.xib */; };
+		55C716F7283680C100111D61 /* ContestStrategyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C716F6283680C100111D61 /* ContestStrategyConfig.swift */; };
+		55C716F92836813900111D61 /* IStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C716F82836813900111D61 /* IStrategy.swift */; };
 		55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55DB2496283241740084A499 /* TinkoffInvestSDK */; };
 		55DC01A02834EC880049467C /* RobotsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC019F2834EC880049467C /* RobotsInfoCell.swift */; };
 		55DC01A22834EC980049467C /* RobotsRobotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01A12834EC980049467C /* RobotsRobotCell.swift */; };
@@ -386,6 +388,8 @@
 		55C716ED2836664C00111D61 /* RobotChart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RobotChart.storyboard; sourceTree = "<group>"; };
 		55C716F1283678A900111D61 /* RobotChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotChartCell.swift; sourceTree = "<group>"; };
 		55C716F2283678A900111D61 /* RobotChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobotChartCell.xib; sourceTree = "<group>"; };
+		55C716F6283680C100111D61 /* ContestStrategyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestStrategyConfig.swift; sourceTree = "<group>"; };
+		55C716F82836813900111D61 /* IStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IStrategy.swift; sourceTree = "<group>"; };
 		55DB2494283241360084A499 /* TinkoffInvestSwiftSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TinkoffInvestSwiftSDK; path = ../TinkoffInvestSwiftSDK; sourceTree = "<group>"; };
 		55DC019F2834EC880049467C /* RobotsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsInfoCell.swift; sourceTree = "<group>"; };
 		55DC01A12834EC980049467C /* RobotsRobotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsRobotCell.swift; sourceTree = "<group>"; };
@@ -1123,6 +1127,15 @@
 			path = TableViewCell;
 			sourceTree = "<group>";
 		};
+		55C716F5283680A900111D61 /* ContestStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				55DC01A92834FD0D0049467C /* ContestStrategy.swift */,
+				55C716F6283680C100111D61 /* ContestStrategyConfig.swift */,
+			);
+			path = ContestStrategy;
+			sourceTree = "<group>";
+		};
 		55DB2493283241360084A499 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
@@ -1151,8 +1164,9 @@
 		55DC01A82834FCFA0049467C /* Strategies */ = {
 			isa = PBXGroup;
 			children = (
-				55DC01A92834FD0D0049467C /* ContestStrategy.swift */,
+				55C716F5283680A900111D61 /* ContestStrategy */,
 				55DC01B0283500860049467C /* IStrategyConfig.swift */,
+				55C716F82836813900111D61 /* IStrategy.swift */,
 			);
 			path = Strategies;
 			sourceTree = "<group>";
@@ -1752,6 +1766,7 @@
 				55DC01A42834ED3C0049467C /* RobotsActionCell.swift in Sources */,
 				551F8C7428325F290044C7EA /* AppDelegate.swift in Sources */,
 				551F8C7128325F290044C7EA /* Calendar+Utilities.swift in Sources */,
+				55C716F7283680C100111D61 /* ContestStrategyConfig.swift in Sources */,
 				551F8C6F28325F290044C7EA /* DateFormatter+formats.swift in Sources */,
 				556390DC28363BD5000EC23E /* Deal+DemoList.swift in Sources */,
 				551F8C6928325F290044C7EA /* UIViewController.swift in Sources */,
@@ -1849,6 +1864,7 @@
 				BF0DED7DE5C34A66D6916929 /* IRobotHistoryInteractor.swift in Sources */,
 				6959AA269FDD318FBE845778 /* RobotHistoryRouter.swift in Sources */,
 				064F6FDA198D93C8B3992417 /* IRobotHistoryRouter.swift in Sources */,
+				55C716F92836813900111D61 /* IStrategy.swift in Sources */,
 				04543F4F0E3BF883A2274C54 /* RobotHistoryAssembly.swift in Sources */,
 				6C3A07FAEB187468013A719F /* DealDetailsViewController.swift in Sources */,
 				01C707FE4B1CC91A1EE30112 /* IDealDetailsView.swift in Sources */,

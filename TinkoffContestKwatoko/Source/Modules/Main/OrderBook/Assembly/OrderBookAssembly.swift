@@ -18,7 +18,14 @@ final class OrderBookAssembly: IAssembly {
     func build(robot: Robot) -> ViperModule<OrderBookViewController, IOrderBookRouter> {
         let router = OrderBookRouter()
         let interactor = OrderBookInteractor(sdk: modulesFactory.core.sdk)
-        let presenter = OrderBookPresenter(interactor: interactor, router: router, robot: robot)
+        let strategy: IOrderBookStrategy
+        switch robot.strategy {
+        case .contest:
+            strategy = ContestStrategy(sdk: modulesFactory.core.sdk,
+                                       database: modulesFactory.core.databaseService,
+                                       robot: robot)
+        }
+        let presenter = OrderBookPresenter(interactor: interactor, router: router, strategy: strategy)
         let viewController = getViewController(presenter: presenter)
 
         presenter.viewController = viewController

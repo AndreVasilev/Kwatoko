@@ -9,29 +9,6 @@ import UIKit
 
 class OrderBookCell: UICollectionViewCell {
 
-    struct Model {
-
-        enum ValueType {
-            case ask, bid
-        }
-
-        enum OrderType {
-            case order, stopLoss, takeProfit
-        }
-
-        let price: String
-        let value: String
-        let valueType: ValueType
-        let orderType: OrderType?
-
-        init(price: String, value: String, valueType: ValueType, orderType: OrderBookCell.Model.OrderType? = nil) {
-            self.price = price
-            self.value = value
-            self.valueType = valueType
-            self.orderType = orderType
-        }
-    }
-
     static let height: CGFloat = 40
 
     @IBOutlet weak var priceLabel: UILabel!
@@ -45,19 +22,45 @@ class OrderBookCell: UICollectionViewCell {
         configure()
     }
 
-    func configure(model: OrderBookCell.Model) {
-        priceLabel.text = model.price
-        switch model.valueType {
+    func configure(model: OrderBookPresenter.RowModel) {
+        priceLabel.text = model.priceString
+        switch model.section {
         case .ask:
-            askLabel.text = model.value
+            askLabel.text = model.quantityString
             bidLabel.text = nil
         case .bid:
-            bidLabel.text = model.value
+            bidLabel.text = model.quantityString
             askLabel.text = nil
         }
-        askStopOrderLabel.isHidden = model.orderType != .takeProfit
-        bidStopOrderLabel.isHidden = model.orderType != .stopLoss
-        backgroundColor = model.orderType == .order ? .systemGray5 : .systemBackground
+
+        switch model.orderType {
+        case .order:
+            askStopOrderLabel.text = "<<"
+            bidStopOrderLabel.text = ">>"
+        case .stopLoss, .takeProfit:
+            let label: UILabel
+            switch model.section {
+            case .ask:
+                label = askStopOrderLabel
+                bidStopOrderLabel.text = nil
+            case .bid:
+                label = bidStopOrderLabel
+                askStopOrderLabel.text = nil
+            }
+            label.text = model.orderType?.description
+        case .none:
+            askStopOrderLabel.text = nil
+            bidStopOrderLabel.text = nil
+        }
+
+        let color: UIColor
+        switch model.orderType {
+        case .order: color = .systemGray5
+        case .stopLoss: color = .systemRed.withAlphaComponent(0.3)
+        case .takeProfit: color = .systemGreen.withAlphaComponent(0.3)
+        case .none: color = .systemBackground
+        }
+        backgroundColor = color
     }
 }
 
@@ -65,8 +68,6 @@ private extension OrderBookCell {
 
     func configure() {
         askLabel.textColor = .systemRed
-        askStopOrderLabel.textColor = .systemRed
         bidLabel.textColor = .systemGreen
-        bidStopOrderLabel.textColor = .systemGreen
     }
 }

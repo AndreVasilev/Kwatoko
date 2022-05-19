@@ -7,14 +7,10 @@
 
 import Foundation
 import TinkoffInvestSDK
-import CombineGRPC
-import Combine
 
 final class OrderBookInteractor {
 
     let sdk: TinkoffInvestSDK
-
-    var history = [Trade]()
 
     init(sdk: TinkoffInvestSDK) {
         self.sdk = sdk
@@ -96,17 +92,5 @@ extension OrderBookInteractor: IOrderBookInteractor {
 
     func subscribeToOrderBook(figi: String, depth: Int) -> MarketDataPublisher {
         return sdk.marketDataServiceStream.subscribeToOrderBook(figi: figi, depth: depth)
-    }
-
-    func postOrder(request: PostOrderRequest) -> AnyPublisher<PostOrderResponse, RPCError> {
-        return sdk.sandboxService.postOrder(request: request)
-    }
-
-    func getOrderState(accountID: String, orderID: String) -> AnyPublisher<OrderState, RPCError> {
-        return sdk.sandboxService.getOrderState(accountID: accountID, orderID: orderID)
-    }
-
-    func storeHistory(trade: Trade) {
-        history.append(trade)
     }
 }

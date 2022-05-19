@@ -12,6 +12,6 @@ protocol IOrderBookPresenter: ILifeCycleOutput {
     var sections: [OrderBookPresenter.Section] { get }
 
     func setState(running: Bool)
-    func rows(in section: OrderBookPresenter.Section) -> [OrderBookCell.Model]
+    func rows(in section: OrderBookPresenter.Section) -> [OrderBookPresenter.RowModel]
     func didSelectRow(at indexPath: IndexPath)
 }
