@@ -10,11 +10,11 @@ import Foundation
 final class RobotHistoryPresenter: BasePresenter {
 
     enum Section {
-        case info, deals
+        case info, chart, deals
 
         var title: String? {
             switch self {
-            case .info: return nil
+            case .info, .chart: return nil
             case .deals: return "Сделки"
             }
         }
@@ -25,7 +25,7 @@ final class RobotHistoryPresenter: BasePresenter {
     weak var viewController: IRobotHistoryView?
     let robot: Robot
 
-    let sections: [Section] = [.info, .deals]
+    let sections: [Section] = [.info, .chart, .deals]
     var deals = [Deal]()
 
     init(interactor: IRobotHistoryInteractor, router: IRobotHistoryRouter, robot: Robot) {
@@ -63,6 +63,8 @@ extension RobotHistoryPresenter: IRobotHistoryPresenter {
         let section = sections[indexPath.section]
         switch section {
         case .info: break
+        case .chart:
+            router.showChart(deals: deals)
         case .deals:
             let deal = deals[indexPath.row]
             router.showDealDetails(deal: deal)

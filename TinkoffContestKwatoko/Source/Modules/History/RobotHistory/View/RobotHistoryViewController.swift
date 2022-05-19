@@ -12,6 +12,7 @@ final class RobotHistoryViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var presenter: IRobotHistoryPresenter!
+    var chartCellAssembly: IRobotChartCellAssembly!
 
     init(presenter: IRobotHistoryPresenter) {
         self.presenter = presenter
@@ -38,6 +39,7 @@ private extension RobotHistoryViewController {
 extension RobotHistoryViewController: IRobotHistoryView {
 
     func reloadData() {
+        tableView.registerNib(cellClass: RobotChartCell.self)
         tableView.reloadData()
     }
 }
@@ -53,7 +55,7 @@ extension RobotHistoryViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let section = presenter.sections[section]
         switch section {
-        case .info: return 1
+        case .info, .chart: return 1
         case .deals: return presenter.deals.count
         }
     }
@@ -62,6 +64,7 @@ extension RobotHistoryViewController: UITableViewDataSource {
         let section = presenter.sections[indexPath.section]
         switch section {
         case .info: return dequeueInfoCell(tableView, forRowAt: indexPath)
+        case .chart: return dequeueChartCell(tableView, forRowAt: indexPath)
         case .deals: return dequeueDealCell(tableView, forRowAt: indexPath)
         }
     }
@@ -90,6 +93,10 @@ private extension RobotHistoryViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: RobotHistoryInfoCell.reuseIdentifier, for: indexPath)
         (cell as? RobotHistoryInfoCell)?.configure(model: presenter.info)
         return cell
+    }
+
+    func dequeueChartCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
+        return chartCellAssembly.build(deals: presenter.deals, tableView: tableView, indexPath: indexPath)
     }
 
     func dequeueDealCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -53,15 +53,18 @@ struct Deal {
 
 extension Deal {
 
-    var profit: Decimal {
-        guard let close = close else { return -100 }
-        let delta: Decimal
+    var profitPriceValue: Decimal {
+        guard let close = close else { return -self.open.price }
+        let value: Decimal
         switch self.open.direction {
-        case .buy: delta = close.price - self.open.price
-        case .sell: delta = self.open.price - close.price
+        case .buy: value = close.price - self.open.price
+        case .sell: value = self.open.price - close.price
         }
-        let profit = delta / self.open.price * 100
-        return profit
+        return value
+    }
+
+    var profit: Decimal {
+        return profitPriceValue / self.open.price * 100
     }
 
     var date: Date {

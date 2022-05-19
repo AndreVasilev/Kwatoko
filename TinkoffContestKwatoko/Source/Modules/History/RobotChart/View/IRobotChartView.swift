@@ -6,7 +6,9 @@
 //
 
 import UIKit
+import Charts
 
-protocol IRobotChartView {
+protocol IRobotChartView: AnyObject {
 
+    var chartView: CombinedChartView! { get }
 }

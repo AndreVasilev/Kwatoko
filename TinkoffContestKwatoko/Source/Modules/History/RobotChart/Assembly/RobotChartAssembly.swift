@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol IRobotChartCellAssembly {
+
+    func build(deals: [Deal], tableView: UITableView, indexPath: IndexPath) -> UITableViewCell
+}
+
 final class RobotChartAssembly: IAssembly {
 
     private let modulesFactory: IModulesFactory
@@ -15,12 +20,13 @@ final class RobotChartAssembly: IAssembly {
         self.modulesFactory = modulesFactory
     }
 
-    func build() -> ViperModule<RobotChartViewController, IRobotChartRouter> {
+    func build(deals: [Deal]) -> ViperModule<RobotChartViewController, IRobotChartRouter> {
         let router = RobotChartRouter()
         let interactor = RobotChartInteractor()
-        let presenter = RobotChartPresenter(interactor: interactor, router: router)
+        let presenter = RobotChartPresenter(interactor: interactor, router: router, deals: deals)
         let viewController = getViewController(presenter: presenter)
 
+        presenter.view = viewController
         router.viewController = viewController
 
         return ViperModule(viewController: viewController, router: router)
@@ -36,5 +42,20 @@ final class RobotChartAssembly: IAssembly {
             viewController = RobotChartViewController(presenter: presenter)
         }
         return viewController
+    }
+}
+
+extension RobotChartAssembly: IRobotChartCellAssembly {
+
+    func build(deals: [Deal], tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: RobotChartCell.reuseIdentifier, for: indexPath)
+        if let cell = cell as? RobotChartCell {
+            let router = RobotChartRouter()
+            let interactor = RobotChartInteractor()
+            let presenter = RobotChartPresenter(interactor: interactor, router: router, deals: deals)
+            presenter.view = cell
+            cell.presenter = presenter
+        }
+        return cell
     }
 }

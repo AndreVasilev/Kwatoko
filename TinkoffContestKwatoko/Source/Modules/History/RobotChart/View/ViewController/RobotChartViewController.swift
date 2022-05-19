@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Charts
 
 final class RobotChartViewController: BaseViewController {
+
+    @IBOutlet weak var chartView: CombinedChartView!
 
     var presenter: IRobotChartPresenter!
 
