@@ -23,8 +23,9 @@ struct Deal {
             let date: Date
         }
 
-        enum Direction: Int16 {
-            case buy, sell
+        enum Direction: Int {
+            case buy = 1
+            case sell = 2
 
             var title: String {
                 switch self {
@@ -34,6 +35,7 @@ struct Deal {
             }
         }
 
+        let id: String
         let opened: Book
         let closed: Book?
         let direction: Direction

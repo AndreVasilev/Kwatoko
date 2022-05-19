@@ -137,7 +137,6 @@
 		554589022832B56A00196B02 /* ProfileTokensCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554589012832B56A00196B02 /* ProfileTokensCell.swift */; };
 		554589042832C0E500196B02 /* ProfileAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554589032832C0E500196B02 /* ProfileAccountCell.swift */; };
 		554589092833C24E00196B02 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554589082833C24E00196B02 /* ProfileEntity.swift */; };
-		5545890B2833C4FA00196B02 /* Trade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5545890A2833C4FA00196B02 /* Trade.swift */; };
 		5545890E2834DEE200196B02 /* Robots.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5545890D2834DEE200196B02 /* Robots.storyboard */; };
 		554589102834DF0700196B02 /* AddRobot.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5545890F2834DF0700196B02 /* AddRobot.storyboard */; };
 		554589122834DF2200196B02 /* Instruments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 554589112834DF2200196B02 /* Instruments.storyboard */; };
@@ -373,7 +372,6 @@
 		554589012832B56A00196B02 /* ProfileTokensCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTokensCell.swift; sourceTree = "<group>"; };
 		554589032832C0E500196B02 /* ProfileAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAccountCell.swift; sourceTree = "<group>"; };
 		554589082833C24E00196B02 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
-		5545890A2833C4FA00196B02 /* Trade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trade.swift; sourceTree = "<group>"; };
 		5545890D2834DEE200196B02 /* Robots.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Robots.storyboard; sourceTree = "<group>"; };
 		5545890F2834DF0700196B02 /* AddRobot.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRobot.storyboard; sourceTree = "<group>"; };
 		554589112834DF2200196B02 /* Instruments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Instruments.storyboard; sourceTree = "<group>"; };
@@ -805,7 +803,6 @@
 				554589072833C23E00196B02 /* Entities */,
 				551F8BED28325F290044C7EA /* AppError.swift */,
 				551F8C9C28329B250044C7EA /* PostOrderDto.swift */,
-				5545890A2833C4FA00196B02 /* Trade.swift */,
 				55DC01A52834FB990049467C /* Strategy.swift */,
 				55DC01BA28351EDD0049467C /* IInstrument.swift */,
 				55DC01BC283538DA0049467C /* Robot.swift */,
@@ -1722,7 +1719,6 @@
 				551F8C7928325F290044C7EA /* BasePresenter.swift in Sources */,
 				551F8C7628325F290044C7EA /* ViperModule.swift in Sources */,
 				551F8C6828325F290044C7EA /* String.swift in Sources */,
-				5545890B2833C4FA00196B02 /* Trade.swift in Sources */,
 				551F8C3228325F290044C7EA /* Fonts.swift in Sources */,
 				554589092833C24E00196B02 /* ProfileEntity.swift in Sources */,
 				551F8C8828325F290044C7EA /* DatabaseService.swift in Sources */,

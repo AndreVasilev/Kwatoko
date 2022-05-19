@@ -12,6 +12,7 @@ protocol IStrategy {
 
     var figi: String { get }
     var currency: MoneyCurrency { get }
+    var isRunning: Bool { get }
 
     func run()
     func stop()
@@ -33,4 +34,9 @@ struct PreOrderModel {
     let price: Decimal
     let quantity: Int64
     let section: OrderBookPresenter.Section
+}
+
+protocol IStrategyDelegate: AnyObject {
+
+    func didReceiveError(_ message: String)
 }

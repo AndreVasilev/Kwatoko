@@ -143,6 +143,10 @@ extension DatabaseService {
         let currency = fetchRobot(id: robotId)?.config.currencyValue ?? "rub"
         return Deal.demoList(robotId: robotId, currency: currency)
     }
+
+    func addDeal(_ deal: Deal) {
+        
+    }
 }
 
 // MARK: Private

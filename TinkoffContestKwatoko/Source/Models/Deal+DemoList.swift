@@ -55,7 +55,8 @@ extension Deal {
         let openMiddlePriceDelta = Decimal(anomalyIndex) * step
         let openMiddlePrice = direction == .sell ? price - openMiddlePriceDelta : price + openMiddlePriceDelta
 
-        return Order(opened: buildBook(middlePrice: openMiddlePrice, depth: depth, step: step, anomalyIndex: openAnomalyIndex),
+        return Order(id: UUID().uuidString,
+                     opened: buildBook(middlePrice: openMiddlePrice, depth: depth, step: step, anomalyIndex: openAnomalyIndex),
                      closed: buildBook(middlePrice: price, depth: depth, step: step, anomalyIndex: nil),
                      direction: direction,
                      price: price)

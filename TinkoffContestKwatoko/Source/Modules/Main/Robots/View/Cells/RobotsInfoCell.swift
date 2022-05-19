@@ -27,5 +27,7 @@ private extension RobotsInfoCell {
 
     func configure() {
         selectionStyle = .none
+
+        runningLabel.isHidden = true
     }
 }

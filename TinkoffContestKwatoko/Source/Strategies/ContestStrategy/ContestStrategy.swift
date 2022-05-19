@@ -12,15 +12,15 @@ import Combine
 
 class ContestStrategy {
 
-    let sdk: TinkoffInvestSDK
-    let database: IDatabaseService
-    let robot: Robot
+    private let sdk: TinkoffInvestSDK
+    private let database: IDatabaseService
+    private let robot: Robot
+    weak var delegate: IStrategyDelegate?
     
-    var cancellables = Set<AnyCancellable>()
+    private var cancellables = Set<AnyCancellable>()
 
-    var order: PreOrderModel?
-    var stopLoss: PreOrderModel?
-    var takeProfit: PreOrderModel?
+    private var deal: Deal?
+    private var preDealOrder: Deal.Order?
 
     init(sdk: TinkoffInvestSDK, database: IDatabaseService, robot: Robot) {
         self.sdk = sdk
@@ -28,64 +28,38 @@ class ContestStrategy {
         self.robot = robot
     }
 
-    // Legacy State
-
-    var history = [Trade]()
+    // State
 
     private enum State {
         case stopped
         case pending
-        case postOrder(OrderBook)
-        case orderCreated(PostOrderResponse)
-        case orderPosted(PostOrderResponse, StopBounds)
-        case stopOrder(StopBounds, OrderBook)
-        case stopCreated(PostOrderResponse, StopBounds)
-        case error
+        case preOpenOrderPosted
+        case openOrderPosted(PostOrderResponse, OrderBook)
+        case openOrderExecuted
+        case preCloseOrderPosted
+        case closeOrderPosted(PostOrderResponse, OrderBook)
+        case error(String)
     }
-
-    private var trade: Trade?
 
     private var state: State = .stopped {
         didSet {
+
             switch state {
-            case .stopped:
-                cancelOrders()
-                if let trade = self.trade {
-                    storeHistory(trade: trade)
-                    self.trade = nil
-                }
-            case .pending:
-                if let trade = self.trade {
-                    storeHistory(trade: trade)
-                    self.trade = nil
-                }
-            case .postOrder(let orderBook):
-                trade = Trade(open: .init(orderBook: orderBook,
-                                          date: Date()))
-            case .orderCreated(let response):
-                trade?.open.response = response
-            case .orderPosted(let response, let bounds):
-                trade?.open.response = response
-                trade?.stopBounds = bounds
-            case .stopOrder(_, let orderBook):
-                trade?.close = .init(orderBook: orderBook,
-                                     date: Date())
-            case .stopCreated(let response, _):
-                trade?.close?.response = response
-            case .error:
-                trade?.error = AppError.unknown("")
+            case .error(let message): log(message)
+            default: log()
+            }
+
+            switch state {
+            case .stopped, .pending, .preOpenOrderPosted, .openOrderExecuted, .preCloseOrderPosted:
+                break
+            case .openOrderPosted(let response, let orderBook):
+                preDealOrder = Deal.Order.open(response: response, orderBook: orderBook)
+            case .closeOrderPosted(let response, let orderBook):
+                preDealOrder = Deal.Order.open(response: response, orderBook: orderBook)
+            case .error(let message):
+                delegate?.didReceiveError(message)
             }
         }
-    }
-
-}
-
-// MARK: Private
-
-private extension ContestStrategy {
-
-    var config: ContestStrategy.Config {
-        robot.config as! ContestStrategy.Config
     }
 }
 
@@ -96,12 +70,24 @@ extension ContestStrategy: IStrategy {
     var figi: String { config.figi }
     var currency: MoneyCurrency { config.currency }
 
+    var isRunning: Bool {
+        if case State.stopped = state {
+            return false
+        } else {
+            return true
+        }
+    }
+
     func run() {
+        guard !isRunning else { return }
         state = .pending
     }
 
     func stop() {
+        cancelOrder(order: preDealOrder)
         state = .stopped
+        preDealOrder = nil
+        deal = nil
     }
 }
 
@@ -111,99 +97,201 @@ extension ContestStrategy: IOrderBookStrategy {
 
     var depth: Int { config.depth }
 
+    var order: PreOrderModel? {
+        guard let order = deal?.close ?? preDealOrder else { return nil }
+        let section: OrderBookPresenter.Section
+        switch order.direction {
+        case .buy: section = .bid
+        case .sell: section = .ask
+        }
+        return PreOrderModel(price: order.price, quantity: config.orderQuantity, section: section)
+    }
+
+    var stopLoss: PreOrderModel? {
+        guard let deal = deal else { return nil }
+        let section: OrderBookPresenter.Section
+        switch deal.open.direction {
+        case .buy: section = .bid
+        case .sell: section = .ask
+        }
+        return PreOrderModel(price: deal.stopLoss, quantity: config.orderQuantity, section: section)
+    }
+
+    var takeProfit: PreOrderModel? {
+        guard let deal = deal else { return nil }
+        let section: OrderBookPresenter.Section
+        switch deal.open.direction {
+        case .buy: section = .ask
+        case .sell: section = .bid
+        }
+        return PreOrderModel(price: deal.takeProfit, quantity: config.orderQuantity, section: section)
+    }
+
     func receive(orderBook: OrderBook) {
-        legacy_receive(orderBook: orderBook)
+        receive(orderBook: orderBook, state: state)
     }
 }
 
-// MARK: Legacy
+// MARK: Strategy provider
 
 private extension ContestStrategy {
 
-    typealias StopBounds = Trade.StopBounds
-    typealias Model = ContestStrategy.Config
-
-    struct RequestData {
-        let price: Decimal
-        let direction: OrderDirection
-        let stopLoss: Decimal
-        let takeProfit: Decimal
-    }
-
-    func legacy_receive(orderBook: OrderBook) {
-
-        if orderBook.asks.count > 5,
-           orderBook.bids.count > 5 {
-            order = PreOrderModel(price: orderBook.asks[3].price.asAmount, quantity: orderBook.asks[3].quantity, section: .ask)
-            stopLoss = PreOrderModel(price: orderBook.asks[5].price.asAmount, quantity: orderBook.asks[5].quantity, section: .ask)
-            takeProfit = PreOrderModel(price: orderBook.bids[4].price.asAmount, quantity: orderBook.bids[4].quantity, section: .bid)
-        }
+    private func receive(orderBook: OrderBook, state: State) {
+        log("Received: orderBook")
 
         switch state {
         case .pending:
-            if let tuple = getRequestData(from: orderBook) {
-                state = .postOrder(orderBook)
-                postOrder(price: tuple.price, direction: tuple.direction)
+            pending(orderBook)
+        case .openOrderPosted(let response, _):
+            checkOrderStatus(order: preDealOrder, id: response.orderID, orderBook) { [weak self] in
+                self?.openDeal(order: $0.order,
+                               orderID: $0.state.orderID,
+                               direction: $0.state.direction,
+                               price: $0.state.initialOrderPrice.asMoneyAmount.value,
+                               orderBook: orderBook)
+            }
+        case .openOrderExecuted:
+            checkClose(orderBook)
+        case .closeOrderPosted(let response, _):
+            checkOrderStatus(order: preDealOrder, id: response.orderID, orderBook) { [weak self] in
+                self?.closeDeal(order: $0.order,
+                               orderID: $0.state.orderID,
+                               direction: $0.state.direction,
+                               price: $0.state.initialOrderPrice.asMoneyAmount.value,
+                               orderBook: orderBook)
             }
 
-        case .orderPosted(let response, let stopBounds):
-            if let tuple = getRequestData(orderBook: orderBook,
-                                          orderResponse: response,
-                                          stopBounds: stopBounds) {
-                state = .stopOrder(stopBounds, orderBook)
-                postOrder(price: tuple.price, direction: tuple.direction)
-            }
-
-        case .orderCreated(let response):
-            getOrderStatus(response: response, orderBook: orderBook)
-
-        case .stopCreated(let response, _):
-            getOrderStatus(response: response, orderBook: orderBook)
-
-        case .postOrder, .stopOrder, .error, .stopped:
-            break
+        case .stopped, .error, .preOpenOrderPosted, .preCloseOrderPosted:
+            return
         }
     }
 
-    func getRequestData(from orderBook: OrderBook) -> (price: Decimal, direction: OrderDirection)? {
+    func pending(_ orderBook: OrderBook) {
+        let tuple: (Order, OrderDirection)?
+
         if config.orderDirection != .sell,
            let bid = orderBook.bids.first(where: { $0.quantity >= config.edgeQuantity }) {
-            return ((bid.price.asAmount + config.orderDelta), .buy)
+            tuple = (bid, .buy)
         } else if config.orderDirection != .buy,
            let ask = orderBook.asks.first(where: { $0.quantity >= config.edgeQuantity }) {
-            return ((ask.price.asAmount - config.orderDelta), .sell)
+            tuple = (ask, .sell)
         } else {
-            return nil
+            tuple = nil
+        }
+
+        guard let tuple = tuple else { return }
+        log("\(tuple.1 == .buy ? "Buy" : "Sell"): \(tuple.0.price.asAmount) - \(tuple.0.quantity)")
+
+        state = .preOpenOrderPosted
+        postOrder(price: tuple.0.price.asAmount, direction: tuple.1) { [weak self] response in
+            self?.log("Response: \(response.executionReportStatus)")
+            switch response.executionReportStatus {
+            case .executionReportStatusNew, .executionReportStatusPartiallyfill:
+                self?.state = .openOrderPosted(response, orderBook)
+            case .executionReportStatusFill:
+                self?.openDeal(order: nil,
+                               orderID: response.orderID,
+                               direction: response.direction,
+                               price: response.initialOrderPrice.asMoneyAmount.value,
+                               orderBook: orderBook)
+            case .UNRECOGNIZED(_), .executionReportStatusCancelled, .executionReportStatusRejected, .executionReportStatusUnspecified:
+                self?.state = .pending
+            }
         }
     }
 
-    func getRequestData(orderBook: OrderBook,
-                        orderResponse: PostOrderResponse,
-                        stopBounds: StopBounds) -> (price: Decimal, direction: OrderDirection)? {
-        switch orderResponse.direction {
-        case .buy: return getRequestData(orderBook: orderBook, ask: stopBounds.tp, bid: stopBounds.sl, stopOrderDirection: .sell)
-        case .sell: return getRequestData(orderBook: orderBook, ask: stopBounds.sl, bid: stopBounds.tp, stopOrderDirection: .buy)
-        default: return nil
+    func checkOrderStatus(order: Deal.Order?, id: String,
+                          _ orderBook: OrderBook,
+                          _ onFillCompletion: @escaping ((order: Deal.Order, state: OrderState)) -> Void) {
+        guard let order = order else {
+            log("CheckOrderStatus: missing order")
+            return
         }
+        var requestCheck = false
+        switch order.direction {
+        case .buy:
+            if let bid = orderBook.bids.first,
+               bid.price.asAmount <= order.price {
+                requestCheck = true
+            }
+        case .sell:
+            if let ask = orderBook.asks.first,
+               ask.price.asAmount >= order.price {
+                requestCheck = true
+            }
+        }
+
+        guard requestCheck else { return }
+        log("CheckOrderStatus (\(id): \(orderBook.asks.first?.price.asAmount ?? 0) | \(orderBook.bids.first?.price.asAmount ?? 0)")
+
+        getOrderState(accountID: config.accountID, orderID: id)
+            .sink { [weak self] result in
+              switch result {
+              case .failure(let error):
+                  self?.log("\(error)")
+              case .finished:
+                  self?.log("GetOrderState finished")
+              }
+            } receiveValue: {
+                if $0.executionReportStatus == .executionReportStatusFill {
+                    onFillCompletion((order, $0))
+                }
+            }.store(in: &cancellables)
     }
 
-    func getRequestData(orderBook: OrderBook,
-                        ask: Decimal,
-                        bid: Decimal,
-                        stopOrderDirection: OrderDirection) -> (price: Decimal, direction: OrderDirection)? {
-        let lastAskPrice = orderBook.asks[0].price.asAmount
-        let lastBidPrice = orderBook.bids[0].price.asAmount
+    func checkClose(_ orderBook: OrderBook) {
+        guard let deal = deal else {
+            log("CheckClose: Missing deal")
+            return
+        }
 
-        if lastAskPrice >= ask {
-            return (lastAskPrice, stopOrderDirection)
-        } else if lastBidPrice <= bid {
-            return (lastBidPrice, stopOrderDirection)
-        } else {
-            return nil
+        var tuple: (price: Decimal, direction: OrderDirection)?
+        switch deal.open.direction {
+        case .buy:
+            if let ask = orderBook.asks.first,
+               ask.price.asAmount >= deal.takeProfit {
+                tuple = (ask.price.asAmount, .sell)
+            } else if let bid = orderBook.bids.first,
+                      bid.price.asAmount <= deal.stopLoss {
+                tuple = (bid.price.asAmount, .sell)
+            }
+        case .sell:
+            if let ask = orderBook.asks.first,
+               ask.price.asAmount >= deal.stopLoss {
+                tuple = (ask.price.asAmount, .buy)
+            } else if let bid = orderBook.bids.first,
+                      bid.price.asAmount <= deal.takeProfit {
+                tuple = (bid.price.asAmount, .buy)
+            }
+        }
+
+        guard let tuple = tuple else { return }
+        log("CheckClose \(tuple.1 == .buy ? "Buy" : "Sell"): \(tuple.0)")
+
+        state = .preCloseOrderPosted
+        postOrder(price: tuple.0, direction: tuple.1) { [weak self] in
+            self?.log("Response: \($0.executionReportStatus)")
+            switch $0.executionReportStatus {
+            case .executionReportStatusNew, .executionReportStatusPartiallyfill:
+                self?.state = .closeOrderPosted($0, orderBook)
+            case .executionReportStatusFill:
+                self?.closeDeal(order: nil,
+                                orderID: $0.orderID,
+                                direction: $0.direction,
+                                price: $0.initialOrderPrice.asMoneyAmount.value,
+                                orderBook: orderBook)
+            case .UNRECOGNIZED(_), .executionReportStatusCancelled, .executionReportStatusRejected, .executionReportStatusUnspecified:
+                self?.log("Failed to post stop order: \($0.executionReportStatus)")
+            }
         }
     }
+}
 
-    func postOrder(price: Decimal, direction: OrderDirection) {
+// MARK: Interactor
+
+private extension ContestStrategy {
+
+    func postOrder(price: Decimal, direction: OrderDirection, _ completion: @escaping (PostOrderResponse) -> Void) {
         var request = PostOrderRequest()
         request.price = price.asQuotation
         request.direction = direction
@@ -213,116 +301,179 @@ private extension ContestStrategy {
         request.accountID = config.accountID
 
         postOrder(request: request)
-            .sink { result in
+            .sink { [weak self] result in
               switch result {
               case .failure(let error):
-                  print(error)
+                  self?.state = .error("\(error)")
               case .finished:
-                  print("did finish loading postOrder")
+                  self?.log("PostOrder finished")
               }
-            } receiveValue: { [weak self] in
-                self?.receive(orderStatus: $0.executionReportStatus, orderResponse: $0)
+            } receiveValue: {
+                completion($0)
             }.store(in: &cancellables)
     }
 
-    func receive(orderStatus: OrderExecutionReportStatus, orderResponse: PostOrderResponse) {
-        let executionReportStatus = orderResponse.executionReportStatus
-        print("Response \(orderResponse.orderID): \(executionReportStatus)")
-        switch executionReportStatus {
-        case .executionReportStatusFill:
-            receive(orderResponse: orderResponse)
-        case .executionReportStatusCancelled, .executionReportStatusRejected:
-            state = .pending
-        case .executionReportStatusNew:
-            if case State.postOrder = state {
-                state = .orderCreated(orderResponse)
-            } else if case State.stopOrder(let bounds, _) = state {
-                state = .stopCreated(orderResponse, bounds)
-            }
-        case .executionReportStatusPartiallyfill:
-            break
-        case .UNRECOGNIZED, .executionReportStatusUnspecified:
-            fatalError("⚠️ Unknown response status: \(executionReportStatus)")
+    func openDeal(order: Deal.Order?, orderID: String, direction: OrderDirection, price: Decimal, orderBook: OrderBook) {
+        guard let openOrder = order ?? Deal.Order.open(orderID: orderID, direction: direction, price: price, orderBook: orderBook),
+              let bounds = getStopBounds(orderPrice: price, direction: direction) else {
+            preDealOrder = nil
+            state = .error("OpenDeal: missing openOrder or bounds (direction: \(direction.rawValue))")
+            return
         }
+
+        deal = Deal(robotId: robot.id,
+                    open: openOrder.closed(with: orderBook),
+                    close: nil,
+                    currency: config.currency.rawValue,
+                    quantity: Int(config.orderQuantity),
+                    stopLoss: bounds.sl,
+                    takeProfit: bounds.tp)
+        preDealOrder = nil
+
+        state = .openOrderExecuted
     }
 
-    func getOrderStatus(response: PostOrderResponse, orderBook: OrderBook) {
-        if ((response.direction == .buy
-             && !orderBook.asks.isEmpty
-             && orderBook.asks[0].price.asAmount >= response.initialSecurityPrice.asMoneyAmount.value)
-            || (response.direction == .sell
-                && !orderBook.bids.isEmpty
-                && orderBook.bids[0].price.asAmount <= response.initialSecurityPrice.asMoneyAmount.value)) {
-            getOrderStatus(id: response.orderID)
+    func getStopBounds(orderPrice: Decimal, direction: OrderDirection) -> StopBounds? {
+        let stopBounds: StopBounds?
+
+        switch direction {
+        case .buy:
+            let tp = orderPrice * (1 + Decimal(config.takeProfitPercent) / 100)
+            let sl = orderPrice * (1 - Decimal(config.stopLossPercent) / 100)
+            stopBounds = StopBounds(sl: sl, tp: tp)
+        case .sell:
+            let sl = orderPrice * (1 + Decimal(config.stopLossPercent) / 100)
+            let tp = orderPrice * (1 - Decimal(config.takeProfitPercent) / 100)
+            stopBounds = StopBounds(sl: sl, tp: tp)
+        default:
+            stopBounds = nil
         }
+        return stopBounds
     }
 
-    func getOrderStatus(id: String) {
-        getOrderState(accountID: config.accountID, orderID: id)
-            .sink { result in
+    func closeDeal(order: Deal.Order?, orderID: String, direction: OrderDirection, price: Decimal, orderBook: OrderBook) {
+        guard let closeOrder = order ?? Deal.Order.open(orderID: orderID, direction: direction, price: price, orderBook: orderBook),
+              let deal = deal?.closed(with: closeOrder, orderBook: orderBook)
+        else {
+            preDealOrder = nil
+            state = .error("OpenDeal: missing deal or closeOrder")
+            return
+        }
+
+        self.deal = nil
+        preDealOrder = nil
+        state = .pending
+        storeHistory(deal: deal)
+    }
+
+    func cancelOrder(order: Deal.Order?) {
+        guard let order = order else { return }
+        cancelOrder(accountID: config.accountID, orderID: order.id)
+            .sink { [weak self] result in
               switch result {
               case .failure(let error):
-                  print(error)
+                  self?.log("\(error)")
               case .finished:
-                  print("did finish getOrderState")
+                  self?.log("Order canceled")
               }
-            } receiveValue: { [weak self] in
-                print("receiveValue getOrderState: \($0.executionReportStatus)")
-                if let state = self?.state,
-                   case State.orderCreated(let response) = state {
-                    self?.receive(orderStatus: $0.executionReportStatus, orderResponse: response)
-                }
+            } receiveValue: { [weak self] _ in
+                self?.completeDealCancel(order: order)
             }.store(in: &cancellables)
     }
 
-    func receive(orderResponse: PostOrderResponse) {
-
-        let orderPrice = orderResponse.initialOrderPrice.asMoneyAmount.value
-
-        switch state {
-        case .postOrder:
-            switch orderResponse.direction {
-            case .buy:
-                let tp = orderPrice * (1 + Decimal(config.takeProfitPercent) / 100)
-                let sl = orderPrice * (1 - Decimal(config.stopLossPercent) / 100)
-                let stopBounds = StopBounds(sl: sl, tp: tp)
-                state = .orderPosted(orderResponse, stopBounds)
-            case .sell:
-                let sl = orderPrice * (1 + Decimal(config.stopLossPercent) / 100)
-                let tp = orderPrice * (1 - Decimal(config.takeProfitPercent) / 100)
-                let stopBounds = StopBounds(sl: sl, tp: tp)
-                state = .orderPosted(orderResponse, stopBounds)
-            default:
-                state = .error
-            }
-
-        case .stopCreated:
-            state = .pending
-
-        case .pending, .orderPosted, .error, .orderCreated, .stopOrder, .stopped:
-            print("⚠️ Invalid state")
-            break
-        }
-    }
-
-    func cancelOrders() {
-        #warning("todo")
+    func completeDealCancel(order: Deal.Order) {
+        let deal = Deal(robotId: robot.id,
+                        open: self.deal?.open ?? order,
+                        close: self.deal?.open != nil ? order : nil,
+                        currency: config.currency.rawValue,
+                        quantity: Int(config.orderQuantity),
+                        stopLoss: self.deal?.stopLoss ?? 0,
+                        takeProfit: self.deal?.takeProfit ?? 0)
+        storeHistory(deal: deal)
     }
 }
 
-// MARK: Interactor
+// MARK: SDK
 
-private extension ContestStrategy {
+extension ContestStrategy {
 
     func postOrder(request: PostOrderRequest) -> AnyPublisher<PostOrderResponse, RPCError> {
         return sdk.sandboxService.postOrder(request: request)
+    }
+
+    func cancelOrder(accountID: String, orderID: String) -> AnyPublisher<CancelOrderResponse, RPCError> {
+        return sdk.sandboxService.cancelOrder(accountID: accountID, orderID: orderID)
     }
 
     func getOrderState(accountID: String, orderID: String) -> AnyPublisher<OrderState, RPCError> {
         return sdk.sandboxService.getOrderState(accountID: accountID, orderID: orderID)
     }
 
-    func storeHistory(trade: Trade) {
-        history.append(trade)
+    func storeHistory(deal: Deal) {
+        database.addDeal(deal)
+    }
+}
+
+// MARK: Helpers
+
+extension ContestStrategy {
+
+    fileprivate struct StopBounds {
+        let sl: Decimal
+        let tp: Decimal
+    }
+
+    var config: ContestStrategy.Config {
+        robot.config as! ContestStrategy.Config
+    }
+
+    func log(_ message: String = "") {
+        print("🤖 [\(state)] \(message)")
+    }
+}
+
+extension Deal.Order {
+
+    static func `open`(response: PostOrderResponse, orderBook: OrderBook) -> Deal.Order? {
+        open(orderID: response.orderID, direction: response.direction, price: response.initialOrderPrice.asMoneyAmount.value, orderBook: orderBook)
+    }
+
+    static func `open`(orderID: String, direction: OrderDirection, price: Decimal, orderBook: OrderBook) -> Deal.Order? {
+        guard let direction = Deal.Order.Direction(rawValue: direction.rawValue) else { return nil }
+        return Deal.Order(id: orderID,
+                          opened: Deal.Order.Book(orderBook),
+                          closed: nil,
+                          direction: direction,
+                          price: price)
+    }
+
+    func closed(with orderBook: OrderBook) -> Deal.Order {
+        return Deal.Order(id: id,
+                          opened: opened,
+                          closed: Deal.Order.Book(orderBook),
+                          direction: direction,
+                          price: price)
+    }
+}
+
+extension Deal.Order.Book {
+
+    init(_ orderBook: OrderBook) {
+        self.init(asks: orderBook.asks.map { Order(price: $0.price.asAmount, quantity: $0.quantity) },
+                  bids: orderBook.bids.map { Order(price: $0.price.asAmount, quantity: $0.quantity) },
+                  date: orderBook.time.date)
+    }
+}
+
+extension Deal {
+
+    func closed(with closeOrder: Deal.Order, orderBook: OrderBook) -> Deal {
+        return Deal(robotId: robotId,
+                    open: self.open,
+                    close: closeOrder.closed(with: orderBook),
+                    currency: currency,
+                    quantity: quantity,
+                    stopLoss: stopLoss,
+                    takeProfit: takeProfit)
     }
 }

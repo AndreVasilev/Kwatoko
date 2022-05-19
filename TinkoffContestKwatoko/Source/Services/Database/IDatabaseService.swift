@@ -19,4 +19,5 @@ protocol IDatabaseService {
 
     // MARK: Deals
     func fetchDeals(robotId: String) -> [Deal]
+    func addDeal(_ deal: Deal)
 }
