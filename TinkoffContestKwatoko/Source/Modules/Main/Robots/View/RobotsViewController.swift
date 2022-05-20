@@ -102,6 +102,14 @@ extension RobotsViewController: UITableViewDelegate {
         default: return
         }
     }
+
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let section = presenter.sections[indexPath.section]
+        switch section {
+        case .info, .actions: return
+        case .robots: presenter.showRobotConfig(at: indexPath)
+        }
+    }
 }
 
 // MARK: Dequeue

@@ -57,6 +57,8 @@ final class AddRobotPresenter: BasePresenter {
     var config: IStrategyConfig?
     var robotName: String? = "Робот \(Date())"
 
+    let isEditable = true
+
     init(interactor: IAddRobotInteractor, router: IAddRobotRouter) {
         self.interactor = interactor
         self.router = router

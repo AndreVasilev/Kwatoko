@@ -162,6 +162,7 @@
 		55C717072837A88600111D61 /* ContestStrategyConfigEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C717062837A88600111D61 /* ContestStrategyConfigEntity.swift */; };
 		55C717092837A89300111D61 /* InstrumentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C717082837A89300111D61 /* InstrumentEntity.swift */; };
 		55C7170B2837ACA700111D61 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7170A2837ACA700111D61 /* UIAlertController.swift */; };
+		55C7170D2837CCE900111D61 /* RobotConfigPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7170C2837CCE900111D61 /* RobotConfigPresenter.swift */; };
 		55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55DB2496283241740084A499 /* TinkoffInvestSDK */; };
 		55DC01A02834EC880049467C /* RobotsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC019F2834EC880049467C /* RobotsInfoCell.swift */; };
 		55DC01A22834EC980049467C /* RobotsRobotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01A12834EC980049467C /* RobotsRobotCell.swift */; };
@@ -404,6 +405,7 @@
 		55C717062837A88600111D61 /* ContestStrategyConfigEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestStrategyConfigEntity.swift; sourceTree = "<group>"; };
 		55C717082837A89300111D61 /* InstrumentEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentEntity.swift; sourceTree = "<group>"; };
 		55C7170A2837ACA700111D61 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
+		55C7170C2837CCE900111D61 /* RobotConfigPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotConfigPresenter.swift; sourceTree = "<group>"; };
 		55DB2494283241360084A499 /* TinkoffInvestSwiftSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TinkoffInvestSwiftSDK; path = ../TinkoffInvestSwiftSDK; sourceTree = "<group>"; };
 		55DC019F2834EC880049467C /* RobotsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsInfoCell.swift; sourceTree = "<group>"; };
 		55DC01A12834EC980049467C /* RobotsRobotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsRobotCell.swift; sourceTree = "<group>"; };
@@ -1581,6 +1583,7 @@
 			children = (
 				9CFD0310D322F46903D550A5 /* AddRobotPresenter.swift */,
 				27658DD661553E6EE80FF3CF /* IAddRobotPresenter.swift */,
+				55C7170C2837CCE900111D61 /* RobotConfigPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1789,6 +1792,7 @@
 				551F8C6728325F290044C7EA /* UICollectionView.swift in Sources */,
 				55DC01A42834ED3C0049467C /* RobotsActionCell.swift in Sources */,
 				551F8C7428325F290044C7EA /* AppDelegate.swift in Sources */,
+				55C7170D2837CCE900111D61 /* RobotConfigPresenter.swift in Sources */,
 				551F8C7128325F290044C7EA /* Calendar+Utilities.swift in Sources */,
 				55C717012837A7A300111D61 /* BookOrderEntity.swift in Sources */,
 				55C716F7283680C100111D61 /* ContestStrategyConfig.swift in Sources */,

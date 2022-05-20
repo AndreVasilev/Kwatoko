@@ -9,5 +9,6 @@ import Foundation
 
 protocol IHistoryRouter: IBaseRouter {
 
-    func showRobotHistory(_ robot: Robot)
+    func showHistory(robot: Robot)
+    func showConfig(robot: Robot)
 }

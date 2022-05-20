@@ -15,4 +15,5 @@ protocol IHistoryPresenter: ILifeCycleOutput {
 
     func robotModel(at indexPath: IndexPath) -> RobotsPresenter.RobotModel
     func didSelectRow(at indexPath: IndexPath)
+    func showRobotConfig(at indexPath: IndexPath)
 }

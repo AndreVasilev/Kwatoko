@@ -51,7 +51,7 @@ private extension HistoryPresenter {
 
     func showRobotHistory(at index: Int) {
         let robot = robots[index]
-        router.showRobotHistory(robot)
+        router.showHistory(robot: robot)
     }
 }
 
@@ -71,5 +71,10 @@ extension HistoryPresenter: IHistoryPresenter {
         case .robots:
             showRobotHistory(at: indexPath.row)
         }
+    }
+
+    func showRobotConfig(at indexPath: IndexPath) {
+        let robot = robots[indexPath.row]
+        router.showConfig(robot: robot)
     }
 }

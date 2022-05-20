@@ -35,4 +35,9 @@ extension RobotsRouter: IRobotsRouter {
 
         viewController?.show(controller, sender: nil)
     }
+
+    func showConfig(robot: Robot) {
+        let controller = addRobotAssembly.build(robot: robot).viewController
+        viewController?.show(controller, sender: nil)
+    }
 }

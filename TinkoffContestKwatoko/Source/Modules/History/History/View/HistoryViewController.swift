@@ -74,6 +74,13 @@ extension HistoryViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         presenter.didSelectRow(at: indexPath)
     }
+
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let section = presenter.sections[indexPath.section]
+        switch section {
+        case .robots: presenter.showRobotConfig(at: indexPath)
+        }
+    }
 }
 
 // MARK: Dequeue

@@ -29,6 +29,20 @@ final class AddRobotAssembly: IAssembly {
         return ViperModule(viewController: viewController, router: router)
     }
 
+    func build(robot: Robot) -> ViperModule<AddRobotViewController, IAddRobotRouter> {
+        let router = AddRobotRouter(strategiesAssembly: modulesFactory.buildAssembly(),
+                                    instrumentsAssembly: modulesFactory.buildAssembly(),
+                                    orderBookAssembly: modulesFactory.buildAssembly())
+        let interactor = AddRobotInteractor(database: modulesFactory.core.databaseService)
+        let presenter = RobotConfigPresenter(interactor: interactor, router: router, robot: robot)
+        let viewController = getViewController(presenter: presenter)
+
+        presenter.viewController = viewController
+        router.viewController = viewController
+
+        return ViperModule(viewController: viewController, router: router)
+    }
+
     func getViewController(presenter: IAddRobotPresenter) -> AddRobotViewController {
         let viewController: AddRobotViewController
         if let controller = UIStoryboard(name: "AddRobot", bundle: nil).instantiateInitialViewController() as? AddRobotViewController {

@@ -11,4 +11,5 @@ protocol IRobotsRouter: IBaseRouter {
 
     func showAddRobot()
     func showRobot(_ robot: Robot)
+    func showConfig(robot: Robot)
 }

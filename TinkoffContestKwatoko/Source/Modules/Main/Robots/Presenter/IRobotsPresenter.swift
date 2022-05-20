@@ -19,4 +19,5 @@ protocol IRobotsPresenter: ILifeCycleOutput {
     func didSelectRow(at indexPath: IndexPath)
     func setRobotState(running: Bool, at indexPath: IndexPath)
     func deleteRobot(at index: Int)
+    func showRobotConfig(at indexPath: IndexPath)
 }

@@ -65,7 +65,7 @@ class ContestStrategyConfigCell: UITableViewCell {
         configure()
     }
 
-    func configure(model: Model?, _ onEdit: @escaping Action) {
+    func configure(model: Model?, isEditable: Bool, _ onEdit: @escaping Action) {
         guard let config = model?.config as? ContestStrategy.Config else { return }
         self.config = config
         self.onEdit = onEdit
@@ -75,8 +75,8 @@ class ContestStrategyConfigCell: UITableViewCell {
         edgeQuantityTextField.text = "\(config.edgeQuantity)"
         orderQuantityTextField.text = "\(config.orderQuantity)"
         orderDeltaTextField.text = "\(config.orderDelta)"
-        stopLossPercentTextField.text = "\(Int(config.stopLossPercent * 100))"
-        takeProfitPercentTextField.text = "\(Int(config.takeProfitPercent * 100))"
+        stopLossPercentTextField.text = "\(config.stopLossPercent)"
+        takeProfitPercentTextField.text = "\(config.takeProfitPercent)"
 
         let direction: Direction
         switch config.orderDirection {
@@ -87,6 +87,8 @@ class ContestStrategyConfigCell: UITableViewCell {
         if let index = directions.firstIndex(of: direction) {
             orderDirectionSegmentedControl.setEnabled(true, forSegmentAt: index)
         }
+
+        subviews.forEach { $0.isUserInteractionEnabled = isEditable }
     }
 }
 
@@ -123,6 +125,8 @@ private extension ContestStrategyConfigCell {
     }
 
     func configure() {
+        selectionStyle = .none
+
         nameLabel.text = "Название робота"
         depthLabel.text = "Глубина стакана"
         orderDirectionLabel.text = "Направление торговли"

@@ -108,13 +108,13 @@ private extension AddRobotViewController {
         case .config, .actions: value = nil
         }
         let title = value == nil ? section.description : nil
-        (cell as? AddRobotListCell)?.configure(title: title, value: value)
+        (cell as? AddRobotListCell)?.configure(title: title, value: value, isEditable: presenter.isEditable)
         return cell
     }
 
     func dequeueContestStrategyCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ContestStrategyConfigCell.reuseIdentifier, for: indexPath)
-        (cell as? ContestStrategyConfigCell)?.configure(model: presenter.configCellModel) { [weak self] in
+        (cell as? ContestStrategyConfigCell)?.configure(model: presenter.configCellModel, isEditable: presenter.isEditable) { [weak self] in
             self?.presenter.didEditConfig($0)
         }
         return cell

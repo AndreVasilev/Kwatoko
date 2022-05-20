@@ -16,6 +16,8 @@ protocol IAddRobotPresenter: ILifeCycleOutput {
     var instrument: IInstrument? { get }
     var configCellModel: ContestStrategyConfigCell.Model? { get }
 
+    var isEditable: Bool { get }
+
     func didSelectRow(at indexPath: IndexPath)
     func didEditConfig(_ model: ContestStrategyConfigCell.Model?)
 }

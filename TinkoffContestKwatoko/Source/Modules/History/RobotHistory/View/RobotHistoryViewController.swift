@@ -83,6 +83,14 @@ extension RobotHistoryViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         presenter.didSelectRow(at: indexPath)
     }
+
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let section = presenter.sections[indexPath.section]
+        switch section {
+        case .info: presenter.showRobotConfig()
+        case .chart, .deals: return
+        }
+    }
 }
 
 // MARK: Dequeue

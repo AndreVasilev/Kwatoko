@@ -17,8 +17,10 @@ class AddRobotListCell: UITableViewCell {
         // Initialization code
     }
 
-    func configure(title: String?, value: String?) {
+    func configure(title: String?, value: String?, isEditable: Bool) {
         titleLabel.text = title
         valueLabel.text = value
+        accessoryType = isEditable ? .disclosureIndicator : .none
+        selectionStyle = isEditable ? .default : .none
     }
 }

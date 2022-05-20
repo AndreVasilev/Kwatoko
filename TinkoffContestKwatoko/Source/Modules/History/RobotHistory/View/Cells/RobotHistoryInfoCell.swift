@@ -35,5 +35,6 @@ private extension RobotHistoryInfoCell {
 
     func configure() {
         selectionStyle = .none
+        accessoryType = .detailButton
     }
 }

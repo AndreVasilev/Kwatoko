@@ -10,16 +10,24 @@ import Foundation
 final class HistoryRouter: BaseRouter {
 
     let robotHistoryAssembly: RobotHistoryAssembly
+    let addRobotAssembly: AddRobotAssembly
 
-    init(robotHistoryAssembly: RobotHistoryAssembly) {
+    init(robotHistoryAssembly: RobotHistoryAssembly,
+         addRobotAssembly: AddRobotAssembly) {
         self.robotHistoryAssembly = robotHistoryAssembly
+        self.addRobotAssembly = addRobotAssembly
     }
 }
 
 extension HistoryRouter: IHistoryRouter {
 
-    func showRobotHistory(_ robot: Robot) {
+    func showHistory(robot: Robot) {
         let controller = robotHistoryAssembly.build(robot).viewController
+        viewController?.show(controller, sender: nil)
+    }
+
+    func showConfig(robot: Robot) {
+        let controller = addRobotAssembly.build(robot: robot).viewController
         viewController?.show(controller, sender: nil)
     }
 }

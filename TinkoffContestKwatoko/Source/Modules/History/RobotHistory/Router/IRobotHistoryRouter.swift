@@ -9,6 +9,7 @@ import Foundation
 
 protocol IRobotHistoryRouter: IBaseRouter {
 
-    func showDealDetails(deal: Deal)
+    func showDetails(deal: Deal)
     func showChart(deals: [Deal])
+    func showConfig(robot: Robot)
 }

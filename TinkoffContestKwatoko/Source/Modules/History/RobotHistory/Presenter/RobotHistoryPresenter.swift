@@ -67,7 +67,11 @@ extension RobotHistoryPresenter: IRobotHistoryPresenter {
             router.showChart(deals: deals)
         case .deals:
             let deal = deals[indexPath.row]
-            router.showDealDetails(deal: deal)
+            router.showDetails(deal: deal)
         }
+    }
+
+    func showRobotConfig() {
+        router.showConfig(robot: robot)
     }
 }

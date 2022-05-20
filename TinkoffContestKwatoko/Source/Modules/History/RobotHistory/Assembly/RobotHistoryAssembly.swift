@@ -17,7 +17,8 @@ final class RobotHistoryAssembly: IAssembly {
 
     func build(_ robot: Robot) -> ViperModule<RobotHistoryViewController, IRobotHistoryRouter> {
         let router = RobotHistoryRouter(dealDetailsAssembly: modulesFactory.buildAssembly(),
-                                        robotChartAssembly: modulesFactory.buildAssembly())
+                                        robotChartAssembly: modulesFactory.buildAssembly(),
+                                        addRobotAssembly: modulesFactory.buildAssembly())
         let interactor = RobotHistoryInteractor(database: modulesFactory.core.databaseService)
         let presenter = RobotHistoryPresenter(interactor: interactor, router: router, robot: robot)
         let viewController = getViewController(presenter: presenter)

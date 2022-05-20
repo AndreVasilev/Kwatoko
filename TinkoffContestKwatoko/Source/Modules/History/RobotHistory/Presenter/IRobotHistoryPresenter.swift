@@ -14,4 +14,5 @@ protocol IRobotHistoryPresenter: ILifeCycleOutput {
     var info: RobotHistoryInfoCell.Model { get }
 
     func didSelectRow(at indexPath: IndexPath)
+    func showRobotConfig()
 }

@@ -149,4 +149,9 @@ extension RobotsPresenter: IRobotsPresenter {
         }
         router.present(controller, animated: true)
     }
+
+    func showRobotConfig(at indexPath: IndexPath) {
+        let robot = robots[indexPath.row]
+        router.showConfig(robot: robot)
+    }
 }

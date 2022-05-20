@@ -34,6 +34,7 @@ private extension RobotsRobotCell {
 
     func configure() {
         actionButton.isHidden = true
+        accessoryType = .detailButton
     }
 
     @objc func actionButtonTapped(_ sender: UIButton) {
