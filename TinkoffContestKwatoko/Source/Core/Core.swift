@@ -9,7 +9,7 @@ import TinkoffInvestSDK
 
 class Core {
 
-    private let appName = "AndreVasilev.TinkoffContestKwatoko"
+    private let appName = "AndreVasilev.Kwatoko"
 
     private(set) lazy var sdk: TinkoffInvestSDK = {
         let profile = databaseService.profile
