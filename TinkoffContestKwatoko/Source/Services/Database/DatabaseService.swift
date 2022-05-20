@@ -28,11 +28,22 @@ class DatabaseService {
 
 extension DatabaseService: IDatabaseService {
 
-    var profile: ProfileEntity? {
+    var profile: Profile? {
+        guard let entity = profileEntity,
+              let token = entity.token,
+              let sandboxToken = entity.sandboxToken
+        else { return nil }
+
+        return Profile(token: token,
+                       sandboxToken: sandboxToken,
+                       selectedAccountId: entity.selectedAccountId)
+    }
+
+    private var profileEntity: ProfileEntity? {
         do {
             let request = ProfileEntity.fetchRequest()
-            let profiles = try persistentContainer.viewContext.fetch(request)
-            return profiles.first
+            let entities = try persistentContainer.viewContext.fetch(request)
+            return entities.first
         } catch {
             print(error)
             return nil
@@ -40,25 +51,23 @@ extension DatabaseService: IDatabaseService {
     }
 
     func updateProfile(token: String, sandboxToken: String, accountId: String?) {
-        if let entity = profile {
-            entity.token = token
-            entity.sandboxToken = sandboxToken
-            entity.selectedAccountId = accountId
-            saveContext()
-        } else {
-            do {
-                let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "ProfileEntity")
-                let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-                try persistentContainer.viewContext.execute(deleteRequest)
+        do {
+            if let entity = profileEntity {
+                entity.token = token
+                entity.sandboxToken = sandboxToken
+                entity.selectedAccountId = accountId
+            } else {
+                try deleteAll(entity: "ProfileEntity")
 
                 let entity = ProfileEntity(context: persistentContainer.viewContext)
                 entity.token = token
                 entity.sandboxToken = sandboxToken
                 entity.selectedAccountId = accountId
-                saveContext()
-            } catch {
-                print(error)
             }
+            try saveContext()
+        } catch {
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
 }
@@ -100,38 +109,32 @@ extension DatabaseService {
         }
     }
 
-    func deleteRobot(id: String, configId: String) {
+    func deleteRobot(id: String) {
         do {
-            try deleteEntity("ContestStrategyConfigEntity", id: configId)
             try deleteEntity("RobotEntity", id: id)
+            try saveContext()
         } catch {
             print(error)
         }
     }
 
     private func addRobot(name: String, contestStrategy strategy: Strategy, config: ContestStrategy.Config) -> Robot? {
-        let configEntity = ContestStrategyConfigEntity(context: persistentContainer.viewContext)
-        configEntity.id = config.id
-        configEntity.accountID = config.accountID
-        configEntity.figi = config.figi
-        configEntity.currency = config.currency.rawValue
-        configEntity.depth = Int16(config.depth)
-        configEntity.orderDirection = Int16(config.orderDirection.rawValue)
-        configEntity.edgeQuantity = config.edgeQuantity
-        configEntity.orderQuantity = config.orderQuantity
-        configEntity.orderDelta = NSDecimalNumber(decimal: config.orderDelta)
-        configEntity.stopLossPercent = config.stopLossPercent
-        configEntity.takeProfitPercent = config.takeProfitPercent
 
         let robotEntity = RobotEntity(context: persistentContainer.viewContext)
         robotEntity.id = UUID().uuidString
         robotEntity.name = name
         robotEntity.strategy = strategy.rawValue
-        robotEntity.config = configEntity
+        robotEntity.config = ContestStrategyConfigEntity(config: config, context: persistentContainer.viewContext)
         robotEntity.created = Date()
-        saveContext()
 
-        return Robot(robotEntity)
+        do {
+            try saveContext()
+            return Robot(robotEntity)
+        } catch {
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
+            return nil
+        }
     }
 }
 
@@ -140,18 +143,43 @@ extension DatabaseService {
 extension DatabaseService {
 
     func fetchDeals(robotId: String) -> [Deal] {
-        let currency = fetchRobot(id: robotId)?.config.currencyValue ?? "rub"
-        return Deal.demoList(robotId: robotId, currency: currency)
+//        let currency = fetchRobot(id: robotId)?.config.instrument.currency ?? "rub"
+//        return Deal.demoList(robotId: robotId, currency: currency)
+
+        do {
+            let request = DealEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "robotId == %@", robotId)
+            let entities = try persistentContainer.viewContext.fetch(request)
+            return entities
+                .compactMap { Deal($0) }
+                .sorted(by: { $1.date < $0.date })
+        } catch {
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
+            return []
+        }
     }
 
     func addDeal(_ deal: Deal) {
-        
+        do {
+            _ = DealEntity(deal: deal, context: persistentContainer.viewContext)
+            try saveContext()
+        } catch {
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
+        }
     }
 }
 
 // MARK: Private
 
 private extension DatabaseService {
+
+    func deleteAll(entity name: String) throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        try persistentContainer.viewContext.execute(deleteRequest)
+    }
 
     func deleteEntity(_ name: String, id: String) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: name)
@@ -163,15 +191,9 @@ private extension DatabaseService {
 
     // MARK: - Core Data Saving support
 
-    func saveContext () {
+    func saveContext () throws {
         let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                let nserror = error as NSError
-                print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
-            }
-        }
+        guard context.hasChanges else { return }
+        try context.save()
     }
 }

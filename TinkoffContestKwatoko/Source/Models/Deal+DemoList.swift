@@ -19,7 +19,7 @@ extension Deal {
             }
     }
 
-    static private func buildDeal(robotId: String, currency: String, direction: Order.Direction, openPrice: Decimal, profit: Decimal, quantiy: Int = 10) -> Deal {
+    static private func buildDeal(robotId: String, currency: String, direction: Order.Direction, openPrice: Decimal, profit: Decimal, quantiy: Int64 = 10) -> Deal {
         let stopLoss: Decimal
         let takeProfit: Decimal
         let closeDirection: Order.Direction

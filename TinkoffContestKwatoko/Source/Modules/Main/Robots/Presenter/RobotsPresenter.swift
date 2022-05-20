@@ -141,9 +141,12 @@ extension RobotsPresenter: IRobotsPresenter {
     }
 
     func deleteRobot(at index: Int) {
-        let robot = robots.remove(at: index)
-        interactor.stopRobot(robot)
-        interactor.deleteRobot(robot)
-        viewController?.reloadData()
+        let controller = UIAlertController(confirm: "Вы уверены, что хотите удалить робота?", action: "Удалить") { [weak self] in
+            guard let robot = self?.robots.remove(at: index) else { return }
+            self?.interactor.stopRobot(robot)
+            self?.interactor.deleteRobot(robot)
+            self?.viewController?.reloadData()
+        }
+        router.present(controller, animated: true)
     }
 }

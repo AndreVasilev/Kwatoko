@@ -28,7 +28,7 @@
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="ImV-fW-ks1" secondAttribute="trailing" id="L2p-wS-fX1"/>
                     <constraint firstAttribute="bottom" secondItem="ImV-fW-ks1" secondAttribute="bottom" id="Qj4-0d-YeU"/>
-                    <constraint firstItem="ImV-fW-ks1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WMU-YL-rJ3"/>
+                    <constraint firstItem="ImV-fW-ks1" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" id="WMU-YL-rJ3"/>
                     <constraint firstItem="ImV-fW-ks1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="bk3-9w-geR"/>
                 </constraints>
             </tableViewCellContentView>

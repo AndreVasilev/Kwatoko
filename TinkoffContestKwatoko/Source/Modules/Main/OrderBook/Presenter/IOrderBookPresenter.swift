@@ -10,6 +10,7 @@ import Foundation
 protocol IOrderBookPresenter: ILifeCycleOutput {
 
     var sections: [OrderBookPresenter.Section] { get }
+    var isRunning: Bool { get }
 
     func setState(running: Bool)
     func rows(in section: OrderBookPresenter.Section) -> [OrderBookPresenter.RowModel]

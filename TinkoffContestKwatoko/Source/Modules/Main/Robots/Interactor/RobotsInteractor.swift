@@ -23,7 +23,7 @@ extension RobotsInteractor: IRobotsInteractor {
     }
 
     func deleteRobot(_ robot: Robot) {
-        database.deleteRobot(id: robot.id, configId: robot.config.id)
+        database.deleteRobot(id: robot.id)
     }
 
     var runningRobotsCount: Int { 0 }

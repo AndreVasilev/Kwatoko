@@ -10,8 +10,7 @@ import TinkoffInvestSDK
 
 protocol IStrategy {
 
-    var figi: String { get }
-    var currency: MoneyCurrency { get }
+    var instrument: IInstrument { get }
     var isRunning: Bool { get }
 
     func run()

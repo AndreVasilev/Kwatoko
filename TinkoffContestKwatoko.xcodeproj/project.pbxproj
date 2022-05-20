@@ -154,6 +154,14 @@
 		55C716F4283678A900111D61 /* RobotChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 55C716F2283678A900111D61 /* RobotChartCell.xib */; };
 		55C716F7283680C100111D61 /* ContestStrategyConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C716F6283680C100111D61 /* ContestStrategyConfig.swift */; };
 		55C716F92836813900111D61 /* IStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C716F82836813900111D61 /* IStrategy.swift */; };
+		55C716FB283798B400111D61 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C716FA283798B400111D61 /* Profile.swift */; };
+		55C716FD2837A5A800111D61 /* DealOrderEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C716FC2837A5A800111D61 /* DealOrderEntity.swift */; };
+		55C716FF2837A66400111D61 /* DealOrderBookEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C716FE2837A66400111D61 /* DealOrderBookEntity.swift */; };
+		55C717012837A7A300111D61 /* BookOrderEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C717002837A7A300111D61 /* BookOrderEntity.swift */; };
+		55C717032837A82000111D61 /* DealEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C717022837A82000111D61 /* DealEntity.swift */; };
+		55C717072837A88600111D61 /* ContestStrategyConfigEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C717062837A88600111D61 /* ContestStrategyConfigEntity.swift */; };
+		55C717092837A89300111D61 /* InstrumentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C717082837A89300111D61 /* InstrumentEntity.swift */; };
+		55C7170B2837ACA700111D61 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7170A2837ACA700111D61 /* UIAlertController.swift */; };
 		55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55DB2496283241740084A499 /* TinkoffInvestSDK */; };
 		55DC01A02834EC880049467C /* RobotsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC019F2834EC880049467C /* RobotsInfoCell.swift */; };
 		55DC01A22834EC980049467C /* RobotsRobotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01A12834EC980049467C /* RobotsRobotCell.swift */; };
@@ -388,6 +396,14 @@
 		55C716F2283678A900111D61 /* RobotChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobotChartCell.xib; sourceTree = "<group>"; };
 		55C716F6283680C100111D61 /* ContestStrategyConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestStrategyConfig.swift; sourceTree = "<group>"; };
 		55C716F82836813900111D61 /* IStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IStrategy.swift; sourceTree = "<group>"; };
+		55C716FA283798B400111D61 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		55C716FC2837A5A800111D61 /* DealOrderEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealOrderEntity.swift; sourceTree = "<group>"; };
+		55C716FE2837A66400111D61 /* DealOrderBookEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealOrderBookEntity.swift; sourceTree = "<group>"; };
+		55C717002837A7A300111D61 /* BookOrderEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookOrderEntity.swift; sourceTree = "<group>"; };
+		55C717022837A82000111D61 /* DealEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealEntity.swift; sourceTree = "<group>"; };
+		55C717062837A88600111D61 /* ContestStrategyConfigEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestStrategyConfigEntity.swift; sourceTree = "<group>"; };
+		55C717082837A89300111D61 /* InstrumentEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentEntity.swift; sourceTree = "<group>"; };
+		55C7170A2837ACA700111D61 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		55DB2494283241360084A499 /* TinkoffInvestSwiftSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TinkoffInvestSwiftSDK; path = ../TinkoffInvestSwiftSDK; sourceTree = "<group>"; };
 		55DC019F2834EC880049467C /* RobotsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsInfoCell.swift; sourceTree = "<group>"; };
 		55DC01A12834EC980049467C /* RobotsRobotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsRobotCell.swift; sourceTree = "<group>"; };
@@ -808,6 +824,7 @@
 				55DC01BC283538DA0049467C /* Robot.swift */,
 				55DC01C2283635BE0049467C /* Deal.swift */,
 				556390DB28363BD5000EC23E /* Deal+DemoList.swift */,
+				55C716FA283798B400111D61 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -817,6 +834,7 @@
 			children = (
 				551F8BEF28325F290044C7EA /* AVExtensionsCollection */,
 				551F8BFB28325F290044C7EA /* External */,
+				55C7170A2837ACA700111D61 /* UIAlertController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1072,6 +1090,12 @@
 			isa = PBXGroup;
 			children = (
 				554589082833C24E00196B02 /* ProfileEntity.swift */,
+				55C716FC2837A5A800111D61 /* DealOrderEntity.swift */,
+				55C716FE2837A66400111D61 /* DealOrderBookEntity.swift */,
+				55C717002837A7A300111D61 /* BookOrderEntity.swift */,
+				55C717022837A82000111D61 /* DealEntity.swift */,
+				55C717062837A88600111D61 /* ContestStrategyConfigEntity.swift */,
+				55C717082837A89300111D61 /* InstrumentEntity.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1718,9 +1742,11 @@
 				551F8C7B28325F290044C7EA /* IBaseRouter.swift in Sources */,
 				551F8C7928325F290044C7EA /* BasePresenter.swift in Sources */,
 				551F8C7628325F290044C7EA /* ViperModule.swift in Sources */,
+				55C717032837A82000111D61 /* DealEntity.swift in Sources */,
 				551F8C6828325F290044C7EA /* String.swift in Sources */,
 				551F8C3228325F290044C7EA /* Fonts.swift in Sources */,
 				554589092833C24E00196B02 /* ProfileEntity.swift in Sources */,
+				55C716FD2837A5A800111D61 /* DealOrderEntity.swift in Sources */,
 				551F8C8828325F290044C7EA /* DatabaseService.swift in Sources */,
 				551F8C7F28325F290044C7EA /* RootPresenter.swift in Sources */,
 				551F8C7028325F290044C7EA /* Date+Formatting.swift in Sources */,
@@ -1728,10 +1754,12 @@
 				551F8C6328325F290044C7EA /* UIColor.swift in Sources */,
 				556390E328364B14000EC23E /* RobotHistoryDealCell.swift in Sources */,
 				551F8C7D28325F290044C7EA /* RootAssembly.swift in Sources */,
+				55C7170B2837ACA700111D61 /* UIAlertController.swift in Sources */,
 				551F8C6A28325F290044C7EA /* DateFormatter.swift in Sources */,
 				551F8C5E28325F290044C7EA /* ICore.swift in Sources */,
 				556390E128364B08000EC23E /* RobotHistoryInfoCell.swift in Sources */,
 				551F8C9D28329B250044C7EA /* PostOrderDto.swift in Sources */,
+				55C716FB283798B400111D61 /* Profile.swift in Sources */,
 				551F8C3328325F290044C7EA /* Colors.swift in Sources */,
 				551F8C7E28325F290044C7EA /* IRootPresenter.swift in Sources */,
 				551F8C7A28325F290044C7EA /* BaseViewController.swift in Sources */,
@@ -1762,6 +1790,7 @@
 				55DC01A42834ED3C0049467C /* RobotsActionCell.swift in Sources */,
 				551F8C7428325F290044C7EA /* AppDelegate.swift in Sources */,
 				551F8C7128325F290044C7EA /* Calendar+Utilities.swift in Sources */,
+				55C717012837A7A300111D61 /* BookOrderEntity.swift in Sources */,
 				55C716F7283680C100111D61 /* ContestStrategyConfig.swift in Sources */,
 				551F8C6F28325F290044C7EA /* DateFormatter+formats.swift in Sources */,
 				556390DC28363BD5000EC23E /* Deal+DemoList.swift in Sources */,
@@ -1770,10 +1799,12 @@
 				55DC01AA2834FD0D0049467C /* ContestStrategy.swift in Sources */,
 				55DC01AF283500550049467C /* ContestStrategyConfigCell.swift in Sources */,
 				55DC01A22834EC980049467C /* RobotsRobotCell.swift in Sources */,
+				55C717072837A88600111D61 /* ContestStrategyConfigEntity.swift in Sources */,
 				551F8C8228325F290044C7EA /* IRootView.swift in Sources */,
 				551F8C8728325F290044C7EA /* IDatabaseService.swift in Sources */,
 				551F8C6528325F290044C7EA /* CGSize.swift in Sources */,
 				551F8C5F28325F290044C7EA /* Core.swift in Sources */,
+				55C716FF2837A66400111D61 /* DealOrderBookEntity.swift in Sources */,
 				55DC01C3283635BE0049467C /* Deal.swift in Sources */,
 				551F8C8A28325F290044C7EA /* INetworkService.swift in Sources */,
 				551F8C7728325F290044C7EA /* IAssembly.swift in Sources */,
@@ -1826,6 +1857,7 @@
 				5DBF5462A4CE21D3CE514FFA /* InstrumentsViewController.swift in Sources */,
 				7FD784081FA132DF8F572662 /* IInstrumentsView.swift in Sources */,
 				367B2EB78721EC7F2104BAB4 /* InstrumentsPresenter.swift in Sources */,
+				55C717092837A89300111D61 /* InstrumentEntity.swift in Sources */,
 				A8F76DC28C6E1F447A69E9DE /* IInstrumentsPresenter.swift in Sources */,
 				33F789FE70F43138BA048B42 /* InstrumentsInteractor.swift in Sources */,
 				D8AB14A1C51596BD6F41D2FB /* IInstrumentsInteractor.swift in Sources */,

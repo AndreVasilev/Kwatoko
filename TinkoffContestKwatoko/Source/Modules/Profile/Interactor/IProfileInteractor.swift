@@ -12,7 +12,7 @@ import CombineGRPC
 
 protocol IProfileInteractor {
 
-    var profile: ProfileEntity? { get }
+    var profile: Profile? { get }
 
     func updateProfile(token: String, sandboxToken: String, accountId: String?)
 

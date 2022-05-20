@@ -31,7 +31,7 @@ extension Robot {
     }
 
     var description: String {
-        return "\(strategy.name) :: \(config.figi)"
+        return "\(strategy.name) :: \(config.instrument.ticker)"
     }
 }
 

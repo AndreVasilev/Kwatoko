@@ -5,9 +5,9 @@
 //  Copyright © 2020 Andrey Vasilev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol IRootRouter: IBaseRouter {
 
-    func presentMain()
+    func presentMain(delegate: UITabBarControllerDelegate?)
 }

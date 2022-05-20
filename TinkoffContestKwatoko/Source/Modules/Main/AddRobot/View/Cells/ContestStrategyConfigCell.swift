@@ -102,9 +102,9 @@ private extension ContestStrategyConfigCell {
               orderQuantity > 0,
               let orderDelta = orderDeltaTextField.text?.toDecimal,
               orderDelta > 0,
-              let stopLossPercent = stopLossPercentTextField.text?.toInt,
+              let stopLossPercent = stopLossPercentTextField.text?.toDouble,
               stopLossPercent > 0,
-              let takeProfitPercent = takeProfitPercentTextField.text?.toInt,
+              let takeProfitPercent = takeProfitPercentTextField.text?.toDouble,
               takeProfitPercent > 0
         else { return nil }
 
@@ -112,15 +112,14 @@ private extension ContestStrategyConfigCell {
 
         return ContestStrategy.Config(id: config.id,
                                       accountID: config.accountID,
-                                      figi: config.figi,
-                                      currency: config.currency,
+                                      instrument: config.instrument,
                                       depth: depth,
                                       orderDirection: orderDirection,
                                       edgeQuantity: edgeQuantity,
                                       orderQuantity: orderQuantity,
                                       orderDelta: orderDelta,
-                                      stopLossPercent: Double(stopLossPercent) / 100,
-                                      takeProfitPercent: Double(takeProfitPercent) / 100)
+                                      stopLossPercent: stopLossPercent,
+                                      takeProfitPercent: takeProfitPercent)
     }
 
     func configure() {
@@ -136,15 +135,16 @@ private extension ContestStrategyConfigCell {
         [nameTextField,
          depthTextField,
          edgeQuantityTextField,
-         orderQuantityTextField,
-         stopLossPercentTextField,
-         takeProfitPercentTextField].forEach {
+         orderQuantityTextField].forEach {
             $0?.addTarget(self, action: #selector(didEndEditing(_:)), for: .editingDidEnd)
             $0?.keyboardType = .numberPad
         }
-
-        orderDeltaTextField.addTarget(self, action: #selector(didEndEditing(_:)), for: .editingDidEnd)
-        orderDeltaTextField.keyboardType = .decimalPad
+        [orderDeltaTextField,
+         stopLossPercentTextField,
+         takeProfitPercentTextField].forEach {
+            $0?.addTarget(self, action: #selector(didEndEditing(_:)), for: .editingDidEnd)
+            $0?.keyboardType = .decimalPad
+        }
 
         nameTextField.delegate = self
 

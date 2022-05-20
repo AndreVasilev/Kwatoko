@@ -65,16 +65,17 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8O-5P-gBI">
-                                                    <rect key="frame" x="20" y="10.5" width="46" height="23"/>
+                                                    <rect key="frame" x="20" y="10" width="46" height="23.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="K8O-5P-gBI" firstAttribute="centerY" secondItem="C5P-4V-2Je" secondAttribute="centerY" id="BYO-xm-N2L"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="K8O-5P-gBI" secondAttribute="trailing" id="KXE-cx-g9a"/>
+                                                <constraint firstItem="K8O-5P-gBI" firstAttribute="top" secondItem="C5P-4V-2Je" secondAttribute="top" constant="10" id="M7S-Nm-UXZ"/>
                                                 <constraint firstItem="K8O-5P-gBI" firstAttribute="leading" secondItem="C5P-4V-2Je" secondAttribute="leadingMargin" id="ee9-kY-kyf"/>
+                                                <constraint firstAttribute="bottom" secondItem="K8O-5P-gBI" secondAttribute="bottom" constant="10" id="zch-vH-J4A"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

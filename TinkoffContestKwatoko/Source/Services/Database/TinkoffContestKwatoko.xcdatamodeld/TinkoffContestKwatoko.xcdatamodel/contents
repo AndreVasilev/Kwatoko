@@ -1,18 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BookOrderEntity" representedClassName="BookOrderEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="askBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DealOrderBookEntity" inverseName="asks" inverseEntity="DealOrderBookEntity"/>
+        <relationship name="bidBook" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DealOrderBookEntity" inverseName="bids" inverseEntity="DealOrderBookEntity"/>
+    </entity>
     <entity name="ContestStrategyConfigEntity" representedClassName="ContestStrategyConfigEntity" syncable="YES" codeGenerationType="class">
         <attribute name="accountID" optional="YES" attributeType="String"/>
-        <attribute name="currency" optional="YES" attributeType="String"/>
         <attribute name="depth" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="edgeQuantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="figi" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="orderDelta" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="orderDirection" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="orderQuantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="stopLossPercent" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="takeProfitPercent" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="robot" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RobotEntity" inverseName="config" inverseEntity="RobotEntity"/>
+        <relationship name="instrument" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="InstrumentEntity" inverseName="config" inverseEntity="InstrumentEntity"/>
+        <relationship name="robot" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="RobotEntity" inverseName="config" inverseEntity="RobotEntity"/>
+    </entity>
+    <entity name="DealEntity" representedClassName="DealEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="currency" optional="YES" attributeType="String"/>
+        <attribute name="quantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="robotId" optional="YES" attributeType="String"/>
+        <attribute name="stopLoss" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <attribute name="takeProfit" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <relationship name="close" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DealOrderEntity" inverseName="closeDeal" inverseEntity="DealOrderEntity"/>
+        <relationship name="open" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DealOrderEntity" inverseName="openDeal" inverseEntity="DealOrderEntity"/>
+    </entity>
+    <entity name="DealOrderBookEntity" representedClassName="DealOrderBookEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="asks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BookOrderEntity" inverseName="askBook" inverseEntity="BookOrderEntity"/>
+        <relationship name="bids" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="BookOrderEntity" inverseName="bidBook" inverseEntity="BookOrderEntity"/>
+        <relationship name="closedOrder" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DealOrderEntity" inverseName="closed" inverseEntity="DealOrderEntity"/>
+        <relationship name="openedOrder" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DealOrderEntity" inverseName="opened" inverseEntity="DealOrderEntity"/>
+    </entity>
+    <entity name="DealOrderEntity" representedClassName="DealOrderEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="direction" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
+        <relationship name="closed" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DealOrderBookEntity" inverseName="closedOrder" inverseEntity="DealOrderBookEntity"/>
+        <relationship name="closeDeal" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DealEntity" inverseName="close" inverseEntity="DealEntity"/>
+        <relationship name="openDeal" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DealEntity" inverseName="open" inverseEntity="DealEntity"/>
+        <relationship name="opened" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="DealOrderBookEntity" inverseName="openedOrder" inverseEntity="DealOrderBookEntity"/>
+    </entity>
+    <entity name="InstrumentEntity" representedClassName="InstrumentEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="currency" optional="YES" attributeType="String"/>
+        <attribute name="figi" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="ticker" optional="YES" attributeType="String"/>
+        <relationship name="config" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ContestStrategyConfigEntity" inverseName="instrument" inverseEntity="ContestStrategyConfigEntity"/>
     </entity>
     <entity name="ProfileEntity" representedClassName="ProfileEntity" syncable="YES" codeGenerationType="class">
         <attribute name="sandboxToken" optional="YES" attributeType="String"/>
@@ -24,11 +61,16 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="strategy" optional="YES" attributeType="String"/>
-        <relationship name="config" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ContestStrategyConfigEntity" inverseName="robot" inverseEntity="ContestStrategyConfigEntity"/>
+        <relationship name="config" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ContestStrategyConfigEntity" inverseName="robot" inverseEntity="ContestStrategyConfigEntity"/>
     </entity>
     <elements>
-        <element name="ProfileEntity" positionX="-63" positionY="-18" width="128" height="74"/>
-        <element name="ContestStrategyConfigEntity" positionX="-63" positionY="9" width="128" height="209"/>
-        <element name="RobotEntity" positionX="-54" positionY="18" width="128" height="104"/>
+        <element name="ContestStrategyConfigEntity" positionX="-325.19921875" positionY="-198.12890625" width="128" height="194"/>
+        <element name="ProfileEntity" positionX="-717.94921875" positionY="-199.4609375" width="128" height="74"/>
+        <element name="RobotEntity" positionX="-540.22265625" positionY="-197.30859375" width="128" height="118"/>
+        <element name="InstrumentEntity" positionX="-86.55859375" positionY="-122.2578125" width="128" height="118"/>
+        <element name="DealEntity" positionX="-504" positionY="-90" width="128" height="14"/>
+        <element name="DealOrderEntity" positionX="-495" positionY="-90" width="128" height="14"/>
+        <element name="DealOrderBookEntity" positionX="-486" positionY="-81" width="128" height="14"/>
+        <element name="BookOrderEntity" positionX="-477" positionY="-72" width="128" height="14"/>
     </elements>
 </model>

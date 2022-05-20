@@ -50,7 +50,7 @@ class DealDetailsInfoCell: UITableViewCell {
             closePriceLabel.text = nil
         }
 
-        profitLabel.text = "\(deal.profit) %"
+        profitLabel.text = String(format: "%.3f %%", Double(truncating: deal.profit as NSNumber))
         profitLabel.textColor = deal.profit > 0
             ? .systemGreen
             : deal.profit < 0

@@ -33,13 +33,6 @@ class RobotsRobotCell: UITableViewCell {
 private extension RobotsRobotCell {
 
     func configure() {
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
-        let runImage = UIImage(systemName: "play.circle.fill", withConfiguration: imageConfig)?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
-        actionButton.setImage(runImage, for: .normal)
-        let stopImage = UIImage(systemName: "stop.circle.fill", withConfiguration: imageConfig)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
-        actionButton.setImage(stopImage, for: .selected)
-        actionButton.addTarget(self, action: #selector(actionButtonTapped(_:)), for: .touchUpInside)
-
         actionButton.isHidden = true
     }
 

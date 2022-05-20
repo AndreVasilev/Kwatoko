@@ -41,10 +41,9 @@ final class ProfilePresenter: BasePresenter {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let profile = interactor.profile,
-           let token = profile.token,
-           let sandboxToken = profile.sandboxToken {
-            reloadAccounts(token: token, sandboxToken: sandboxToken)
+        if let profile = interactor.profile {
+            reloadAccounts(token: profile.token,
+                           sandboxToken: profile.sandboxToken)
         }
     }
 }
@@ -154,10 +153,9 @@ private extension ProfilePresenter {
     }
 
     func updateSelectedAccount(id: String) {
-        guard let profile = interactor.profile,
-              let token = profile.token,
-              let sandboxToken = profile.sandboxToken
-        else { return }
-        interactor.updateProfile(token: token, sandboxToken: sandboxToken, accountId: id)
+        guard let profile = interactor.profile else { return }
+        interactor.updateProfile(token: profile.token,
+                                 sandboxToken: profile.sandboxToken,
+                                 accountId: id)
     }
 }

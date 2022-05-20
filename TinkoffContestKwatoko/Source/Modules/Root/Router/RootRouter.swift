@@ -18,8 +18,8 @@ final class RootRouter: BaseRouter {
 
 extension RootRouter: IRootRouter {
 
-    func presentMain() {
-        let controller = mainTabBarController()
+    func presentMain(delegate: UITabBarControllerDelegate?) {
+        let controller = mainTabBarController(delegate: delegate)
         embed(child: controller)
     }
 }
@@ -52,12 +52,13 @@ private extension RootRouter {
         }
     }
 
-    func mainTabBarController() -> UITabBarController {
+    func mainTabBarController(delegate: UITabBarControllerDelegate?) -> UITabBarController {
         let controllers = [robotsController, historyController, profileController]
             .map { UINavigationController(rootViewController: $0) }
 
         let tabBarControler = UITabBarController()
         tabBarControler.setViewControllers(controllers, animated: false)
+        tabBarControler.delegate = delegate
         return tabBarControler
     }
 

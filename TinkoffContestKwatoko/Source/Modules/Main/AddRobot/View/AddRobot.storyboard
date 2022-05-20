@@ -57,14 +57,14 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RobotsActionCell" id="6TE-3d-WQc" customClass="RobotsActionCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="110.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="110.5" width="374" height="47.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6TE-3d-WQc" id="WXl-4D-C0j">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="47.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-03-kHH">
-                                                    <rect key="frame" x="20" y="10.5" width="46" height="23"/>
+                                                    <rect key="frame" x="20" y="12" width="46" height="23.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -72,8 +72,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ghg-03-kHH" firstAttribute="leading" secondItem="WXl-4D-C0j" secondAttribute="leadingMargin" id="JQn-SE-JvW"/>
+                                                <constraint firstItem="ghg-03-kHH" firstAttribute="top" secondItem="WXl-4D-C0j" secondAttribute="topMargin" constant="1" id="LOh-BE-2KL"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ghg-03-kHH" secondAttribute="bottom" constant="1" id="Lca-FI-QRh"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="ghg-03-kHH" secondAttribute="trailing" id="j1X-Gm-3cE"/>
-                                                <constraint firstItem="ghg-03-kHH" firstAttribute="centerY" secondItem="WXl-4D-C0j" secondAttribute="centerY" id="mjI-mJ-UfN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -81,7 +82,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ContestStrategyConfigCell" id="CQG-UP-Ll8" customClass="ContestStrategyConfigCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="154" width="374" height="511.5"/>
+                                        <rect key="frame" x="20" y="158" width="374" height="511.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CQG-UP-Ll8" id="tqQ-0t-jtg">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="511.5"/>

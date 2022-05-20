@@ -32,7 +32,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Nqr-fK-hfl">
                                                             <rect key="frame" x="0.0" y="0.0" width="334" height="59"/>
                                                             <subviews>
-                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ddp-su-Nio">
+                                                                <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="ddp-su-Nio">
                                                                     <rect key="frame" x="0.0" y="0.0" width="189" height="59"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfT-cO-cKH">
@@ -140,26 +140,26 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DealDetailsBookOrderCell" id="K6T-OI-ISA" customClass="DealDetailsBookOrderCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="194" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="194" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="K6T-OI-ISA" id="3CQ-C2-sHi">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOL-Iq-VL8">
-                                                    <rect key="frame" x="20" y="11.5" width="21" height="20.5"/>
+                                                    <rect key="frame" x="20" y="12" width="21" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3A-FQ-vrW">
-                                                    <rect key="frame" x="166.5" y="11.5" width="41.5" height="20.5"/>
+                                                    <rect key="frame" x="166.5" y="11.5" width="41.5" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CZj-2f-rol">
-                                                    <rect key="frame" x="312.5" y="11.5" width="41.5" height="20.5"/>
+                                                    <rect key="frame" x="312.5" y="12" width="41.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -169,11 +169,12 @@
                                                 <constraint firstItem="eOL-Iq-VL8" firstAttribute="leading" secondItem="3CQ-C2-sHi" secondAttribute="leadingMargin" id="3oB-Vn-siw"/>
                                                 <constraint firstItem="A3A-FQ-vrW" firstAttribute="centerX" secondItem="3CQ-C2-sHi" secondAttribute="centerX" id="GZJ-a9-alX"/>
                                                 <constraint firstItem="eOL-Iq-VL8" firstAttribute="centerY" secondItem="3CQ-C2-sHi" secondAttribute="centerY" id="Igr-Ef-EDs"/>
-                                                <constraint firstItem="A3A-FQ-vrW" firstAttribute="centerY" secondItem="3CQ-C2-sHi" secondAttribute="centerY" id="RDO-DF-tcO"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="A3A-FQ-vrW" secondAttribute="bottom" constant="0.5" id="SGO-mn-OzA"/>
                                                 <constraint firstItem="CZj-2f-rol" firstAttribute="centerY" secondItem="3CQ-C2-sHi" secondAttribute="centerY" id="ZP5-oo-CXo"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="CZj-2f-rol" secondAttribute="trailing" id="eNb-Lb-RyM"/>
                                                 <constraint firstItem="A3A-FQ-vrW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="eOL-Iq-VL8" secondAttribute="trailing" constant="4" id="kwe-lN-l12"/>
                                                 <constraint firstItem="CZj-2f-rol" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="A3A-FQ-vrW" secondAttribute="trailing" constant="4" id="qj2-q9-GXh"/>
+                                                <constraint firstItem="A3A-FQ-vrW" firstAttribute="top" secondItem="3CQ-C2-sHi" secondAttribute="topMargin" constant="0.5" id="xGr-3d-hqe"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

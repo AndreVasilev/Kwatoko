@@ -23,7 +23,7 @@ final class ProfileInteractor {
 
 extension ProfileInteractor: IProfileInteractor {
 
-    var profile: ProfileEntity? { database.profile }
+    var profile: Profile? { database.profile }
 
     func updateProfile(token: String, sandboxToken: String, accountId: String?) {
         database.updateProfile(token: token, sandboxToken: sandboxToken, accountId: accountId)

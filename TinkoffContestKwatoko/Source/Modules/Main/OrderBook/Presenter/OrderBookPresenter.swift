@@ -76,7 +76,7 @@ final class OrderBookPresenter: BasePresenter {
 private extension OrderBookPresenter {
 
     func subscribeToOrderBook() {
-        interactor.subscribeToOrderBook(figi: strategy.figi, depth: strategy.depth)
+        interactor.subscribeToOrderBook(figi: strategy.instrument.figi, depth: strategy.depth)
             .sink { result in
               switch result {
               case .failure(let error):
@@ -92,7 +92,7 @@ private extension OrderBookPresenter {
     func receive(orderBook: OrderBook) {
         
         strategy.receive(orderBook: orderBook)
-        let sign = strategy.currency.sign
+        let sign = MoneyCurrency(rawValue: strategy.instrument.currency)?.sign ?? ""
 
         var asks = orderBook.asks
             .reversed()
@@ -133,6 +133,8 @@ private extension OrderBookPresenter {
 }
 
 extension OrderBookPresenter: IOrderBookPresenter {
+
+    var isRunning: Bool { strategy.isRunning }
 
     func rows(in section: OrderBookPresenter.Section) -> [RowModel] {
         switch section {

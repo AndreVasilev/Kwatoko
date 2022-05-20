@@ -17,6 +17,8 @@ class Core {
         let sandboxToken = profile?.token ?? ""
         return buildSdk(token: token, sandboxToken: sandboxToken)
     }()
+
+    private(set) lazy var databaseService: IDatabaseService = DatabaseService()
 }
 
 extension Core: ICore {
@@ -29,9 +31,5 @@ extension Core: ICore {
 
     var networkService: INetworkService {
         return NetworkService()
-    }
-
-    var databaseService: IDatabaseService {
-        return DatabaseService()
     }
 }

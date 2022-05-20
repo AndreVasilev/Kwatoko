@@ -92,14 +92,12 @@ private extension AddRobotPresenter {
         router.showInstruments { [weak self] in
             self?.instrument = $0
             if let strategy = self?.strategy,
-               let currency = MoneyCurrency(rawValue: $0.currency),
                let accountId = self?.interactor.accountId {
                 switch strategy {
                 case .contest:
                     self?.config = ContestStrategy.Config(id: UUID().uuidString,
                                                           accountID: accountId,
-                                                          figi: $0.figi,
-                                                          currency: currency)
+                                                          instrument: $0)
                 }
             } else {
                 self?.config = nil

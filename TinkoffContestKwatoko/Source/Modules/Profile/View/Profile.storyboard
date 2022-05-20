@@ -87,9 +87,10 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="gtV-Pj-ctS" firstAttribute="top" secondItem="WFi-4Z-Z8b" secondAttribute="topMargin" constant="0.5" id="0gI-vr-IBf"/>
                                                 <constraint firstItem="gtV-Pj-ctS" firstAttribute="leading" secondItem="WFi-4Z-Z8b" secondAttribute="leadingMargin" id="CRj-AD-za6"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="gtV-Pj-ctS" secondAttribute="trailing" constant="48" id="LXS-O4-5rx"/>
-                                                <constraint firstItem="gtV-Pj-ctS" firstAttribute="centerY" secondItem="WFi-4Z-Z8b" secondAttribute="centerY" id="QIy-4w-tCU"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gtV-Pj-ctS" secondAttribute="bottom" constant="0.5" id="jLD-Uc-aEH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

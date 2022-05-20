@@ -22,6 +22,8 @@ class ContestStrategy {
     private var deal: Deal?
     private var preDealOrder: Deal.Order?
 
+    private let dateFormatter = DateFormatter("HH:mm:ss.SSS")
+
     init(sdk: TinkoffInvestSDK, database: IDatabaseService, robot: Robot) {
         self.sdk = sdk
         self.database = database
@@ -34,11 +36,24 @@ class ContestStrategy {
         case stopped
         case pending
         case preOpenOrderPosted
-        case openOrderPosted(PostOrderResponse, OrderBook)
+        case openOrderPosted(PostOrderResponse, OrderDirection, OrderBook)
         case openOrderExecuted
         case preCloseOrderPosted
-        case closeOrderPosted(PostOrderResponse, OrderBook)
+        case closeOrderPosted(PostOrderResponse, OrderDirection, OrderBook)
         case error(String)
+
+        var name: String {
+            switch self {
+            case .stopped: return "stopped"
+            case .pending: return "pending"
+            case .preOpenOrderPosted: return "preOpenOrderPosted"
+            case .openOrderPosted: return "openOrderPosted"
+            case .openOrderExecuted: return "openOrderExecuted"
+            case .preCloseOrderPosted: return "preCloseOrderPosted"
+            case .closeOrderPosted: return "closeOrderPosted"
+            case .error: return "error"
+            }
+        }
     }
 
     private var state: State = .stopped {
@@ -52,10 +67,10 @@ class ContestStrategy {
             switch state {
             case .stopped, .pending, .preOpenOrderPosted, .openOrderExecuted, .preCloseOrderPosted:
                 break
-            case .openOrderPosted(let response, let orderBook):
-                preDealOrder = Deal.Order.open(response: response, orderBook: orderBook)
-            case .closeOrderPosted(let response, let orderBook):
-                preDealOrder = Deal.Order.open(response: response, orderBook: orderBook)
+            case .openOrderPosted(let response, let direction, let orderBook):
+                preDealOrder = Deal.Order.open(response: response, direction: direction, orderBook: orderBook)
+            case .closeOrderPosted(let response, let direction, let orderBook):
+                preDealOrder = Deal.Order.open(response: response, direction: direction, orderBook: orderBook)
             case .error(let message):
                 delegate?.didReceiveError(message)
             }
@@ -67,8 +82,7 @@ class ContestStrategy {
 
 extension ContestStrategy: IStrategy {
 
-    var figi: String { config.figi }
-    var currency: MoneyCurrency { config.currency }
+    var instrument: IInstrument { config.instrument }
 
     var isRunning: Bool {
         if case State.stopped = state {
@@ -142,22 +156,22 @@ private extension ContestStrategy {
         switch state {
         case .pending:
             pending(orderBook)
-        case .openOrderPosted(let response, _):
+        case .openOrderPosted(let response, let direction, _):
             checkOrderStatus(order: preDealOrder, id: response.orderID, orderBook) { [weak self] in
                 self?.openDeal(order: $0.order,
                                orderID: $0.state.orderID,
-                               direction: $0.state.direction,
-                               price: $0.state.initialOrderPrice.asMoneyAmount.value,
+                               direction: direction,
+                               price: $0.state.initialSecurityPrice.asMoneyAmount.value,
                                orderBook: orderBook)
             }
         case .openOrderExecuted:
             checkClose(orderBook)
-        case .closeOrderPosted(let response, _):
+        case .closeOrderPosted(let response, let direction, _):
             checkOrderStatus(order: preDealOrder, id: response.orderID, orderBook) { [weak self] in
                 self?.closeDeal(order: $0.order,
                                orderID: $0.state.orderID,
-                               direction: $0.state.direction,
-                               price: $0.state.initialOrderPrice.asMoneyAmount.value,
+                               direction: direction,
+                               price: $0.state.initialSecurityPrice.asMoneyAmount.value,
                                orderBook: orderBook)
             }
 
@@ -167,32 +181,35 @@ private extension ContestStrategy {
     }
 
     func pending(_ orderBook: OrderBook) {
-        let tuple: (Order, OrderDirection)?
+        let tuple: (price: Decimal, direction: OrderDirection, order: Order)?
 
         if config.orderDirection != .sell,
            let bid = orderBook.bids.first(where: { $0.quantity >= config.edgeQuantity }) {
-            tuple = (bid, .buy)
+            let price = bid.price.asAmount + config.orderDelta
+            tuple = (price, .buy, bid)
         } else if config.orderDirection != .buy,
            let ask = orderBook.asks.first(where: { $0.quantity >= config.edgeQuantity }) {
-            tuple = (ask, .sell)
+            let price = ask.price.asAmount - config.orderDelta
+            tuple = (price, .sell, ask)
         } else {
             tuple = nil
         }
 
         guard let tuple = tuple else { return }
-        log("\(tuple.1 == .buy ? "Buy" : "Sell"): \(tuple.0.price.asAmount) - \(tuple.0.quantity)")
+        let sign = MoneyCurrency(rawValue: instrument.currency)?.sign ?? ""
+        log("\(tuple.direction == .buy ? "Buy" : "Sell"): \(tuple.order.price.asAmount) \(sign) - \(tuple.order.quantity)")
 
         state = .preOpenOrderPosted
-        postOrder(price: tuple.0.price.asAmount, direction: tuple.1) { [weak self] response in
+        postOrder(price: tuple.price, direction: tuple.direction) { [weak self] response in
             self?.log("Response: \(response.executionReportStatus)")
             switch response.executionReportStatus {
             case .executionReportStatusNew, .executionReportStatusPartiallyfill:
-                self?.state = .openOrderPosted(response, orderBook)
+                self?.state = .openOrderPosted(response, tuple.direction, orderBook)
             case .executionReportStatusFill:
                 self?.openDeal(order: nil,
                                orderID: response.orderID,
-                               direction: response.direction,
-                               price: response.initialOrderPrice.asMoneyAmount.value,
+                               direction: tuple.direction,
+                               price: response.initialSecurityPrice.asMoneyAmount.value,
                                orderBook: orderBook)
             case .UNRECOGNIZED(_), .executionReportStatusCancelled, .executionReportStatusRejected, .executionReportStatusUnspecified:
                 self?.state = .pending
@@ -245,40 +262,40 @@ private extension ContestStrategy {
             return
         }
 
-        var tuple: (price: Decimal, direction: OrderDirection)?
+        var tuple: (price: Decimal, direction: OrderDirection, success: Bool)?
         switch deal.open.direction {
         case .buy:
             if let ask = orderBook.asks.first,
                ask.price.asAmount >= deal.takeProfit {
-                tuple = (ask.price.asAmount, .sell)
+                tuple = (ask.price.asAmount, .sell, success: true)
             } else if let bid = orderBook.bids.first,
                       bid.price.asAmount <= deal.stopLoss {
-                tuple = (bid.price.asAmount, .sell)
+                tuple = (bid.price.asAmount, .sell, success: false)
             }
         case .sell:
             if let ask = orderBook.asks.first,
                ask.price.asAmount >= deal.stopLoss {
-                tuple = (ask.price.asAmount, .buy)
+                tuple = (ask.price.asAmount, .buy, success: false)
             } else if let bid = orderBook.bids.first,
                       bid.price.asAmount <= deal.takeProfit {
-                tuple = (bid.price.asAmount, .buy)
+                tuple = (bid.price.asAmount, .buy, success: true)
             }
         }
 
         guard let tuple = tuple else { return }
-        log("CheckClose \(tuple.1 == .buy ? "Buy" : "Sell"): \(tuple.0)")
+        log("\(tuple.success ? "✅" : "⛔️") CheckClose \(tuple.direction == .buy ? "Buy" : "Sell"): \(tuple.price)")
 
         state = .preCloseOrderPosted
-        postOrder(price: tuple.0, direction: tuple.1) { [weak self] in
+        postOrder(price: tuple.price, direction: tuple.direction) { [weak self] in
             self?.log("Response: \($0.executionReportStatus)")
             switch $0.executionReportStatus {
             case .executionReportStatusNew, .executionReportStatusPartiallyfill:
-                self?.state = .closeOrderPosted($0, orderBook)
+                self?.state = .closeOrderPosted($0, tuple.direction, orderBook)
             case .executionReportStatusFill:
                 self?.closeDeal(order: nil,
                                 orderID: $0.orderID,
-                                direction: $0.direction,
-                                price: $0.initialOrderPrice.asMoneyAmount.value,
+                                direction: tuple.direction,
+                                price: $0.initialSecurityPrice.asMoneyAmount.value,
                                 orderBook: orderBook)
             case .UNRECOGNIZED(_), .executionReportStatusCancelled, .executionReportStatusRejected, .executionReportStatusUnspecified:
                 self?.log("Failed to post stop order: \($0.executionReportStatus)")
@@ -297,7 +314,7 @@ private extension ContestStrategy {
         request.direction = direction
         request.quantity = config.orderQuantity
         request.orderType = .limit
-        request.figi = config.figi
+        request.figi = config.instrument.figi
         request.accountID = config.accountID
 
         postOrder(request: request)
@@ -324,8 +341,8 @@ private extension ContestStrategy {
         deal = Deal(robotId: robot.id,
                     open: openOrder.closed(with: orderBook),
                     close: nil,
-                    currency: config.currency.rawValue,
-                    quantity: Int(config.orderQuantity),
+                    currency: config.instrument.currency,
+                    quantity: config.orderQuantity,
                     stopLoss: bounds.sl,
                     takeProfit: bounds.tp)
         preDealOrder = nil
@@ -338,12 +355,12 @@ private extension ContestStrategy {
 
         switch direction {
         case .buy:
-            let tp = orderPrice * (1 + Decimal(config.takeProfitPercent) / 100)
-            let sl = orderPrice * (1 - Decimal(config.stopLossPercent) / 100)
+            let tp = orderPrice * (1 + Decimal(config.takeProfitPercent / 100))
+            let sl = orderPrice * (1 - Decimal(config.stopLossPercent / 100))
             stopBounds = StopBounds(sl: sl, tp: tp)
         case .sell:
-            let sl = orderPrice * (1 + Decimal(config.stopLossPercent) / 100)
-            let tp = orderPrice * (1 - Decimal(config.takeProfitPercent) / 100)
+            let sl = orderPrice * (1 + Decimal(config.stopLossPercent / 100))
+            let tp = orderPrice * (1 - Decimal(config.takeProfitPercent / 100))
             stopBounds = StopBounds(sl: sl, tp: tp)
         default:
             stopBounds = nil
@@ -385,8 +402,8 @@ private extension ContestStrategy {
         let deal = Deal(robotId: robot.id,
                         open: self.deal?.open ?? order,
                         close: self.deal?.open != nil ? order : nil,
-                        currency: config.currency.rawValue,
-                        quantity: Int(config.orderQuantity),
+                        currency: config.instrument.currency,
+                        quantity: config.orderQuantity,
                         stopLoss: self.deal?.stopLoss ?? 0,
                         takeProfit: self.deal?.takeProfit ?? 0)
         storeHistory(deal: deal)
@@ -410,7 +427,9 @@ extension ContestStrategy {
     }
 
     func storeHistory(deal: Deal) {
-        database.addDeal(deal)
+        DispatchQueue.main.async { [unowned self] in
+            self.database.addDeal(deal)
+        }
     }
 }
 
@@ -428,14 +447,14 @@ extension ContestStrategy {
     }
 
     func log(_ message: String = "") {
-        print("🤖 [\(state)] \(message)")
+        print("🤖 \(dateFormatter.string(from: Date())) [\(state.name)] \(message)")
     }
 }
 
 extension Deal.Order {
 
-    static func `open`(response: PostOrderResponse, orderBook: OrderBook) -> Deal.Order? {
-        open(orderID: response.orderID, direction: response.direction, price: response.initialOrderPrice.asMoneyAmount.value, orderBook: orderBook)
+    static func `open`(response: PostOrderResponse, direction: OrderDirection, orderBook: OrderBook) -> Deal.Order? {
+        open(orderID: response.orderID, direction: direction, price: response.initialSecurityPrice.asMoneyAmount.value, orderBook: orderBook)
     }
 
     static func `open`(orderID: String, direction: OrderDirection, price: Decimal, orderBook: OrderBook) -> Deal.Order? {
