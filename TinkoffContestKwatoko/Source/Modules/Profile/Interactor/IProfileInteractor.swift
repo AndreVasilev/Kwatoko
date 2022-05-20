@@ -12,11 +12,12 @@ import CombineGRPC
 
 protocol IProfileInteractor {
 
-    var profile: Profile? { get }
-
+    func fetchProfile() -> Profile?
     func updateProfile(token: String, sandboxToken: String, accountId: String?)
 
     func prepareSdk(token: String, sandboxToken: String)
     func getAccounts() -> AnyPublisher<GetAccountsResponse, RPCError>
     func getSandboxAccounts() -> AnyPublisher<GetAccountsResponse, RPCError>
+
+    func clearDatabase()
 }

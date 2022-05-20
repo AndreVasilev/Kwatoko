@@ -18,9 +18,21 @@ final class RootRouter: BaseRouter {
 
 extension RootRouter: IRootRouter {
 
+    func presentLogin(delegate: UITabBarControllerDelegate?) {
+        let controllers = [profileController]
+        presentMainTabBarController(children: controllers, delegate: delegate)
+    }
+
     func presentMain(delegate: UITabBarControllerDelegate?) {
-        let controller = mainTabBarController(delegate: delegate)
-        embed(child: controller)
+        let controllers = [robotsController, historyController, profileController]
+        var index: Int = 0
+        if let tabBarController = viewController?.children.first as? UITabBarController,
+           let selectedController = (tabBarController.selectedViewController as? UINavigationController)?.viewControllers.last,
+           selectedController is ProfileViewController,
+           let profileIndex = controllers.firstIndex(where: { $0 is ProfileViewController }) {
+            index = profileIndex
+        }
+        presentMainTabBarController(children: controllers, selectedAt: index, delegate: delegate)
     }
 }
 
@@ -31,7 +43,7 @@ private extension RootRouter {
 
         if animated,
            let child = viewController?.children.first {
-            viewController?.children.first?.willMove(toParent: nil)
+            child.willMove(toParent: nil)
             viewController?.addChild(controller)
 
             controller.view.alpha = 0
@@ -52,12 +64,16 @@ private extension RootRouter {
         }
     }
 
-    func mainTabBarController(delegate: UITabBarControllerDelegate?) -> UITabBarController {
-        let controllers = [robotsController, historyController, profileController]
-            .map { UINavigationController(rootViewController: $0) }
+    func presentMainTabBarController(children: [UIViewController], selectedAt index: Int = 0, delegate: UITabBarControllerDelegate?) {
+        let mainController = mainTabBarController(controllers: children, delegate: delegate)
+        mainController.selectedIndex = index
+        embed(child: mainController)
+    }
 
+    func mainTabBarController(controllers: [UIViewController], delegate: UITabBarControllerDelegate?) -> UITabBarController {
         let tabBarControler = UITabBarController()
-        tabBarControler.setViewControllers(controllers, animated: false)
+        tabBarControler.setViewControllers(controllers.map { UINavigationController(rootViewController: $0) },
+                                           animated: false)
         tabBarControler.delegate = delegate
         return tabBarControler
     }

@@ -17,7 +17,7 @@ final class RootAssembly: IAssembly {
 
     func build() -> ViperModule<RootViewController, IRootRouter> {
         let router = RootRouter(modulesFactory: modulesFactory)
-        let interactor = RootInteractor()
+        let interactor = RootInteractor(database: modulesFactory.core.databaseService)
         let presenter = RootPresenter(interactor: interactor, router: router)
         let viewController = getViewController(presenter: presenter)
 

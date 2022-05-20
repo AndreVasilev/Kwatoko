@@ -9,5 +9,6 @@ import UIKit
 
 protocol IRootRouter: IBaseRouter {
 
+    func presentLogin(delegate: UITabBarControllerDelegate?)
     func presentMain(delegate: UITabBarControllerDelegate?)
 }

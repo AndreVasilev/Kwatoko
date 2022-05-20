@@ -24,9 +24,26 @@ class DatabaseService {
     }()
 }
 
-// MARK: Profile
+// MARK: IDatabaseService
 
 extension DatabaseService: IDatabaseService {
+
+    func clear() {
+        do {
+            try deleteAll(entity: "ProfileEntity")
+            try deleteAll(entity: "RobotEntity")
+            try deleteAll(entity: "DealEntity")
+            try saveContext()
+        } catch {
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+}
+
+// MARK: Profile
+
+extension DatabaseService {
 
     var profile: Profile? {
         guard let entity = profileEntity,
@@ -45,7 +62,8 @@ extension DatabaseService: IDatabaseService {
             let entities = try persistentContainer.viewContext.fetch(request)
             return entities.first
         } catch {
-            print(error)
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
             return nil
         }
     }
@@ -91,7 +109,8 @@ extension DatabaseService {
             let robotEntities = try persistentContainer.viewContext.fetch(request)
             return robotEntities.compactMap { Robot($0) }
         } catch {
-            print(error)
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
             return nil
         }
     }
@@ -104,7 +123,8 @@ extension DatabaseService {
             guard let entity = try persistentContainer.viewContext.fetch(request).first else { return nil }
             return Robot(entity)
         } catch {
-            print(error)
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
             return nil
         }
     }
@@ -114,7 +134,8 @@ extension DatabaseService {
             try deleteEntity("RobotEntity", id: id)
             try saveContext()
         } catch {
-            print(error)
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
 
@@ -195,5 +216,27 @@ private extension DatabaseService {
         let context = persistentContainer.viewContext
         guard context.hasChanges else { return }
         try context.save()
+    }
+
+    // MARK: Debug
+
+    func printEntitiesCount() {
+        ["ProfileEntity",
+         "RobotEntity",
+         "ContestStrategyConfigEntity",
+         "InstrumentEntity",
+         "DealEntity",
+         "DealOrderEntity",
+         "DealOrderBookEntity",
+         "BookOrderEntity"].forEach {
+            do {
+                let request = ProfileEntity.fetchRequest()
+                let entities = try persistentContainer.viewContext.fetch(request)
+                print("\($0): \(entities.count)")
+            } catch {
+                let nserror = error as NSError
+                print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }

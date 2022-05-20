@@ -12,5 +12,7 @@ protocol IRootPresenter: ILifeCycleOutput, IRootPresenterDelegate {
 }
 
 protocol IRootPresenterDelegate: AnyObject {
-    
+
+    func didLogout()
+    func didLogin()
 }

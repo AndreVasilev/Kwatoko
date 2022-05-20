@@ -16,7 +16,7 @@ final class ProfileAssembly: IAssembly {
     }
 
     func build() -> ViperModule<ProfileViewController, IProfileRouter> {
-        let router = ProfileRouter()
+        let router = ProfileRouter(rootDelegate: modulesFactory.rootDelegate)
         let interactor = ProfileInteractor(core: modulesFactory.core)
         let presenter = ProfilePresenter(interactor: interactor, router: router)
         let viewController = getViewController(presenter: presenter)

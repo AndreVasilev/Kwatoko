@@ -66,17 +66,23 @@ extension ProfileViewController: UITableViewDataSource {
         let section = presenter.sections[indexPath.section]
         switch section {
         case .tokens:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTokensCell.reuseIdentifier, for: indexPath)
-            (cell as? ProfileTokensCell)?.configure(model: presenter.tokensModel)
-            (cell as? ProfileTokensCell)?.onEditingDidEnd = { [weak self] in self?.presenter.updateTokens(model: $0) }
-            return cell
-
-        case .sandbox, .exchange:
-            let cell = tableView.dequeueReusableCell(withIdentifier: ProfileAccountCell.reuseIdentifier, for: indexPath)
-            if let model = presenter.accountModel(at: indexPath) {
-                (cell as? ProfileAccountCell)?.configure(model: model)
+            switch indexPath.row {
+            case presenter.numberOfRows(inSection: indexPath.section) - 1:
+                return dequeueActionCell(tableView, forRowAt: indexPath)
+            default:
+                return dequeueTokensCell(tableView, forRowAt: indexPath)
             }
-            return cell
+        case .sandbox:
+            switch indexPath.row {
+            case presenter.numberOfRows(inSection: indexPath.section) - 1:
+                return dequeueActionCell(tableView, forRowAt: indexPath)
+            default:
+                return dequeueAccountCell(tableView, forRowAt: indexPath)
+            }
+        case .exchange:
+            return dequeueAccountCell(tableView, forRowAt: indexPath)
+        case .logout:
+            return dequeueActionCell(tableView, forRowAt: indexPath)
         }
     }
 
@@ -90,6 +96,35 @@ extension ProfileViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        view.endEditing(true)
         presenter.didSelectRow(at: indexPath)
+    }
+}
+
+// MARK: Dequeue
+
+private extension ProfileViewController {
+
+    func dequeueTokensCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTokensCell.reuseIdentifier, for: indexPath)
+        (cell as? ProfileTokensCell)?.configure(model: presenter.tokensModel)
+        (cell as? ProfileTokensCell)?.onEditingDidEnd = { [weak self] in self?.presenter.tokensModel = $0 }
+        return cell
+    }
+
+    func dequeueAccountCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileAccountCell.reuseIdentifier, for: indexPath)
+        if let model = presenter.accountModel(at: indexPath) {
+            (cell as? ProfileAccountCell)?.configure(model: model)
+        }
+        return cell
+    }
+
+    func dequeueActionCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: RobotsActionCell.reuseIdentifier, for: indexPath)
+        if let action = presenter.action(at: indexPath) {
+            (cell as? RobotsActionCell)?.configure(action: action)
+        }
+        return cell
     }
 }

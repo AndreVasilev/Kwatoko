@@ -23,7 +23,9 @@ final class ProfileInteractor {
 
 extension ProfileInteractor: IProfileInteractor {
 
-    var profile: Profile? { database.profile }
+    func fetchProfile() -> Profile? {
+        return database.profile
+    }
 
     func updateProfile(token: String, sandboxToken: String, accountId: String?) {
         database.updateProfile(token: token, sandboxToken: sandboxToken, accountId: accountId)
@@ -39,6 +41,9 @@ extension ProfileInteractor: IProfileInteractor {
 
     func getSandboxAccounts() -> AnyPublisher<GetAccountsResponse, RPCError> {
         return sdk!.sandboxService.getAccounts()
+    }
 
+    func clearDatabase() {
+        database.clear()
     }
 }

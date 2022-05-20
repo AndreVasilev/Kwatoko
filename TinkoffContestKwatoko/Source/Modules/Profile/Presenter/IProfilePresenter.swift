@@ -11,11 +11,11 @@ protocol IProfilePresenter: ILifeCycleOutput {
 
     var sections: [ProfilePresenter.Section] { get }
 
-    var tokensModel: ProfileTokensCell.Model { get }
+    var tokensModel: ProfileTokensCell.Model { get set }
 
     func numberOfRows(inSection index: Int) -> Int
     func accountModel(at indexPath: IndexPath) -> ProfileAccountCell.Model?
+    func action(at indexPath: IndexPath) -> IRowAction?
 
-    func updateTokens(model: ProfileTokensCell.Model)
     func didSelectRow(at indexPath: IndexPath)
 }

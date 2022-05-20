@@ -97,6 +97,31 @@
                                             <outlet property="titleLabel" destination="gtV-Pj-ctS" id="H0w-yj-Ol5"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RobotsActionCell" id="ekf-Bb-VFI" customClass="RobotsActionCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="273.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ekf-Bb-VFI" id="4uB-aP-vhv">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2G-f5-z7O">
+                                                    <rect key="frame" x="20" y="10" width="46" height="23.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="v2G-f5-z7O" secondAttribute="trailing" id="CJ3-JE-AT5"/>
+                                                <constraint firstAttribute="bottom" secondItem="v2G-f5-z7O" secondAttribute="bottom" constant="10" id="Ker-TE-QE6"/>
+                                                <constraint firstItem="v2G-f5-z7O" firstAttribute="leading" secondItem="4uB-aP-vhv" secondAttribute="leadingMargin" id="QAH-on-X2s"/>
+                                                <constraint firstItem="v2G-f5-z7O" firstAttribute="top" secondItem="4uB-aP-vhv" secondAttribute="top" constant="10" id="gD0-if-lqp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="titleLabel" destination="v2G-f5-z7O" id="ylo-Oj-oNZ"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="S3R-cZ-mMi"/>

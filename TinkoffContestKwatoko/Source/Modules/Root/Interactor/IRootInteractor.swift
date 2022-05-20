@@ -9,4 +9,5 @@ import Foundation
 
 protocol IRootInteractor {
 
+    var isAuthorized: Bool { get }
 }

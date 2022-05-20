@@ -26,7 +26,19 @@ final class RootPresenter: NSObject {
 private extension RootPresenter {
 
     func presentInitialContorller() {
+        if interactor.isAuthorized {
+            presentMain()
+        } else {
+            presentLogin()
+        }
+    }
+
+    func presentMain() {
         router.presentMain(delegate: self)
+    }
+
+    func presentLogin() {
+        router.presentLogin(delegate: self)
     }
 }
 
@@ -36,6 +48,13 @@ extension RootPresenter: IRootPresenter {
 
 extension RootPresenter: IRootPresenterDelegate {
 
+    func didLogout() {
+        presentLogin()
+    }
+
+    func didLogin() {
+        presentMain()
+    }
 }
 
 extension RootPresenter: UITabBarControllerDelegate {

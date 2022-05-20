@@ -9,8 +9,20 @@ import Foundation
 
 final class ProfileRouter: BaseRouter {
 
+    weak var rootDelegate: IRootPresenterDelegate?
+
+    init(rootDelegate: IRootPresenterDelegate?) {
+        self.rootDelegate = rootDelegate
+    }
 }
 
 extension ProfileRouter: IProfileRouter {
 
+    func login() {
+        rootDelegate?.didLogin()
+    }
+
+    func logout() {
+        rootDelegate?.didLogout()
+    }
 }

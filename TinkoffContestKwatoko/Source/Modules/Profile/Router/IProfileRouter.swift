@@ -9,4 +9,6 @@ import Foundation
 
 protocol IProfileRouter: IBaseRouter {
 
+    func login()
+    func logout()
 }

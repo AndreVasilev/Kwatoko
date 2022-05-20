@@ -9,8 +9,14 @@ import Foundation
 
 final class RootInteractor {
 
+    let database: IDatabaseService
+
+    init(database: IDatabaseService) {
+        self.database = database
+    }
 }
 
 extension RootInteractor: IRootInteractor {
 
+    var isAuthorized: Bool { database.profile != nil }
 }

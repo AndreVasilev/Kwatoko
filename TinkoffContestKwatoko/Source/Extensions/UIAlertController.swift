@@ -10,8 +10,12 @@ import UIKit
 extension UIAlertController {
 
     convenience init(confirm message: String, action title: String, _ completion: @escaping () -> Void) {
-        self.init(title: nil, message: message, preferredStyle: .alert)
+        self.init(confirm: nil, message: message, actionTitle: title, completion)
+    }
+
+    convenience init(confirm title: String?, message: String, actionTitle: String, _ completion: @escaping () -> Void) {
+        self.init(title: title, message: message, preferredStyle: .alert)
         addAction(.init(title: "Отмена", style: .cancel))
-        addAction(.init(title: title, style: .destructive, handler: { _ in completion() }))
+        addAction(.init(title: actionTitle, style: .destructive, handler: { _ in completion() }))
     }
 }

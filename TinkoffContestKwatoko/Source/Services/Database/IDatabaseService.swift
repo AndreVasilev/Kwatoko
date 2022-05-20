@@ -8,8 +8,11 @@ import Foundation
 
 protocol IDatabaseService {
 
-    var profile: Profile? { get }
+    func clear()
 
+    // MARK: Profile
+
+    var profile: Profile? { get }
     func updateProfile(token: String, sandboxToken: String, accountId: String?)
 
     // MARK: Robots
