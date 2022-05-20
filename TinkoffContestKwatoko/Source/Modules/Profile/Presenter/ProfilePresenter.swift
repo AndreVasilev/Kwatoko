@@ -31,7 +31,7 @@ final class ProfilePresenter: BasePresenter {
             switch self {
             case .login: return "Войти"
             case .logout: return "Выйти"
-            case .manage: return "Управлять"
+            case .manage: return "Открыть новый"
             }
         }
 
@@ -111,10 +111,6 @@ private extension ProfilePresenter {
                 }
             } receiveValue: { [weak self] in
                 self?.sandboxAccounts = $0.accounts
-                let profile = Profile(token: token,
-                                      sandboxToken: sandboxToken,
-                                      selectedAccountId: self?.profile?.selectedAccountId ?? self?.sandboxAccounts.first?.id)
-                self?.updateProfile(profile)
             }.store(in: &cancellables)
     }
 
@@ -144,6 +140,10 @@ private extension ProfilePresenter {
             if let error = $0 {
                 self?.handleError(error)
             } else {
+                let profile = Profile(token: token,
+                                      sandboxToken: sandboxToken,
+                                      selectedAccountId: self?.sandboxAccounts.first?.id)
+                self?.updateProfile(profile)
                 self?.router.login()
             }
         }
@@ -161,10 +161,6 @@ private extension ProfilePresenter {
         router.present(controller, animated: true)
     }
 
-    func manageSandbox() {
-
-    }
-
     func handleError(_ error: Error) {
         let text: String
         if let rpcError = error as? RPCError,
@@ -178,6 +174,58 @@ private extension ProfilePresenter {
         router.presentAlert(title: nil,
                             message: text,
                             actions: [.init(title: "Закрыть", style: .default)])
+    }
+
+    func openSandboxAccount() {
+        manageSandbox(interactor.openSandboxAccount())
+
+    }
+
+    func closeSandboxAccount(id: String) {
+        manageSandbox(interactor.closeSandboxAccount(id: id)) { [weak self] in
+            if let error = $0 {
+                self?.handleError(error)
+            } else if let profile = self?.profile,
+                      profile.selectedAccountId == id {
+                let profile = Profile(token: profile.token,
+                                      sandboxToken: profile.sandboxToken,
+                                      selectedAccountId: self?.sandboxAccounts.first?.id)
+                self?.updateProfile(profile)
+                self?.viewController?.reloadData()
+            }
+        }
+    }
+
+    func manageSandbox<T>(_ publisher: AnyPublisher<T, RPCError>, _ completion: ((Error?) -> Void)? = nil) {
+        guard viewController?.isProcessing != true else { return }
+        viewController?.isProcessing = true
+        publisher
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] in
+                switch $0 {
+                case .failure(let error):
+                    self?.viewController?.isProcessing = false
+                    if let completion = completion {
+                        completion(error)
+                    } else {
+                        self?.handleError(error)
+                    }
+                case .finished:
+                    guard let profile = self?.profile else {
+                        completion?(nil)
+                        return
+                    }
+                    self?.reloadSandboxAccounts(token: profile.token, sandboxToken: profile.sandboxToken) {
+                        self?.viewController?.isProcessing = false
+                        if let completion = completion {
+                            completion($0)
+                        } else if let error = $0 {
+                            self?.handleError(error)
+                        }
+                    }
+                }
+            } receiveValue: { _ in }
+            .store(in: &cancellables)
     }
 }
 
@@ -211,7 +259,8 @@ extension ProfilePresenter: IProfilePresenter {
 
         let name = account?.name.isEmpty == false ? account?.name : account?.id
         let model = ProfileAccountCell.Model(title: name,
-                                             isSelected: account?.id == profile?.selectedAccountId)
+                                             isSelected: account?.id == profile?.selectedAccountId,
+                                             isCloseEnabled: section == .sandbox)
         return model
     }
 
@@ -241,7 +290,7 @@ extension ProfilePresenter: IProfilePresenter {
                 let account = sandboxAccounts[indexPath.row]
                 updateSelectedAccount(id: account.id)
             } else if indexPath.row == numberOfRows(inSection: indexPath.section) - 1 {
-                manageSandbox()
+                openSandboxAccount()
             }
         case .tokens:
             if indexPath.row == numberOfRows(inSection: indexPath.section) - 1 {
@@ -251,5 +300,16 @@ extension ProfilePresenter: IProfilePresenter {
             logout()
         }
         viewController?.reloadData()
+    }
+
+    func closeSandboxAccount(at indexPath: IndexPath) {
+        let section = sections[indexPath.section]
+        guard section == .sandbox else { return }
+        let account = sandboxAccounts[indexPath.row]
+        let name = account.name.isEmpty ? account.id : account.name
+        let alert = UIAlertController(confirm: "Вы уверены, что хотите закрыть счёт?", message: name, actionTitle: "Закрыть") { [weak self] in
+            self?.closeSandboxAccount(id: account.id)
+        }
+        router.present(alert, animated: true)
     }
 }

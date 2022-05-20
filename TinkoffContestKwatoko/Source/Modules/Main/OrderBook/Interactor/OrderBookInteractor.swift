@@ -54,21 +54,7 @@ final class OrderBookInteractor {
 //                }
 //            }.store(in: &cancellables)
 //    }
-//
-//    func openSandboxAccount() {
-//        sdk.sandboxService.openAccount()
-//            .sink { result in
-//              switch result {
-//              case .failure(let error):
-//                  print(error)
-//              case .finished:
-//                  print("did finish openAccount")
-//              }
-//            } receiveValue: { [weak self] in
-//                print($0)
-//                self?.payInSandboxAccount(id: $0.accountID)
-//            }.store(in: &cancellables)
-//    }
+
 //
 //    func payInSandboxAccount(id: String) {
 //        var amount = MoneyValue()

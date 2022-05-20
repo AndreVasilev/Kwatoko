@@ -20,4 +20,8 @@ protocol IProfileInteractor {
     func getSandboxAccounts() -> AnyPublisher<GetAccountsResponse, RPCError>
 
     func clearDatabase()
+
+    func openSandboxAccount() -> AnyPublisher<OpenSandboxAccountResponse, RPCError>
+    func closeSandboxAccount(id: String) -> AnyPublisher<CloseSandboxAccountResponse, RPCError>
+
 }

@@ -46,4 +46,12 @@ extension ProfileInteractor: IProfileInteractor {
     func clearDatabase() {
         database.clear()
     }
+
+    func openSandboxAccount() -> AnyPublisher<OpenSandboxAccountResponse, RPCError> {
+        return sdk!.sandboxService.openAccount()
+    }
+
+    func closeSandboxAccount(id: String) -> AnyPublisher<CloseSandboxAccountResponse, RPCError> {
+        return sdk!.sandboxService.closeAccount(accountID: id)
+    }
 }

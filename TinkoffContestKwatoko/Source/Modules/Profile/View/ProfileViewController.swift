@@ -115,7 +115,9 @@ private extension ProfileViewController {
     func dequeueAccountCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileAccountCell.reuseIdentifier, for: indexPath)
         if let model = presenter.accountModel(at: indexPath) {
-            (cell as? ProfileAccountCell)?.configure(model: model)
+            (cell as? ProfileAccountCell)?.configure(model: model) { [weak self] in
+                self?.presenter.closeSandboxAccount(at: indexPath)
+            }
         }
         return cell
     }
