@@ -18,7 +18,12 @@ final class AddRobotInteractor {
 
 extension AddRobotInteractor: IAddRobotInteractor {
 
-    var accountId: String? { database.profile?.selectedAccountId }
+    var account: (id: String, isSandbox: Bool)? {
+        guard let profile = database.profile,
+              let id = profile.selectedAccountId
+        else { return nil }
+        return (id, profile.selectedAccountSandbox)
+    }
 
     func didOpenInfo(strategy: Strategy) -> Bool {
         return true

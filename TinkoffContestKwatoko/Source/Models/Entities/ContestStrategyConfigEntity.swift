@@ -14,6 +14,7 @@ extension ContestStrategyConfigEntity {
         self.init(context: context)
         self.id = config.id
         self.accountID = config.accountID
+        self.isSandbox = config.isSandbox
         self.instrument = InstrumentEntity(instrument: config.instrument, context: context)
         self.depth = Int16(config.depth)
         self.orderDirection = Int16(config.orderDirection.rawValue)

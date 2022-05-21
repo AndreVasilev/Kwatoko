@@ -114,6 +114,7 @@ private extension ContestStrategyConfigCell {
 
         return ContestStrategy.Config(id: config.id,
                                       accountID: config.accountID,
+                                      isSandbox: config.isSandbox,
                                       instrument: config.instrument,
                                       depth: depth,
                                       orderDirection: orderDirection,

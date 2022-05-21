@@ -95,11 +95,12 @@ private extension AddRobotPresenter {
         router.showInstruments { [weak self] in
             self?.instrument = $0
             if let strategy = self?.strategy,
-               let accountId = self?.interactor.accountId {
+               let account = self?.interactor.account {
                 switch strategy {
                 case .contest:
                     self?.config = ContestStrategy.Config(id: UUID().uuidString,
-                                                          accountID: accountId,
+                                                          accountID: account.id,
+                                                          isSandbox: account.isSandbox,
                                                           instrument: $0)
                 }
             } else {

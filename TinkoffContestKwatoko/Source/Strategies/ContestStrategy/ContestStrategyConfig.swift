@@ -14,6 +14,7 @@ extension ContestStrategy {
 
         let id: String
         let accountID: String
+        let isSandbox: Bool
         let instrument: IInstrument
 
         let depth: Int
@@ -25,9 +26,10 @@ extension ContestStrategy {
         let stopLossPercent: Double
         let takeProfitPercent: Double
 
-        init(id: String, accountID: String, instrument: IInstrument, depth: Int, orderDirection: OrderDirection, edgeQuantity: Int64, orderQuantity: Int64, orderDelta: Decimal, stopLossPercent: Double, takeProfitPercent: Double) {
+        init(id: String, accountID: String, isSandbox: Bool, instrument: IInstrument, depth: Int, orderDirection: OrderDirection, edgeQuantity: Int64, orderQuantity: Int64, orderDelta: Decimal, stopLossPercent: Double, takeProfitPercent: Double) {
             self.id = id
             self.accountID = accountID
+            self.isSandbox = isSandbox
             self.instrument = instrument
             self.depth = depth
             self.orderDirection = orderDirection
@@ -38,9 +40,10 @@ extension ContestStrategy {
             self.takeProfitPercent = takeProfitPercent
         }
 
-        init(id: String, accountID: String, instrument: IInstrument) {
+        init(id: String, accountID: String, isSandbox: Bool, instrument: IInstrument) {
             self.id = id
             self.accountID = accountID
+            self.isSandbox = isSandbox
             self.instrument = Instrument(figi: instrument.figi,
                                          currency: instrument.currency,
                                          name: instrument.name,
@@ -63,6 +66,7 @@ extension ContestStrategy {
             else { return nil }
             self.init(id: id,
                       accountID: accountID,
+                      isSandbox: entity.isSandbox,
                       instrument: instrument,
                       depth: Int(entity.depth),
                       orderDirection: orderDirection,

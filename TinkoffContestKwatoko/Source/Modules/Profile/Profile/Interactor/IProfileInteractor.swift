@@ -13,7 +13,7 @@ import CombineGRPC
 protocol IProfileInteractor {
 
     func fetchProfile() -> Profile?
-    func updateProfile(token: String, sandboxToken: String, accountId: String?)
+    func updateProfile(token: String, sandboxToken: String, accountId: String?, isSandbox: Bool)
 
     func prepareSdk(token: String, sandboxToken: String)
     func getAccounts() -> AnyPublisher<GetAccountsResponse, RPCError>

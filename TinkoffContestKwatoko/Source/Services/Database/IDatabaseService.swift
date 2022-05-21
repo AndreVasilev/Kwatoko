@@ -13,7 +13,7 @@ protocol IDatabaseService {
     // MARK: Profile
 
     var profile: Profile? { get }
-    func updateProfile(token: String, sandboxToken: String, accountId: String?)
+    func updateProfile(token: String, sandboxToken: String, accountId: String?, isSandbox: Bool)
 
     // MARK: Robots
     

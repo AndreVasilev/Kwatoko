@@ -9,7 +9,7 @@ import Foundation
 
 protocol IAddRobotInteractor {
 
-    var accountId: String? { get }
+    var account: (id: String, isSandbox: Bool)? { get }
 
     func didOpenInfo(strategy: Strategy) -> Bool
     func addRobot(name: String, strategy: Strategy, config: IStrategyConfig) -> Robot?

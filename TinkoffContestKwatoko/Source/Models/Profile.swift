@@ -11,4 +11,5 @@ struct Profile {
     let token: String
     let sandboxToken: String
     let selectedAccountId: String?
+    let selectedAccountSandbox: Bool
 }

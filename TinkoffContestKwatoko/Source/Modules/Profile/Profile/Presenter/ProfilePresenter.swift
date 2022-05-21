@@ -120,7 +120,7 @@ private extension ProfilePresenter {
                    !(weakSelf.exchangeAccounts.map(\.id)
                     + weakSelf.sandboxAccounts.map(\.id)).contains(selectedAccountId) {
                     let id = weakSelf.sandboxAccounts.first?.id
-                    self?.updateSelectedAccount(id: id)
+                    self?.updateSelectedAccount(id: id, isSandbox: true)
                 }
                 weakSelf.viewController?.reloadData()
             }
@@ -145,11 +145,12 @@ private extension ProfilePresenter {
             }.store(in: &cancellables)
     }
 
-    func updateSelectedAccount(id: String?) {
+    func updateSelectedAccount(id: String?, isSandbox: Bool) {
         guard let profile = self.profile else { return }
         let newProfile = Profile(token: profile.token,
                                  sandboxToken: profile.sandboxToken,
-                                 selectedAccountId: id)
+                                 selectedAccountId: id,
+                                 selectedAccountSandbox: isSandbox)
         updateProfile(newProfile)
     }
 
@@ -157,7 +158,8 @@ private extension ProfilePresenter {
         self.profile = profile
         interactor.updateProfile(token: profile.token,
                                  sandboxToken: profile.sandboxToken,
-                                 accountId: profile.selectedAccountId)
+                                 accountId: profile.selectedAccountId,
+                                 isSandbox: profile.selectedAccountSandbox)
     }
 
     func login() {
@@ -173,7 +175,8 @@ private extension ProfilePresenter {
             } else {
                 let profile = Profile(token: token,
                                       sandboxToken: sandboxToken,
-                                      selectedAccountId: self?.sandboxAccounts.first?.id)
+                                      selectedAccountId: self?.sandboxAccounts.first?.id,
+                                      selectedAccountSandbox: true)
                 self?.updateProfile(profile)
                 self?.router.login()
             }
@@ -288,14 +291,14 @@ extension ProfilePresenter: IProfilePresenter {
         switch section {
         case .exchange:
             let account = exchangeAccounts[indexPath.row]
-            updateSelectedAccount(id: account.id)
+            updateSelectedAccount(id: account.id, isSandbox: false)
             router.presentAlert(title: "Внимание!",
                                 message: "Все сделки будут совершаться на реальной бирже.\nБудьте внимательны с работой робота",
                                 actions: [.init(title: "Закрыть", style: .cancel)])
         case .sandbox:
             if indexPath.row < sandboxAccounts.count {
                 let account = sandboxAccounts[indexPath.row]
-                updateSelectedAccount(id: account.id)
+                updateSelectedAccount(id: account.id, isSandbox: true)
             } else if indexPath.row == numberOfRows(inSection: indexPath.section) - 1 {
                 openSandboxAccount()
             }

@@ -27,8 +27,8 @@ extension ProfileInteractor: IProfileInteractor {
         return database.profile
     }
 
-    func updateProfile(token: String, sandboxToken: String, accountId: String?) {
-        database.updateProfile(token: token, sandboxToken: sandboxToken, accountId: accountId)
+    func updateProfile(token: String, sandboxToken: String, accountId: String?, isSandbox: Bool) {
+        database.updateProfile(token: token, sandboxToken: sandboxToken, accountId: accountId, isSandbox: isSandbox)
     }
 
     func prepareSdk(token: String, sandboxToken: String) {

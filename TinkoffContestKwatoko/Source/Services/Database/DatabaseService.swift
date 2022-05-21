@@ -53,7 +53,8 @@ extension DatabaseService {
 
         return Profile(token: token,
                        sandboxToken: sandboxToken,
-                       selectedAccountId: entity.selectedAccountId)
+                       selectedAccountId: entity.selectedAccountId,
+                       selectedAccountSandbox: entity.selectedAccountSandbox)
     }
 
     private var profileEntity: ProfileEntity? {
@@ -68,20 +69,19 @@ extension DatabaseService {
         }
     }
 
-    func updateProfile(token: String, sandboxToken: String, accountId: String?) {
+    func updateProfile(token: String, sandboxToken: String, accountId: String?, isSandbox: Bool) {
         do {
-            if let entity = profileEntity {
-                entity.token = token
-                entity.sandboxToken = sandboxToken
-                entity.selectedAccountId = accountId
+            let entity: ProfileEntity
+            if let profile = profileEntity {
+                entity = profile
             } else {
                 try deleteAll(entity: "ProfileEntity")
-
-                let entity = ProfileEntity(context: persistentContainer.viewContext)
-                entity.token = token
-                entity.sandboxToken = sandboxToken
-                entity.selectedAccountId = accountId
+                entity = ProfileEntity(context: persistentContainer.viewContext)
             }
+            entity.token = token
+            entity.sandboxToken = sandboxToken
+            entity.selectedAccountId = accountId
+            entity.selectedAccountSandbox = isSandbox
             try saveContext()
         } catch {
             let nserror = error as NSError

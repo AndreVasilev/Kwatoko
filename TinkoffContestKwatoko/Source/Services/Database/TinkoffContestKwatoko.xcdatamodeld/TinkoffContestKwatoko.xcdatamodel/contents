@@ -15,6 +15,7 @@
         <attribute name="depth" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="edgeQuantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isSandbox" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="orderDelta" optional="YES" attributeType="Decimal" defaultValueString="0.0"/>
         <attribute name="orderDirection" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="orderQuantity" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -58,6 +59,7 @@
     <entity name="ProfileEntity" representedClassName="ProfileEntity" syncable="YES" codeGenerationType="class">
         <attribute name="sandboxToken" optional="YES" attributeType="String"/>
         <attribute name="selectedAccountId" optional="YES" attributeType="String"/>
+        <attribute name="selectedAccountSandbox" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
         <attribute name="token" optional="YES" attributeType="String"/>
     </entity>
     <entity name="RobotEntity" representedClassName="RobotEntity" syncable="YES" codeGenerationType="class">
@@ -69,12 +71,12 @@
     </entity>
     <elements>
         <element name="BookOrderEntity" positionX="-477" positionY="-72" width="128" height="14"/>
-        <element name="ContestStrategyConfigEntity" positionX="-325.19921875" positionY="-198.12890625" width="128" height="194"/>
+        <element name="ContestStrategyConfigEntity" positionX="-325.19921875" positionY="-198.12890625" width="128" height="209"/>
         <element name="DealEntity" positionX="-504" positionY="-90" width="128" height="14"/>
         <element name="DealOrderBookEntity" positionX="-486" positionY="-81" width="128" height="14"/>
         <element name="DealOrderEntity" positionX="-495" positionY="-90" width="128" height="14"/>
         <element name="InstrumentEntity" positionX="-86.55859375" positionY="-122.2578125" width="128" height="118"/>
-        <element name="ProfileEntity" positionX="-717.94921875" positionY="-199.4609375" width="128" height="74"/>
+        <element name="ProfileEntity" positionX="-717.94921875" positionY="-199.4609375" width="128" height="89"/>
         <element name="RobotEntity" positionX="-540.22265625" positionY="-197.30859375" width="128" height="118"/>
         <element name="AccountEntity" positionX="-513" positionY="-81" width="128" height="59"/>
     </elements>
