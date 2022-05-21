@@ -70,7 +70,7 @@ private extension InstrumentsPresenter {
                     .sink { [weak self] result in
                       switch result {
                       case .failure(let error):
-                          print(error)
+                          self?.handleError(error)
                       case .finished:
                           print("did finish loading \(section)")
                           self?.viewController?.reloadData()

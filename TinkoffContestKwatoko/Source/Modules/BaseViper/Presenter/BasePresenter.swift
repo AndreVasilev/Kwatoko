@@ -4,7 +4,7 @@
 //  Created by Andrey Vasilev on 07.12.2020.
 //
 
-import Foundation
+import UIKit
 import CombineGRPC
 
 class BasePresenter: ILifeCycleOutput {
@@ -38,27 +38,19 @@ class BasePresenter: ILifeCycleOutput {
     // MARK: Handling errors
     
     func handleError(_ error: Error) {
-        handleError(error, style: .none)
+        handleError(error, style: .banner)
     }
     
     func handleError(_ error: Error, style: ErrorAlertStyle) {
-        let text: String
-        if let rpcError = error as? RPCError,
-           let message = rpcError.trailingMetadata?.first(name: "message") {
-            text = message
-        } else {
-            text = error.localizedDescription
-        }
-        
         switch style {
         case .none: return
-        case .alert: presentErrorAlert(message: text)
-        case .banner: presentBanner(text: text)
+        case .alert: presentErrorAlert(message: error.alertMessage)
+        case .banner: presentBanner(error: error)
         }
     }
     
-    func presentBanner(text: String) {
-        
+    func presentBanner(error: Error) {
+        NotificationBanner.present(error)
     }
     
     func presentErrorAlert(title: String? = nil, message: String?) {

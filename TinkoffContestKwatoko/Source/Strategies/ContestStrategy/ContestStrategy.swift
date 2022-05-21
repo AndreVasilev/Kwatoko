@@ -246,6 +246,7 @@ private extension ContestStrategy {
               switch result {
               case .failure(let error):
                   self?.log("\(error)")
+                  self?.presentErrorBanner(error)
               case .finished:
                   self?.log("GetOrderState finished")
               }
@@ -322,6 +323,7 @@ private extension ContestStrategy {
               switch result {
               case .failure(let error):
                   self?.state = .error("\(error)")
+                  self?.presentErrorBanner(error)
               case .finished:
                   self?.log("PostOrder finished")
               }
@@ -390,6 +392,7 @@ private extension ContestStrategy {
               switch result {
               case .failure(let error):
                   self?.log("\(error)")
+                  self?.presentErrorBanner(error)
               case .finished:
                   self?.log("Order canceled")
               }
@@ -463,6 +466,10 @@ extension ContestStrategy {
 
     func log(_ message: String = "") {
         print("🤖 \(dateFormatter.string(from: Date())) [\(state.name)] \(message)")
+    }
+    
+    func presentErrorBanner(_ error: Error) {
+        NotificationBanner.present(error)
     }
 }
 

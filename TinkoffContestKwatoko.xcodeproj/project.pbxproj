@@ -184,6 +184,9 @@
 		55DC01C1283552760049467C /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DC01C0283552760049467C /* History.storyboard */; };
 		55DC01C3283635BE0049467C /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01C2283635BE0049467C /* Deal.swift */; };
 		55DE627F2838FF09005EABD8 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE627E2838FF09005EABD8 /* AccountModel.swift */; };
+		55DE628228394870005EABD8 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 55DE628128394870005EABD8 /* SwiftEntryKit */; };
+		55DE628428394DB6005EABD8 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE628328394DB6005EABD8 /* NotificationBanner.swift */; };
+		55DE628628394F17005EABD8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE628528394F17005EABD8 /* Error.swift */; };
 		55F7CC842838DDE00061BDE5 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55F7CC832838DDE00061BDE5 /* TinkoffInvestSDK */; };
 		568662D24A7B215A5C5FC45D /* IRobotChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50EC0201DA4427EF8EE393 /* IRobotChartInteractor.swift */; };
 		57F177F97B93CA8F80C51DE3 /* RobotHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3272C0AC74BB27C6614FD70 /* RobotHistoryInteractor.swift */; };
@@ -441,6 +444,8 @@
 		55DC01C0283552760049467C /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		55DC01C2283635BE0049467C /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
 		55DE627E2838FF09005EABD8 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		55DE628328394DB6005EABD8 /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
+		55DE628528394F17005EABD8 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		55EAF513431923AE43085A55 /* StrategiesRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StrategiesRouter.swift; sourceTree = "<group>"; };
 		59A176CE9B276C271A931379 /* RobotHistoryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryViewController.swift; sourceTree = "<group>"; };
 		5ED61F6369BBF7C138C2C5B2 /* IInstrumentsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IInstrumentsView.swift; sourceTree = "<group>"; };
@@ -511,6 +516,7 @@
 			files = (
 				55F7CC842838DDE00061BDE5 /* TinkoffInvestSDK in Frameworks */,
 				55C716EC283665FD00111D61 /* Charts in Frameworks */,
+				55DE628228394870005EABD8 /* SwiftEntryKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,6 +853,7 @@
 			isa = PBXGroup;
 			children = (
 				551F8BEB28325F290044C7EA /* Environment.swift */,
+				55DE628328394DB6005EABD8 /* NotificationBanner.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -874,6 +881,7 @@
 				551F8BEF28325F290044C7EA /* AVExtensionsCollection */,
 				551F8BFB28325F290044C7EA /* External */,
 				55C7170A2837ACA700111D61 /* UIAlertController.swift */,
+				55DE628528394F17005EABD8 /* Error.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1701,6 +1709,7 @@
 			packageProductDependencies = (
 				55C716EB283665FD00111D61 /* Charts */,
 				55F7CC832838DDE00061BDE5 /* TinkoffInvestSDK */,
+				55DE628128394870005EABD8 /* SwiftEntryKit */,
 			);
 			productName = TinkoffContestKwatoko;
 			productReference = 552E2D3428323B1C000E79AD /* TinkoffContestKwatoko.app */;
@@ -1734,6 +1743,7 @@
 			packageReferences = (
 				55C716EA283665FD00111D61 /* XCRemoteSwiftPackageReference "Charts" */,
 				55F7CC822838DDE00061BDE5 /* XCRemoteSwiftPackageReference "TinkoffInvestSwiftSDK" */,
+				55DE628028394870005EABD8 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
 			);
 			productRefGroup = 552E2D3528323B1C000E79AD /* Products */;
 			projectDirPath = "";
@@ -1848,6 +1858,7 @@
 				551F8C8828325F290044C7EA /* DatabaseService.swift in Sources */,
 				551F8C7F28325F290044C7EA /* RootPresenter.swift in Sources */,
 				551F8C7028325F290044C7EA /* Date+Formatting.swift in Sources */,
+				55DE628428394DB6005EABD8 /* NotificationBanner.swift in Sources */,
 				551F8C7C28325F290044C7EA /* BaseRouter.swift in Sources */,
 				551F8C6328325F290044C7EA /* UIColor.swift in Sources */,
 				556390E328364B14000EC23E /* RobotHistoryDealCell.swift in Sources */,
@@ -1896,6 +1907,7 @@
 				551F8C6928325F290044C7EA /* UIViewController.swift in Sources */,
 				551F8C6428325F290044C7EA /* UITableView+Cells.swift in Sources */,
 				55DC01AA2834FD0D0049467C /* ContestStrategy.swift in Sources */,
+				55DE628628394F17005EABD8 /* Error.swift in Sources */,
 				55DC01AF283500550049467C /* ContestStrategyConfigCell.swift in Sources */,
 				55DC01A22834EC980049467C /* RobotsRobotCell.swift in Sources */,
 				55C717072837A88600111D61 /* ContestStrategyConfigEntity.swift in Sources */,
@@ -2261,6 +2273,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		55DE628028394870005EABD8 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huri000/SwiftEntryKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		55F7CC822838DDE00061BDE5 /* XCRemoteSwiftPackageReference "TinkoffInvestSwiftSDK" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnReeze/TinkoffInvestSwiftSDK.git";
@@ -2276,6 +2296,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 55C716EA283665FD00111D61 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
+		};
+		55DE628128394870005EABD8 /* SwiftEntryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55DE628028394870005EABD8 /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
+			productName = SwiftEntryKit;
 		};
 		55F7CC832838DDE00061BDE5 /* TinkoffInvestSDK */ = {
 			isa = XCSwiftPackageProductDependency;

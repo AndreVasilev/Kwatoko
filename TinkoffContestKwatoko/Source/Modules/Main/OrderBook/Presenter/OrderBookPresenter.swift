@@ -78,10 +78,10 @@ private extension OrderBookPresenter {
 
     func subscribeToOrderBook() {
         interactor.subscribeToOrderBook(figi: strategy.instrument.figi, depth: strategy.depth)
-            .sink { result in
-              switch result {
+            .sink { [weak self] in
+              switch $0 {
               case .failure(let error):
-                  print(error)
+                  self?.handleError(error)
               case .finished:
                   print("did finish loading marketDataServiceStream")
               }
