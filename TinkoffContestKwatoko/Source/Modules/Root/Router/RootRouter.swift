@@ -71,9 +71,14 @@ private extension RootRouter {
     }
 
     func mainTabBarController(controllers: [UIViewController], delegate: UITabBarControllerDelegate?) -> UITabBarController {
+        let navigationControllers: [UINavigationController] = controllers.map {
+            let nc = UINavigationController(rootViewController: $0)
+            nc.navigationBar.prefersLargeTitles = true
+            return nc
+        }
+        
         let tabBarControler = UITabBarController()
-        tabBarControler.setViewControllers(controllers.map { UINavigationController(rootViewController: $0) },
-                                           animated: false)
+        tabBarControler.setViewControllers(navigationControllers, animated: false)
         tabBarControler.delegate = delegate
         return tabBarControler
     }
@@ -82,6 +87,9 @@ private extension RootRouter {
         let assembly: RobotsAssembly = modulesFactory.buildAssembly()
         let viewController = assembly.build().viewController
         viewController.title = "Роботы"
+        viewController.tabBarItem = UITabBarItem(title: "Роботы",
+                                                 image: Asset.robots.image,
+                                                 tag: 2)
         return viewController
     }
 
@@ -89,6 +97,9 @@ private extension RootRouter {
         let assembly: HistoryAssembly = modulesFactory.buildAssembly()
         let viewController = assembly.build().viewController
         viewController.title = "История"
+        viewController.tabBarItem = UITabBarItem(title: "История",
+                                                 image: Asset.history.image,
+                                                 tag: 2)
         return viewController
     }
 
@@ -96,6 +107,9 @@ private extension RootRouter {
         let assembly: ProfileAssembly = modulesFactory.buildAssembly()
         let viewController = assembly.build().viewController
         viewController.title = "Профиль"
+        viewController.tabBarItem = UITabBarItem(title: "Профиль",
+                                                 image: Asset.profile.image,
+                                                 tag: 2)
         return viewController
     }
 }

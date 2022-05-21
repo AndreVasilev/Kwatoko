@@ -1,7 +1,7 @@
 // swiftlint:disable all
 // Generated using SwiftGen — https://github.com/SwiftGen/SwiftGen
 
-#if os(macOS)
+#if os(OSX)
   import AppKit.NSFont
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIFont
@@ -80,7 +80,7 @@ internal struct FontConvertible {
   internal let family: String
   internal let path: String
 
-  #if os(macOS)
+  #if os(OSX)
   internal typealias Font = NSFont
   #elseif os(iOS) || os(tvOS) || os(watchOS)
   internal typealias Font = UIFont
@@ -111,7 +111,7 @@ internal extension FontConvertible.Font {
     if !UIFont.fontNames(forFamilyName: font.family).contains(font.name) {
       font.register()
     }
-    #elseif os(macOS)
+    #elseif os(OSX)
     if let url = font.url, CTFontManagerGetScopeForURL(url as CFURL) == .none {
       font.register()
     }

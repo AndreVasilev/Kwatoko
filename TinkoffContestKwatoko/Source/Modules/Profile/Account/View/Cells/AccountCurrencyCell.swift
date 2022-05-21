@@ -31,6 +31,7 @@ class AccountCurrencyCell: UITableViewCell {
 private extension AccountCurrencyCell {
     
     func configure() {
+        selectionStyle = .none
         payInButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     
