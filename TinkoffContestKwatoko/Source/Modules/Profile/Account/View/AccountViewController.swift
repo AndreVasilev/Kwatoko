@@ -39,6 +39,8 @@ final class AccountViewController: BaseViewController {
 private extension AccountViewController {
 
     func configure() {
+        title = "Счёт"
+
         activityIndicator.hidesWhenStopped = true
         let item = UIBarButtonItem(customView: activityIndicator)
         navigationItem.rightBarButtonItem = item

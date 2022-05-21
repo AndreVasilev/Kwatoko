@@ -33,6 +33,8 @@ final class OrderBookViewController: BaseViewController {
 private extension OrderBookViewController {
 
     func configure() {
+        title = "Стакан"
+
         let actionButton = UIButton(type: .custom)
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
         let runImage = UIImage(systemName: "play.circle.fill", withConfiguration: imageConfig)?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)

@@ -32,7 +32,7 @@ final class RobotHistoryViewController: BaseViewController {
 private extension RobotHistoryViewController {
 
     func configure() {
-
+        title = "Робот"
     }
 }
 

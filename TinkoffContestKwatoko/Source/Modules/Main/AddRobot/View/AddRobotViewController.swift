@@ -32,6 +32,7 @@ final class AddRobotViewController: BaseViewController {
 private extension AddRobotViewController {
 
     func configure() {
+        title = "Конфигурация"
         tableView.keyboardDismissMode = .onDrag
     }
 }

@@ -29,6 +29,7 @@ final class StrategiesViewController: BaseViewController {
 private extension StrategiesViewController {
 
     func configure() {
+        title = "Стратегии"
 
     }
 }

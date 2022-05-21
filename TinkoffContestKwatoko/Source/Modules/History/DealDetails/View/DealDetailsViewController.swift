@@ -31,7 +31,7 @@ final class DealDetailsViewController: BaseViewController {
 private extension DealDetailsViewController {
 
     func configure() {
-
+        title = "Сделка"
     }
 }
 

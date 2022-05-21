@@ -31,6 +31,6 @@ class InstrumentListCell: UITableViewCell {
 private extension InstrumentListCell {
 
     func configure() {
-        accessoryType = .detailButton
+//        accessoryType = .detailButton
     }
 }

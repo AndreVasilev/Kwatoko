@@ -32,6 +32,8 @@ final class InstrumentsViewController: BaseViewController {
 private extension InstrumentsViewController {
 
     func configure() {
+        title = "Инструменты"
+
         tableView.keyboardDismissMode = .onDrag
         
         serchBar.delegate = self
