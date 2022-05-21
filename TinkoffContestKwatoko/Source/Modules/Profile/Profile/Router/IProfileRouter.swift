@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import TinkoffInvestSDK
 
 protocol IProfileRouter: IBaseRouter {
 
     func login()
     func logout()
+    func showAccount(_ account: Account, isSandbox: Bool)
 }

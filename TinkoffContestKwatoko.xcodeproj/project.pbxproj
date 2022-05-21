@@ -18,13 +18,16 @@
 		18EA5C9F2511CFF7883418C2 /* HistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3CF1F05E8E198DBAE04C797 /* HistoryInteractor.swift */; };
 		196FAB2921D08F8C99F836CD /* ProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E63C0E9E20C3FA178F3061 /* ProfileAssembly.swift */; };
 		1A30BD980797266A5FA1221F /* IStrategiesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E1AF925BC877FB0D0A7A1E7 /* IStrategiesRouter.swift */; };
+		1D65C9FE99B5D26CC394CAA4 /* IAccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29FCE59BF8AD9B215A3D45DC /* IAccountRouter.swift */; };
 		1EF9DC18595195B10C8ED2B1 /* AddRobotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E133AF279F94D3E2DCE6213 /* AddRobotViewController.swift */; };
 		2226CB08F9C05BE90AF95D31 /* DealDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 939EED93FD608035AA52474A /* DealDetailsInteractor.swift */; };
 		234067C08051ADC2ABB2ED82 /* IProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90A5333D9C49524380911BE /* IProfileRouter.swift */; };
 		249173DAE3F00DD1750FE870 /* IAddRobotPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27658DD661553E6EE80FF3CF /* IAddRobotPresenter.swift */; };
+		2521B9A7DF7D72A3032729CF /* IAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823C31A6611FDBBE7A202827 /* IAccountInteractor.swift */; };
 		27CBEE34430693A0A853CB9E /* IAddRobotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B8ADC785D6139B6D37D3E8 /* IAddRobotView.swift */; };
 		2F28055498165472609852F4 /* OrderBookInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E7B63ED0A6FB74D60A96040 /* OrderBookInteractor.swift */; };
 		33F789FE70F43138BA048B42 /* InstrumentsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADFCDEC8A8E717127F9A334 /* InstrumentsInteractor.swift */; };
+		34ABBD873B10D619DB9BBB1F /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B6411F5594C1E398E0E2391 /* AccountViewController.swift */; };
 		35BA529DBDC84AF790B320DF /* RobotChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DC5FC069CD88394D60D759 /* RobotChartViewController.swift */; };
 		35C3C1680DA9D2E4F4359A25 /* IStrategiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5F0EB820DF671CB2120CBE /* IStrategiesView.swift */; };
 		367B2EB78721EC7F2104BAB4 /* InstrumentsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83351634C02591481277BDF /* InstrumentsPresenter.swift */; };
@@ -134,6 +137,9 @@
 		551F8C9D28329B250044C7EA /* PostOrderDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551F8C9C28329B250044C7EA /* PostOrderDto.swift */; };
 		551F8CA12832B1150044C7EA /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 551F8CA02832B1150044C7EA /* Profile.storyboard */; };
 		552E2D4228323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 552E2D4028323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodeld */; };
+		55333D5D2838E42C0002801F /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55333D5C2838E42C0002801F /* Account.storyboard */; };
+		55333D602838F22A0002801F /* AccountInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55333D5F2838F22A0002801F /* AccountInfoCell.swift */; };
+		55333D622838F2460002801F /* AccountCurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55333D612838F2460002801F /* AccountCurrencyCell.swift */; };
 		554589022832B56A00196B02 /* ProfileTokensCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554589012832B56A00196B02 /* ProfileTokensCell.swift */; };
 		554589042832C0E500196B02 /* ProfileAccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554589032832C0E500196B02 /* ProfileAccountCell.swift */; };
 		554589092833C24E00196B02 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554589082833C24E00196B02 /* ProfileEntity.swift */; };
@@ -163,7 +169,6 @@
 		55C717092837A89300111D61 /* InstrumentEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C717082837A89300111D61 /* InstrumentEntity.swift */; };
 		55C7170B2837ACA700111D61 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7170A2837ACA700111D61 /* UIAlertController.swift */; };
 		55C7170D2837CCE900111D61 /* RobotConfigPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C7170C2837CCE900111D61 /* RobotConfigPresenter.swift */; };
-		55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55DB2496283241740084A499 /* TinkoffInvestSDK */; };
 		55DC01A02834EC880049467C /* RobotsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC019F2834EC880049467C /* RobotsInfoCell.swift */; };
 		55DC01A22834EC980049467C /* RobotsRobotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01A12834EC980049467C /* RobotsRobotCell.swift */; };
 		55DC01A42834ED3C0049467C /* RobotsActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01A32834ED3C0049467C /* RobotsActionCell.swift */; };
@@ -178,6 +183,8 @@
 		55DC01BD283538DA0049467C /* Robot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01BC283538DA0049467C /* Robot.swift */; };
 		55DC01C1283552760049467C /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55DC01C0283552760049467C /* History.storyboard */; };
 		55DC01C3283635BE0049467C /* Deal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DC01C2283635BE0049467C /* Deal.swift */; };
+		55DE627F2838FF09005EABD8 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE627E2838FF09005EABD8 /* AccountModel.swift */; };
+		55F7CC842838DDE00061BDE5 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55F7CC832838DDE00061BDE5 /* TinkoffInvestSDK */; };
 		568662D24A7B215A5C5FC45D /* IRobotChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50EC0201DA4427EF8EE393 /* IRobotChartInteractor.swift */; };
 		57F177F97B93CA8F80C51DE3 /* RobotHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3272C0AC74BB27C6614FD70 /* RobotHistoryInteractor.swift */; };
 		5AE3757BA2EF479F685FBD3E /* StrategiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B7B51538419CB32C380DDDC /* StrategiesPresenter.swift */; };
@@ -196,6 +203,7 @@
 		6FFCD522DB981F36977D2462 /* InstrumentsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7179F1BC342C404F9FBEA832 /* InstrumentsAssembly.swift */; };
 		7437CA1776996B770B157E2D /* InstrumentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359444F2C0578D4E8F5A4D1B /* InstrumentsRouter.swift */; };
 		77EAD71F6E908FC935A7FA37 /* IOrderBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD5033F101D981ED396DEF5B /* IOrderBookView.swift */; };
+		7D74D72BE4666CEC325C9701 /* AccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDD9346A95A190E95A25EDED /* AccountPresenter.swift */; };
 		7FD784081FA132DF8F572662 /* IInstrumentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED61F6369BBF7C138C2C5B2 /* IInstrumentsView.swift */; };
 		8344E1FEDCF67C234D085F84 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1AEF79133AAE934412458D /* HistoryViewController.swift */; };
 		83534D32127C0793EC3DDD96 /* DealDetailsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92C1A25FE8A47481CAE36B17 /* DealDetailsRouter.swift */; };
@@ -204,6 +212,7 @@
 		87BA5FA50A49576BCA9F96DD /* StrategiesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EAF513431923AE43085A55 /* StrategiesRouter.swift */; };
 		8F5FB4CEFB1C2C5B76BE26A9 /* IOrderBookInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8BF52DB16F6C1EFFC8CE784 /* IOrderBookInteractor.swift */; };
 		8FDCEB6534EF23680C728DB2 /* IRobotHistoryPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609D717862957F95B96563F5 /* IRobotHistoryPresenter.swift */; };
+		9902692D9ECAD72C6A9ECAB9 /* AccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52498A068E7B758B90B98B6 /* AccountRouter.swift */; };
 		9F9B504CD182D4112CFA2A85 /* RobotsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32E12BB414B1BDEBAA8602E /* RobotsRouter.swift */; };
 		A29E8E7D63B77E259F69D0D9 /* RobotsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E91C925E2A32A09FA8E58FB5 /* RobotsPresenter.swift */; };
 		A7813DF3C83BB9614108089B /* IRobotChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A14B88D9EB689E8AD11BECE /* IRobotChartView.swift */; };
@@ -214,7 +223,9 @@
 		B897E0B187B0682998692CBA /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71F62A59A00B85F9E44DC0B /* ProfileInteractor.swift */; };
 		BF0DED7DE5C34A66D6916929 /* IRobotHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AF0FC7203F236AA4FF48E1 /* IRobotHistoryInteractor.swift */; };
 		BF7F46D069BE4FFF9211603E /* HistoryRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677B0100A2648FEBB9E6288B /* HistoryRouter.swift */; };
+		C0337FCBF8E1BB3235620523 /* AccountAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A8158D3DCAB2D65AC1AC77 /* AccountAssembly.swift */; };
 		C23A66A87A393F00AF375167 /* StrategiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A82F7966A3EEC6CEF004D80 /* StrategiesViewController.swift */; };
+		C5560EC39444B0BFCD699109 /* AccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2544974EF3FBEF4E54A20A00 /* AccountInteractor.swift */; };
 		C8E567E56008A822915670FD /* IInstrumentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48667D42CFAEF6720BD1C6 /* IInstrumentsRouter.swift */; };
 		C976BEDA42B4A83B46E3D956 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEE31715B8C6E2BEE88604D /* ProfileViewController.swift */; };
 		D08C07D7753E663F370C7470 /* OrderBookPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB88AC9BA3CFB07080EAAB24 /* OrderBookPresenter.swift */; };
@@ -235,9 +246,11 @@
 		F3C49BF92F8BAAFA454CB88D /* RobotsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3BBC65076513EB16AC8DAE /* RobotsAssembly.swift */; };
 		F5E6DC8D4B92430B5D7785EA /* IDealDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 387CB06B2F985ACC72EE0813 /* IDealDetailsPresenter.swift */; };
 		F6FA8C59D5DF05DF1BB1B525 /* IStrategiesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81883F807ED09CADD4E20F12 /* IStrategiesInteractor.swift */; };
+		F7D9CB0A4856D286E8D9EE47 /* IAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B3B66310B0C3C8F4216970 /* IAccountView.swift */; };
 		F7DB6C9B0C0231E42654A215 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5030A8DE634AD3FB54F771 /* ProfilePresenter.swift */; };
 		FB7E9759E921C0220EBA4ACC /* IStrategiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB50DA282FB7ECFE5BAD4A6 /* IStrategiesPresenter.swift */; };
 		FBB2D759F3E5D93A61B1F52B /* IRobotChartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70BFD48C98B29A2E4CDCACB /* IRobotChartPresenter.swift */; };
+		FDD62D7235616C3112E5F378 /* IAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 267A457A8C8470CEFF025BEE /* IAccountPresenter.swift */; };
 		FDEFFB56E364F314FB1257D9 /* RobotsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF047982BA75BDA491C8DEB /* RobotsInteractor.swift */; };
 /* End PBXBuildFile section */
 
@@ -253,8 +266,12 @@
 		15B000CF5A6B66B58D8458CA /* StrategiesAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StrategiesAssembly.swift; sourceTree = "<group>"; };
 		1A1AEF79133AAE934412458D /* HistoryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		2335689A7B551F22D3DD19AF /* OrderBookRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OrderBookRouter.swift; sourceTree = "<group>"; };
+		2544974EF3FBEF4E54A20A00 /* AccountInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountInteractor.swift; sourceTree = "<group>"; };
+		267A457A8C8470CEFF025BEE /* IAccountPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IAccountPresenter.swift; sourceTree = "<group>"; };
 		27658DD661553E6EE80FF3CF /* IAddRobotPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IAddRobotPresenter.swift; sourceTree = "<group>"; };
+		29FCE59BF8AD9B215A3D45DC /* IAccountRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IAccountRouter.swift; sourceTree = "<group>"; };
 		2A14B88D9EB689E8AD11BECE /* IRobotChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotChartView.swift; sourceTree = "<group>"; };
+		2B6411F5594C1E398E0E2391 /* AccountViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		2B6E0FAD8A059A8B4256BB12 /* RobotHistoryAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryAssembly.swift; sourceTree = "<group>"; };
 		2D0DD0B66929F725FD6A1E8C /* IHistoryRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IHistoryRouter.swift; sourceTree = "<group>"; };
 		2E1AF925BC877FB0D0A7A1E7 /* IStrategiesRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IStrategiesRouter.swift; sourceTree = "<group>"; };
@@ -378,6 +395,9 @@
 		552E2D4128323B1C000E79AD /* TinkoffContestKwatoko.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TinkoffContestKwatoko.xcdatamodel; sourceTree = "<group>"; };
 		552E2D4828323B1D000E79AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		552E2D4E28323B43000E79AD /* TinkoffContestKwatoko.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TinkoffContestKwatoko.entitlements; sourceTree = "<group>"; };
+		55333D5C2838E42C0002801F /* Account.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Account.storyboard; sourceTree = "<group>"; };
+		55333D5F2838F22A0002801F /* AccountInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoCell.swift; sourceTree = "<group>"; };
+		55333D612838F2460002801F /* AccountCurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCurrencyCell.swift; sourceTree = "<group>"; };
 		554589012832B56A00196B02 /* ProfileTokensCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTokensCell.swift; sourceTree = "<group>"; };
 		554589032832C0E500196B02 /* ProfileAccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileAccountCell.swift; sourceTree = "<group>"; };
 		554589082833C24E00196B02 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
@@ -406,7 +426,6 @@
 		55C717082837A89300111D61 /* InstrumentEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentEntity.swift; sourceTree = "<group>"; };
 		55C7170A2837ACA700111D61 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		55C7170C2837CCE900111D61 /* RobotConfigPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotConfigPresenter.swift; sourceTree = "<group>"; };
-		55DB2494283241360084A499 /* TinkoffInvestSwiftSDK */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = TinkoffInvestSwiftSDK; path = ../TinkoffInvestSwiftSDK; sourceTree = "<group>"; };
 		55DC019F2834EC880049467C /* RobotsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsInfoCell.swift; sourceTree = "<group>"; };
 		55DC01A12834EC980049467C /* RobotsRobotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsRobotCell.swift; sourceTree = "<group>"; };
 		55DC01A32834ED3C0049467C /* RobotsActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotsActionCell.swift; sourceTree = "<group>"; };
@@ -421,6 +440,7 @@
 		55DC01BC283538DA0049467C /* Robot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Robot.swift; sourceTree = "<group>"; };
 		55DC01C0283552760049467C /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		55DC01C2283635BE0049467C /* Deal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deal.swift; sourceTree = "<group>"; };
+		55DE627E2838FF09005EABD8 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		55EAF513431923AE43085A55 /* StrategiesRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StrategiesRouter.swift; sourceTree = "<group>"; };
 		59A176CE9B276C271A931379 /* RobotHistoryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryViewController.swift; sourceTree = "<group>"; };
 		5ED61F6369BBF7C138C2C5B2 /* IInstrumentsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IInstrumentsView.swift; sourceTree = "<group>"; };
@@ -439,7 +459,10 @@
 		8083C00BFDEEC5E2BD5E0881 /* AddRobotInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AddRobotInteractor.swift; sourceTree = "<group>"; };
 		81883F807ED09CADD4E20F12 /* IStrategiesInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IStrategiesInteractor.swift; sourceTree = "<group>"; };
 		82374ACB13AD819DDD708059 /* RobotChartAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotChartAssembly.swift; sourceTree = "<group>"; };
+		823C31A6611FDBBE7A202827 /* IAccountInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IAccountInteractor.swift; sourceTree = "<group>"; };
 		85F59C9EEC2E4E68857505C3 /* DealDetailsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DealDetailsPresenter.swift; sourceTree = "<group>"; };
+		88A8158D3DCAB2D65AC1AC77 /* AccountAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountAssembly.swift; sourceTree = "<group>"; };
+		89B3B66310B0C3C8F4216970 /* IAccountView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IAccountView.swift; sourceTree = "<group>"; };
 		8BB36AFE3FD95C33825275FF /* IHistoryPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IHistoryPresenter.swift; sourceTree = "<group>"; };
 		8BEE31715B8C6E2BEE88604D /* ProfileViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8E5F0EB820DF671CB2120CBE /* IStrategiesView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IStrategiesView.swift; sourceTree = "<group>"; };
@@ -457,6 +480,7 @@
 		B71F62A59A00B85F9E44DC0B /* ProfileInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		BB48667D42CFAEF6720BD1C6 /* IInstrumentsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IInstrumentsRouter.swift; sourceTree = "<group>"; };
 		BC3BBC65076513EB16AC8DAE /* RobotsAssembly.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotsAssembly.swift; sourceTree = "<group>"; };
+		BDD9346A95A190E95A25EDED /* AccountPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountPresenter.swift; sourceTree = "<group>"; };
 		BEF5C27EBF81CAAD861D6D5E /* IRobotsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotsView.swift; sourceTree = "<group>"; };
 		C3CF1F05E8E198DBAE04C797 /* HistoryInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HistoryInteractor.swift; sourceTree = "<group>"; };
 		C83351634C02591481277BDF /* InstrumentsPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = InstrumentsPresenter.swift; sourceTree = "<group>"; };
@@ -466,6 +490,7 @@
 		D953B983FF01618058EACE40 /* IRobotsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotsRouter.swift; sourceTree = "<group>"; };
 		E3272C0AC74BB27C6614FD70 /* RobotHistoryInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryInteractor.swift; sourceTree = "<group>"; };
 		E32E12BB414B1BDEBAA8602E /* RobotsRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotsRouter.swift; sourceTree = "<group>"; };
+		E52498A068E7B758B90B98B6 /* AccountRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AccountRouter.swift; sourceTree = "<group>"; };
 		E54A33C5A35BBFB3D38F5945 /* RobotChartInteractor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotChartInteractor.swift; sourceTree = "<group>"; };
 		E70BFD48C98B29A2E4CDCACB /* IRobotChartPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IRobotChartPresenter.swift; sourceTree = "<group>"; };
 		E7C7D5B21FCE1093A62EC576 /* RobotHistoryPresenter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryPresenter.swift; sourceTree = "<group>"; };
@@ -484,7 +509,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55DB2497283241740084A499 /* TinkoffInvestSDK in Frameworks */,
+				55F7CC842838DDE00061BDE5 /* TinkoffInvestSDK in Frameworks */,
 				55C716EC283665FD00111D61 /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,6 +640,17 @@
 				12140083F36F4278551D4ADD /* IRobotChartRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		35CEE372D4D6C7FD8D4B6056 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2B6411F5594C1E398E0E2391 /* AccountViewController.swift */,
+				89B3B66310B0C3C8F4216970 /* IAccountView.swift */,
+				55333D5C2838E42C0002801F /* Account.storyboard */,
+				55333D5E2838F2180002801F /* Cells */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		3B6B35B7B71EF1707EAC70E4 /* Assembly */ = {
@@ -827,6 +863,7 @@
 				55DC01C2283635BE0049467C /* Deal.swift */,
 				556390DB28363BD5000EC23E /* Deal+DemoList.swift */,
 				55C716FA283798B400111D61 /* Profile.swift */,
+				55DE627E2838FF09005EABD8 /* AccountModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -889,7 +926,7 @@
 				551F8C1428325F290044C7EA /* Root */,
 				5545890C2833E13100196B02 /* Main */,
 				55DC01BF283551080049467C /* History */,
-				99D8820FED841B5C29E7AEF5 /* Profile */,
+				55F7CC852838E3810061BDE5 /* Profile */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -1055,7 +1092,6 @@
 			isa = PBXGroup;
 			children = (
 				552E2D3628323B1C000E79AD /* TinkoffContestKwatoko */,
-				55DB2493283241360084A499 /* Packages */,
 				552E2D3528323B1C000E79AD /* Products */,
 				55DB2495283241740084A499 /* Frameworks */,
 			);
@@ -1077,6 +1113,15 @@
 				551F8C2C28325F290044C7EA /* Supporting Files */,
 			);
 			path = TinkoffContestKwatoko;
+			sourceTree = "<group>";
+		};
+		55333D5E2838F2180002801F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				55333D5F2838F22A0002801F /* AccountInfoCell.swift */,
+				55333D612838F2460002801F /* AccountCurrencyCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		554589052832C16E00196B02 /* Cells */ = {
@@ -1159,14 +1204,6 @@
 			path = ContestStrategy;
 			sourceTree = "<group>";
 		};
-		55DB2493283241360084A499 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				55DB2494283241360084A499 /* TinkoffInvestSwiftSDK */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		55DB2495283241740084A499 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1242,6 +1279,15 @@
 			path = History;
 			sourceTree = "<group>";
 		};
+		55F7CC852838E3810061BDE5 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				99D8820FED841B5C29E7AEF5 /* Profile */,
+				8A5C48588C2EA163BDB42BE2 /* Account */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		58C62430F060E9FB27447EFB /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1313,6 +1359,15 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		75D431C4F3A8EA09A2AAB446 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				BDD9346A95A190E95A25EDED /* AccountPresenter.swift */,
+				267A457A8C8470CEFF025BEE /* IAccountPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		7BE03326EAD899D95F4D6520 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -1333,11 +1388,32 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		8A5C48588C2EA163BDB42BE2 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				35CEE372D4D6C7FD8D4B6056 /* View */,
+				75D431C4F3A8EA09A2AAB446 /* Presenter */,
+				C31276EF1C74BD4B3CF70F49 /* Interactor */,
+				9615493434F142159A1A8215 /* Router */,
+				B1E3FA5E01C540472F629A2A /* Assembly */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
 		8D3AB84B38DECF1FA471B281 /* Router */ = {
 			isa = PBXGroup;
 			children = (
 				46983FAA2684BE912AB0A61F /* AddRobotRouter.swift */,
 				AE85AA70EF645C2876D87B8F /* IAddRobotRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		9615493434F142159A1A8215 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				E52498A068E7B758B90B98B6 /* AccountRouter.swift */,
+				29FCE59BF8AD9B215A3D45DC /* IAccountRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -1411,6 +1487,14 @@
 			path = Interactor;
 			sourceTree = "<group>";
 		};
+		B1E3FA5E01C540472F629A2A /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				88A8158D3DCAB2D65AC1AC77 /* AccountAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		B611469C60D0683F13F1355E /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1438,6 +1522,15 @@
 				9E894C0F4674BA104C146860 /* DealDetailsAssembly.swift */,
 			);
 			path = Assembly;
+			sourceTree = "<group>";
+		};
+		C31276EF1C74BD4B3CF70F49 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				2544974EF3FBEF4E54A20A00 /* AccountInteractor.swift */,
+				823C31A6611FDBBE7A202827 /* IAccountInteractor.swift */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		C89D5D540C2CF7B4C8CBB246 /* Interactor */ = {
@@ -1606,8 +1699,8 @@
 			);
 			name = TinkoffContestKwatoko;
 			packageProductDependencies = (
-				55DB2496283241740084A499 /* TinkoffInvestSDK */,
 				55C716EB283665FD00111D61 /* Charts */,
+				55F7CC832838DDE00061BDE5 /* TinkoffInvestSDK */,
 			);
 			productName = TinkoffContestKwatoko;
 			productReference = 552E2D3428323B1C000E79AD /* TinkoffContestKwatoko.app */;
@@ -1640,6 +1733,7 @@
 			mainGroup = 552E2D2B28323B1C000E79AD;
 			packageReferences = (
 				55C716EA283665FD00111D61 /* XCRemoteSwiftPackageReference "Charts" */,
+				55F7CC822838DDE00061BDE5 /* XCRemoteSwiftPackageReference "TinkoffInvestSwiftSDK" */,
 			);
 			productRefGroup = 552E2D3528323B1C000E79AD /* Products */;
 			projectDirPath = "";
@@ -1661,6 +1755,7 @@
 				554589122834DF2200196B02 /* Instruments.storyboard in Resources */,
 				551F8C4E28325F290044C7EA /* SF-Pro-Rounded-Light.otf in Resources */,
 				551F8C5B28325F290044C7EA /* SF-Pro-Rounded-Bold.otf in Resources */,
+				55333D5D2838E42C0002801F /* Account.storyboard in Resources */,
 				551F8C4528325F290044C7EA /* SFProText-MediumItalic.ttf in Resources */,
 				551F8C4C28325F290044C7EA /* SFProDisplay-Regular.ttf in Resources */,
 				551F8C3928325F290044C7EA /* SFProDisplay-UltraLight.ttf in Resources */,
@@ -1870,6 +1965,7 @@
 				6FFCD522DB981F36977D2462 /* InstrumentsAssembly.swift in Sources */,
 				55DC01A62834FB990049467C /* Strategy.swift in Sources */,
 				C23A66A87A393F00AF375167 /* StrategiesViewController.swift in Sources */,
+				55DE627F2838FF09005EABD8 /* AccountModel.swift in Sources */,
 				35C3C1680DA9D2E4F4359A25 /* IStrategiesView.swift in Sources */,
 				5AE3757BA2EF479F685FBD3E /* StrategiesPresenter.swift in Sources */,
 				556390E8283658DE000EC23E /* DealDetailsInfoCell.swift in Sources */,
@@ -1885,9 +1981,11 @@
 				DB24B6020600D75C280F6C8B /* IHistoryPresenter.swift in Sources */,
 				18EA5C9F2511CFF7883418C2 /* HistoryInteractor.swift in Sources */,
 				16A5BB9DBE8A17C2E654AD42 /* IHistoryInteractor.swift in Sources */,
+				55333D602838F22A0002801F /* AccountInfoCell.swift in Sources */,
 				BF7F46D069BE4FFF9211603E /* HistoryRouter.swift in Sources */,
 				6722B8771870B804EC769FB1 /* IHistoryRouter.swift in Sources */,
 				E341481EFA308F6C92814DBF /* HistoryAssembly.swift in Sources */,
+				55333D622838F2460002801F /* AccountCurrencyCell.swift in Sources */,
 				5E33B5FDFD2B38944EB2B811 /* RobotHistoryViewController.swift in Sources */,
 				0EC65A34D39C736CF6D34535 /* IRobotHistoryView.swift in Sources */,
 				D9646365EE9E1204D6225FA6 /* RobotHistoryPresenter.swift in Sources */,
@@ -1916,6 +2014,15 @@
 				37ED15537DD07903CE0DC822 /* RobotChartRouter.swift in Sources */,
 				4A221C2B23A6D5775DCA6A6F /* IRobotChartRouter.swift in Sources */,
 				4BBF4C6EEE485490059EC6A6 /* RobotChartAssembly.swift in Sources */,
+				34ABBD873B10D619DB9BBB1F /* AccountViewController.swift in Sources */,
+				F7D9CB0A4856D286E8D9EE47 /* IAccountView.swift in Sources */,
+				7D74D72BE4666CEC325C9701 /* AccountPresenter.swift in Sources */,
+				FDD62D7235616C3112E5F378 /* IAccountPresenter.swift in Sources */,
+				C5560EC39444B0BFCD699109 /* AccountInteractor.swift in Sources */,
+				2521B9A7DF7D72A3032729CF /* IAccountInteractor.swift in Sources */,
+				9902692D9ECAD72C6A9ECAB9 /* AccountRouter.swift in Sources */,
+				1D65C9FE99B5D26CC394CAA4 /* IAccountRouter.swift in Sources */,
+				C0337FCBF8E1BB3235620523 /* AccountAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2154,6 +2261,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		55F7CC822838DDE00061BDE5 /* XCRemoteSwiftPackageReference "TinkoffInvestSwiftSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnReeze/TinkoffInvestSwiftSDK.git";
+			requirement = {
+				kind = revision;
+				revision = e44ad07adaba4fed4341439a8a48b83239774435;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2162,8 +2277,9 @@
 			package = 55C716EA283665FD00111D61 /* XCRemoteSwiftPackageReference "Charts" */;
 			productName = Charts;
 		};
-		55DB2496283241740084A499 /* TinkoffInvestSDK */ = {
+		55F7CC832838DDE00061BDE5 /* TinkoffInvestSDK */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = 55F7CC822838DDE00061BDE5 /* XCRemoteSwiftPackageReference "TinkoffInvestSwiftSDK" */;
 			productName = TinkoffInvestSDK;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -28,6 +28,7 @@ final class DealDetailsPresenter: BasePresenter {
         self.interactor = interactor
         self.router = router
         self.deal = deal
+        super.init(router: router)
     }
 
     override func viewDidLoad() {

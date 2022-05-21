@@ -22,6 +22,5 @@ protocol IProfileInteractor {
     func clearDatabase()
 
     func openSandboxAccount() -> AnyPublisher<OpenSandboxAccountResponse, RPCError>
-    func closeSandboxAccount(id: String) -> AnyPublisher<CloseSandboxAccountResponse, RPCError>
-
+    func fetchAccounts() -> [AccountModel]
 }

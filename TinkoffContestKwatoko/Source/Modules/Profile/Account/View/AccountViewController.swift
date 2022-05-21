@@ -1,19 +1,19 @@
 //
-//  ProfileViewController.swift
+//  AccountViewController.swift
 //
-//  Created by Andrey Vasilev on 16/05/2022.
+//  Created by Andrey Vasilev on 21/05/2022.
 //  Copyright © 2022 Andrey Vasilev. All rights reserved.
 //
 
 import UIKit
 
-final class ProfileViewController: BaseViewController {
+final class AccountViewController: BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
     lazy var activityIndicator = UIActivityIndicatorView(style: .medium)
 
-    var presenter: IProfilePresenter!
+    var presenter: IAccountPresenter!
 
     var isProcessing: Bool = false {
         didSet {
@@ -21,7 +21,7 @@ final class ProfileViewController: BaseViewController {
         }
     }
 
-    init(presenter: IProfilePresenter) {
+    init(presenter: IAccountPresenter) {
         self.presenter = presenter
         super.init(output: presenter)
     }
@@ -36,7 +36,7 @@ final class ProfileViewController: BaseViewController {
     }
 }
 
-private extension ProfileViewController {
+private extension AccountViewController {
 
     func configure() {
         activityIndicator.hidesWhenStopped = true
@@ -45,14 +45,14 @@ private extension ProfileViewController {
     }
 }
 
-extension ProfileViewController: IProfileView {
+extension AccountViewController: IAccountView {
 
     func reloadData() {
         tableView.reloadData()
     }
 }
 
-extension ProfileViewController: UITableViewDataSource {
+extension AccountViewController: UITableViewDataSource {
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return presenter.sections.count
@@ -65,24 +65,16 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let section = presenter.sections[indexPath.section]
         switch section {
-        case .tokens:
-            switch indexPath.row {
-            case presenter.numberOfRows(inSection: indexPath.section) - 1:
+        case .info:
+            let row = presenter.infoRows[indexPath.row]
+            switch row {
+            case .info:
+                return dequeueInfoCell(tableView, forRowAt: indexPath)
+            case .close:
                 return dequeueActionCell(tableView, forRowAt: indexPath)
-            default:
-                return dequeueTokensCell(tableView, forRowAt: indexPath)
             }
-        case .sandbox:
-            switch indexPath.row {
-            case presenter.numberOfRows(inSection: indexPath.section) - 1:
-                return dequeueActionCell(tableView, forRowAt: indexPath)
-            default:
-                return dequeueAccountCell(tableView, forRowAt: indexPath)
-            }
-        case .exchange:
-            return dequeueAccountCell(tableView, forRowAt: indexPath)
-        case .logout:
-            return dequeueActionCell(tableView, forRowAt: indexPath)
+        case .currencies:
+            return dequeueCurrencyCell(tableView, forRowAt: indexPath)
         }
     }
 
@@ -92,7 +84,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
 }
 
-extension ProfileViewController: UITableViewDelegate {
+extension AccountViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -103,21 +95,12 @@ extension ProfileViewController: UITableViewDelegate {
 
 // MARK: Dequeue
 
-private extension ProfileViewController {
+private extension AccountViewController {
 
-    func dequeueTokensCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTokensCell.reuseIdentifier, for: indexPath)
-        (cell as? ProfileTokensCell)?.configure(model: presenter.tokensModel)
-        (cell as? ProfileTokensCell)?.onEditingDidEnd = { [weak self] in self?.presenter.tokensModel = $0 }
-        return cell
-    }
-
-    func dequeueAccountCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProfileAccountCell.reuseIdentifier, for: indexPath)
-        if let model = presenter.accountModel(at: indexPath) {
-            (cell as? ProfileAccountCell)?.configure(model: model) { [weak self] in
-                self?.presenter.closeSandboxAccount(at: indexPath)
-            }
+    func dequeueInfoCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: AccountInfoCell.reuseIdentifier, for: indexPath)
+        (cell as? AccountInfoCell)?.configure(model: presenter.info) { [weak self] in
+            self?.presenter.updateAccount(name: $0)
         }
         return cell
     }
@@ -126,6 +109,16 @@ private extension ProfileViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: RobotsActionCell.reuseIdentifier, for: indexPath)
         if let action = presenter.action(at: indexPath) {
             (cell as? RobotsActionCell)?.configure(action: action)
+        }
+        return cell
+    }
+    
+    func dequeueCurrencyCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: AccountCurrencyCell.reuseIdentifier, for: indexPath)
+        if let model = presenter.position(at: indexPath) {
+            (cell as? AccountCurrencyCell)?.configure(model: model) { [weak self] in
+                self?.presenter.payInCurrency(at: indexPath)
+            }
         }
         return cell
     }

@@ -22,6 +22,7 @@ final class StrategiesPresenter: BasePresenter {
         self.interactor = interactor
         self.router = router
         self.callback = callback
+        super.init(router: router)
     }
 
     override func viewDidLoad() {

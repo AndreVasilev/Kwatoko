@@ -192,6 +192,54 @@ extension DatabaseService {
     }
 }
 
+// MARK: Accounts
+
+extension DatabaseService {
+    
+    func fetchAccounts() -> [AccountModel] {
+        do {
+            let request = AccountEntity.fetchRequest()
+            let entities = try persistentContainer.viewContext.fetch(request)
+            return entities.map { AccountModel(id: $0.id, name: $0.name) }
+        } catch {
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
+            return []
+        }
+    }
+    
+    func fetchAccount(id: String) -> AccountModel? {
+        do {
+            let request = AccountEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "id == %@", id)
+            request.fetchLimit = 1
+            let entities = try persistentContainer.viewContext.fetch(request)
+            guard let entity = entities.first else { return nil }
+            return AccountModel(id: entity.id, name: entity.name)
+        } catch {
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
+            return nil
+        }
+    }
+    
+    func updateAccount(id: String, name: String?) {
+        do {
+            let request = AccountEntity.fetchRequest()
+            request.predicate = NSPredicate(format: "id == %@", id)
+            request.fetchLimit = 1
+            let entities = try persistentContainer.viewContext.fetch(request)
+            let entity = entities.first ?? AccountEntity(context: persistentContainer.viewContext)
+            entity.id = id
+            entity.name = name
+            try saveContext()
+        } catch {
+            let nserror = error as NSError
+            print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+}
+
 // MARK: Private
 
 private extension DatabaseService {

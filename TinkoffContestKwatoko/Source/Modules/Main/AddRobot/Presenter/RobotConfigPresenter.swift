@@ -22,6 +22,7 @@ final class RobotConfigPresenter: BasePresenter {
         self.interactor = interactor
         self.router = router
         self.robot = robot
+        super.init(router: router)
     }
 
     override func viewDidLoad() {

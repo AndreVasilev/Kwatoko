@@ -65,6 +65,7 @@ final class OrderBookPresenter: BasePresenter {
         self.interactor = interactor
         self.router = router
         self.strategy = strategy
+        super.init(router: router)
     }
 
     override func viewDidLoad() {

@@ -83,39 +83,17 @@
                                                     <rect key="frame" x="20" y="11" width="334" height="66"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zo8-Zl-nQS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="9.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="334" height="13.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gtV-Pj-ctS">
-                                                            <rect key="frame" x="0.0" y="13.5" width="334" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="45.5" width="334" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" horizontalHuggingPriority="1" horizontalCompressionResistancePriority="1" translatesAutoresizingMaskIntoConstraints="NO" id="c3c-qU-uFz">
-                                                            <rect key="frame" x="0.0" y="38" width="334" height="28"/>
-                                                            <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="255" verticalCompressionResistancePriority="755" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJw-qt-3uO">
-                                                                    <rect key="frame" x="288" y="0.0" width="46" height="28"/>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="28" id="Hzm-uU-ZOx"/>
-                                                                    </constraints>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                    <state key="normal" title="Button">
-                                                                        <color key="titleColor" systemColor="systemRedColor"/>
-                                                                    </state>
-                                                                </button>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="DJw-qt-3uO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c3c-qU-uFz" secondAttribute="leading" id="KVk-va-TlM"/>
-                                                                <constraint firstAttribute="bottom" secondItem="DJw-qt-3uO" secondAttribute="bottom" id="VOB-hq-SPk"/>
-                                                                <constraint firstAttribute="trailing" secondItem="DJw-qt-3uO" secondAttribute="trailing" id="mF3-KG-iS5"/>
-                                                                <constraint firstItem="DJw-qt-3uO" firstAttribute="top" secondItem="c3c-qU-uFz" secondAttribute="top" id="wmJ-zk-N2F"/>
-                                                            </constraints>
-                                                        </view>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
@@ -127,7 +105,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="closeButton" destination="DJw-qt-3uO" id="n2e-dc-DVD"/>
                                             <outlet property="isSelecedLabel" destination="Zo8-Zl-nQS" id="ven-PY-l9S"/>
                                             <outlet property="titleLabel" destination="gtV-Pj-ctS" id="H0w-yj-Ol5"/>
                                         </connections>
@@ -185,9 +162,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

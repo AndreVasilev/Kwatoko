@@ -32,6 +32,7 @@ final class RobotChartPresenter: BasePresenter {
         self.interactor = interactor
         self.router = router
         self.deals = deals
+        super.init(router: router)
     }
 
     override func viewDidLoad() {

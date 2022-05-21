@@ -29,6 +29,7 @@ final class HistoryPresenter: BasePresenter {
     init(interactor: IHistoryInteractor, router: IHistoryRouter) {
         self.interactor = interactor
         self.router = router
+        super.init(router: router)
     }
 
     override func viewDidLoad() {

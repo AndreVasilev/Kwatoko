@@ -18,6 +18,5 @@ protocol IProfilePresenter: ILifeCycleOutput {
     func action(at indexPath: IndexPath) -> IRowAction?
 
     func didSelectRow(at indexPath: IndexPath)
-
-    func closeSandboxAccount(at indexPath: IndexPath)
+    func showAccount(at indexPath: IndexPath)
 }

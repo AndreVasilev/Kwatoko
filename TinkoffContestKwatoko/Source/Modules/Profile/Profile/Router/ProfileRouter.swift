@@ -6,13 +6,17 @@
 //
 
 import Foundation
+import TinkoffInvestSDK
 
 final class ProfileRouter: BaseRouter {
 
     weak var rootDelegate: IRootPresenterDelegate?
+    let accountAssembly: AccountAssembly
 
-    init(rootDelegate: IRootPresenterDelegate?) {
+    init(rootDelegate: IRootPresenterDelegate?,
+         accountAssembly: AccountAssembly) {
         self.rootDelegate = rootDelegate
+        self.accountAssembly = accountAssembly
     }
 }
 
@@ -24,5 +28,10 @@ extension ProfileRouter: IProfileRouter {
 
     func logout() {
         rootDelegate?.didLogout()
+    }
+    
+    func showAccount(_ account: Account, isSandbox: Bool) {
+        let controller = accountAssembly.build(account: account, isSandbox: isSandbox).viewController
+        viewController?.show(controller, sender: nil)
     }
 }

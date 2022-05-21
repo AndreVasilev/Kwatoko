@@ -16,11 +16,19 @@ protocol IDatabaseService {
     func updateProfile(token: String, sandboxToken: String, accountId: String?)
 
     // MARK: Robots
+    
     func fetchRobots() -> [Robot]?
     func addRobot(name: String, strategy: Strategy, config: IStrategyConfig) -> Robot?
     func deleteRobot(id: String)
 
     // MARK: Deals
+    
     func fetchDeals(robotId: String) -> [Deal]
     func addDeal(_ deal: Deal)
+    
+    // MARK: Accounts
+    
+    func fetchAccounts() -> [AccountModel]
+    func fetchAccount(id: String) -> AccountModel?
+    func updateAccount(id: String, name: String?)
 }

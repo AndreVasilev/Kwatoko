@@ -52,6 +52,7 @@ final class ProfilePresenter: BasePresenter {
     var profile: Profile?
     var exchangeAccounts = [Account]()
     var sandboxAccounts = [Account]()
+    var accountModels = [AccountModel]()
 
     lazy var tokensModel = ProfileTokensCell.Model(token: profile?.token,
                                                    sandoxToken: profile?.sandboxToken)
@@ -59,11 +60,22 @@ final class ProfilePresenter: BasePresenter {
     init(interactor: IProfileInteractor, router: IProfileRouter) {
         self.interactor = interactor
         self.router = router
+        super.init(router: router)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        accountModels = interactor.fetchAccounts()
+        reloadSandboxAccounts()
+    }
+    
+    override func handleError(_ error: Error) {
+        handleError(error, style: .alert)
     }
 }
 
@@ -96,6 +108,25 @@ private extension ProfilePresenter {
                 self?.exchangeAccounts = $0.accounts
             }.store(in: &cancellables)
     }
+    
+    func reloadSandboxAccounts() {
+        guard let profile = self.profile else { return }
+        viewController?.isProcessing = true
+        reloadSandboxAccounts(token: profile.token, sandboxToken: profile.sandboxToken) { [weak self] in
+            if let error = $0 {
+                self?.handleError(error)
+            } else if let weakSelf = self {
+                if let selectedAccountId = profile.selectedAccountId,
+                   !(weakSelf.exchangeAccounts.map(\.id)
+                    + weakSelf.sandboxAccounts.map(\.id)).contains(selectedAccountId) {
+                    let id = weakSelf.sandboxAccounts.first?.id
+                    self?.updateSelectedAccount(id: id)
+                }
+                weakSelf.viewController?.reloadData()
+            }
+            self?.viewController?.isProcessing = false
+        }
+    }
 
     func reloadSandboxAccounts(token: String, sandboxToken: String, completion: ((Error?) -> Void)?) {
         interactor.getSandboxAccounts()
@@ -114,7 +145,7 @@ private extension ProfilePresenter {
             }.store(in: &cancellables)
     }
 
-    func updateSelectedAccount(id: String) {
+    func updateSelectedAccount(id: String?) {
         guard let profile = self.profile else { return }
         let newProfile = Profile(token: profile.token,
                                  sandboxToken: profile.sandboxToken,
@@ -161,39 +192,9 @@ private extension ProfilePresenter {
         router.present(controller, animated: true)
     }
 
-    func handleError(_ error: Error) {
-        let text: String
-        if let rpcError = error as? RPCError,
-           let message = rpcError.status.message
-            ?? rpcError.trailingMetadata?.first(name: "message") {
-            text = message
-        } else {
-            text = error.localizedDescription
-        }
-
-        router.presentAlert(title: nil,
-                            message: text,
-                            actions: [.init(title: "Закрыть", style: .default)])
-    }
-
     func openSandboxAccount() {
         manageSandbox(interactor.openSandboxAccount())
 
-    }
-
-    func closeSandboxAccount(id: String) {
-        manageSandbox(interactor.closeSandboxAccount(id: id)) { [weak self] in
-            if let error = $0 {
-                self?.handleError(error)
-            } else if let profile = self?.profile,
-                      profile.selectedAccountId == id {
-                let profile = Profile(token: profile.token,
-                                      sandboxToken: profile.sandboxToken,
-                                      selectedAccountId: self?.sandboxAccounts.first?.id)
-                self?.updateProfile(profile)
-                self?.viewController?.reloadData()
-            }
-        }
     }
 
     func manageSandbox<T>(_ publisher: AnyPublisher<T, RPCError>, _ completion: ((Error?) -> Void)? = nil) {
@@ -257,7 +258,13 @@ extension ProfilePresenter: IProfilePresenter {
         case .sandbox: account = sandboxAccounts[indexPath.row]
         }
 
-        let name = account?.name.isEmpty == false ? account?.name : account?.id
+        var name: String?
+        if let account = account {
+            name = account.name.isEmpty
+                ? accountModels.first(where: { $0.id == account.id })?.name ?? account.id
+                : account.name
+        }
+        
         let model = ProfileAccountCell.Model(title: name,
                                              isSelected: account?.id == profile?.selectedAccountId,
                                              isCloseEnabled: section == .sandbox)
@@ -283,7 +290,7 @@ extension ProfilePresenter: IProfilePresenter {
             let account = exchangeAccounts[indexPath.row]
             updateSelectedAccount(id: account.id)
             router.presentAlert(title: "Внимание!",
-                                message: "Все сделки будут совершаться на реальной бирже.\nБудьте внимательны с работой работа",
+                                message: "Все сделки будут совершаться на реальной бирже.\nБудьте внимательны с работой робота",
                                 actions: [.init(title: "Закрыть", style: .cancel)])
         case .sandbox:
             if indexPath.row < sandboxAccounts.count {
@@ -302,14 +309,22 @@ extension ProfilePresenter: IProfilePresenter {
         viewController?.reloadData()
     }
 
-    func closeSandboxAccount(at indexPath: IndexPath) {
+    func showAccount(at indexPath: IndexPath) {
+        let account: Account?
+        let isSandbox: Bool
         let section = sections[indexPath.section]
-        guard section == .sandbox else { return }
-        let account = sandboxAccounts[indexPath.row]
-        let name = account.name.isEmpty ? account.id : account.name
-        let alert = UIAlertController(confirm: "Вы уверены, что хотите закрыть счёт?", message: name, actionTitle: "Закрыть") { [weak self] in
-            self?.closeSandboxAccount(id: account.id)
+        switch section {
+        case .exchange:
+            account = exchangeAccounts[indexPath.row]
+            isSandbox = false
+        case .sandbox:
+            account = sandboxAccounts[indexPath.row]
+            isSandbox = true
+        case .logout, .tokens:
+            account = nil
+            isSandbox = false
         }
-        router.present(alert, animated: true)
+        guard let account = account else { return }
+        router.showAccount(account, isSandbox: isSandbox)
     }
 }

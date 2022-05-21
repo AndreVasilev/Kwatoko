@@ -62,6 +62,7 @@ final class AddRobotPresenter: BasePresenter {
     init(interactor: IAddRobotInteractor, router: IAddRobotRouter) {
         self.interactor = interactor
         self.router = router
+        super.init(router: router)
     }
 
     override func viewDidLoad() {

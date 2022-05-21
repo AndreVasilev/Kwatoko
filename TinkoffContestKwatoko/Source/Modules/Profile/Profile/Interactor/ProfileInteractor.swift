@@ -50,8 +50,8 @@ extension ProfileInteractor: IProfileInteractor {
     func openSandboxAccount() -> AnyPublisher<OpenSandboxAccountResponse, RPCError> {
         return sdk!.sandboxService.openAccount()
     }
-
-    func closeSandboxAccount(id: String) -> AnyPublisher<CloseSandboxAccountResponse, RPCError> {
-        return sdk!.sandboxService.closeAccount(accountID: id)
+    
+    func fetchAccounts() -> [AccountModel] {
+        return database.fetchAccounts()
     }
 }
