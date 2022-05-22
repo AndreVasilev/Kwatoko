@@ -187,6 +187,12 @@
 		55DE628228394870005EABD8 /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 55DE628128394870005EABD8 /* SwiftEntryKit */; };
 		55DE628428394DB6005EABD8 /* NotificationBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE628328394DB6005EABD8 /* NotificationBanner.swift */; };
 		55DE628628394F17005EABD8 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE628528394F17005EABD8 /* Error.swift */; };
+		55DE6289283A3462005EABD8 /* DemoOrderBookInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE6288283A3462005EABD8 /* DemoOrderBookInteractor.swift */; };
+		55DE628C283A6A07005EABD8 /* OrderDemoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE628B283A6A07005EABD8 /* OrderDemoDto.swift */; };
+		55DE628E283A6A4C005EABD8 /* OrderBookDemoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE628D283A6A4C005EABD8 /* OrderBookDemoDto.swift */; };
+		55DE6291283A6B68005EABD8 /* OrderBooksDemoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE6290283A6B68005EABD8 /* OrderBooksDemoDto.swift */; };
+		55DE6293283A7263005EABD8 /* DemoData.json in Resources */ = {isa = PBXBuildFile; fileRef = 55DE6292283A7263005EABD8 /* DemoData.json */; };
+		55DE6295283A7A7E005EABD8 /* StrategyOrdersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE6294283A7A7E005EABD8 /* StrategyOrdersService.swift */; };
 		55F7CC842838DDE00061BDE5 /* TinkoffInvestSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 55F7CC832838DDE00061BDE5 /* TinkoffInvestSDK */; };
 		568662D24A7B215A5C5FC45D /* IRobotChartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50EC0201DA4427EF8EE393 /* IRobotChartInteractor.swift */; };
 		57F177F97B93CA8F80C51DE3 /* RobotHistoryInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3272C0AC74BB27C6614FD70 /* RobotHistoryInteractor.swift */; };
@@ -446,6 +452,12 @@
 		55DE627E2838FF09005EABD8 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		55DE628328394DB6005EABD8 /* NotificationBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationBanner.swift; sourceTree = "<group>"; };
 		55DE628528394F17005EABD8 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		55DE6288283A3462005EABD8 /* DemoOrderBookInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoOrderBookInteractor.swift; sourceTree = "<group>"; };
+		55DE628B283A6A07005EABD8 /* OrderDemoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDemoDto.swift; sourceTree = "<group>"; };
+		55DE628D283A6A4C005EABD8 /* OrderBookDemoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBookDemoDto.swift; sourceTree = "<group>"; };
+		55DE6290283A6B68005EABD8 /* OrderBooksDemoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderBooksDemoDto.swift; sourceTree = "<group>"; };
+		55DE6292283A7263005EABD8 /* DemoData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DemoData.json; sourceTree = "<group>"; };
+		55DE6294283A7A7E005EABD8 /* StrategyOrdersService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrategyOrdersService.swift; sourceTree = "<group>"; };
 		55EAF513431923AE43085A55 /* StrategiesRouter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StrategiesRouter.swift; sourceTree = "<group>"; };
 		59A176CE9B276C271A931379 /* RobotHistoryViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RobotHistoryViewController.swift; sourceTree = "<group>"; };
 		5ED61F6369BBF7C138C2C5B2 /* IInstrumentsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IInstrumentsView.swift; sourceTree = "<group>"; };
@@ -758,6 +770,7 @@
 		551F8BB328325F290044C7EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				55DE6292283A7263005EABD8 /* DemoData.json */,
 				551F8BB428325F290044C7EA /* Generated */,
 				551F8BB928325F290044C7EA /* Localization.strings */,
 				551F8BBB28325F290044C7EA /* Colors.xml */,
@@ -861,6 +874,7 @@
 		551F8BEC28325F290044C7EA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				55DE628A283A69E9005EABD8 /* DemoDtos */,
 				554589072833C23E00196B02 /* Entities */,
 				551F8BED28325F290044C7EA /* AppError.swift */,
 				551F8C9C28329B250044C7EA /* PostOrderDto.swift */,
@@ -1208,6 +1222,7 @@
 			children = (
 				55DC01A92834FD0D0049467C /* ContestStrategy.swift */,
 				55C716F6283680C100111D61 /* ContestStrategyConfig.swift */,
+				55DE6294283A7A7E005EABD8 /* StrategyOrdersService.swift */,
 			);
 			path = ContestStrategy;
 			sourceTree = "<group>";
@@ -1285,6 +1300,16 @@
 				4BB44D256A678EBDBA718D6D /* RobotChart */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		55DE628A283A69E9005EABD8 /* DemoDtos */ = {
+			isa = PBXGroup;
+			children = (
+				55DE628B283A6A07005EABD8 /* OrderDemoDto.swift */,
+				55DE628D283A6A4C005EABD8 /* OrderBookDemoDto.swift */,
+				55DE6290283A6B68005EABD8 /* OrderBooksDemoDto.swift */,
+			);
+			path = DemoDtos;
 			sourceTree = "<group>";
 		};
 		55F7CC852838E3810061BDE5 /* Profile */ = {
@@ -1573,6 +1598,7 @@
 			children = (
 				0E7B63ED0A6FB74D60A96040 /* OrderBookInteractor.swift */,
 				E8BF52DB16F6C1EFFC8CE784 /* IOrderBookInteractor.swift */,
+				55DE6288283A3462005EABD8 /* DemoOrderBookInteractor.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1775,6 +1801,7 @@
 				551F8C3428325F290044C7EA /* Localization.strings in Resources */,
 				551F8C5D28325F290044C7EA /* SFProDisplay-Thin.ttf in Resources */,
 				551F8C3F28325F290044C7EA /* SFProText-SemiBold.ttf in Resources */,
+				55DE6293283A7263005EABD8 /* DemoData.json in Resources */,
 				556390E528364E3F000EC23E /* DealDetails.storyboard in Resources */,
 				551F8C4D28325F290044C7EA /* SFProDisplay-BlackItalic.ttf in Resources */,
 				551F8C4328325F290044C7EA /* SFProDisplay-Black.ttf in Resources */,
@@ -1851,6 +1878,7 @@
 				551F8C7928325F290044C7EA /* BasePresenter.swift in Sources */,
 				551F8C7628325F290044C7EA /* ViperModule.swift in Sources */,
 				55C717032837A82000111D61 /* DealEntity.swift in Sources */,
+				55DE6295283A7A7E005EABD8 /* StrategyOrdersService.swift in Sources */,
 				551F8C6828325F290044C7EA /* String.swift in Sources */,
 				551F8C3228325F290044C7EA /* Fonts.swift in Sources */,
 				554589092833C24E00196B02 /* ProfileEntity.swift in Sources */,
@@ -1905,6 +1933,7 @@
 				551F8C6F28325F290044C7EA /* DateFormatter+formats.swift in Sources */,
 				556390DC28363BD5000EC23E /* Deal+DemoList.swift in Sources */,
 				551F8C6928325F290044C7EA /* UIViewController.swift in Sources */,
+				55DE6289283A3462005EABD8 /* DemoOrderBookInteractor.swift in Sources */,
 				551F8C6428325F290044C7EA /* UITableView+Cells.swift in Sources */,
 				55DC01AA2834FD0D0049467C /* ContestStrategy.swift in Sources */,
 				55DE628628394F17005EABD8 /* Error.swift in Sources */,
@@ -2002,10 +2031,12 @@
 				0EC65A34D39C736CF6D34535 /* IRobotHistoryView.swift in Sources */,
 				D9646365EE9E1204D6225FA6 /* RobotHistoryPresenter.swift in Sources */,
 				8FDCEB6534EF23680C728DB2 /* IRobotHistoryPresenter.swift in Sources */,
+				55DE628C283A6A07005EABD8 /* OrderDemoDto.swift in Sources */,
 				57F177F97B93CA8F80C51DE3 /* RobotHistoryInteractor.swift in Sources */,
 				BF0DED7DE5C34A66D6916929 /* IRobotHistoryInteractor.swift in Sources */,
 				6959AA269FDD318FBE845778 /* RobotHistoryRouter.swift in Sources */,
 				064F6FDA198D93C8B3992417 /* IRobotHistoryRouter.swift in Sources */,
+				55DE628E283A6A4C005EABD8 /* OrderBookDemoDto.swift in Sources */,
 				55C716F92836813900111D61 /* IStrategy.swift in Sources */,
 				04543F4F0E3BF883A2274C54 /* RobotHistoryAssembly.swift in Sources */,
 				6C3A07FAEB187468013A719F /* DealDetailsViewController.swift in Sources */,
@@ -2028,6 +2059,7 @@
 				4BBF4C6EEE485490059EC6A6 /* RobotChartAssembly.swift in Sources */,
 				34ABBD873B10D619DB9BBB1F /* AccountViewController.swift in Sources */,
 				F7D9CB0A4856D286E8D9EE47 /* IAccountView.swift in Sources */,
+				55DE6291283A6B68005EABD8 /* OrderBooksDemoDto.swift in Sources */,
 				7D74D72BE4666CEC325C9701 /* AccountPresenter.swift in Sources */,
 				FDD62D7235616C3112E5F378 /* IAccountPresenter.swift in Sources */,
 				C5560EC39444B0BFCD699109 /* AccountInteractor.swift in Sources */,

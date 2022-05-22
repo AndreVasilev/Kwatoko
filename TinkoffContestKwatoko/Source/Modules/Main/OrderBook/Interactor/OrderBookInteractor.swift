@@ -7,6 +7,8 @@
 
 import Foundation
 import TinkoffInvestSDK
+import Combine
+import CombineGRPC
 
 final class OrderBookInteractor {
 
@@ -19,7 +21,9 @@ final class OrderBookInteractor {
 
 extension OrderBookInteractor: IOrderBookInteractor {
 
-    func subscribeToOrderBook(figi: String, depth: Int) -> MarketDataPublisher {
+    func subscribeToOrderBook(figi: String, depth: Int) -> AnyPublisher<OrderBook, RPCError> {
         return sdk.marketDataServiceStream.subscribeToOrderBook(figi: figi, depth: depth)
+            .map { $0.orderbook }
+            .eraseToAnyPublisher()
     }
 }

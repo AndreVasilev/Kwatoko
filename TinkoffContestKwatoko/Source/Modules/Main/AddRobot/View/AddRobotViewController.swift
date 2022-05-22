@@ -65,7 +65,7 @@ extension AddRobotViewController: UITableViewDataSource {
         case .config:
             guard let strategy = presenter.strategy else { fatalError("Unsupported state") }
             switch strategy {
-            case .contest:
+            case .contest, .demoContest:
                 return dequeueContestStrategyCell(tableView, forRowAt: indexPath)
             }
         case .actions:

@@ -16,7 +16,7 @@ final class StrategiesPresenter: BasePresenter {
 
     var callback: Callback?
 
-    let strategies: [Strategy] = [.contest]
+    let strategies: [Strategy] = [.contest, .demoContest]
 
     init(interactor: IStrategiesInteractor, router: IStrategiesRouter, callback: Callback?) {
         self.interactor = interactor

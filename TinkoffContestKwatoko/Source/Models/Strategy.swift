@@ -9,7 +9,7 @@ import Foundation
 
 enum Strategy: String, CaseIterable {
 
-    case contest
+    case demoContest, contest
 }
 
 extension Strategy {
@@ -20,13 +20,14 @@ extension Strategy {
 
     var name: String {
         switch self {
+        case .demoContest: return "Демо: торговля по стакану"
         case .contest: return "Торговля по стакану"
         }
     }
 
     var kind: Kind {
         switch self {
-        case .contest: return .orderBook
+        case .demoContest, .contest: return .orderBook
         }
     }
 }

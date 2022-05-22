@@ -40,6 +40,8 @@ extension AddRobotRouter: IAddRobotRouter {
         switch robot.strategy {
         case .contest:
             controller = orderBookAssembly.build(robot: robot).viewController
+        case .demoContest:
+            controller = orderBookAssembly.buildDemo(robot: robot).viewController
         }
 
         if var controllers = viewController?.navigationController?.viewControllers {

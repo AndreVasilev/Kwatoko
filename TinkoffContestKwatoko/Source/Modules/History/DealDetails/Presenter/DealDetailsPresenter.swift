@@ -42,7 +42,7 @@ private extension DealDetailsPresenter {
     func bookOrders(from order: Deal.Order?) -> [DealDetailsBookOrderCell.Model]? {
         guard let book = order?.closed ?? order?.opened else { return nil }
         let asks = book.asks.map { DealDetailsBookOrderCell.Model(valueType: .ask, value: $0.quantity, price: $0.price) }
-        let bids = book.asks.map { DealDetailsBookOrderCell.Model(valueType: .bid, value: $0.quantity, price: $0.price) }
+        let bids = book.bids.map { DealDetailsBookOrderCell.Model(valueType: .bid, value: $0.quantity, price: $0.price) }
         return asks + bids
     }
 }

@@ -12,7 +12,7 @@ import Combine
 
 class ContestStrategy {
 
-    private let sdk: TinkoffInvestSDK
+    private let ordersService: StrategyOrdersService
     private let database: IDatabaseService
     private let robot: Robot
     weak var delegate: IStrategyDelegate?
@@ -24,8 +24,8 @@ class ContestStrategy {
 
     private let dateFormatter = DateFormatter("HH:mm:ss.SSS")
 
-    init(sdk: TinkoffInvestSDK, database: IDatabaseService, robot: Robot) {
-        self.sdk = sdk
+    init(ordersService: StrategyOrdersService, database: IDatabaseService, robot: Robot) {
+        self.ordersService = ordersService
         self.database = database
         self.robot = robot
     }
@@ -418,30 +418,15 @@ private extension ContestStrategy {
 extension ContestStrategy {
 
     func postOrder(request: PostOrderRequest) -> AnyPublisher<PostOrderResponse, RPCError> {
-        if config.isSandbox {
-            return sdk.sandboxService.postOrder(request: request)
-        } else {
-            #warning("todo!!!")
-            return sdk.sandboxService.postOrder(request: request)
-        }
+        return ordersService.postOrder(request: request)
     }
 
     func cancelOrder(accountID: String, orderID: String) -> AnyPublisher<CancelOrderResponse, RPCError> {
-        if config.isSandbox {
-            return sdk.sandboxService.cancelOrder(accountID: accountID, orderID: orderID)
-        } else {
-            #warning("todo!!!")
-            return sdk.sandboxService.cancelOrder(accountID: accountID, orderID: orderID)
-        }
+        return ordersService.cancelOrder(accountID: accountID, orderID: orderID)
     }
 
     func getOrderState(accountID: String, orderID: String) -> AnyPublisher<OrderState, RPCError> {
-        if config.isSandbox {
-            return sdk.sandboxService.getOrderState(accountID: accountID, orderID: orderID)
-        } else {
-            #warning("todo!!!")
-            return sdk.sandboxService.getOrderState(accountID: accountID, orderID: orderID)
-        }
+        return ordersService.getOrderState(accountID: accountID, orderID: orderID)
     }
 
     func storeHistory(deal: Deal) {

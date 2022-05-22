@@ -128,8 +128,12 @@ extension Deal.Order.Book {
     init?(_ entity: DealOrderBookEntity?) {
         guard let date = entity?.date else { return nil }
         self.date = date
-        self.asks = (entity?.asks as? Set<BookOrderEntity>)?.compactMap { .init($0) } ?? []
-        self.bids = (entity?.bids as? Set<BookOrderEntity>)?.compactMap { .init($0) } ?? []
+        self.asks = ((entity?.asks as? Set<BookOrderEntity>)?
+            .compactMap { .init($0) } ?? [])
+            .sorted(by: { $1.price < $0.price })
+        self.bids = ((entity?.bids as? Set<BookOrderEntity>)?
+            .compactMap { .init($0) } ?? [])
+            .sorted(by: { $1.price < $0.price })
     }
 }
 

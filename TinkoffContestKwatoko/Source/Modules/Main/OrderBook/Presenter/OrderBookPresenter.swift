@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 import TinkoffInvestSDK
+import CombineGRPC
 
 final class OrderBookPresenter: BasePresenter {
 
@@ -86,7 +87,7 @@ private extension OrderBookPresenter {
                   print("did finish loading marketDataServiceStream")
               }
             } receiveValue: { [weak self] in
-                self?.receive(orderBook: $0.orderbook)
+                self?.receive(orderBook: $0)
             }.store(in: &cancellables)
     }
 

@@ -7,8 +7,10 @@
 
 import Foundation
 import TinkoffInvestSDK
+import CombineGRPC
+import Combine
 
 protocol IOrderBookInteractor {
 
-    func subscribeToOrderBook(figi: String, depth: Int) -> MarketDataPublisher
+    func subscribeToOrderBook(figi: String, depth: Int) -> AnyPublisher<OrderBook, RPCError>
 }
