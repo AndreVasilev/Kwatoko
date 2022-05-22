@@ -46,6 +46,8 @@ final class ProfilePresenter: BasePresenter {
     let interactor: IProfileInteractor
     let router: IProfileRouter
     weak var viewController: IProfileView?
+    
+    let tokensInfoUrl = URL(string: "https://tinkoff.github.io/investAPI/token/")!
 
     var cancellables = Set<AnyCancellable>()
 
@@ -263,9 +265,12 @@ extension ProfilePresenter: IProfilePresenter {
 
         var name: String?
         if let account = account {
-            name = account.name.isEmpty
-                ? accountModels.first(where: { $0.id == account.id })?.name ?? account.id
-                : account.name
+            if account.name.isEmpty {
+                let modelName = accountModels.first(where: { $0.id == account.id })?.name
+                name = modelName?.isEmpty == false ? modelName : account.id
+            } else {
+                name = account.name
+            }
         }
         
         let model = ProfileAccountCell.Model(title: name,
@@ -329,5 +334,9 @@ extension ProfilePresenter: IProfilePresenter {
         }
         guard let account = account else { return }
         router.showAccount(account, isSandbox: isSandbox)
+    }
+    
+    func presentTokensInfo() {
+        router.presentSafari(url: tokensInfoUrl)
     }
 }

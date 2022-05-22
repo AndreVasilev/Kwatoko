@@ -18,9 +18,12 @@ class ProfileTokensCell: UITableViewCell {
     @IBOutlet weak var tokenTextField: UITextField!
     @IBOutlet weak var sandboxTokenLabel: UILabel!
     @IBOutlet weak var sandboxTokenTextField: UITextField!
+    @IBOutlet weak var complianceLabel: UILabel!
+    @IBOutlet weak var whereMyTokensButton: UIButton!
 
     var onEditingDidEnd: ((Model) -> Void)?
-
+    var onInfoButtonPressed: (() -> Void)?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configure()
@@ -46,11 +49,21 @@ private extension ProfileTokensCell {
 
         tokenTextField.returnKeyType = .next
         sandboxTokenTextField.returnKeyType = .done
+        
+        whereMyTokensButton.setTitle("Как получить токены?", for: .normal)
+        whereMyTokensButton.addTarget(self, action: #selector(infoButtonPressed), for: .touchUpInside)
+        
+        complianceLabel.numberOfLines = 0
+        complianceLabel.text = "Нажимая \"Войти\", я подтверждаю, что осознаю все риски торговли роботом на реальной бирже и беру на себя всю ответственность за выставленные заявки"
     }
 
     @objc func didEndEditign() {
         let model = Model(token: tokenTextField.text, sandoxToken: sandboxTokenTextField.text)
         onEditingDidEnd?(model)
+    }
+    
+    @objc func infoButtonPressed() {
+        onInfoButtonPressed?()
     }
 }
 

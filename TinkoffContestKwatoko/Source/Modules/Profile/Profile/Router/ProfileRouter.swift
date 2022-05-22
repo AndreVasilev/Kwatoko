@@ -7,6 +7,7 @@
 
 import Foundation
 import TinkoffInvestSDK
+import SafariServices
 
 final class ProfileRouter: BaseRouter {
 
@@ -33,5 +34,10 @@ extension ProfileRouter: IProfileRouter {
     func showAccount(_ account: Account, isSandbox: Bool) {
         let controller = accountAssembly.build(account: account, isSandbox: isSandbox).viewController
         viewController?.show(controller, sender: nil)
+    }
+    
+    func presentSafari(url: URL) {
+        let controller = SFSafariViewController(url: url)
+        viewController?.present(controller, animated: true)
     }
 }

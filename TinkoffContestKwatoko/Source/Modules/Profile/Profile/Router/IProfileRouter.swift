@@ -13,4 +13,5 @@ protocol IProfileRouter: IBaseRouter {
     func login()
     func logout()
     func showAccount(_ account: Account, isSandbox: Bool)
+    func presentSafari(url: URL)
 }

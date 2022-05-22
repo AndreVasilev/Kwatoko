@@ -113,6 +113,7 @@ private extension ProfileViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTokensCell.reuseIdentifier, for: indexPath)
         (cell as? ProfileTokensCell)?.configure(model: presenter.tokensModel)
         (cell as? ProfileTokensCell)?.onEditingDidEnd = { [weak self] in self?.presenter.tokensModel = $0 }
+        (cell as? ProfileTokensCell)?.onInfoButtonPressed = { [weak self] in self?.presenter.presentTokensInfo() }
         return cell
     }
 

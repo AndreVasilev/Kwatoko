@@ -19,4 +19,6 @@ protocol IProfilePresenter: ILifeCycleOutput {
 
     func didSelectRow(at indexPath: IndexPath)
     func showAccount(at indexPath: IndexPath)
+    
+    func presentTokensInfo()
 }

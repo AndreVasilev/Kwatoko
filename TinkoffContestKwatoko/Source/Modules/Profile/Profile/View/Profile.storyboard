@@ -19,11 +19,11 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="grZ-X9-x8P">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileTokensCell" rowHeight="180" id="xel-DA-YJo" customClass="ProfileTokensCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="49.5" width="374" height="180"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileTokensCell" rowHeight="236" id="xel-DA-YJo" customClass="ProfileTokensCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="49.5" width="374" height="236"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xel-DA-YJo" id="qZq-TR-Rj4">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="236"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="254" verticalCompressionResistancePriority="754" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jkm-PU-voF">
@@ -38,7 +38,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H4Y-1f-fUQ">
-                                                    <rect key="frame" x="20" y="122" width="334" height="35"/>
+                                                    <rect key="frame" x="20" y="122" width="334" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -48,6 +48,17 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TWQ-9B-fGg">
+                                                    <rect key="frame" x="20" y="201" width="334" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" systemColor="systemOrangeColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJG-a2-kIG">
+                                                    <rect key="frame" x="20" y="164" width="67" height="33"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="rEY-2Q-nDO" firstAttribute="leading" secondItem="qZq-TR-Rj4" secondAttribute="leadingMargin" id="1EO-c3-GJG"/>
@@ -55,25 +66,32 @@
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="jkm-PU-voF" secondAttribute="trailing" id="1p6-Pf-nRE"/>
                                                 <constraint firstItem="gSA-x6-sih" firstAttribute="top" secondItem="rEY-2Q-nDO" secondAttribute="bottom" constant="8" id="3Ox-DG-BNZ"/>
                                                 <constraint firstItem="jkm-PU-voF" firstAttribute="leading" secondItem="qZq-TR-Rj4" secondAttribute="leadingMargin" id="3t7-Ud-erx"/>
+                                                <constraint firstItem="TWQ-9B-fGg" firstAttribute="top" secondItem="fJG-a2-kIG" secondAttribute="bottom" constant="4" id="7XO-Yc-Udr"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="rEY-2Q-nDO" secondAttribute="trailing" id="Cqb-XG-bnd"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="H4Y-1f-fUQ" secondAttribute="bottom" constant="12" id="D8E-Ge-jhg"/>
+                                                <constraint firstItem="fJG-a2-kIG" firstAttribute="leading" secondItem="qZq-TR-Rj4" secondAttribute="leadingMargin" id="D4s-Fj-hH6"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="H4Y-1f-fUQ" secondAttribute="trailing" id="E0P-Lf-302"/>
+                                                <constraint firstItem="fJG-a2-kIG" firstAttribute="top" secondItem="H4Y-1f-fUQ" secondAttribute="bottom" constant="8" symbolic="YES" id="Jub-04-Wkr"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="gSA-x6-sih" secondAttribute="trailing" id="Njx-hq-UsR"/>
                                                 <constraint firstItem="jkm-PU-voF" firstAttribute="top" secondItem="qZq-TR-Rj4" secondAttribute="topMargin" constant="12" id="Nkn-Fd-Dkd"/>
                                                 <constraint firstItem="rEY-2Q-nDO" firstAttribute="top" secondItem="jkm-PU-voF" secondAttribute="bottom" constant="8" symbolic="YES" id="S7y-vo-8nP"/>
                                                 <constraint firstItem="gSA-x6-sih" firstAttribute="leading" secondItem="qZq-TR-Rj4" secondAttribute="leadingMargin" id="Xkj-ot-ock"/>
+                                                <constraint firstItem="TWQ-9B-fGg" firstAttribute="leading" secondItem="qZq-TR-Rj4" secondAttribute="leadingMargin" id="axj-n0-xwt"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="TWQ-9B-fGg" secondAttribute="trailing" id="ddt-qN-Py2"/>
                                                 <constraint firstItem="H4Y-1f-fUQ" firstAttribute="leading" secondItem="qZq-TR-Rj4" secondAttribute="leadingMargin" id="diW-OC-QGw"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="TWQ-9B-fGg" secondAttribute="bottom" constant="8" id="qSy-jr-s9B"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="complianceLabel" destination="TWQ-9B-fGg" id="Rzj-Lf-UCl"/>
                                             <outlet property="sandboxTokenLabel" destination="gSA-x6-sih" id="7C3-Cc-dWz"/>
                                             <outlet property="sandboxTokenTextField" destination="H4Y-1f-fUQ" id="U7j-rk-DZD"/>
                                             <outlet property="tokenLabel" destination="jkm-PU-voF" id="VSN-kP-Ngp"/>
                                             <outlet property="tokenTextField" destination="rEY-2Q-nDO" id="a6F-31-SMY"/>
+                                            <outlet property="whereMyTokensButton" destination="fJG-a2-kIG" id="tmS-73-83Z"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileAccountCell" rowHeight="88" id="C1j-WS-SY5" customClass="ProfileAccountCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="229.5" width="374" height="88"/>
+                                        <rect key="frame" x="20" y="285.5" width="374" height="88"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="C1j-WS-SY5" id="WFi-4Z-Z8b">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="88"/>
@@ -110,7 +128,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RobotsActionCell" id="ekf-Bb-VFI" customClass="RobotsActionCell" customModule="TinkoffContestKwatoko" customModuleProvider="target">
-                                        <rect key="frame" x="20" y="317.5" width="374" height="43.5"/>
+                                        <rect key="frame" x="20" y="373.5" width="374" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ekf-Bb-VFI" id="4uB-aP-vhv">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
@@ -162,6 +180,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
