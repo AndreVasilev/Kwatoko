@@ -137,8 +137,10 @@ private extension ContestStrategyConfigCell {
         stopLossPercentLabel.text = "Стоп-лосс (% от цены заявки)"
         takeProfitPercentLabel.text = "Тейк-профит (% от цены заявки)"
 
-        [nameTextField,
-         depthTextField,
+        nameTextField.addTarget(self, action: #selector(didEndEditing(_:)), for: .editingDidEnd)
+        nameTextField.delegate = self
+
+        [depthTextField,
          edgeQuantityTextField,
          orderQuantityTextField].forEach {
             $0?.addTarget(self, action: #selector(didEndEditing(_:)), for: .editingDidEnd)
@@ -150,8 +152,6 @@ private extension ContestStrategyConfigCell {
             $0?.addTarget(self, action: #selector(didEndEditing(_:)), for: .editingDidEnd)
             $0?.keyboardType = .decimalPad
         }
-
-        nameTextField.delegate = self
 
         directions.enumerated().forEach {
             orderDirectionSegmentedControl.setTitle($0.element.name, forSegmentAt: $0.offset)

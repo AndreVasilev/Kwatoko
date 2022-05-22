@@ -10,5 +10,5 @@ import Foundation
 protocol IStrategiesRouter: IBaseRouter {
 
     func firstShowInfo(strategy: Strategy)
-    func presentInfo(strategy: Strategy)
+    func showInfo(strategy: Strategy)
 }

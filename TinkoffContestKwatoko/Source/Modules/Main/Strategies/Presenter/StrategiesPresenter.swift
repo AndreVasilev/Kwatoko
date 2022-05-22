@@ -47,6 +47,6 @@ extension StrategiesPresenter: IStrategiesPresenter {
 
     func presentStrategyInfo(at indexPath: IndexPath) {
         let strategy = strategies[indexPath.row]
-        router.presentInfo(strategy: strategy)
+        router.showInfo(strategy: strategy)
     }
 }

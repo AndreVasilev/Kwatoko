@@ -16,7 +16,7 @@ final class StrategiesAssembly: IAssembly {
     }
 
     func build(callback: StrategiesPresenter.Callback?) -> ViperModule<StrategiesViewController, IStrategiesRouter> {
-        let router = StrategiesRouter()
+        let router = StrategiesRouter(tutorialAssembly: modulesFactory.buildAssembly())
         let interactor = StrategiesInteractor()
         let presenter = StrategiesPresenter(interactor: interactor, router: router, callback: callback)
         let viewController = getViewController(presenter: presenter)

@@ -10,12 +10,17 @@ import UIKit
 
 final class StrategiesRouter: BaseRouter {
 
+    let tutorialAssembly: TutorialAssembly
+    
+    init(tutorialAssembly: TutorialAssembly) {
+        self.tutorialAssembly = tutorialAssembly
+    }
 }
 
 extension StrategiesRouter: IStrategiesRouter {
 
     func firstShowInfo(strategy: Strategy) {
-        let infoController = UIViewController()
+        let infoController = infoController(strategy: strategy)
 
         if var controllers = viewController?.navigationController?.viewControllers {
             controllers.removeLast()
@@ -26,7 +31,15 @@ extension StrategiesRouter: IStrategiesRouter {
         }
     }
 
-    func presentInfo(strategy: Strategy) {
-        
+    func showInfo(strategy: Strategy) {
+        let controller = infoController(strategy: strategy)
+        viewController?.show(controller, sender: nil)
+    }
+}
+
+private extension StrategiesRouter {
+    
+    func infoController(strategy: Strategy) -> UIViewController {
+        return tutorialAssembly.build(tutorial: strategy.tutorial).viewController
     }
 }

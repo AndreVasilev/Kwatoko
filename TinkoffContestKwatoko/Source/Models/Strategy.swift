@@ -30,4 +30,10 @@ extension Strategy {
         case .demoContest, .contest: return .orderBook
         }
     }
+    
+    var tutorial: Tutorial {
+        switch self {
+        case .demoContest, .contest: return ContestStrategy.tutorial
+        }
+    }
 }
