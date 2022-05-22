@@ -40,7 +40,7 @@ extension ProfileInteractor: IProfileInteractor {
     }
 
     func getSandboxAccounts() -> AnyPublisher<GetAccountsResponse, RPCError> {
-        return sdk!.sandboxService.getAccounts()
+        return sdk!.sandboxService!.getAccounts()
     }
 
     func clearDatabase() {
@@ -48,7 +48,7 @@ extension ProfileInteractor: IProfileInteractor {
     }
 
     func openSandboxAccount() -> AnyPublisher<OpenSandboxAccountResponse, RPCError> {
-        return sdk!.sandboxService.openAccount()
+        return sdk!.sandboxService!.openAccount()
     }
     
     func fetchAccounts() -> [AccountModel] {

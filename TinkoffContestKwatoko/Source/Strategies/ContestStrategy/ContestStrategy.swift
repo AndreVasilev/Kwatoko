@@ -12,7 +12,7 @@ import Combine
 
 class ContestStrategy {
 
-    private let ordersService: StrategyOrdersService
+    private let ordersService: OrdersService
     private let database: IDatabaseService
     private let robot: Robot
     weak var delegate: IStrategyDelegate?
@@ -24,7 +24,7 @@ class ContestStrategy {
 
     private let dateFormatter = DateFormatter("HH:mm:ss.SSS")
 
-    init(ordersService: StrategyOrdersService, database: IDatabaseService, robot: Robot) {
+    init(ordersService: OrdersService, database: IDatabaseService, robot: Robot) {
         self.ordersService = ordersService
         self.database = database
         self.robot = robot

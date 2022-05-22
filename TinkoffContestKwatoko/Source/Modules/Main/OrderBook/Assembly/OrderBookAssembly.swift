@@ -38,8 +38,10 @@ final class OrderBookAssembly: IAssembly {
         let strategy: IOrderBookStrategy
         switch robot.strategy {
         case .contest:
-            #warning("todo")
-            strategy = ContestStrategy(ordersService: modulesFactory.core.sdk.sandboxService as! DemoOrdersService,
+            let ordersService = (robot.config as? ContestStrategy.Config)?.isSandbox == false
+                ? modulesFactory.core.sdk.ordersService
+                : modulesFactory.core.sdk.sandboxService!
+            strategy = ContestStrategy(ordersService: ordersService,
                                        database: modulesFactory.core.databaseService,
                                        robot: robot)
         case .demoContest:

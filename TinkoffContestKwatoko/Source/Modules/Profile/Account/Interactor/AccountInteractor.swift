@@ -33,7 +33,7 @@ extension AccountInteractor: IAccountInteractor {
 
     func getPositions(accountId: String, isSandbox: Bool) -> AnyPublisher<PositionsResponse, RPCError> {
         return isSandbox
-            ? sdk.sandboxService.getPositions(accountID: accountId)
+            ? sdk.sandboxService!.getPositions(accountID: accountId)
             : sdk.portfolioService.getPositions(accountID: accountId)
     }
     
@@ -49,7 +49,7 @@ extension AccountInteractor: IAccountInteractor {
         var amount = MoneyValue()
         amount.units = quantity
         amount.currency = "rub"
-        return sdk.sandboxService.payIn(accountID: accountId, amount: amount)
+        return sdk.sandboxService!.payIn(accountID: accountId, amount: amount)
     }
     
     func buy(accountId: String, figi: String, quantity: Int64) -> AnyPublisher<PostOrderResponse, RPCError> {
@@ -59,9 +59,9 @@ extension AccountInteractor: IAccountInteractor {
         request.quantity = quantity
         request.direction = .buy
         request.orderType = .market
-        return sdk.sandboxService.postOrder(request: request)
+        return sdk.sandboxService!.postOrder(request: request)
     }
     
     func closeSandboxAccount(id: String) -> AnyPublisher<CloseSandboxAccountResponse, RPCError> {
-        return sdk.sandboxService.closeAccount(accountID: id)
+        return sdk.sandboxService!.closeAccount(accountID: id)
     }}
