@@ -110,9 +110,9 @@
 
 Робот был запущен для торговли 1 лотом акций TCSG 23 мая 2022
 
-Робот совершил N сделок и заработал/получил убыток M рублей, что составляет ~ % от стоиомтсти лота
+За одну сессию робот совершил 51 сделку и заработал 48 рублей, что составляет ~ 2.25% от стоимости лота на момент закрытия торговой сессии
 
-<img src="https://downloader.disk.yandex.ru/preview/dced6827e77820eb54fa40984e85b1a699f2d8ee328249b76bc418d808992b8b/628b9e44/seSJFruRvZHol9RxDZeeziJAjaKK8jqxL8snQoU81szB3-si7jWfrWGpNQ6E2YCVLW4EHJIihrgWjt9RaNG83A==?uid=0&filename=Robots.png&disposition=inline&hash=&limit=0&content_type=image/png&owner_uid=0&tknv=v2&size=2048x2048" height="512"/>
+<img src="https://github.com/AndreVasilev/Kwatoko/blob/main/Readme%20resources/Proofs.png?raw=true" height="512"/>
 
 # Технические особенности
 
