@@ -1,4 +1,7 @@
-![]() # kwatoko
+<img src="https://github.com/AndreVasilev/Kwatoko/blob/main/Readme%20resources/AppIcon%20cropped.png?raw=true" height="256"/>
+
+# kwatoko
+
 ## Роботы для торговли на бирже прямо с iPhone
 
 Мобильное приложение **kwatoko** позволяет запускать роботов с различными стратегиями для торговли на бирже через [API Тинькофф Инвестиций](https://github.com/Tinkoff/investAPI)
