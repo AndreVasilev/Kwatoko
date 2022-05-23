@@ -10,6 +10,8 @@ import TinkoffInvestSDK
 import CombineGRPC
 import Combine
 
+// MARK: Сервис выставления заявок для Демо-режима
+
 class DemoOrdersService: OrdersService {
     
     private var orders = [String: MoneyValue]()

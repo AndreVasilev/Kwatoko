@@ -33,13 +33,21 @@ class ContestStrategy {
     // State
 
     private enum State {
+        /// Робот остановлен
         case stopped
+        /// Робот запущен и находится в поисках аномальной заявки
         case pending
+        /// Отправлен запрос на выставление заявки для открытия сделки
         case preOpenOrderPosted
+        /// Выставлена заявка для открытия сделки
         case openOrderPosted(PostOrderResponse, OrderDirection, OrderBook)
+        /// Исполнена заявка для открытия сделки
         case openOrderExecuted
+        /// Отправлен запрос на выставление заявки для закрытие сделки
         case preCloseOrderPosted
+        /// Выставлена заявка для закрытия сделки
         case closeOrderPosted(PostOrderResponse, OrderDirection, OrderBook)
+        /// Произошла ошибка в критичный для работы алгоритма момент
         case error(String)
 
         var name: String {
@@ -92,10 +100,14 @@ extension ContestStrategy: IStrategy {
         }
     }
 
+    // Запуск робота
+
     func run() {
         guard !isRunning else { return }
         state = .pending
     }
+
+    // Остановка робота
 
     func stop() {
         cancelOrder(order: preDealOrder)
@@ -150,6 +162,8 @@ extension ContestStrategy: IOrderBookStrategy {
 
 private extension ContestStrategy {
 
+    // Обработка получения данных стакана в зависимости от текущего состояния
+
     private func receive(orderBook: OrderBook, state: State) {
         log("Received: orderBook")
 
@@ -180,6 +194,8 @@ private extension ContestStrategy {
         }
     }
 
+    // Обработка получения данных стакана в состоянии .pending
+
     func pending(_ orderBook: OrderBook) {
         let tuple: (price: Decimal, direction: OrderDirection, order: Order)?
 
@@ -194,6 +210,12 @@ private extension ContestStrategy {
         } else {
             tuple = nil
         }
+
+        // Если была найдена аномальная заявка, выставляется соответсвующий ордер
+        // Состояние переходит в следующее: .preOpenOrderPosted
+        //
+        // При получении статусов ордера .executionReportStatusNew или .executionReportStatusPartiallyfill
+        // состояние переходит в следующее значение: .openOrderPosted
 
         guard let tuple = tuple else { return }
         let sign = MoneyCurrency(rawValue: instrument.currency)?.sign ?? ""
@@ -216,6 +238,8 @@ private extension ContestStrategy {
             }
         }
     }
+
+    // Проверка актуального статуса выставленной заявки
 
     func checkOrderStatus(order: Deal.Order?, id: String,
                           _ orderBook: OrderBook,
@@ -257,6 +281,8 @@ private extension ContestStrategy {
             }.store(in: &cancellables)
     }
 
+    // Проверка данных стакана на необходимость выставить ордер по стоп-лоссу / тейк-профиту на закрытие сделки
+
     func checkClose(_ orderBook: OrderBook) {
         guard let deal = deal else {
             log("CheckClose: Missing deal")
@@ -282,6 +308,12 @@ private extension ContestStrategy {
                 tuple = (bid.price.asAmount, .buy, success: true)
             }
         }
+
+        // Если текущая актуальная цена попадает за границы стоп-лосса / тейк-профита, выставляется заявка на крытие сделки
+        // Состояние переходит в следующее: .preOpenOrderPosted
+        //
+        // При получении статусов ордера .executionReportStatusNew или .executionReportStatusPartiallyfill
+        // состояние переходит в следующее значение: .closeOrderPosted
 
         guard let tuple = tuple else { return }
         log("\(tuple.success ? "✅" : "⛔️") CheckClose \(tuple.direction == .buy ? "Buy" : "Sell"): \(tuple.price)")
@@ -309,6 +341,8 @@ private extension ContestStrategy {
 
 private extension ContestStrategy {
 
+    // Отправка запроса на выставление ордера
+
     func postOrder(price: Decimal, direction: OrderDirection, _ completion: @escaping (PostOrderResponse) -> Void) {
         var request = PostOrderRequest()
         request.price = price.asQuotation
@@ -333,6 +367,9 @@ private extension ContestStrategy {
             }.store(in: &cancellables)
     }
 
+    // Открытие сделки
+    // Состояние переходит в следующиее значение: .openOrderExecuted
+
     func openDeal(order: Deal.Order?, orderID: String, direction: OrderDirection, price: Decimal, orderBook: OrderBook) {
         guard let openOrder = order ?? Deal.Order.open(orderID: orderID, direction: direction, price: price, orderBook: orderBook),
               let bounds = getStopBounds(orderPrice: price, direction: direction) else {
@@ -353,6 +390,8 @@ private extension ContestStrategy {
         state = .openOrderExecuted
     }
 
+    // Вычисление значений стоп-лосса и тейк-профита для открытой сделки в соответствии с конфигурацией робота
+
     func getStopBounds(orderPrice: Decimal, direction: OrderDirection) -> StopBounds? {
         let stopBounds: StopBounds?
 
@@ -371,6 +410,9 @@ private extension ContestStrategy {
         return stopBounds
     }
 
+    // Закрытие сделки и сохранение истории
+    // Состояние переходит в начальное значение: .pending
+
     func closeDeal(order: Deal.Order?, orderID: String, direction: OrderDirection, price: Decimal, orderBook: OrderBook) {
         guard let closeOrder = order ?? Deal.Order.open(orderID: orderID, direction: direction, price: price, orderBook: orderBook),
               let deal = deal?.closed(with: closeOrder, orderBook: orderBook)
@@ -385,6 +427,8 @@ private extension ContestStrategy {
         state = .pending
         storeHistory(deal: deal)
     }
+
+    // Отмена ордера
 
     func cancelOrder(order: Deal.Order?) {
         guard let order = order else { return }
@@ -401,6 +445,8 @@ private extension ContestStrategy {
                 self?.completeDealCancel(order: order)
             }.store(in: &cancellables)
     }
+
+    // Сохранение сделки в историю при отмене ордера
 
     func completeDealCancel(order: Deal.Order) {
         let deal = Deal(robotId: robot.id,

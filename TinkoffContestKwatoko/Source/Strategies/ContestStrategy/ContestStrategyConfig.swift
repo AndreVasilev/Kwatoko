@@ -8,6 +8,8 @@
 import Foundation
 import TinkoffInvestSDK
 
+// MARK: Параметры конфигурации
+
 extension ContestStrategy {
 
     struct Config: IStrategyConfig {
@@ -17,13 +19,20 @@ extension ContestStrategy {
         let isSandbox: Bool
         let instrument: IInstrument
 
+        /// Глубина стакана
         let depth: Int
+        /// Направление торговли
         let orderDirection: OrderDirection
 
+        /// Объём аномальной заявки
         let edgeQuantity: Int64
+        /// Объём торгуемой заявки
         let orderQuantity: Int64
+        /// Дельта цены заявки
         let orderDelta: Decimal
+        /// Стоп-лосс (% от цены заявки)
         let stopLossPercent: Double
+        /// Тейк-профит (% от цены заявки)
         let takeProfitPercent: Double
 
         init(id: String, accountID: String, isSandbox: Bool, instrument: IInstrument, depth: Int, orderDirection: OrderDirection, edgeQuantity: Int64, orderQuantity: Int64, orderDelta: Decimal, stopLossPercent: Double, takeProfitPercent: Double) {

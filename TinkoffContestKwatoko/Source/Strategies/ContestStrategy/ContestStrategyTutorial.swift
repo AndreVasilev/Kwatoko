@@ -10,7 +10,7 @@ import Foundation
 extension ContestStrategy {
     
     static var tutorial: Tutorial {
-        return [TutorialPage(text: "У инструмента можно вычислить среднее значение обьема в заявках", imageName: "ContestStrategyTutorialPage-0.jpg"),
+        return [TutorialPage(text: "У инструмента можно вычислить среднее значение объема в заявках", imageName: "ContestStrategyTutorialPage-0.jpg"),
                 TutorialPage(text: "Иногда выставляются заявки, которые на порядки превышают это значение - аномальные", imageName: "ContestStrategyTutorialPage-1.jpg"),
                 TutorialPage(text: "Когда заявка оказывается в центре стакана, высока вероятность, что у продавцов (или покупателей) не получится сразу реализовать эту заявку", imageName: "ContestStrategyTutorialPage-2.jpg"),
                 TutorialPage(text: "Тогда происходит небольшой отскок цены", imageName: "ContestStrategyTutorialPage-3.jpg"),
