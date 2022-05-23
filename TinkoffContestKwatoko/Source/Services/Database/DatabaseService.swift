@@ -173,7 +173,7 @@ extension DatabaseService {
             let entities = try persistentContainer.viewContext.fetch(request)
             return entities
                 .compactMap { Deal($0) }
-                .sorted(by: { $1.date < $0.date })
+                .sorted(by: { $0.date < $1.date })
         } catch {
             let nserror = error as NSError
             print("⚠️ Unresolved error \(nserror), \(nserror.userInfo)")

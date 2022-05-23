@@ -11,6 +11,7 @@ protocol IRobotHistoryPresenter: ILifeCycleOutput {
 
     var sections: [RobotHistoryPresenter.Section] { get }
     var deals: [Deal] { get }
+    var dealsHistory: [Deal] { get }
     var info: RobotHistoryInfoCell.Model { get }
 
     func didSelectRow(at indexPath: IndexPath)

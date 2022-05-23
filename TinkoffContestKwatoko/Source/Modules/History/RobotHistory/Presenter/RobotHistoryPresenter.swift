@@ -26,6 +26,7 @@ final class RobotHistoryPresenter: BasePresenter {
     let robot: Robot
 
     let sections: [Section] = [.info, .chart, .deals]
+    var dealsHistory = [Deal]()
     var deals = [Deal]()
 
     init(interactor: IRobotHistoryInteractor, router: IRobotHistoryRouter, robot: Robot) {
@@ -49,8 +50,8 @@ final class RobotHistoryPresenter: BasePresenter {
 private extension RobotHistoryPresenter {
 
     func reloadDelas() {
-        deals = interactor.fetchDeals(robotId: robot.id)
-            .sorted(by: { $1.date < $0.date })
+        dealsHistory = interactor.fetchDeals(robotId: robot.id)
+        deals = dealsHistory.sorted(by: { $1.date < $0.date })
         viewController?.reloadData()
     }
 }
@@ -66,7 +67,7 @@ extension RobotHistoryPresenter: IRobotHistoryPresenter {
         switch section {
         case .info: break
         case .chart:
-            router.showChart(deals: deals)
+            router.showChart(deals: dealsHistory)
         case .deals:
             let deal = deals[indexPath.row]
             router.showDetails(deal: deal)

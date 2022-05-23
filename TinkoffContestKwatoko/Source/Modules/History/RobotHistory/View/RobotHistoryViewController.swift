@@ -104,7 +104,7 @@ private extension RobotHistoryViewController {
     }
 
     func dequeueChartCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
-        return chartCellAssembly.build(deals: presenter.deals, tableView: tableView, indexPath: indexPath)
+        return chartCellAssembly.build(deals: presenter.dealsHistory, tableView: tableView, indexPath: indexPath)
     }
 
     func dequeueDealCell(_ tableView: UITableView, forRowAt indexPath: IndexPath) -> UITableViewCell {
