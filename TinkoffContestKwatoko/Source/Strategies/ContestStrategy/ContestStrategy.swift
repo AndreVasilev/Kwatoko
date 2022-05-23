@@ -317,6 +317,7 @@ private extension ContestStrategy {
         request.orderType = .limit
         request.figi = config.instrument.figi
         request.accountID = config.accountID
+        request.orderID = UUID().uuidString
 
         postOrder(request: request)
             .sink { [weak self] result in

@@ -48,7 +48,9 @@ private extension NotificationBanner {
         let simpleMessage = EKSimpleMessage(title: titleLabel, description: descriptionLabel)
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
         let contentView = EKNotificationMessageView(with: notificationMessage)
-        
-        SwiftEntryKit.display(entry: contentView, using: attributes)
+
+        DispatchQueue.main.async {
+            SwiftEntryKit.display(entry: contentView, using: attributes)
+        }
     }
 }
