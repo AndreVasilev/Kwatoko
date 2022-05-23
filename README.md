@@ -14,8 +14,7 @@
 
 - Самое оригинальное использование API Тинькофф Инвестиций
 
-СЮДА ДОБАВИТЬ ГИФКУ РАБОТЫ: СОЗДАНИЕ РОБОТА - ТОРГОВЛЯ - ГРАФИК - ПРОВЕРКА БАЛАНСА И ПОПОЛНЕНИЕ
-<img src="https://github.com/AndreVasilev/Kwatoko/blob/main/Readme%20resources/History.png?raw=true" height="512"/>
+<img src="https://github.com/AndreVasilev/Kwatoko/blob/main/Readme%20resources/Simulator%20Screen%20Recording.gif?raw=true" height="512"/>
 
 # Основные возможности
 
