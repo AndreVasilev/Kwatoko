@@ -29,20 +29,22 @@ final class AccountPresenter: BasePresenter {
     }
     
     enum InfoRow {
-        case info, close
+        case info, reload, close
     }
     
     enum Action: IRowAction {
-        case close
+        case close, reload
         
         var title: String {
             switch self {
+            case .reload: return "Обновить"
             case .close: return "Закрыть"
             }
         }
         
         var color: UIColor {
             switch self {
+            case .reload: return .systemBlue
             case .close: return .systemRed
             }
         }
@@ -218,7 +220,7 @@ private extension AccountPresenter {
     func payIn(currency moneyCurrency: MoneyCurrency) {
         let message = moneyCurrency == .rub
             ? "Введите сумму, на которую хотите совершить пополнение"
-            : "Пополнение доступно только в рублях.\nЧтобы пополнить другую валюту, будет совершено пополнение в рублях на сумму приблизительно эквивалентную сумме валюты с последующей покупкой указанной валюты\nЕсли произойдет ошибка - попробуйте указать меньшую сумму"
+            : "Пополнение доступно только в рублях.\nЧтобы пополнить другую валюту, будет совершено пополнение в рублях на сумму приблизительно эквивалентную сумме валюты с последующей покупкой указанной валюты\nЕсли произойдет ошибка - попробуйте указать меньшую сумму\n\nПокупка иностранной валюты может происходить с задержкой из-за особенностей работы песочницы. Если обновление баланса не произойдет моментально - попробуйте вернуться позже и проверить баланс снова"
         let payInAlert = UIAlertController(title: "Пополнение",
                                            message: message,
                                            preferredStyle: .alert)
@@ -261,13 +263,14 @@ private extension AccountPresenter {
     
     func payIn(moneyCurrency: MoneyCurrency, currency: Currency?, quantity: Int64, price: Decimal?) {
         let amount: Int64
+        var lotsToBuy: Int64?
         if moneyCurrency == .rub {
             amount = quantity
         } else if let lot = currency?.lot {
             guard let price = price else { return }
-            let lotsToBuy = (CGFloat(quantity) / CGFloat(lot)).rounded(.up)
+            lotsToBuy = Int64((CGFloat(quantity) / CGFloat(lot)).rounded(.up))
             // 1.3 - Коэффициент для пополнения рублей с запасом на скупку необходимого количества лотов из нескольких ордеров
-            let rubles = Decimal(lotsToBuy) * Decimal(lot) * price * 1.3
+            let rubles = Decimal(lotsToBuy!) * Decimal(lot) * price * 1.3
             amount = Int64(truncating: rubles as NSNumber)
         } else {
             return
@@ -283,13 +286,18 @@ private extension AccountPresenter {
                     self?.handleError(error)
                 case .finished:
                     if moneyCurrency != .rub,
-                       let figi = currency?.figi {
-                        self?.buyCurrency(moneyCurrency, figi: figi, quantity: quantity) {
-                            self?.isProcessing = false
+                       let figi = currency?.figi,
+                       let lots = lotsToBuy {
+                        self?.buyCurrency(moneyCurrency, figi: figi, quantity: lots) {
                             if let error = $0 {
+                                self?.isProcessing = false
                                 self?.handleError(error)
                             } else {
-                                self?.reloadPortfolio()
+                                // Delay to let buyOrder be executed
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                    self?.isProcessing = false
+                                    self?.reloadPortfolio()
+                                }
                             }
                         }
                     } else {
@@ -320,8 +328,8 @@ extension AccountPresenter: IAccountPresenter {
     
     var infoRows: [InfoRow] {
         return info.canEdit
-            ? [.info, .close]
-            : [.info]
+            ? [.info, .reload, .close]
+            : [.info, .reload]
     }
 
     var info: Info {
@@ -354,7 +362,13 @@ extension AccountPresenter: IAccountPresenter {
     func action(at indexPath: IndexPath) -> IRowAction? {
         let section = sections[indexPath.section]
         switch section {
-        case .info: return Action.close
+        case .info:
+            let row = infoRows[indexPath.row]
+            switch row {
+            case .info: return nil
+            case .reload: return Action.reload
+            case .close: return Action.close
+            }
         case .currencies: return nil
         }
     }
@@ -366,6 +380,7 @@ extension AccountPresenter: IAccountPresenter {
             let row = infoRows[indexPath.row]
             switch row {
             case .info: return
+            case .reload: reloadPortfolio()
             case .close: closeAccount()
             }
         case .currencies: return

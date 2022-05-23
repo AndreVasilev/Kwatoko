@@ -72,7 +72,7 @@ extension AccountViewController: UITableViewDataSource {
             switch row {
             case .info:
                 return dequeueInfoCell(tableView, forRowAt: indexPath)
-            case .close:
+            case .reload, .close:
                 return dequeueActionCell(tableView, forRowAt: indexPath)
             }
         case .currencies:
