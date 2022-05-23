@@ -164,8 +164,8 @@ extension DatabaseService {
 extension DatabaseService {
 
     func fetchDeals(robotId: String) -> [Deal] {
-        let currency = fetchRobot(id: robotId)?.config.instrument.currency ?? "rub"
-        return Deal.demoList(robotId: robotId, currency: currency)
+//        let currency = fetchRobot(id: robotId)?.config.instrument.currency ?? "rub"
+//        return Deal.demoList(robotId: robotId, currency: currency)
 
         do {
             let request = DealEntity.fetchRequest()
