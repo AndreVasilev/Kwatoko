@@ -15,6 +15,8 @@ final class RobotChartPresenter: BasePresenter {
     let router: IRobotChartRouter
     weak var view: IRobotChartView?
 
+    var drawValuesEnabled: Bool = true
+    var drawCircles: Bool = true
     let deals: [Deal]
 
     private(set) lazy var profitLabels: [String] = {
@@ -53,7 +55,6 @@ private extension RobotChartPresenter {
         chartView?.drawOrder = [CombinedChartView.DrawOrder.bar.rawValue,
                                 CombinedChartView.DrawOrder.line.rawValue]
         chartView?.legend.enabled = false
-
 
         if let xAxis = chartView?.xAxis {
             xAxis.labelPosition = .bottom
@@ -97,12 +98,13 @@ private extension RobotChartPresenter {
         set.setColor(.systemBlue)
         set.lineWidth = 2.5
         set.setCircleColor(.systemBlue)
-        set.circleRadius = 5
-        set.circleHoleRadius = 2.5
+        set.circleRadius = drawCircles ? 5 : 0
+        set.circleHoleRadius = drawCircles ? 2.5 : 0
         set.fillColor = .systemBackground
         set.mode = .cubicBezier
         set.axisDependency = .left
         set.valueFormatter = self
+        set.drawValuesEnabled = drawValuesEnabled
 
         return LineChartData(dataSet: set)
     }
@@ -118,6 +120,7 @@ private extension RobotChartPresenter {
         let set = BarChartDataSet(entries: entries, label: "")
         set.colors = colors
         set.valueColors = colors
+        set.drawValuesEnabled = drawValuesEnabled
 
         let data = BarChartData(dataSet: set)
         data.setValueFont(.systemFont(ofSize: 11))

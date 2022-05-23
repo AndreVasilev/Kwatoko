@@ -53,6 +53,8 @@ extension RobotChartAssembly: IRobotChartCellAssembly {
             let router = RobotChartRouter()
             let interactor = RobotChartInteractor()
             let presenter = RobotChartPresenter(interactor: interactor, router: router, deals: deals)
+            presenter.drawValuesEnabled = false
+            presenter.drawCircles = false
             presenter.view = cell
             cell.presenter = presenter
         }

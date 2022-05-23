@@ -50,6 +50,7 @@ private extension RobotHistoryPresenter {
 
     func reloadDelas() {
         deals = interactor.fetchDeals(robotId: robot.id)
+            .sorted(by: { $1.date < $0.date })
         viewController?.reloadData()
     }
 }
