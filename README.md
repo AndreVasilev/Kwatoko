@@ -1,18 +1,10 @@
 <img src="https://github.com/AndreVasilev/Kwatoko/blob/main/Readme%20resources/AppIcon%20cropped.png?raw=true" height="256"/>
 
-# kwatoko
+# kwatoko.pro
 
 ## Роботы для торговли на бирже прямо с iPhone
 
-Мобильное приложение **kwatoko** позволяет запускать роботов с различными стратегиями для торговли на бирже через [API Тинькофф Инвестиций](https://github.com/Tinkoff/investAPI)
-
-Участник [Tinkoff Invest Robot Contest](https://github.com/Tinkoff/invest-robot-contest) в номинациях:
-
-- Лучший торговый робот для мобильных устройств 
-
-- Лучший интерфейс (визуализация) торговой стратегии
-
-- Самое оригинальное использование API Тинькофф Инвестиций
+Доработанная версия приложения [**kwatoko**](https://github.com/AndreVasilev/Kwatoko)
 
 <img src="https://github.com/AndreVasilev/Kwatoko/blob/main/Readme%20resources/Simulator%20Screen%20Recording.gif?raw=true" height="512"/>
 
@@ -138,7 +130,3 @@
 | --- | --- |
 | macOS | 12.0 (Monterey) |
 | iOS & iPadOS | 15.4 |
-
-## Лицензия
-
-[Apache License 2.0](https://github.com/AndreVasilev/Kwatoko/blob/main/LICENSE)
