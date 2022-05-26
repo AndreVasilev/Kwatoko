@@ -10,6 +10,8 @@ import TinkoffInvestSDK
 import CombineGRPC
 import Combine
 
+fileprivate typealias PostedOrderData = (response: PostOrderResponse, direction: OrderDirection, orderBook: OrderBook)
+
 class ContestStrategy {
 
     private let ordersService: OrdersService
@@ -23,6 +25,8 @@ class ContestStrategy {
     private var preDealOrder: Deal.Order?
 
     private let dateFormatter = DateFormatter("HH:mm:ss.SSS")
+    private let reopenOffsetLimit = 4
+    private let reopenDistanceLimit = 2
 
     init(ordersService: OrdersService, database: IDatabaseService, robot: Robot) {
         self.ordersService = ordersService
@@ -31,7 +35,7 @@ class ContestStrategy {
     }
 
     // State
-
+    
     private enum State {
         /// Робот остановлен
         case stopped
@@ -40,13 +44,13 @@ class ContestStrategy {
         /// Отправлен запрос на выставление заявки для открытия сделки
         case preOpenOrderPosted
         /// Выставлена заявка для открытия сделки
-        case openOrderPosted(PostOrderResponse, OrderDirection, OrderBook)
+        case openOrderPosted(PostedOrderData)
         /// Исполнена заявка для открытия сделки
         case openOrderExecuted
         /// Отправлен запрос на выставление заявки для закрытие сделки
         case preCloseOrderPosted
         /// Выставлена заявка для закрытия сделки
-        case closeOrderPosted(PostOrderResponse, OrderDirection, OrderBook)
+        case closeOrderPosted(PostedOrderData)
         /// Произошла ошибка в критичный для работы алгоритма момент
         case error(String)
 
@@ -75,10 +79,10 @@ class ContestStrategy {
             switch state {
             case .stopped, .pending, .preOpenOrderPosted, .openOrderExecuted, .preCloseOrderPosted:
                 break
-            case .openOrderPosted(let response, let direction, let orderBook):
-                preDealOrder = Deal.Order.open(response: response, direction: direction, orderBook: orderBook)
-            case .closeOrderPosted(let response, let direction, let orderBook):
-                preDealOrder = Deal.Order.open(response: response, direction: direction, orderBook: orderBook)
+            case .openOrderPosted(let data):
+                preDealOrder = Deal.Order.open(data: data)
+            case .closeOrderPosted(let data):
+                preDealOrder = Deal.Order.open(data: data)
             case .error(let message):
                 delegate?.didReceiveError(message)
             }
@@ -170,23 +174,17 @@ private extension ContestStrategy {
         switch state {
         case .pending:
             pending(orderBook)
-        case .openOrderPosted(let response, let direction, _):
-            checkOrderStatus(order: preDealOrder, id: response.orderID, orderBook) { [weak self] in
-                self?.openDeal(order: $0.order,
-                               orderID: $0.state.orderID,
-                               direction: direction,
-                               price: $0.state.initialSecurityPrice.asMoneyAmount.value,
-                               orderBook: orderBook)
-            }
+        case .openOrderPosted(let data):
+            checkOpenOrderStatus(data: data, receivedOrderBook: orderBook)
         case .openOrderExecuted:
             checkClose(orderBook)
-        case .closeOrderPosted(let response, let direction, _):
-            checkOrderStatus(order: preDealOrder, id: response.orderID, orderBook) { [weak self] in
+        case .closeOrderPosted(let data):
+            checkOrderStatus(order: preDealOrder, id: data.response.orderID, orderBook) { [weak self] in
                 self?.closeDeal(order: $0.order,
-                               orderID: $0.state.orderID,
-                               direction: direction,
-                               price: $0.state.initialSecurityPrice.asMoneyAmount.value,
-                               orderBook: orderBook)
+                                orderID: $0.state.orderID,
+                                direction: data.direction,
+                                price: $0.state.initialSecurityPrice.asMoneyAmount.value,
+                                orderBook: orderBook)
             }
 
         case .stopped, .error, .preOpenOrderPosted, .preCloseOrderPosted:
@@ -197,56 +195,63 @@ private extension ContestStrategy {
     // Обработка получения данных стакана в состоянии .pending
 
     func pending(_ orderBook: OrderBook) {
-        let tuple: (price: Decimal, direction: OrderDirection, order: Order)?
-
-        if config.orderDirection != .sell,
-           let bid = orderBook.bids.first(where: { $0.quantity >= config.edgeQuantity }) {
-            let price = bid.price.asAmount + config.orderDelta
-            tuple = (price, .buy, bid)
-        } else if config.orderDirection != .buy,
-           let ask = orderBook.asks.first(where: { $0.quantity >= config.edgeQuantity }) {
-            let price = ask.price.asAmount - config.orderDelta
-            tuple = (price, .sell, ask)
-        } else {
-            tuple = nil
-        }
+        
+        guard let tuple = getOpenOrderData(orderBook: orderBook) else { return }
 
         // Если была найдена аномальная заявка, выставляется соответсвующий ордер
-        // Состояние переходит в следующее: .preOpenOrderPosted
-        //
-        // При получении статусов ордера .executionReportStatusNew или .executionReportStatusPartiallyfill
-        // состояние переходит в следующее значение: .openOrderPosted
 
-        guard let tuple = tuple else { return }
-        let sign = MoneyCurrency(rawValue: instrument.currency)?.sign ?? ""
-        log("\(tuple.direction == .buy ? "Buy" : "Sell"): \(tuple.order.price.asAmount) \(sign) - \(tuple.order.quantity)")
-
-        state = .preOpenOrderPosted
-        postOrder(price: tuple.price, direction: tuple.direction) { [weak self] response in
-            self?.log("Response: \(response.executionReportStatus)")
-            switch response.executionReportStatus {
-            case .executionReportStatusNew, .executionReportStatusPartiallyfill:
-                self?.state = .openOrderPosted(response, tuple.direction, orderBook)
-            case .executionReportStatusFill:
-                self?.openDeal(order: nil,
-                               orderID: response.orderID,
-                               direction: tuple.direction,
-                               price: response.initialSecurityPrice.asMoneyAmount.value,
-                               orderBook: orderBook)
-            case .UNRECOGNIZED(_), .executionReportStatusCancelled, .executionReportStatusRejected, .executionReportStatusUnspecified:
-                self?.state = .pending
-            }
+        postOpenOrder(tuple, orderBook: orderBook)
+    }
+    
+    func checkOpenOrderStatus(data: PostedOrderData, receivedOrderBook orderBook: OrderBook) {
+        guard let order = preDealOrder else {
+            log("CheckOpenOrderStatus: missing order")
+            return
         }
+        
+        let isStateRequested = checkOrderStatus(order: order, id: data.response.orderID, orderBook) { [weak self] in
+            self?.openDeal(order: $0.order,
+                           orderID: $0.state.orderID,
+                           direction: data.direction,
+                           price: $0.state.initialSecurityPrice.asMoneyAmount.value,
+                           orderBook: orderBook)
+        }
+        
+        // Пока заявка не исполнилась проверяем в стакане наличие аномальных заявок ближе к центру
+
+        guard !isStateRequested,
+              let tuple = getOpenOrderData(orderBook: orderBook)
+        else { return }
+
+        var offset: Int?
+        switch data.direction {
+        case .buy: offset = orderBook.bids.firstIndex(where: { $0.price.asAmount <= order.price })
+        case .sell: offset = orderBook.asks.firstIndex(where: { $0.price.asAmount >= order.price })
+        case .unspecified, .UNRECOGNIZED(_): return
+        }
+        
+        guard offset == nil
+                || (offset! > reopenOffsetLimit
+                    && tuple.offset < offset!
+                    && (offset! - tuple.offset > reopenDistanceLimit))
+        else { return }
+        
+        // Если обнаружилась более актуальная аномальная заявка - отменяет старый ордер и выставляем новый
+
+        cancelOrder(order: order)
+        postOpenOrder(tuple, orderBook: orderBook)
     }
 
     // Проверка актуального статуса выставленной заявки
 
+    typealias CheckOrderStatus = (order: Deal.Order, state: OrderState)
+    
     func checkOrderStatus(order: Deal.Order?, id: String,
                           _ orderBook: OrderBook,
-                          _ onFillCompletion: @escaping ((order: Deal.Order, state: OrderState)) -> Void) {
+                          _ onFillCompletion: @escaping (CheckOrderStatus) -> Void) -> Bool {
         guard let order = order else {
             log("CheckOrderStatus: missing order")
-            return
+            return false
         }
         var requestCheck = false
         switch order.direction {
@@ -262,7 +267,7 @@ private extension ContestStrategy {
             }
         }
 
-        guard requestCheck else { return }
+        guard requestCheck else { return false }
         log("CheckOrderStatus (\(id): \(orderBook.asks.first?.price.asAmount ?? 0) | \(orderBook.bids.first?.price.asAmount ?? 0)")
 
         getOrderState(accountID: config.accountID, orderID: id)
@@ -279,6 +284,8 @@ private extension ContestStrategy {
                     onFillCompletion((order, $0))
                 }
             }.store(in: &cancellables)
+        
+        return true
     }
 
     // Проверка данных стакана на необходимость выставить ордер по стоп-лоссу / тейк-профиту на закрытие сделки
@@ -323,7 +330,7 @@ private extension ContestStrategy {
             self?.log("Response: \($0.executionReportStatus)")
             switch $0.executionReportStatus {
             case .executionReportStatusNew, .executionReportStatusPartiallyfill:
-                self?.state = .closeOrderPosted($0, tuple.direction, orderBook)
+                self?.state = .closeOrderPosted(($0, tuple.direction, orderBook))
             case .executionReportStatusFill:
                 self?.closeDeal(order: nil,
                                 orderID: $0.orderID,
@@ -340,6 +347,53 @@ private extension ContestStrategy {
 // MARK: Interactor
 
 private extension ContestStrategy {
+    
+    typealias OpenOrderData = (price: Decimal, direction: OrderDirection, order: Order, offset: Int)
+    
+    func getOpenOrderData(orderBook: OrderBook) -> OpenOrderData? {
+        var tuples = [OpenOrderData]()
+        
+        if config.orderDirection != .sell,
+           let item = orderBook.bids.enumerated().first(where: { $0.element.quantity >= config.edgeQuantity }) {
+            let price = item.element.price.asAmount + config.orderDelta
+            tuples.append((price, .buy, item.element, item.offset))
+        }
+        if config.orderDirection != .buy,
+           let item = orderBook.asks.enumerated().first(where: { $0.element.quantity >= config.edgeQuantity }) {
+            let price = item.element.price.asAmount - config.orderDelta
+            tuples.append((price, .sell, item.element, item.offset))
+        }
+        
+        let tuple = tuples.min(by: { $0.offset < $1.offset })
+        return tuple
+    }
+    
+    func postOpenOrder(_ tuple: OpenOrderData, orderBook: OrderBook) {
+        // Состояние переходит в следующее: .preOpenOrderPosted
+        //
+        // При получении статусов ордера .executionReportStatusNew или .executionReportStatusPartiallyfill
+        // состояние переходит в следующее значение: .openOrderPosted
+        
+        let sign = MoneyCurrency(rawValue: instrument.currency)?.sign ?? ""
+        log("\(tuple.direction == .buy ? "Buy" : "Sell"): \(tuple.order.price.asAmount) \(sign) - \(tuple.order.quantity)")
+
+        state = .preOpenOrderPosted
+        postOrder(price: tuple.price, direction: tuple.direction) { [weak self] response in
+            self?.log("Response: \(response.executionReportStatus)")
+            switch response.executionReportStatus {
+            case .executionReportStatusNew, .executionReportStatusPartiallyfill:
+                self?.state = .openOrderPosted((response, tuple.direction, orderBook))
+            case .executionReportStatusFill:
+                self?.openDeal(order: nil,
+                               orderID: response.orderID,
+                               direction: tuple.direction,
+                               price: response.initialSecurityPrice.asMoneyAmount.value,
+                               orderBook: orderBook)
+            case .UNRECOGNIZED(_), .executionReportStatusCancelled, .executionReportStatusRejected, .executionReportStatusUnspecified:
+                self?.state = .pending
+            }
+        }
+    }
 
     // Отправка запроса на выставление ордера
 
@@ -432,6 +486,7 @@ private extension ContestStrategy {
 
     func cancelOrder(order: Deal.Order?) {
         guard let order = order else { return }
+        log("Cancel order: \(order.id)")
         cancelOrder(accountID: config.accountID, orderID: order.id)
             .sink { [weak self] result in
               switch result {
@@ -505,10 +560,13 @@ extension ContestStrategy {
     }
 }
 
-extension Deal.Order {
+fileprivate extension Deal.Order {
 
-    static func `open`(response: PostOrderResponse, direction: OrderDirection, orderBook: OrderBook) -> Deal.Order? {
-        open(orderID: response.orderID, direction: direction, price: response.initialSecurityPrice.asMoneyAmount.value, orderBook: orderBook)
+    static func `open`(data: PostedOrderData) -> Deal.Order? {
+        open(orderID: data.response.orderID,
+             direction: data.direction,
+             price: data.response.initialSecurityPrice.asMoneyAmount.value,
+             orderBook: data.orderBook)
     }
 
     static func `open`(orderID: String, direction: OrderDirection, price: Decimal, orderBook: OrderBook) -> Deal.Order? {
@@ -529,7 +587,7 @@ extension Deal.Order {
     }
 }
 
-extension Deal.Order.Book {
+fileprivate extension Deal.Order.Book {
 
     init(_ orderBook: OrderBook) {
         self.init(asks: orderBook.asks.map { Order(price: $0.price.asAmount, quantity: $0.quantity) },
@@ -538,7 +596,7 @@ extension Deal.Order.Book {
     }
 }
 
-extension Deal {
+fileprivate extension Deal {
 
     func closed(with closeOrder: Deal.Order, orderBook: OrderBook) -> Deal {
         return Deal(robotId: robotId,
