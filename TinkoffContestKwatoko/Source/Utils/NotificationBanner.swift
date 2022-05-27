@@ -27,7 +27,9 @@ struct NotificationBanner {
     }
     
     static func present(_ error: Error, style: Style = .error) {
-        present(title: "Ошибка:", text: error.alertMessage, style: style)
+        DispatchQueue.main.async {
+            present(title: "Ошибка:", text: error.alertMessage, style: style)
+        }
     }
 }
 
@@ -49,8 +51,6 @@ private extension NotificationBanner {
         let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
         let contentView = EKNotificationMessageView(with: notificationMessage)
 
-        DispatchQueue.main.async {
-            SwiftEntryKit.display(entry: contentView, using: attributes)
-        }
+        SwiftEntryKit.display(entry: contentView, using: attributes)
     }
 }

@@ -26,7 +26,7 @@ class ContestStrategy {
 
     private let dateFormatter = DateFormatter("HH:mm:ss.SSS")
     private let reopenOffsetLimit = 4
-    private let reopenDistanceLimit = 2
+    private let reopenDistanceLimit = 0
 
     init(ordersService: OrdersService, database: IDatabaseService, robot: Robot) {
         self.ordersService = ordersService
@@ -299,20 +299,20 @@ private extension ContestStrategy {
         var tuple: (price: Decimal, direction: OrderDirection, success: Bool)?
         switch deal.open.direction {
         case .buy:
-            if let ask = orderBook.asks.first,
-               ask.price.asAmount >= deal.takeProfit {
-                tuple = (ask.price.asAmount, .sell, success: true)
-            } else if let bid = orderBook.bids.first,
-                      bid.price.asAmount <= deal.stopLoss {
-                tuple = (bid.price.asAmount, .sell, success: false)
+            if let bid = orderBook.bids.first,
+               bid.price.asAmount >= deal.takeProfit {
+                tuple = (bid.price.asAmount, .sell, success: true)
+            } else if let ask = orderBook.asks.first,
+                      ask.price.asAmount <= deal.stopLoss {
+                tuple = (ask.price.asAmount, .sell, success: false)
             }
         case .sell:
-            if let ask = orderBook.asks.first,
-               ask.price.asAmount >= deal.stopLoss {
-                tuple = (ask.price.asAmount, .buy, success: false)
-            } else if let bid = orderBook.bids.first,
-                      bid.price.asAmount <= deal.takeProfit {
-                tuple = (bid.price.asAmount, .buy, success: true)
+            if let bid = orderBook.bids.first,
+               bid.price.asAmount >= deal.stopLoss {
+                tuple = (bid.price.asAmount, .buy, success: false)
+            } else if let ask = orderBook.asks.first,
+                      ask.price.asAmount <= deal.takeProfit {
+                tuple = (ask.price.asAmount, .buy, success: true)
             }
         }
 
@@ -326,7 +326,7 @@ private extension ContestStrategy {
         log("\(tuple.success ? "✅" : "⛔️") CheckClose \(tuple.direction == .buy ? "Buy" : "Sell"): \(tuple.price)")
 
         state = .preCloseOrderPosted
-        postOrder(price: tuple.price, direction: tuple.direction) { [weak self] in
+        postOrder(price: tuple.price, direction: tuple.direction, type: .market) { [weak self] in
             self?.log("Response: \($0.executionReportStatus)")
             switch $0.executionReportStatus {
             case .executionReportStatusNew, .executionReportStatusPartiallyfill:
@@ -378,7 +378,7 @@ private extension ContestStrategy {
         log("\(tuple.direction == .buy ? "Buy" : "Sell"): \(tuple.order.price.asAmount) \(sign) - \(tuple.order.quantity)")
 
         state = .preOpenOrderPosted
-        postOrder(price: tuple.price, direction: tuple.direction) { [weak self] response in
+        postOrder(price: tuple.price, direction: tuple.direction, type: .limit) { [weak self] response in
             self?.log("Response: \(response.executionReportStatus)")
             switch response.executionReportStatus {
             case .executionReportStatusNew, .executionReportStatusPartiallyfill:
@@ -397,12 +397,12 @@ private extension ContestStrategy {
 
     // Отправка запроса на выставление ордера
 
-    func postOrder(price: Decimal, direction: OrderDirection, _ completion: @escaping (PostOrderResponse) -> Void) {
+    func postOrder(price: Decimal, direction: OrderDirection, type: OrderType, _ completion: @escaping (PostOrderResponse) -> Void) {
         var request = PostOrderRequest()
         request.price = price.asQuotation
         request.direction = direction
         request.quantity = config.orderQuantity
-        request.orderType = .limit
+        request.orderType = type
         request.figi = config.instrument.figi
         request.accountID = config.accountID
         request.orderID = UUID().uuidString
