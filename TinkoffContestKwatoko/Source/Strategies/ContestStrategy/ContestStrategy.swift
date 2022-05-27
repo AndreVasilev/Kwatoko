@@ -363,9 +363,15 @@ private extension ContestStrategy {
             let price = item.element.price.asAmount - config.orderDelta
             tuples.append((price, .sell, item.element, item.offset))
         }
-        
-        let tuple = tuples.min(by: { $0.offset < $1.offset })
-        return tuple
+
+        guard !tuples.isEmpty else { return nil }
+        if tuples.contains(where: { $0.offset != tuples.first?.offset }) {
+            // Если offset разный - выбираем первый
+            return tuples.min(by: { $0.offset < $1.offset })
+        } else {
+            // Если offset одинаковый - выбираем по объёму
+            return tuples.max(by: { $0.order.quantity < $1.order.quantity })
+        }
     }
     
     func postOpenOrder(_ tuple: OpenOrderData, orderBook: OrderBook) {
