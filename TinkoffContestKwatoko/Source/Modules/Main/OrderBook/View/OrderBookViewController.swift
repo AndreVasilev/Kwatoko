@@ -74,6 +74,12 @@ private extension OrderBookViewController {
         collectionView.scrollToItem(at: indexPath, at: .centeredVertically, animated: false)
         didScrollToMiddle = true
     }
+
+    func rowModel(at indexPath: IndexPath) -> OrderBookPresenter.RowModel {
+        let section = presenter.sections[indexPath.section]
+        let row = presenter.rows(in: section)[indexPath.row]
+        return row
+    }
 }
 
 extension OrderBookViewController: IOrderBookView {
@@ -99,8 +105,7 @@ extension OrderBookViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let section = presenter.sections[indexPath.section]
-        let row = presenter.rows(in: section)[indexPath.row]
+        let row = rowModel(at: indexPath)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OrderBookCell.reuseIdentifier, for: indexPath)
         (cell as? OrderBookCell)?.configure(model: row)
         return cell
@@ -117,7 +122,14 @@ extension OrderBookViewController: UICollectionViewDelegate {
 extension OrderBookViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: OrderBookCell.height)
+        let row = rowModel(at: indexPath)
+        let normalHeight = OrderBookCell.height
+        let height: CGFloat
+        switch row.orderType {
+        case .stopLoss, .takeProfit: height = normalHeight * 0.75
+        default: height = normalHeight
+        }
+        return CGSize(width: collectionView.frame.width, height: height)
     }
 }
 

@@ -95,19 +95,30 @@ private extension OrderBookPresenter {
         
         strategy.receive(orderBook: orderBook)
         let sign = MoneyCurrency(rawValue: strategy.instrument.currency)?.sign ?? ""
+        var strategyOrder: PreOrderModel? = strategy.order
 
-        var asks = orderBook.asks
+        var asks: [RowModel] = orderBook.asks
             .reversed()
             .map {
-                return RowModel(.ask, price: $0.price.asAmount, currencySign: sign, quantity: $0.quantity)
+                var type: RowModel.OrderType?
+                if $0.price.asAmount == strategyOrder?.price {
+                    type = .order
+                    strategyOrder = nil
+                }
+                return RowModel(.ask, price: $0.price.asAmount, currencySign: sign, quantity: $0.quantity, orderType: type)
             }
 
-        var bids = orderBook.bids
+        var bids: [RowModel] = orderBook.bids
             .map {
-                return RowModel(.bid, price: $0.price.asAmount, currencySign: sign, quantity: $0.quantity)
+                var type: RowModel.OrderType?
+                if $0.price.asAmount == strategyOrder?.price {
+                    type = .order
+                    strategyOrder = nil
+                }
+                return RowModel(.bid, price: $0.price.asAmount, currencySign: sign, quantity: $0.quantity, orderType: type)
             }
 
-        let orders: [(PreOrderModel, RowModel.OrderType)] = [(strategy.order, RowModel.OrderType.order),
+        let orders: [(PreOrderModel, RowModel.OrderType)] = [(strategyOrder, RowModel.OrderType.order),
                                                              (strategy.stopLoss, RowModel.OrderType.stopLoss),
                                                              (strategy.takeProfit, RowModel.OrderType.takeProfit)]
             .compactMap { $0.0 != nil ? ($0.0!, $0.1) : nil }
