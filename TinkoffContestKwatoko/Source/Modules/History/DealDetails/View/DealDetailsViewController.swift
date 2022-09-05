@@ -32,6 +32,10 @@ private extension DealDetailsViewController {
 
     func configure() {
         title = "Сделка"
+
+        #if targetEnvironment(macCatalyst)
+        tableView.sectionHeaderHeight = 40
+        #endif
     }
 }
 

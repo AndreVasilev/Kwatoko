@@ -33,6 +33,11 @@ private extension RobotHistoryViewController {
 
     func configure() {
         title = "Робот"
+
+
+        #if targetEnvironment(macCatalyst)
+        tableView.sectionHeaderHeight = 40
+        #endif
     }
 }
 

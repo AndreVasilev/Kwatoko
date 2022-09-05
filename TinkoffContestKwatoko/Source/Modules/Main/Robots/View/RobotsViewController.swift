@@ -31,7 +31,9 @@ final class RobotsViewController: BaseViewController {
 private extension RobotsViewController {
 
     func configure() {
-
+        #if targetEnvironment(macCatalyst)
+        tableView.sectionHeaderHeight = 40
+        #endif
     }
 }
 

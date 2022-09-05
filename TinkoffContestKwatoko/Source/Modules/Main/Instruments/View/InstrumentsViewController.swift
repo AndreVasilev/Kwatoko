@@ -35,6 +35,9 @@ private extension InstrumentsViewController {
         title = "Инструменты"
 
         tableView.keyboardDismissMode = .onDrag
+        #if targetEnvironment(macCatalyst)
+        tableView.sectionHeaderHeight = 40
+        #endif
         
         serchBar.delegate = self
     }

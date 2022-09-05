@@ -42,6 +42,10 @@ private extension ProfileViewController {
         activityIndicator.hidesWhenStopped = true
         let item = UIBarButtonItem(customView: activityIndicator)
         navigationItem.rightBarButtonItem = item
+
+        #if targetEnvironment(macCatalyst)
+        tableView.sectionHeaderHeight = 40
+        #endif
     }
 }
 

@@ -31,7 +31,9 @@ final class HistoryViewController: BaseViewController {
 private extension HistoryViewController {
 
     func configure() {
-
+        #if targetEnvironment(macCatalyst)
+        tableView.sectionHeaderHeight = 40
+        #endif
     }
 }
 

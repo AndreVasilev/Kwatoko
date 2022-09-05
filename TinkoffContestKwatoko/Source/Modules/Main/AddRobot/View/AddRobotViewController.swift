@@ -34,6 +34,9 @@ private extension AddRobotViewController {
     func configure() {
         title = "Конфигурация"
         tableView.keyboardDismissMode = .onDrag
+        #if targetEnvironment(macCatalyst)
+        tableView.sectionHeaderHeight = 40
+        #endif
     }
 }
 
