@@ -225,8 +225,8 @@ private extension LionStrategy {
 
         var offset: Int?
         switch data.direction {
-        case .buy: offset = orderBook.bids.firstIndex(where: { $0.price.asAmount <= order.price })
-        case .sell: offset = orderBook.asks.firstIndex(where: { $0.price.asAmount >= order.price })
+        case .sell: offset = orderBook.bids.firstIndex(where: { $0.price.asAmount <= order.price })
+        case .buy: offset = orderBook.asks.firstIndex(where: { $0.price.asAmount >= order.price })
         case .unspecified, .UNRECOGNIZED(_): return
         }
 
@@ -353,15 +353,15 @@ private extension LionStrategy {
     func getOpenOrderData(orderBook: OrderBook) -> OpenOrderData? {
         var tuples = [OpenOrderData]()
 
-        if config.orderDirection != .sell,
+        if config.orderDirection != .buy,
            let item = orderBook.bids.enumerated().first(where: { $0.element.quantity >= config.edgeQuantity }) {
             let price = item.element.price.asAmount + config.orderDelta
-            tuples.append((price, .buy, item.element, item.offset))
+            tuples.append((price, .sell, item.element, item.offset))
         }
-        if config.orderDirection != .buy,
+        if config.orderDirection != .sell,
            let item = orderBook.asks.enumerated().first(where: { $0.element.quantity >= config.edgeQuantity }) {
             let price = item.element.price.asAmount - config.orderDelta
-            tuples.append((price, .sell, item.element, item.offset))
+            tuples.append((price, .buy, item.element, item.offset))
         }
 
         guard !tuples.isEmpty else { return nil }
