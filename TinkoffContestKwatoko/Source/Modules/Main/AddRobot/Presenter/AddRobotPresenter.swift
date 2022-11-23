@@ -97,7 +97,7 @@ private extension AddRobotPresenter {
             if let strategy = self?.strategy,
                let account = self?.interactor.account {
                 switch strategy {
-                case .contest, .demoContest:
+                case .contest, .demoContest, .buyingAnomaly, .demoBuyingAnomaly:
                     self?.config = ContestStrategy.Config(id: UUID().uuidString,
                                                           accountID: account.id,
                                                           isSandbox: account.isSandbox,

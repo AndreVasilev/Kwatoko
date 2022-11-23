@@ -165,6 +165,8 @@
 		556390E528364E3F000EC23E /* DealDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 556390E428364E3F000EC23E /* DealDetails.storyboard */; };
 		556390E8283658DE000EC23E /* DealDetailsInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556390E7283658DE000EC23E /* DealDetailsInfoCell.swift */; };
 		556390EA28365905000EC23E /* DealDetailsBookOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556390E928365905000EC23E /* DealDetailsBookOrderCell.swift */; };
+		55804D69292E34A100FE7BB1 /* LionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55804D68292E34A100FE7BB1 /* LionStrategy.swift */; };
+		55804D6B292E34F300FE7BB1 /* LionStrategyTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55804D6A292E34F300FE7BB1 /* LionStrategyTutorial.swift */; };
 		55C716EC283665FD00111D61 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 55C716EB283665FD00111D61 /* Charts */; };
 		55C716EE2836664C00111D61 /* RobotChart.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C716ED2836664C00111D61 /* RobotChart.storyboard */; };
 		55C716F3283678A900111D61 /* RobotChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C716F1283678A900111D61 /* RobotChartCell.swift */; };
@@ -455,6 +457,8 @@
 		556390E428364E3F000EC23E /* DealDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DealDetails.storyboard; sourceTree = "<group>"; };
 		556390E7283658DE000EC23E /* DealDetailsInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailsInfoCell.swift; sourceTree = "<group>"; };
 		556390E928365905000EC23E /* DealDetailsBookOrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DealDetailsBookOrderCell.swift; sourceTree = "<group>"; };
+		55804D68292E34A100FE7BB1 /* LionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionStrategy.swift; sourceTree = "<group>"; };
+		55804D6A292E34F300FE7BB1 /* LionStrategyTutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionStrategyTutorial.swift; sourceTree = "<group>"; };
 		55C716ED2836664C00111D61 /* RobotChart.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RobotChart.storyboard; sourceTree = "<group>"; };
 		55C716F1283678A900111D61 /* RobotChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotChartCell.swift; sourceTree = "<group>"; };
 		55C716F2283678A900111D61 /* RobotChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RobotChartCell.xib; sourceTree = "<group>"; };
@@ -1263,6 +1267,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		55804D67292E348900FE7BB1 /* LionStrategy */ = {
+			isa = PBXGroup;
+			children = (
+				55804D68292E34A100FE7BB1 /* LionStrategy.swift */,
+				55804D6A292E34F300FE7BB1 /* LionStrategyTutorial.swift */,
+			);
+			path = LionStrategy;
+			sourceTree = "<group>";
+		};
 		55C716EF2836788800111D61 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1312,6 +1325,7 @@
 		55DC01A82834FCFA0049467C /* Strategies */ = {
 			isa = PBXGroup;
 			children = (
+				55804D67292E348900FE7BB1 /* LionStrategy */,
 				55C716F5283680A900111D61 /* ContestStrategy */,
 				55DC01B0283500860049467C /* IStrategyConfig.swift */,
 				55C716F82836813900111D61 /* IStrategy.swift */,
@@ -2075,6 +2089,7 @@
 				556390DC28363BD5000EC23E /* Deal+DemoList.swift in Sources */,
 				551F8C6928325F290044C7EA /* UIViewController.swift in Sources */,
 				55DE6289283A3462005EABD8 /* DemoOrderBookInteractor.swift in Sources */,
+				55804D6B292E34F300FE7BB1 /* LionStrategyTutorial.swift in Sources */,
 				551F8C6428325F290044C7EA /* UITableView+Cells.swift in Sources */,
 				55DC01AA2834FD0D0049467C /* ContestStrategy.swift in Sources */,
 				55DE628628394F17005EABD8 /* Error.swift in Sources */,
@@ -2176,6 +2191,7 @@
 				55DE628C283A6A07005EABD8 /* OrderDemoDto.swift in Sources */,
 				57F177F97B93CA8F80C51DE3 /* RobotHistoryInteractor.swift in Sources */,
 				BF0DED7DE5C34A66D6916929 /* IRobotHistoryInteractor.swift in Sources */,
+				55804D69292E34A100FE7BB1 /* LionStrategy.swift in Sources */,
 				6959AA269FDD318FBE845778 /* RobotHistoryRouter.swift in Sources */,
 				064F6FDA198D93C8B3992417 /* IRobotHistoryRouter.swift in Sources */,
 				55DE628E283A6A4C005EABD8 /* OrderBookDemoDto.swift in Sources */,

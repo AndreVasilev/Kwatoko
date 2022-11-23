@@ -42,6 +42,10 @@ extension AddRobotRouter: IAddRobotRouter {
             controller = orderBookAssembly.build(robot: robot).viewController
         case .demoContest:
             controller = orderBookAssembly.buildDemo(robot: robot).viewController
+        case .buyingAnomaly:
+            controller = orderBookAssembly.build(robot: robot).viewController
+        case .demoBuyingAnomaly:
+            controller = orderBookAssembly.buildDemo(robot: robot).viewController
         }
 
         if var controllers = viewController?.navigationController?.viewControllers {

@@ -48,6 +48,17 @@ final class OrderBookAssembly: IAssembly {
             strategy = ContestStrategy(ordersService: DemoOrdersService(),
                                        database: modulesFactory.core.databaseService,
                                        robot: robot)
+        case .buyingAnomaly:
+            let ordersService = (robot.config as? ContestStrategy.Config)?.isSandbox == false
+                ? modulesFactory.core.sdk.ordersService
+                : modulesFactory.core.sdk.sandboxService!
+            strategy = LionStrategy(ordersService: ordersService,
+                                    database: modulesFactory.core.databaseService,
+                                    robot: robot)
+        case .demoBuyingAnomaly:
+            strategy = LionStrategy(ordersService: DemoOrdersService(),
+                                    database: modulesFactory.core.databaseService,
+                                    robot: robot)
             
         }
         let presenter = OrderBookPresenter(interactor: interactor, router: router, strategy: strategy)

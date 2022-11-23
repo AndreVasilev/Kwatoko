@@ -96,7 +96,7 @@ extension DatabaseService {
 
     func addRobot(name: String, strategy: Strategy, config: IStrategyConfig) -> Robot? {
         switch strategy {
-        case .contest, .demoContest:
+        case .contest, .demoContest, .buyingAnomaly, .demoBuyingAnomaly:
             guard let config = config as? ContestStrategy.Config else { return nil }
             return addRobot(name: name, contestStrategy: strategy, config: config)
         }
