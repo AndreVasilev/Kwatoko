@@ -15,7 +15,7 @@ final class RobotHistoryPresenter: BasePresenter {
         var title: String? {
             switch self {
             case .info, .chart: return nil
-            case .deals: return "Сделки"
+            case .deals: return L10n.Localization.deals
             }
         }
     }

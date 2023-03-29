@@ -25,8 +25,8 @@ class AccountInfoCell: UITableViewCell {
         self.onEditingDidEnd = onEditingDidEnd
         nameTextField.text = model.name
         nameTextField.isEnabled = model.canEdit
-        idLabel.text = "ID: \(model.id)"
-        openDateLabel.text = "Открыт: \(dateFormatter.string(from: model.openedDate))"
+        idLabel.text = "\(L10n.Localization.id): \(model.id)"
+        openDateLabel.text = "\(L10n.Localization.opened): \(dateFormatter.string(from: model.openedDate))"
     }
 }
 
@@ -35,7 +35,7 @@ private extension AccountInfoCell {
     func configure() {
         selectionStyle = .none
         
-        nameTextField.placeholder = "Название"
+        nameTextField.placeholder = L10n.Localization.title
         nameTextField.addTarget(self, action: #selector(didEndEditing), for: .editingDidEnd)
         nameTextField.delegate = self
     }

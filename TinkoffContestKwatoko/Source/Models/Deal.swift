@@ -36,8 +36,8 @@ struct Deal {
 
             var title: String {
                 switch self {
-                case .buy: return "Покупка"
-                case .sell: return "Продажа"
+                case .buy: return L10n.Localization.directionBuy
+                case .sell: return L10n.Localization.directionSell
                 }
             }
         }

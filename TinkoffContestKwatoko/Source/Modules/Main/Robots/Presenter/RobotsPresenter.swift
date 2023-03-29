@@ -15,9 +15,9 @@ final class RobotsPresenter: BasePresenter {
 
         var title: String? {
             switch self {
-            case .info: return "Информация"
+            case .info: return L10n.Localization.information
             case .actions: return nil
-            case .robots: return "Роботы"
+            case .robots: return L10n.Localization.robots
             }
         }
     }
@@ -27,8 +27,8 @@ final class RobotsPresenter: BasePresenter {
 
         var title: String {
             switch self {
-            case .runAll: return "Запустить все"
-            case .add: return "Добавить"
+            case .runAll: return L10n.Localization.runAll
+            case .add: return L10n.Localization.add
             }
         }
 
@@ -142,7 +142,7 @@ extension RobotsPresenter: IRobotsPresenter {
     }
 
     func deleteRobot(at index: Int) {
-        let controller = UIAlertController(confirm: "Вы уверены, что хотите удалить робота?", action: "Удалить") { [weak self] in
+        let controller = UIAlertController(confirm: L10n.Localization.askDeleteAllRobots, action: L10n.Localization.delete) { [weak self] in
             guard let robot = self?.robots.remove(at: index) else { return }
             self?.interactor.stopRobot(robot)
             self?.interactor.deleteRobot(robot)

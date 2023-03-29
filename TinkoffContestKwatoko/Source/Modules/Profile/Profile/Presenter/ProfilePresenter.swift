@@ -18,8 +18,8 @@ final class ProfilePresenter: BasePresenter {
         var title: String? {
             switch self {
             case .tokens, .logout: return nil
-            case .exchange: return "Биржа"
-            case .sandbox: return "Песочница"
+            case .exchange: return L10n.Localization.exchange
+            case .sandbox: return L10n.Localization.sandbox
             }
         }
     }
@@ -29,9 +29,9 @@ final class ProfilePresenter: BasePresenter {
 
         var title: String {
             switch self {
-            case .login: return "Войти"
-            case .logout: return "Выйти"
-            case .manage: return "Открыть новый"
+            case .login: return L10n.Localization.login
+            case .logout: return L10n.Localization.logout
+            case .manage: return L10n.Localization.openNew
             }
         }
 
@@ -186,9 +186,9 @@ private extension ProfilePresenter {
     }
 
     func logout() {
-        let controller = UIAlertController(confirm: "Вы уверены что хотите выйти?",
-                                           message: "Все данные (роботы, конфигурации, история) будут безвозвратно удалены",
-                                           actionTitle: "Выйти") { [weak self] in
+        let controller = UIAlertController(confirm: L10n.Localization.askLogout,
+                                           message: L10n.Localization.askLogoutMessage,
+                                           actionTitle: L10n.Localization.logout) { [weak self] in
             self?.profile = nil
             self?.interactor.clearDatabase()
             self?.viewController?.reloadData()
@@ -297,9 +297,9 @@ extension ProfilePresenter: IProfilePresenter {
         case .exchange:
             let account = exchangeAccounts[indexPath.row]
             updateSelectedAccount(id: account.id, isSandbox: false)
-            router.presentAlert(title: "Внимание!",
-                                message: "Все сделки будут совершаться на реальной бирже.\nБудьте внимательны с работой робота",
-                                actions: [.init(title: "Закрыть", style: .cancel)])
+            router.presentAlert(title: L10n.Localization.attention,
+                                message: L10n.Localization.attentionMessage,
+                                actions: [.init(title: L10n.Localization.close, style: .cancel)])
         case .sandbox:
             if indexPath.row < sandboxAccounts.count {
                 let account = sandboxAccounts[indexPath.row]

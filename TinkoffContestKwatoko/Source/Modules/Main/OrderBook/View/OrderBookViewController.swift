@@ -33,7 +33,7 @@ final class OrderBookViewController: BaseViewController {
 private extension OrderBookViewController {
 
     func configure() {
-        title = "Стакан"
+        title = L10n.Localization.glass
 
         let actionButton = UIButton(type: .custom)
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .large)
@@ -49,7 +49,7 @@ private extension OrderBookViewController {
 
     @objc func actionButtonTapped(_ sender: UIButton) {
         if sender.isSelected {
-            let controller = UIAlertController(confirm: "Вы уверены, что хотите остановить робота?", action: "Остановить") { [weak self] in
+            let controller = UIAlertController(confirm: L10n.Localization.askStopRobot, action: L10n.Localization.stop) { [weak self] in
                 self?.toggleActionButton(sender)
             }
             present(controller, animated: true)

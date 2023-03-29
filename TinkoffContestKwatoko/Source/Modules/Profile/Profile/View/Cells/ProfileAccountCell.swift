@@ -33,7 +33,7 @@ class ProfileAccountCell: UITableViewCell {
 private extension ProfileAccountCell {
 
     func configure() {
-        isSelecedLabel.text = "Текущий"
+        isSelecedLabel.text = L10n.Localization.selected
         isSelecedLabel.textColor = .systemGreen
         accessoryType = .detailButton
     }

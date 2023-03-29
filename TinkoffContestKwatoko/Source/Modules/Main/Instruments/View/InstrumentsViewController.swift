@@ -32,7 +32,7 @@ final class InstrumentsViewController: BaseViewController {
 private extension InstrumentsViewController {
 
     func configure() {
-        title = "Инструменты"
+        title = L10n.Localization.instruments
 
         tableView.keyboardDismissMode = .onDrag
         #if targetEnvironment(macCatalyst)

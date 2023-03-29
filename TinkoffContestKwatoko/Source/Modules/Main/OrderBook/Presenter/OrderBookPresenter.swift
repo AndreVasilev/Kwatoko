@@ -23,9 +23,9 @@ final class OrderBookPresenter: BasePresenter {
 
             var description: String {
                 switch self {
-                case .order: return "заявка"
-                case .stopLoss: return "стоп-лосс"
-                case .takeProfit: return "тейк-профит"
+                case .order: return L10n.Localization.order
+                case .stopLoss: return L10n.Localization.stopLoss
+                case .takeProfit: return L10n.Localization.takeProfit
                 }
             }
         }

@@ -29,8 +29,7 @@ final class StrategiesViewController: BaseViewController {
 private extension StrategiesViewController {
 
     func configure() {
-        title = "Стратегии"
-
+        title = L10n.Localization.strategies
     }
 }
 

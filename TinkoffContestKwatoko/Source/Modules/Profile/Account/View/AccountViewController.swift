@@ -39,7 +39,7 @@ final class AccountViewController: BaseViewController {
 private extension AccountViewController {
 
     func configure() {
-        title = "Счёт"
+        title = L10n.Localization.account
 
         activityIndicator.hidesWhenStopped = true
         let item = UIBarButtonItem(customView: activityIndicator)

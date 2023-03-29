@@ -86,8 +86,8 @@ private extension RootRouter {
     var robotsController: UIViewController {
         let assembly: RobotsAssembly = modulesFactory.buildAssembly()
         let viewController = assembly.build().viewController
-        viewController.title = "Роботы"
-        viewController.tabBarItem = UITabBarItem(title: "Роботы",
+        viewController.title = L10n.Localization.robots
+        viewController.tabBarItem = UITabBarItem(title: L10n.Localization.robots,
                                                  image: Asset.robots.image,
                                                  tag: 2)
         return viewController
@@ -96,8 +96,8 @@ private extension RootRouter {
     var historyController: UIViewController {
         let assembly: HistoryAssembly = modulesFactory.buildAssembly()
         let viewController = assembly.build().viewController
-        viewController.title = "История"
-        viewController.tabBarItem = UITabBarItem(title: "История",
+        viewController.title = L10n.Localization.history
+        viewController.tabBarItem = UITabBarItem(title: L10n.Localization.history,
                                                  image: Asset.history.image,
                                                  tag: 2)
         return viewController
@@ -106,8 +106,8 @@ private extension RootRouter {
     var profileController: UIViewController {
         let assembly: ProfileAssembly = modulesFactory.buildAssembly()
         let viewController = assembly.build().viewController
-        viewController.title = "Профиль"
-        viewController.tabBarItem = UITabBarItem(title: "Профиль",
+        viewController.title = L10n.Localization.profile
+        viewController.tabBarItem = UITabBarItem(title: L10n.Localization.profile,
                                                  image: Asset.profile.image,
                                                  tag: 2)
         return viewController

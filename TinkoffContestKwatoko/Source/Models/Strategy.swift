@@ -20,8 +20,8 @@ extension Strategy {
 
     var name: String {
         switch self {
-        case .demoContest: return "Демо: торговля по стакану"
-        case .contest: return "Торговля по стакану"
+        case .demoContest: return L10n.Localization.strategyTitleContestDemo
+        case .contest: return L10n.Localization.strategyTitleContest
         }
     }
 

@@ -32,7 +32,7 @@ final class RobotChartViewController: BaseViewController {
 private extension RobotChartViewController {
 
     func configure() {
-        title = "График"
+        title = L10n.Localization.chart
     }
 }
 

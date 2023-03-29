@@ -28,7 +28,7 @@ struct NotificationBanner {
     
     static func present(_ error: Error, style: Style = .error) {
         DispatchQueue.main.async {
-            present(title: "Ошибка:", text: error.alertMessage, style: style)
+            present(title: "\(L10n.Localization.error):", text: error.alertMessage, style: style)
         }
     }
 }

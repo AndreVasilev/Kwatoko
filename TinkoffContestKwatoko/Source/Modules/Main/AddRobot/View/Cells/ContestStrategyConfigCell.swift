@@ -15,9 +15,9 @@ class ContestStrategyConfigCell: UITableViewCell {
 
         var name: String {
             switch self {
-            case .both: return "Любое"
-            case .buy: return "Покупка"
-            case .sell: return "Продажа"
+            case .both: return L10n.Localization.directionAny
+            case .buy: return L10n.Localization.directionBuy
+            case .sell: return L10n.Localization.directionSell
             }
         }
 
@@ -128,14 +128,14 @@ private extension ContestStrategyConfigCell {
     func configure() {
         selectionStyle = .none
 
-        nameLabel.text = "Название робота"
-        depthLabel.text = "Глубина стакана"
-        orderDirectionLabel.text = "Направление торговли"
-        edgeQuantityLabel.text = "Объем аномальной заявки"
-        orderQuantityLabel.text = "Объем торгуемой заявки"
-        orderDeltaLabel.text = "Дельта цены заявки"
-        stopLossPercentLabel.text = "Стоп-лосс (% от цены заявки)"
-        takeProfitPercentLabel.text = "Тейк-профит (% от цены заявки)"
+        nameLabel.text = L10n.Localization.fieldName
+        depthLabel.text = L10n.Localization.fieldDepth
+        orderDirectionLabel.text = L10n.Localization.fieldOrderDirection
+        edgeQuantityLabel.text = L10n.Localization.fieldEdgeQuantity
+        orderQuantityLabel.text = L10n.Localization.fieldOrderQuantity
+        orderDeltaLabel.text = L10n.Localization.fieldOrderDelta
+        stopLossPercentLabel.text = L10n.Localization.fieldStopLossPercent
+        takeProfitPercentLabel.text = L10n.Localization.fieldTakeProfitPercent
 
         nameTextField.addTarget(self, action: #selector(didEndEditing(_:)), for: .editingDidEnd)
         nameTextField.delegate = self

@@ -19,7 +19,7 @@ final class InstrumentsPresenter: BasePresenter {
 
         var title: String {
             switch self {
-            case .share: return "Акции"
+            case .share: return L10n.Localization.shares
             }
         }
     }

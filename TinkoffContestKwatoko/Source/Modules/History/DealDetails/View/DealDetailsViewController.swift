@@ -31,7 +31,7 @@ final class DealDetailsViewController: BaseViewController {
 private extension DealDetailsViewController {
 
     func configure() {
-        title = "Сделка"
+        title = L10n.Localization.deal
 
         #if targetEnvironment(macCatalyst)
         tableView.sectionHeaderHeight = 40

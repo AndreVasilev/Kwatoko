@@ -56,6 +56,6 @@ class BasePresenter: ILifeCycleOutput {
     func presentErrorAlert(title: String? = nil, message: String?) {
         router.presentAlert(title: title,
                             message: message,
-                            actions: [.init(title: "Закрыть", style: .default)])
+                            actions: [.init(title: L10n.Localization.close, style: .default)])
     }
 }

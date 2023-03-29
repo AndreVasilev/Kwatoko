@@ -2,6 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>total_deals_%lld</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>You have %#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>zero</key>
+			<string>no deals yet</string>
+			<key>one</key>
+			<string>%lld deal</string>
+			<key>two</key>
+			<string></string>
+			<key>few</key>
+			<string>%lld deals</string>
+			<key>many</key>
+			<string>%lld deals</string>
+			<key>other</key>
+			<string>%lld deals</string>
+		</dict>
+	</dict>
 	<key>total_robots_%lld</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -13,7 +37,7 @@
 			<key>NSStringFormatValueTypeKey</key>
 			<string>lld</string>
 			<key>zero</key>
-			<string>no robots</string>
+			<string>no robots yet</string>
 			<key>one</key>
 			<string>%lld robot</string>
 			<key>two</key>

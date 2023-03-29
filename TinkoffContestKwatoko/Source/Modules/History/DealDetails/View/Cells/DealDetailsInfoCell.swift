@@ -57,9 +57,9 @@ class DealDetailsInfoCell: UITableViewCell {
                 ? .systemRed
                 : .systemGray
 
-        quantityLabel.text = "Объем: \(deal.quantity)"
-        stopLossLabel.text = "Стоп-лосс: \(deal.stopLoss) \(currencySign)"
-        takeProfitLabel.text = "Тейк-профит: \(deal.takeProfit) \(currencySign)"
+        quantityLabel.text = "\(L10n.Localization.quantity): \(deal.quantity)"
+        stopLossLabel.text = "\(L10n.Localization.stopLoss.capitalized): \(deal.stopLoss) \(currencySign)"
+        takeProfitLabel.text = "\(L10n.Localization.takeProfit.capitalized): \(deal.takeProfit) \(currencySign)"
     }
 }
 

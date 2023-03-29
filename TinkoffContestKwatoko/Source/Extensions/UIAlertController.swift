@@ -15,7 +15,7 @@ extension UIAlertController {
 
     convenience init(confirm title: String?, message: String, actionTitle: String, _ completion: @escaping () -> Void) {
         self.init(title: title, message: message, preferredStyle: .alert)
-        addAction(.init(title: "Отмена", style: .cancel))
+        addAction(.init(title: L10n.Localization.cancel, style: .cancel))
         addAction(.init(title: actionTitle, style: .destructive, handler: { _ in completion() }))
     }
 }

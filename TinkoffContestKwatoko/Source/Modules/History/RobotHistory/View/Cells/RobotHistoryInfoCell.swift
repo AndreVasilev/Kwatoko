@@ -27,7 +27,7 @@ class RobotHistoryInfoCell: UITableViewCell {
     func configure(model: Model) {
         titleLabel.text = model.title
         descriptionLabel.text = model.description
-        totalLabel.text = "Всего сделок: \(model.total)"
+        totalLabel.text = L10n.Localizable.totalDealsLld(model.total)
     }
 }
 

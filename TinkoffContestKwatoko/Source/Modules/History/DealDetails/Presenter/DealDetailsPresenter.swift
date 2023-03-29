@@ -70,8 +70,8 @@ extension DealDetailsPresenter: IDealDetailsPresenter {
     func titleForSection(_ section: Int) -> String? {
         let section = sections[section]
         switch section {
-        case .open: return "Открытие сделки"
-        case .close: return "Закрытие сделки"
+        case .open: return L10n.Localization.openDeal
+        case .close: return L10n.Localization.closeDeal
         case .info: return nil
         }
     }

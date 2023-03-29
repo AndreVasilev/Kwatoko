@@ -23,7 +23,7 @@ final class AccountPresenter: BasePresenter {
         var title: String? {
             switch self {
             case .info: return nil
-            case .currencies: return "Валюты"
+            case .currencies: return L10n.Localization.currencies
             }
         }
     }
@@ -37,8 +37,8 @@ final class AccountPresenter: BasePresenter {
         
         var title: String {
             switch self {
-            case .reload: return "Обновить"
-            case .close: return "Закрыть"
+            case .reload: return L10n.Localization.reload
+            case .close: return L10n.Localization.close
             }
         }
         
@@ -112,7 +112,7 @@ private extension AccountPresenter {
         let accountId = account.id
         let info = self.info
         let message = info.name ?? info.id
-        let alert = UIAlertController(confirm: "Вы уверены, что хотите закрыть счёт?", message: message, actionTitle: "Закрыть") { [weak self] in
+        let alert = UIAlertController(confirm: L10n.Localization.askCloseAccount, message: message, actionTitle: L10n.Localization.close) { [weak self] in
             self?.closeAccount(id: accountId)
         }
         router.present(alert, animated: true)
@@ -188,7 +188,7 @@ private extension AccountPresenter {
         
         let rub = MoneyCurrency.rub
         let rubQuantity = positions?.money.first(where: { $0.currency.lowercased() == rub.rawValue.lowercased() })?.asMoneyAmount.value ?? 0
-        models.append(CurrencyModel(name: "Рубль",
+        models.append(CurrencyModel(name: L10n.Localization.ruble,
                                     value: "\(rubQuantity) \(rub.sign)",
                                     quantity: rubQuantity,
                                     currency: rub.rawValue.lowercased(),
@@ -219,17 +219,17 @@ private extension AccountPresenter {
     
     func payIn(currency moneyCurrency: MoneyCurrency) {
         let message = moneyCurrency == .rub
-            ? "Введите сумму, на которую хотите совершить пополнение"
-            : "Пополнение доступно только в рублях.\nЧтобы пополнить другую валюту, будет совершено пополнение в рублях на сумму приблизительно эквивалентную сумме валюты с последующей покупкой указанной валюты\nЕсли произойдет ошибка - попробуйте указать меньшую сумму\n\nПокупка иностранной валюты может происходить с задержкой из-за особенностей работы песочницы. Если обновление баланса не произойдет моментально - попробуйте вернуться позже и проверить баланс снова"
-        let payInAlert = UIAlertController(title: "Пополнение",
+            ? L10n.Localization.payInRub
+            : L10n.Localization.payInOther
+        let payInAlert = UIAlertController(title: L10n.Localization.payingIn,
                                            message: message,
                                            preferredStyle: .alert)
         payInAlert.addTextField {
             $0.keyboardType = .numberPad
-            $0.placeholder = "Сумма пополнения"
+            $0.placeholder = L10n.Localization.payInAmount
         }
-        payInAlert.addAction(.init(title: "Отмена", style: .default))
-        payInAlert.addAction(.init(title: "Пополнить", style: .cancel) { [weak payInAlert, weak self] _ in
+        payInAlert.addAction(.init(title: L10n.Localization.cancel, style: .default))
+        payInAlert.addAction(.init(title: L10n.Localization.payIn, style: .cancel) { [weak payInAlert, weak self] _ in
             guard let textField = payInAlert?.textFields?.first,
                   let quantity = textField.text?.toInt64
             else { return }

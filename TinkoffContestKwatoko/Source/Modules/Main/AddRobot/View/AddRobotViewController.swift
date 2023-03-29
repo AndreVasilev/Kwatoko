@@ -32,7 +32,7 @@ final class AddRobotViewController: BaseViewController {
 private extension AddRobotViewController {
 
     func configure() {
-        title = "Конфигурация"
+        title = L10n.Localization.configuration
         tableView.keyboardDismissMode = .onDrag
         #if targetEnvironment(macCatalyst)
         tableView.sectionHeaderHeight = 40

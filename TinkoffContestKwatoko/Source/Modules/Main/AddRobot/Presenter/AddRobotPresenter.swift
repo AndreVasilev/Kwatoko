@@ -16,17 +16,17 @@ final class AddRobotPresenter: BasePresenter {
 
         var title: String? {
             switch self {
-            case .strategy: return "Стратегия"
-            case .instrument: return "Инструмент"
-            case .config: return "Конфигурация"
+            case .strategy: return L10n.Localization.strategy
+            case .instrument: return L10n.Localization.instrument
+            case .config: return L10n.Localization.configuration
             case .actions: return nil
             }
         }
 
         var description: String? {
             switch self {
-            case .strategy: return "Выберите стратегию"
-            case .instrument: return "Выберите инструмент"
+            case .strategy: return L10n.Localization.selectStrategy
+            case .instrument: return L10n.Localization.selectInstrument
             case .config, .actions: return nil
             }
         }
@@ -37,7 +37,7 @@ final class AddRobotPresenter: BasePresenter {
 
         var title: String {
             switch self {
-            case .save: return "Сохранить"
+            case .save: return L10n.Localization.save
             }
         }
 
@@ -55,7 +55,7 @@ final class AddRobotPresenter: BasePresenter {
     var strategy: Strategy?
     var instrument: IInstrument?
     var config: IStrategyConfig?
-    var robotName: String? = "Робот \(Date())"
+    var robotName: String? = "\(L10n.Localization.robot) \(Date())"
 
     let isEditable = true
 
@@ -105,7 +105,7 @@ private extension AddRobotPresenter {
                     }
                 } else {
                     self?.config = nil
-                    self?.router.presentAlert(title: "Ошибка", message: "Перейдите в \"Профиль\" и выберите текущий счёт", actions: [.init(title: "Закрыть", style: .cancel)])
+                    self?.router.presentAlert(title: L10n.Localization.error, message: L10n.Localization.Error.selectAccount, actions: [.init(title: L10n.Localization.close, style: .cancel)])
                 }
             } else {
                 self?.config = nil

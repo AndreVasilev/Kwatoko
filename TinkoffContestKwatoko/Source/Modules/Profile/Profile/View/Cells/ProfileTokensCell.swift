@@ -38,8 +38,8 @@ class ProfileTokensCell: UITableViewCell {
 private extension ProfileTokensCell {
 
     func configure() {
-        tokenLabel.text = "Токен биржи"
-        sandboxTokenLabel.text = "Токен песочницы"
+        tokenLabel.text = L10n.Localization.tokenExchange
+        sandboxTokenLabel.text = L10n.Localization.tokenSandbox
 
         [tokenTextField, sandboxTokenTextField].forEach {
             $0?.delegate = self
@@ -50,11 +50,11 @@ private extension ProfileTokensCell {
         tokenTextField.returnKeyType = .next
         sandboxTokenTextField.returnKeyType = .done
         
-        whereMyTokensButton.setTitle("Как получить токены?", for: .normal)
+        whereMyTokensButton.setTitle(L10n.Localization.howGetToken, for: .normal)
         whereMyTokensButton.addTarget(self, action: #selector(infoButtonPressed), for: .touchUpInside)
         
         complianceLabel.numberOfLines = 0
-        complianceLabel.text = "Нажимая \"Войти\", я подтверждаю, что осознаю все риски торговли роботом на реальной бирже и беру на себя всю ответственность за выставленные заявки"
+        complianceLabel.text = L10n.Localization.complianceMessage
     }
 
     @objc func didEndEditign() {
