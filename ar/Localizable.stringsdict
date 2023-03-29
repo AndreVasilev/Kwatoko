@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>total_deals_%lld</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>لديك %#@count@</string>
+      <key>count</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lld</string>
+        <key>zero</key>
+        <string>%lld صفقات</string>
+        <key>one</key>
+        <string>%lld صفقة</string>
+        <key>two</key>
+        <string>%lld صفقات</string>
+        <key>few</key>
+        <string>%lld صفقات</string>
+        <key>many</key>
+        <string>%lld صفقات</string>
+        <key>other</key>
+        <string>%lld صفقات</string>
+      </dict>
+    </dict>
+    <key>total_robots_%lld</key>
+    <dict>
+      <key>NSStringLocalizedFormatKey</key>
+      <string>لديك %#@count@</string>
+      <key>count</key>
+      <dict>
+        <key>NSStringFormatSpecTypeKey</key>
+        <string>NSStringPluralRuleType</string>
+        <key>NSStringFormatValueTypeKey</key>
+        <string>lld</string>
+        <key>zero</key>
+        <string></string>
+        <key>one</key>
+        <string>%lld روبوت</string>
+        <key>two</key>
+        <string></string>
+        <key>few</key>
+        <string>%lld روبوت</string>
+        <key>many</key>
+        <string>%lld روبوتات</string>
+        <key>other</key>
+        <string></string>
+      </dict>
+    </dict>
+  </dict>
+</plist>
