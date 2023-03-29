@@ -5,7 +5,7 @@
     <key>total_deals_%lld</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>У вас %#@count@</string>
+      <string>You have %#@count@</string>
       <key>count</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -13,15 +13,15 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lld</string>
         <key>one</key>
-        <string>%lld сделка</string>
+        <string>%lld deal</string>
         <key>other</key>
-        <string>%lld сделок</string>
+        <string>%lld deals</string>
       </dict>
     </dict>
     <key>total_robots_%lld</key>
     <dict>
       <key>NSStringLocalizedFormatKey</key>
-      <string>У вас %#@count@</string>
+      <string>You have %#@count@</string>
       <key>count</key>
       <dict>
         <key>NSStringFormatSpecTypeKey</key>
@@ -29,7 +29,7 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lld</string>
         <key>one</key>
-        <string>%lld робот</string>
+        <string>%lld robot</string>
         <key>other</key>
         <string></string>
       </dict>
