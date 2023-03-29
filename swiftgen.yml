@@ -20,7 +20,9 @@ fonts:
     output: Fonts.swift
 
 strings:
-  inputs: en.lproj/Localization.strings
+  inputs: 
+    - en.lproj/Localization.strings
+    - en.lproj/Localizable.stringsdict
   outputs:
     templateName: structured-swift5
     output: L10n-Constants.swift

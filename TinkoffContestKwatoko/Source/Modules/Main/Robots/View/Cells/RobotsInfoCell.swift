@@ -18,7 +18,7 @@ class RobotsInfoCell: UITableViewCell {
     }
 
     func configure(info: RobotsPresenter.Info) {
-        totalLabel.text = "Всего роботов: \(info.robotsCount)"
+        totalLabel.text = L10n.Localizable.totalRobotsLld(info.robotsCount)
         runningLabel.text = "Запущено: \(info.runningCount)"
     }
 }

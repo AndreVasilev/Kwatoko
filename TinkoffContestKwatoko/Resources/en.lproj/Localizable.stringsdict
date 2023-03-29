@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>total_robots_%lld</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>You have %#@count@</string>
+		<key>count</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lld</string>
+			<key>zero</key>
+			<string>no robots</string>
+			<key>one</key>
+			<string>%lld robot</string>
+			<key>two</key>
+			<string></string>
+			<key>few</key>
+			<string>%lld robots</string>
+			<key>many</key>
+			<string>%lld robots</string>
+			<key>other</key>
+			<string>%lld robots</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
