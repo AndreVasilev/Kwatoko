@@ -1,0 +1,90 @@
+/* 
+  Localization.strings
+
+  Created by Andrey Vasilev on 13.12.2020.
+  
+*/
+"close" = "close";
+"robots" = "robots";
+"history" = "Story";
+"profile" = "Profile";
+"runned" = "Started: %@";
+"information" = "Profile";
+"run_all" = "Run All";
+"add" = "Add";
+"delete" = "Delete";
+"ask_delete_all_robots" = "Are you sure you want to delete the robot?";
+"configuration" = "Configuration";
+"direction_any" = "Any";
+"direction_buy" = "Purchase";
+"direction_sell" = "Sale";
+"field_name" = "Robot name";
+"field_depth" = "Cup depth";
+"field_order_direction" = "Direction of trade";
+"field_edge_quantity" = "Anomalous order volume";
+"field_order_quantity" = "Volume of traded order";
+"field_order_delta" = "Order price delta";
+"field_stop_loss_percent" = "Stop Loss (% of order price)";
+"field_take_profit_percent" = "Take profit (% of order price)";
+"strategy" = "Strategy";
+"instrument" = "Tool";
+"select_strategy" = "Choose a strategy";
+"select_instrument" = "Choose a tool";
+"save" = "Save";
+"robot" = "Robot";
+"error" = "Error";
+"error.select_account" = "Go to \"Profile\" and select the current account";
+"instruments" = "Tools";
+"shares" = "Stock";
+"strategies" = "Strategies";
+"glass" = "Cup";
+"stop" = "Stop";
+"ask_stop_robot" = "Are you sure you want to stop the robot?";
+"order" = "application";
+"stop_loss" = "stop loss";
+"take_profit" = "take profit";
+"deals" = "Deals";
+"deal" = "Deal";
+"quantity" = "Volume";
+"open_deal" = "Opening a deal";
+"close_deal" = "Closing the deal";
+"chart" = "Schedule";
+"tokenExchange" = "Exchange Token";
+"tokenSandbox" = "Sandbox Token";
+"how_get_token" = "How to get tokens?";
+"compliance_message" = "By clicking \"Login\", I confirm that I am aware of all the risks of trading with a robot on a real exchange and take full responsibility for the submitted orders";
+"selected" = "Current";
+"exchange" = "Exchange";
+"sandbox" = "Sandbox";
+"login" = "To come in";
+"logout" = "Go out";
+"open_new" = "open new";
+"ask_logout" = "Are you sure you want to exit?";
+"ask_logout_message" = "All data (robots, configurations, history) will be permanently deleted";
+"attention" = "Attention!";
+"attention_message" = "All transactions will be made on a real exchange.\nBe careful with robot operation";
+"account" = "Check";
+"id" = "ID";
+"opened" = "open";
+"title" = "Name";
+"currencies" = "Currencies";
+"reload" = "Refresh";
+"ask_close_account" = "Are you sure you want to close the account?";
+"ruble" = "Ruble";
+
+"pay_in_rub" = "Enter the amount you want to top up";
+"pay_in_other" = "Replenishment is available only in rubles.\nTo replenish another currency, a replenishment in rubles will be made in an amount approximately equivalent to the amount of the currency, followed by the purchase of the specified currency\nIf an error occurs, try specifying a smaller amount\n\nPurchase of foreign currency may be delayed due to the peculiarities of the sandbox. If the balance update does not happen immediately - try to come back later and check the balance again";
+"paying_in" = "Replenishment";
+"pay_in_amount" = "Top-up amount";
+"cancel" = "Cancel";
+"pay_in" = "Top up";
+"strategy_title_contest_demo" = "Demo: Depth of Market";
+"strategy_title_contest" = "Glass trading";
+
+"tutorial.page_0" = "For the instrument, you can calculate the average value of the volume in orders";
+"tutorial.page_1" = "Sometimes orders are placed that are orders of magnitude higher than this value - anomalous";
+"tutorial.page_2" = "When an order is in the center of the order book, there is a high probability that sellers (or buyers) will not be able to immediately fill this order";
+"tutorial.page_3" = "Then there is a small price bounce.";
+"tutorial.page_4" = "When the robot issues an anomalous order in the order book, it places its own in front of it";
+"tutorial.page_5" = "The task of the robot: to make money on a rebound from an anomalous order";
+"tutorial.page_6" = "Robot parameters";
