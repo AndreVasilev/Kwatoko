@@ -21,179 +21,179 @@ internal enum L10n {
     }
   }
   internal enum Localization {
-    /// Счёт
+    /// Check
     internal static let account = L10n.tr("Localization", "account")
-    /// Добавить
+    /// Add
     internal static let add = L10n.tr("Localization", "add")
-    /// Вы уверены, что хотите закрыть счёт?
+    /// Are you sure you want to close the account?
     internal static let askCloseAccount = L10n.tr("Localization", "ask_close_account")
-    /// Вы уверены, что хотите удалить робота?
+    /// Are you sure you want to delete the robot?
     internal static let askDeleteAllRobots = L10n.tr("Localization", "ask_delete_all_robots")
-    /// Вы уверены что хотите выйти?
+    /// Are you sure you want to exit?
     internal static let askLogout = L10n.tr("Localization", "ask_logout")
-    /// Все данные (роботы, конфигурации, история) будут безвозвратно удалены
+    /// All data (robots, configurations, history) will be permanently deleted
     internal static let askLogoutMessage = L10n.tr("Localization", "ask_logout_message")
-    /// Вы уверены, что хотите остановить робота?
+    /// Are you sure you want to stop the robot?
     internal static let askStopRobot = L10n.tr("Localization", "ask_stop_robot")
-    /// Внимание!
+    /// Attention!
     internal static let attention = L10n.tr("Localization", "attention")
-    /// Все сделки будут совершаться на реальной бирже.
-    /// Будьте внимательны с работой робота
+    /// All transactions will be made on a real exchange.
+    /// Be careful with robot operation
     internal static let attentionMessage = L10n.tr("Localization", "attention_message")
-    /// Отмена
+    /// Cancel
     internal static let cancel = L10n.tr("Localization", "cancel")
-    /// График
+    /// Schedule
     internal static let chart = L10n.tr("Localization", "chart")
-    /// Закрыть
+    /// close
     internal static let close = L10n.tr("Localization", "close")
-    /// Закрытие сделки
+    /// Closing the deal
     internal static let closeDeal = L10n.tr("Localization", "close_deal")
-    /// Нажимая "Войти", я подтверждаю, что осознаю все риски торговли роботом на реальной бирже и беру на себя всю ответственность за выставленные заявки
+    /// By clicking "Login", I confirm that I am aware of all the risks of trading with a robot on a real exchange and take full responsibility for the submitted orders
     internal static let complianceMessage = L10n.tr("Localization", "compliance_message")
-    /// Конфигурация
+    /// Configuration
     internal static let configuration = L10n.tr("Localization", "configuration")
-    /// Валюты
+    /// Currencies
     internal static let currencies = L10n.tr("Localization", "currencies")
-    /// Сделка
+    /// Deal
     internal static let deal = L10n.tr("Localization", "deal")
-    /// Сделки
+    /// Deals
     internal static let deals = L10n.tr("Localization", "deals")
-    /// Удалить
+    /// Delete
     internal static let delete = L10n.tr("Localization", "delete")
-    /// Любое
+    /// Any
     internal static let directionAny = L10n.tr("Localization", "direction_any")
-    /// Покупка
+    /// Purchase
     internal static let directionBuy = L10n.tr("Localization", "direction_buy")
-    /// Продажа
+    /// Sale
     internal static let directionSell = L10n.tr("Localization", "direction_sell")
-    /// Ошибка
+    /// Error
     internal static let error = L10n.tr("Localization", "error")
-    /// Биржа
+    /// Exchange
     internal static let exchange = L10n.tr("Localization", "exchange")
-    /// Глубина стакана
+    /// Cup depth
     internal static let fieldDepth = L10n.tr("Localization", "field_depth")
-    /// Объем аномальной заявки
+    /// Anomalous order volume
     internal static let fieldEdgeQuantity = L10n.tr("Localization", "field_edge_quantity")
-    /// Название робота
+    /// Robot name
     internal static let fieldName = L10n.tr("Localization", "field_name")
-    /// Дельта цены заявки
+    /// Order price delta
     internal static let fieldOrderDelta = L10n.tr("Localization", "field_order_delta")
-    /// Направление торговли
+    /// Direction of trade
     internal static let fieldOrderDirection = L10n.tr("Localization", "field_order_direction")
-    /// Объем торгуемой заявки
+    /// Volume of traded order
     internal static let fieldOrderQuantity = L10n.tr("Localization", "field_order_quantity")
-    /// Стоп-лосс (% от цены заявки)
+    /// Stop Loss (of order price)
     internal static let fieldStopLossPercent = L10n.tr("Localization", "field_stop_loss_percent")
-    /// Тейк-профит (% от цены заявки)
+    /// Take profit (of order price)
     internal static let fieldTakeProfitPercent = L10n.tr("Localization", "field_take_profit_percent")
-    /// Стакан
+    /// Cup
     internal static let glass = L10n.tr("Localization", "glass")
-    /// История
+    /// Story
     internal static let history = L10n.tr("Localization", "history")
-    /// Как получить токены?
+    /// How to get tokens?
     internal static let howGetToken = L10n.tr("Localization", "how_get_token")
     /// ID
     internal static let id = L10n.tr("Localization", "id")
-    /// Профиль
+    /// Profile
     internal static let information = L10n.tr("Localization", "information")
-    /// Инструмент
+    /// Tool
     internal static let instrument = L10n.tr("Localization", "instrument")
-    /// Инструменты
+    /// Tools
     internal static let instruments = L10n.tr("Localization", "instruments")
-    /// Войти
+    /// To come in
     internal static let login = L10n.tr("Localization", "login")
-    /// Выйти
+    /// Go out
     internal static let logout = L10n.tr("Localization", "logout")
-    /// Открытие сделки
+    /// Opening a deal
     internal static let openDeal = L10n.tr("Localization", "open_deal")
-    /// Открыть новый
+    /// open new
     internal static let openNew = L10n.tr("Localization", "open_new")
-    /// Открыт
+    /// open
     internal static let opened = L10n.tr("Localization", "opened")
-    /// заявка
+    /// application
     internal static let order = L10n.tr("Localization", "order")
-    /// Пополнить
+    /// Top up
     internal static let payIn = L10n.tr("Localization", "pay_in")
-    /// Сумма пополнения
+    /// Top-up amount
     internal static let payInAmount = L10n.tr("Localization", "pay_in_amount")
-    /// Пополнение доступно только в рублях.
-    /// Чтобы пополнить другую валюту, будет совершено пополнение в рублях на сумму приблизительно эквивалентную сумме валюты с последующей покупкой указанной валюты
-    /// Если произойдет ошибка - попробуйте указать меньшую сумму
+    /// Replenishment is available only in rubles.
+    /// To replenish another currency, a replenishment in rubles will be made in an amount approximately equivalent to the amount of the currency, followed by the purchase of the specified currency
+    /// If an error occurs, try specifying a smaller amount
     /// 
-    /// Покупка иностранной валюты может происходить с задержкой из-за особенностей работы песочницы. Если обновление баланса не произойдет моментально - попробуйте вернуться позже и проверить баланс снова
+    /// Purchase of foreign currency may be delayed due to the peculiarities of the sandbox. If the balance update does not happen immediately - try to come back later and check the balance again
     internal static let payInOther = L10n.tr("Localization", "pay_in_other")
-    /// Введите сумму, на которую хотите совершить пополнение
+    /// Enter the amount you want to top up
     internal static let payInRub = L10n.tr("Localization", "pay_in_rub")
-    /// Пополнение
+    /// Replenishment
     internal static let payingIn = L10n.tr("Localization", "paying_in")
-    /// Профиль
+    /// Profile
     internal static let profile = L10n.tr("Localization", "profile")
-    /// Объем
+    /// Volume
     internal static let quantity = L10n.tr("Localization", "quantity")
-    /// Обновить
+    /// Refresh
     internal static let reload = L10n.tr("Localization", "reload")
-    /// Робот
+    /// Robot
     internal static let robot = L10n.tr("Localization", "robot")
-    /// Роботы
+    /// robots
     internal static let robots = L10n.tr("Localization", "robots")
-    /// Рубль
+    /// Ruble
     internal static let ruble = L10n.tr("Localization", "ruble")
-    /// Запустить все
+    /// Run All
     internal static let runAll = L10n.tr("Localization", "run_all")
-    /// Запущено: %@
+    /// Started: %@
     internal static func runned(_ p1: Any) -> String {
       return L10n.tr("Localization", "runned", String(describing: p1))
     }
-    /// Песочница
+    /// Sandbox
     internal static let sandbox = L10n.tr("Localization", "sandbox")
-    /// Сохранить
+    /// Save
     internal static let save = L10n.tr("Localization", "save")
-    /// Выберите инструмент
+    /// Choose a tool
     internal static let selectInstrument = L10n.tr("Localization", "select_instrument")
-    /// Выберите стратегию
+    /// Choose a strategy
     internal static let selectStrategy = L10n.tr("Localization", "select_strategy")
-    /// Текущий
+    /// Current
     internal static let selected = L10n.tr("Localization", "selected")
-    /// Акции
+    /// Stock
     internal static let shares = L10n.tr("Localization", "shares")
-    /// Остановить
+    /// Stop
     internal static let stop = L10n.tr("Localization", "stop")
-    /// стоп-лосс
+    /// stop loss
     internal static let stopLoss = L10n.tr("Localization", "stop_loss")
-    /// Стратегии
+    /// Strategies
     internal static let strategies = L10n.tr("Localization", "strategies")
-    /// Стратегия
+    /// Strategy
     internal static let strategy = L10n.tr("Localization", "strategy")
-    /// Торговля по стакану
+    /// Glass trading
     internal static let strategyTitleContest = L10n.tr("Localization", "strategy_title_contest")
-    /// Демо: торговля по стакану
+    /// Demo: Depth of Market
     internal static let strategyTitleContestDemo = L10n.tr("Localization", "strategy_title_contest_demo")
-    /// тейк-профит
+    /// take profit
     internal static let takeProfit = L10n.tr("Localization", "take_profit")
-    /// Название
+    /// Name
     internal static let title = L10n.tr("Localization", "title")
-    /// Токен биржи
+    /// Exchange Token
     internal static let tokenExchange = L10n.tr("Localization", "tokenExchange")
-    /// Токен песочницы
+    /// Sandbox Token
     internal static let tokenSandbox = L10n.tr("Localization", "tokenSandbox")
     internal enum Error {
-      /// Перейдите в "Профиль" и выберите текущий счёт
+      /// Go to "Profile" and select the current account
       internal static let selectAccount = L10n.tr("Localization", "error.select_account")
     }
     internal enum Tutorial {
-      /// У инструмента можно вычислить среднее значение объема в заявках
+      /// For the instrument, you can calculate the average value of the volume in orders
       internal static let page0 = L10n.tr("Localization", "tutorial.page_0")
-      /// Иногда выставляются заявки, которые на порядки превышают это значение - аномальные
+      /// Sometimes orders are placed that are orders of magnitude higher than this value - anomalous
       internal static let page1 = L10n.tr("Localization", "tutorial.page_1")
-      /// Когда заявка оказывается в центре стакана, высока вероятность, что у продавцов (или покупателей) не получится сразу реализовать эту заявку
+      /// When an order is in the center of the order book, there is a high probability that sellers (or buyers) will not be able to immediately fill this order
       internal static let page2 = L10n.tr("Localization", "tutorial.page_2")
-      /// Тогда происходит небольшой отскок цены
+      /// Then there is a small price bounce.
       internal static let page3 = L10n.tr("Localization", "tutorial.page_3")
-      /// Когда робот выдит аномальную заявку в стакане, он выставляет свою перед ней
+      /// When the robot issues an anomalous order in the order book, it places its own in front of it
       internal static let page4 = L10n.tr("Localization", "tutorial.page_4")
-      /// Задача робота: заработать на отскоке от аномальной заявки
+      /// The task of the robot: to make money on a rebound from an anomalous order
       internal static let page5 = L10n.tr("Localization", "tutorial.page_5")
-      /// Параметры робота
+      /// Robot parameters
       internal static let page6 = L10n.tr("Localization", "tutorial.page_6")
     }
   }

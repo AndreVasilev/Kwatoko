@@ -24,8 +24,8 @@
 "field_edge_quantity" = "Объем аномальной заявки";
 "field_order_quantity" = "Объем торгуемой заявки";
 "field_order_delta" = "Дельта цены заявки";
-"field_stop_loss_percent" = "Стоп-лосс (% от цены заявки)";
-"field_take_profit_percent" = "Тейк-профит (% от цены заявки)";
+"field_stop_loss_percent" = "Стоп-лосс (от цены заявки)";
+"field_take_profit_percent" = "Тейк-профит (от цены заявки)";
 "strategy" = "Стратегия";
 "instrument" = "Инструмент";
 "select_strategy" = "Выберите стратегию";
