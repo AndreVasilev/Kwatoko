@@ -94,14 +94,18 @@ private extension AddRobotPresenter {
     func selectInstrument() {
         router.showInstruments { [weak self] in
             self?.instrument = $0
-            if let strategy = self?.strategy,
-               let account = self?.interactor.account {
-                switch strategy {
-                case .contest, .demoContest:
-                    self?.config = ContestStrategy.Config(id: UUID().uuidString,
-                                                          accountID: account.id,
-                                                          isSandbox: account.isSandbox,
-                                                          instrument: $0)
+            if let strategy = self?.strategy {
+                if let account = self?.interactor.account {
+                    switch strategy {
+                    case .contest, .demoContest:
+                        self?.config = ContestStrategy.Config(id: UUID().uuidString,
+                                                              accountID: account.id,
+                                                              isSandbox: account.isSandbox,
+                                                              instrument: $0)
+                    }
+                } else {
+                    self?.config = nil
+                    self?.router.presentAlert(title: "Ошибка", message: "Перейдите в \"Профиль\" и выберите текущий счёт", actions: [.init(title: "Закрыть", style: .cancel)])
                 }
             } else {
                 self?.config = nil
