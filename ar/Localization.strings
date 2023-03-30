@@ -24,8 +24,8 @@
 "field_edge_quantity" = "حجم أمر شاذ";
 "field_order_quantity" = "حجم الأمر المتداول";
 "field_order_delta" = "طلب دلتا سعر";
-"field_stop_loss_percent" = "وقف الخسارة (٪ من سعر الأمر)";
-"field_take_profit_percent" = "جني الأرباح (٪ من سعر الأمر)";
+"field_stop_loss_percent" = "Стоп-лосс (от цены заявки)";
+"field_take_profit_percent" = "Тейк-профит (от цены заявки)";
 "strategy" = "إستراتيجية";
 "instrument" = "أداة";
 "select_strategy" = "اختر استراتيجية";
