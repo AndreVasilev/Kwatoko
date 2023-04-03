@@ -24,8 +24,8 @@
 "field_edge_quantity" = "Anomalous order volume";
 "field_order_quantity" = "Volume of traded order";
 "field_order_delta" = "Order price delta";
-"field_stop_loss_percent" = "Stop Loss (% of order price)";
-"field_take_profit_percent" = "Take profit (% of order price)";
+"field_stop_loss_percent" = "Стоп-лосс (от цены заявки)";
+"field_take_profit_percent" = "Тейк-профит (от цены заявки)";
 "strategy" = "Strategy";
 "instrument" = "Tool";
 "select_strategy" = "Choose a strategy";

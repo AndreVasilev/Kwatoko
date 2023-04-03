@@ -37,13 +37,13 @@
         <key>NSStringFormatValueTypeKey</key>
         <string>lld</string>
         <key>zero</key>
-        <string></string>
+        <string>%lld روبوت</string>
         <key>one</key>
         <string>%lld روبوت</string>
         <key>two</key>
-        <string></string>
-        <key>few</key>
         <string>%lld روبوت</string>
+        <key>few</key>
+        <string>%lld روبوتات</string>
         <key>many</key>
         <string>%lld روبوتات</string>
         <key>other</key>
